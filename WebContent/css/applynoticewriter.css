@@ -1,0 +1,45 @@
+body{
+    margin: 0px;
+}
+#header-div{
+    height: 150px;
+    width: 100%;
+}
+main{
+    height: 1500px;
+}
+ul{
+    padding: 0px;
+}
+.wrapper{
+    width: 1535px;
+    margin: 0 auto;
+}
+    #applynotice-header{
+        margin-left:5%;
+        margin-right:5%;
+        width: 130px;
+        border-bottom: 1px solid black;
+    }
+        #applynotice-header h2{
+            margin: 0;
+        }
+    #writer-section{
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+        #writer-top{
+            margin-top: 55px;
+        }
+        form{
+            padding-top: 50px;
+            padding-bottom: 50px;
+            text-align: center;
+        }
+        #butn{
+            text-align: center;
+            
+        }
+#footer{
+    height: 150px;
+}        

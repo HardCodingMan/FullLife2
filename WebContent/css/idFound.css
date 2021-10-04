@@ -1,0 +1,60 @@
+body {
+    margin: 0;
+    background-color: #eeeeee;
+}
+main {
+    width: 400px;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: white;
+}
+.header {
+    text-align: center;
+}
+.header h1 {
+    margin: 0;
+    padding-top: 20px;
+    font-family: sans-serif;
+}
+.output-field {
+    margin-top: 200px;
+    text-align: center;
+}
+.output-field input {
+    width: 290px;
+    height: 40px;
+    border: none;
+    background: #eeeeee;
+}
+.footer {
+    margin-top: 150px;
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+.footer > div:first-child {
+    height: 50%;
+    width: 100%;
+}
+.footer > div:first-child a {
+    font-size: 10px;
+    font-weight: bolder;
+    font-family: sans-serif;
+    line-height: 80px;
+    color: black;
+}
+.footer > div:last-child {
+    height: 50%;
+    width: 100%;
+} 
+.footer > div:last-child input {
+    width: 300px;
+    height: 100%;
+    line-height: 40px;
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 15px;
+    cursor: pointer;
+}

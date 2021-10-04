@@ -1,0 +1,113 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background-color: rgb(173, 196, 136);
+    width: 100%;
+    height: 150px;
+}
+#logo{
+    width: 19%;
+    height: 100%;
+    text-align: center;
+
+    float: left;
+}
+    #logo img{
+        height: 150px;
+    }
+    #blank{
+        float: left;
+        width:45%;
+        height: 100%;
+    }
+#header-menu{
+    float: left;
+    width: 30%;
+    height: 38%;
+    margin-top: 5%;
+    text-align: center;
+}
+    #header-menu ul{
+        list-style-type: none;
+    }
+        .main-menu{
+            width: 33%;
+            float: left;
+        }
+        .main-menu a{
+            display: block;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+        }
+        .serv-menu{
+            padding: 0;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            margin-top: 13%;
+            text-align: center;
+            line-height: 50px;
+            display: none;
+            border-top: none;
+            background-color: white;
+            z-index: 3;
+        }
+            .serv-menu a{
+                display: block;
+                font-size: 15px;
+            }
+            .serv-menu li:hover{
+                background-color: rgba(173, 196, 136, 0.445);
+            }
+        .main-menu:hover .serv-menu{
+            display: block;
+        }
+        #btn-div{
+            height: 25%;
+            width: 7%;
+            float: right;
+            margin-top: -8%;
+            text-align: center;
+        }
+        #btn-div>button{
+            background:rgb(173, 196, 136);
+            color:#fff;
+            border:none;
+            position:relative;
+            height:30px;
+            width: 70px;
+            cursor:pointer;
+            transition:800ms ease all;
+            outline:none;
+          }
+          #btn-div>button:hover{
+            background:white;
+            color:#2cb862c2;
+          }
+          #btn-div>button:before,#btn-div>button:after{
+            content:'';
+            position:absolute;
+            top:0;
+            right:0;
+            height:2px;
+            width:0;
+            background: #2cb862c2;
+            transition:400ms ease all;
+          }
+          #btn-div>button:after{
+            right:inherit;
+            top:inherit;
+            left:0;
+            bottom:0;
+          }
+          #btn-div>button:hover:before,#btn-div>button:hover:after{
+            width:100%;
+            transition:800ms ease all;
+          }
+                #btn-div button a{
+                    text-decoration: none;
+                    color: black;
+                }

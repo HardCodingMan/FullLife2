@@ -1,0 +1,269 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header{
+    width: 100%;
+    height: 150px;
+    margin: 0;
+    border-bottom: 1px solid gray;
+    background-color: rgb(173, 196, 136);
+}
+
+#logo{
+    width: 85%;
+    height: 100%;
+    margin-left: 2%;
+    float: left;
+}
+    #logo img{
+        height: 100%;
+    }
+
+    #logout{
+        height: 25%;
+        width: 10%;
+        float: right;
+        margin-top: 0.5%;
+        text-align: center;
+    }
+    #logout>button{
+        background:rgb(173, 196, 136);
+        color:black;
+        border:none;
+        position:relative;
+        height:30px;
+        width: 70px;
+        cursor:pointer;
+        transition:800ms ease all;
+        outline:none;
+        font-weight: bold;
+        border: 1px solid #1d7c42c2;
+        border-radius: 5px;
+      }
+      #logout>button:hover{
+        background:white;
+        color:#1d7c42c2;
+        font-weight: bold;
+        border: none;
+      }
+      #logout>button:before,#logout>button:after{
+        content:'';
+        position:absolute;
+        top:0;
+        right:0;
+        height:2px;
+        width:0;
+        background: #2cb862c2;
+        transition:400ms ease all;
+      }
+      #logout>button:after{
+        right:inherit;
+        top:inherit;
+        left:0;
+        bottom:0;
+      }
+      #logout>button:hover:before,#logout>button:hover:after{
+        width:100%;
+        transition:800ms ease all;
+      }
+            #logout button a{
+                text-decoration: none;
+                color: black;
+            }
+
+
+#left-aside{
+    width: 15%;
+    height: 700px;
+    float: left;
+    border-right: 1px solid gray;
+    box-sizing: border-box;
+    background-color: ivory;
+}
+#main-ul{
+    width: 100%;
+    height: 100%;
+    padding-top: 10%;
+    line-height: 400%;
+}
+    #main-ul ul{
+        margin: 0;
+        padding-left: 10%;
+    }
+    .main-li{
+        list-style-type: none;
+        margin-left: 5%;
+    }
+    .main-li a{
+            display: block;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+        }
+    .serv-li{
+        list-style-type: none;
+        margin-left: 5%;
+    }
+    .serv-li a{
+            display: block;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: black;
+        }
+    #choice{
+        background-color: rgb(173, 196, 136);
+    }
+    .board-class{
+        background-color: ivory;
+        display:none;
+    }
+        .board-class li{
+            list-style-type: none;
+            line-height: 300%;
+        }
+        .board-class a{
+            display: block;
+            font-weight: normal;
+            font-size: 15px;
+        }
+    .serv-li:hover .board-class{
+        display: block;
+    }
+    #main-ul li:hover{
+        background-color: rgba(173, 196, 136, 0.493);
+    }
+
+#main-div{
+    width: 85%;
+    height: 1700px;
+    float: left;
+}
+    #title{
+        width: 90%;
+        height: 3.5%;
+        line-height: 400%;
+        padding-left: 4%;
+        font-size: 20px;
+    }
+    #line-div{
+        width: 3%;
+        border-bottom: 1px solid gray;
+        margin-left: 4%;
+    }
+#contents{
+    width: 100%;
+    height: 70%;
+    padding-top: 3%;
+}
+    #notice-div{
+        margin-left: 25%;
+        width: 40%;
+        height: 55%;
+        border: 1px solid gray;
+    }
+        #date{
+            float: left;
+            width: 48%;
+            height: 5%;
+            padding-left: 2%;
+        }
+        #view{
+            float: left;
+            width: 48%;
+            height: 5%;
+            text-align: right;
+            padding-right: 2%;
+        }
+        #post{
+            width: 100%;
+            height: 90%;
+        }
+            #post-header{
+                width: 100%;
+                height: 15%;
+                font-size: 25px;
+                font-weight: bold;
+                text-align: center;
+                line-height: 50px;
+                border-bottom: 1px solid gray;
+            }
+               
+            #post-contents{
+                width: 100%;
+                height: 85%;
+            }
+                #post-img{
+                    padding-top: 4%;
+                    width: 100%;
+                    height: 45%;
+                    text-align: center;
+                }
+                #post-text{
+                    width: 98%;
+                    height: 53%;
+                    padding-left:2%;
+                }
+            #post-footer{
+                width: 100%;
+                height: 10%;
+            }
+                #footer1{
+                    background-color: gold;
+                    text-align: center;
+                    width: 30%;
+                    height: 70%;
+                    margin-left: 35%;
+                    line-height: 30px;
+                    font-size: 17px;
+                    border-radius: 5px;
+                    color: red;
+                    font-weight: bold;
+                }
+    #notice-footer{
+        width: 39%;
+        height: 15%;
+        margin-left: 25%;
+        border: 1px solid gray;
+        padding-top: 1%;
+        padding-left: 1%;
+    }
+        #reply-header{
+            width: 100%;
+            height: 20%;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #reply{
+            width: 100%;
+            margin-top: 2%;
+            align-items: center;
+        }
+            #reply table{
+                margin-left: auto;
+                margin-right: auto;
+            }
+                #reply table tr th:nth-child(2){
+                    width: 300px;
+                }
+            #back{
+                margin-top: 1%;
+                width: 40%;
+                height: 10%;
+                margin-left: 25%;
+                text-align: center;
+            }
+                #back input{
+                    width: 150px;
+                    height: 40px;
+                    font-size: 15px;
+                    background-color: skyblue;
+                    border: 1px solid gray;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.514);
+                }

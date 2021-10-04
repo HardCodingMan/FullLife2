@@ -1,0 +1,88 @@
+.footer {
+    background-color: lightgray;
+}
+.footer > div {
+    width: 90%;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    
+}
+.footer-field1,.footer-field3,.footer-field4 {
+    width: 20%;
+    height: 100%;
+    margin: auto;
+}
+.footer-field1 > h4 {
+    border-bottom: 2px solid black;
+    line-height: 30px;
+    font-size: 15px;
+}
+.footer-field1 > a {
+    text-decoration: none;
+    color: #9e9e9e;
+    line-height: 20px;
+    font-size: 12px;
+}
+.footer-field1 > input {
+    height: 30px;
+    width: 100%;
+    border: 3px solid #2979ff;
+    font-size: 10px;
+    background-color: lightgray;
+    color: #2979ff;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.footer-field2 {
+    width: 25%;
+    height: 100%;
+    margin: auto;
+}
+.footer-field2 > h4 {
+    border-bottom: 2px solid black;
+    font-size: 14px;
+    line-height: 30px;
+}
+.footer-field2 > p {
+    font-size: 11px;
+    line-height: 20px;
+    color: #616161;
+    font-weight: 600;
+}
+.footer-field3 > h4 {
+    border-bottom: 2px solid black;
+    font-size: 14px;
+    line-height: 30px;
+}
+.footer-field3 > p {
+    font-size: 11px;
+    line-height: 20px;
+    color: grey;
+}
+.footer-field4 > h4 {
+    border-bottom: 2px solid black;
+    font-size: 14px;
+    line-height: 30px;
+}
+.footer-field4 > p {
+    font-size: 11px;
+    line-height: 15px;
+    color: black;
+    font-weight: 600;
+}
+.fab {
+    font-size: 25px;
+}
+.fa-facebook {
+    color: #303f9f;
+}
+.fa-instagram-square {
+    color: #283593;
+}
+.fa-youtube {
+    color: red;
+}
+.fa-twitter-square {
+    color: #2196f3;
+}

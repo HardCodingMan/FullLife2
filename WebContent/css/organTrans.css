@@ -1,0 +1,209 @@
+#navi{
+    height: 50px;
+    background-color: lavender;
+    width:100%;
+    display:block;
+    margin:0;
+    list-style-type: none;
+}
+.subMenu{
+    display: inline-block;
+    padding: 15px;
+    text-align: center;
+}
+#navi a{
+    border-left: 1px solid #1d1c1c;
+    padding-left:10px;
+}
+#navi a:visited{
+    color:black;
+    text-decoration: none;
+}
+#navi a:link{
+    color:black;
+    text-decoration: none;
+}
+.division-lightsand{
+    background-color: #f6f3f2;
+}
+
+
+/* 장기설명 파트 */
+.main input[type=radio] {
+	display: none;
+}
+#tab-1:checked ~ .tab label:nth-child(1),
+#tab-2:checked ~ .tab label:nth-child(2),
+#tab-3:checked ~ .tab label:nth-child(3),
+#tab-4:checked ~ .tab label:nth-child(4),
+#tab-5:checked ~ .tab label:nth-child(5) {
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  border-top: 3px solid red;
+  box-shadow: 3px 3px 3px rgb(150, 149, 149);
+}
+.content > div {
+	display: none;
+}
+.menuPic{
+    height:99px;
+    width:94px;
+    object-fit: cover;
+    /* border:1px solid black; */
+}
+.tab{
+    margin:0;
+    padding:0;
+}
+#tab-1:checked ~ .content div:nth-child(1),
+#tab-2:checked ~ .content div:nth-child(2),
+#tab-3:checked ~ .content div:nth-child(3),
+#tab-4:checked ~ .content div:nth-child(4),
+#tab-5:checked ~ .content div:nth-child(5) {
+	display: block;
+}
+.tab {
+    text-align: center;
+    overflow: hidden;
+}
+.tab label {
+    width: 5%;
+    text-align: center;
+    padding: 15px 0;
+}
+.content {
+  /* background-color: rgba(0, 0, 0, 0.2); */
+  min-height: 250px;
+  /* margin-left: 5%; */
+}
+.content > div{
+   padding: 0 30px 30px 30px;
+   /* line-height: 1.5; */
+   font-size: 17px;
+}
+
+#liver-pic{
+    width: 80%;
+    height: 500px;
+    margin-top: 0;
+    margin-left: 10%;
+    background-image: url("../img/organTrans/liverExplanation.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#heart-pic{
+    width: 80%;
+    height: 500px;
+    margin-left: 10%;
+    background-image: url("../img/organTrans/heartPic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#tooth-pic{
+    width: 80%;
+    height: 500px;
+    margin-left: 10%;
+    background-image: url("../img/organTrans/toothPic.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#bone-pic{
+    width: 80%;
+    height: 500px;
+    margin-left: 10%;
+    background-image: url("../img/organTrans/bonepic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#lung-pic{
+    width: 80%;
+    height: 500px;
+    margin-left: 10%;
+    background-image: url("../img/organTrans/lungPic.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+#money{
+    margin-left: 5%;
+    padding-top: 25%;
+    color: lavender;
+}
+#detail-purchase{
+    margin-left: 5%;
+}
+#introVideo{
+    text-align: center;
+}
+#bioprinting, #findHos-main, #organDetail, #afterPurchase{
+    width:80%;
+    /* background-color: khaki; */
+    margin-left: 10%;
+}
+#detail-navi td{
+    display:inline-block;
+}
+
+/* 협력병원 파트 */
+h1{
+    text-align: center;
+}
+#findHos-main1{
+    height:350px;
+    /* background-color: lightsalmon; */
+}
+#hosPic{
+    height: 320px;
+    width: 50%;
+    /* display:inline-block; */
+    /* background-color: lawngreen; */
+    float:left;
+    
+}
+#hosDesc{ 
+    height:320px;
+    /* width:40%; */
+    /* background-color:lightcoral; */
+    /* display:inline-block; */
+}
+#button{
+    text-align: center;
+    display:block;
+    margin-top: 10px;
+}
+#btn-hos{
+    width:400px;
+    height:30px;
+}
+td{
+    border-radius: 10px;
+}
+table{
+    border-collapse: collapse;
+}
+.colored{
+    background-color: wheat;
+    width: 186px;
+    height:100px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: -.4px;
+}
+/* 마지막 구매 예약 파트 */
+#purchase{
+    width:600px;
+    height:50px;
+    background-color: green;
+}
+#bottom-btn{
+    text-align: center;
+}

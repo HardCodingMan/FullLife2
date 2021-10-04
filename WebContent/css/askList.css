@@ -1,0 +1,60 @@
+#header{
+    height:150px;
+}
+#main-navi{
+    margin-bottom: 30px;
+    height:20px;
+    /* background-color: tomato; */
+    
+}
+.subMenu>li{
+    margin: 0 auto;
+    height:100%;
+    width:40px;
+    text-decoration: none;
+    list-style-type:none;
+    display:inline-block;
+}
+.subMenu a{
+    text-decoration: none;
+    color: black;
+}
+.subMenu:visited{
+    color:black;
+}
+#main-contents{
+    height:600px;
+    width:100%;
+    padding-left: 50px;
+    /* background-color: thistle; */
+}
+#top{
+    height:30px;
+    width:1000px;
+    /* background-color: cadetblue; */
+}
+    .search{
+        width:92%;
+        display:inline-block;
+        /* background-color: cornsilk; */
+    }
+    .inquiry{
+        width:8%;
+        /* background-color: burlywood; */
+    }
+table{
+    border-collapse:collapse;
+    width:1000px;
+}
+.inquiryNo{
+    width:8%;
+}
+.title{
+    width:40%;
+}
+.disclosure, .status{
+    width: 13%;
+}
+.writer, .enrollDate{
+    width: 13%;
+}

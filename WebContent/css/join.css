@@ -1,0 +1,63 @@
+body{
+    background-color: rgb(241, 241, 241);
+    margin:0;
+    padding:0;
+}
+h2{
+    margin:0;
+}
+header a {
+    text-decoration: none;
+    color:black;
+}
+header a:visited{
+    text-decoration: none;
+    color:black;
+}
+#fullLifeWrap{
+    position:relative;
+    text-align:center;
+    background-color: white;
+    width:400px;
+    height:1000px;
+    margin:0 auto;
+    padding:0;
+}
+
+input{
+    /* padding-left:10px; */
+    height:40px;
+    width:350px;
+}
+#postalNum{
+    height:35px;
+    width:100px;
+    margin-left: 20px;
+    float:left;
+}
+#join_box{
+    height:35px;
+    width:360px;    
+
+}
+#searchBox{
+    height:40px;
+    width:70px;
+    float:left;
+}
+.check{
+    height:15px;
+    width:15px;
+    margin-left:20px;
+    display:block;
+    position: absolute;
+}
+#checkbox_group >div> label{
+    display:block;
+    /* background-color: ivory; */
+}
+.join_title{
+    padding-left:22px;
+    height:5px;
+    text-align: left;
+}

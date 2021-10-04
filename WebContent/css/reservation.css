@@ -1,0 +1,96 @@
+#main-navi{
+    background-color: lightslategray;
+    margin:0;
+    padding:0;
+    text-align: center;
+}
+h2{
+    margin:0;
+    padding: 0;
+}
+
+#organSelect,#agree, #info,#findHos {
+    width:80%;
+    margin:0 15% ;
+    /* background-color: lime; */
+}
+/* 장기선택 */
+#organTable{
+    text-align: center;
+}
+.btn-organ{
+    box-shadow: 3px 3px 3px rgb(150, 149, 149);
+}
+
+.btn-organ:active{
+    /* margin-left:5px;
+    margin-top:5px; */
+    box-shadow:none;
+}
+
+/* 병원찾기 */
+#hosDetail{
+    width:80%;
+    background-color: rgb(241, 241, 241);
+    height:600px;
+}
+
+#viewHos{
+    width:50%;
+    height:600px;
+    float:left;
+    background-color: blueviolet;
+}
+#dateTime{
+    width:50%;
+    height:600px;
+    float:left;
+    background-color: cadetblue;
+}
+#result{
+    background-color: hotpink;
+    height: 500px;
+    /* width:95%; */
+}
+#selectDate{
+    background-color: aqua;   
+    height:70%;
+}
+#selectTime{
+    background-color: white;
+    height:3%;    
+}
+#timeBtns{
+    margin-left: 5%;
+}
+.btn-time { 
+    display:inline-block;
+    margin: 5px;
+    width: 60px;
+    height: 30px;
+}
+/* 회원 정보 */
+.input1{
+    width: 300px;
+}
+#relation{
+    display:inline-flex;
+}
+label{
+    display:block;
+}
+label span{
+    width:110px; 
+    float:left;
+}
+form{
+    margin-left: 5%;
+}
+/* 예약하기 버튼 */
+#btn-reserve{
+    text-align: center;
+}
+#btn-reserve>input{
+    width:400px;
+    height:30px;
+}

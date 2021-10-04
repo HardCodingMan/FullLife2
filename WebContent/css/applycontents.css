@@ -1,0 +1,123 @@
+body{
+    margin: 0px;
+}
+header{
+    height: 150px;
+}
+main{
+    height: 100%;
+}
+.wrapper{
+    width: 1535px;
+    margin: 0 auto;
+}
+    #supportnotice-header{
+        margin-left: 76px;
+         width: 130px;
+        border-bottom: 1px solid black;
+    }
+        #supportnotice-header h2{
+            margin: 0;
+        }
+    #notice-section{
+        margin-left: 300px;
+        margin-right: 300px;
+        height: 100%;
+    }
+        #notice-date{
+            margin-top: 46px;
+            height: 20px;
+        }
+        #notice-enroll{
+            float: left;
+            margin: 0px;
+        }
+        #notice-views{
+            float:right;
+            margin: 0px;
+        }
+    #notice-contents-section{
+        height: 100%;
+    } 
+        #notice-title{
+            text-align: center;
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+        }
+        #notice-title p{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #contents-img{
+            margin-top: 25px;
+            text-align: center;
+        }
+            #contents-img img{
+                height: 390px;
+                width: 560px;
+            }
+        #contents-text{
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        #notice-bottom{
+            height: 100px;
+        }
+            #like-butn{
+               text-align: center;
+            }
+                #like-butn input{
+                    margin-top: 30px
+                }
+    
+    #notice-reply{
+        height: 100%;
+    }
+    #reply-count{
+        height: 100px;
+        width: 180px;
+    }
+        #reply-count h2{
+            margin: 0px;
+        }
+    #reply-contents{
+        height: 100%;
+        border-top: 2px solid black;
+        border-bottom: 2px solid black;
+    }
+    #reply-table{
+        text-align: center;
+    }
+        #th-id{
+            width: 150px;
+        }
+        #th-contents{
+            width: 600px;
+        }
+        #th-enroll{
+            width: 100px;
+        }
+        th,td{
+            padding:15px;
+        }
+        #text-input{
+            width: 500px;
+            height: 50px;
+        }
+        
+    #bottom-butn{
+        height: 50px;
+    }
+        #list{
+            margin-top: 20px;
+            margin-left: 20px;
+            float: left;
+        }
+        #delete{
+            float: right;
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+#footer{
+    height: 150px;
+}

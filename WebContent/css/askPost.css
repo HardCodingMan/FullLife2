@@ -1,0 +1,54 @@
+main{
+    height:800px;
+}
+#main-navi{
+    margin-bottom: 30px;
+    height:20px;
+}
+ul>li{
+    margin: 0 auto;
+    height:100%;
+    width:40px;
+    text-decoration: none;
+    list-style-type:none;
+    display:inline-block;
+}
+ul a{
+    text-decoration: none;
+    color: black;
+}
+ul:visited{
+    color:black;
+}
+#main-contents{
+    margin-left: 50px;
+}
+#contents{
+    margin-left:100px;
+    margin-top:30px;
+   height:600px;
+   width: 1000px;
+}
+.contents-title{
+    height:51.5px;
+    width: 100px;
+    float:left;
+}
+#subject{
+    height:40px;
+    width:500px;
+}
+.contents_con{
+    width: 723px;
+    height: 51.5px;
+    display:inline-block;
+}
+#btn-submit{
+    margin-left:150px;
+    margin-top:50px;
+    width:500px;
+    padding:15px 70px 10px 70px;
+    background-color: greenyellow;
+    font-size:15px;
+    display:block;
+}
