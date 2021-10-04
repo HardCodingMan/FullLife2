@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ask.model.service.AskService;
-import ask.model.vo.Ask;
+import common.JDBCTemplate;
 
 /**
- * Servlet implementation class AskContents
+ * Servlet implementation class AskRemoveServlet
  */
-@WebServlet("/ask/askContents")
-public class AskContentsServlet extends HttpServlet {
+@WebServlet("/ask/remove")
+public class AskRemoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AskContentsServlet() {
+    public AskRemoveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +30,11 @@ public class AskContentsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int askNo = Integer.parseInt(request.getParameter("askNo"));
-		Ask askOne = new AskService().printOneByNo(askNo);
-		if(askOne != null) {
-			request.setAttribute("askOne", askOne);
-			request.getRequestDispatcher("/WEB-INF/views/ask/askContents.jsp").forward(request, response);
+		int result = new AskService().removeAsk(askNo);
+		if(result > 0) {
+			response.sendRedirect("/ask/list");
 		}else {
-		request.getRequestDispatcher("/WEB-INF/views/reserve/organTrans.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/reserve/organTrans.jsp").forward(request, response);
 		}
 	}
 
@@ -43,7 +42,8 @@ public class AskContentsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

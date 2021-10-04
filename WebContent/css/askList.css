@@ -45,6 +45,7 @@
 table{
     border-collapse:collapse;
     width:1000px;
+    text-align:center;
 }
 .inquiryNo{
     width:8%;
@@ -57,4 +58,12 @@ table{
 }
 .writer, .enrollDate{
     width: 13%;
+}
+tr td{
+    text-align: center;
+}
+.inquiry a:link{
+    text-decoration: none;
+    color:black;
+
 }
