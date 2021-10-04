@@ -8,20 +8,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import member.model.service.MemberService;
-import member.model.vo.Member;
+import mypage.model.service.MypageService;
 
 /**
- * Servlet implementation class MypageMain
+ * Servlet implementation class DeleteReserveServlet
  */
-@WebServlet("/mypage/main")
-public class MypageMainServlet extends HttpServlet {
+@WebServlet("/mypage/delete")
+public class DeleteReserveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MypageMainServlet() {
+    public DeleteReserveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,19 +30,20 @@ public class MypageMainServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		
 		String userId = (String)session.getAttribute("userId");
-		Member member = new MemberService().updateMemberInfo(userId);
-		request.setAttribute("member", member);
-		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response); 
-
+		int result = new MypageService().deleteHospitalInfo(userId);
+		if(result > 0) {
+			response.sendRedirect("/mypage/main");
 		}
-	
+	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-				doGet(request, response);
+		doGet(request, response);
 	}
 
 }

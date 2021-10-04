@@ -40,15 +40,15 @@ public class MemberDAO {
 		return member;
 	}
 
-	public String selectOneMemberByZumin(String zumin, String userName, Connection conn) {
+	public String selectOneMemberByEmail(String email, String userName, Connection conn) {
 		PreparedStatement pstmt = null;
-		String query = "SELECT * FROM MEMBER WHERE ZUMIN = ? AND USER_NAME = ?";
+		String query = "SELECT * FROM MEMBER WHERE EMAIL = ? AND USER_NAME = ?";
 		ResultSet rset = null;
 		String userId = "";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, zumin);
+			pstmt.setString(1, email);
 			pstmt.setString(2, userName);
 			rset = pstmt.executeQuery();
 			

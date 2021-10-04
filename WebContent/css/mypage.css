@@ -1,4 +1,3 @@
-
 body{overflow-x:hidden; overflow-y:auto;}
 .mypage{height: 40px; width: 100%;line-height: 10px; text-align: center;background-color: ivory;color: black;padding: 20px;}
 #menucontainer .menu li{list-style: none;}
@@ -13,6 +12,7 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .cliupdateTable td{text-align: left;width: 50px;font-size: 15px;}
 .cliupdateTable td>input{width:120px;}
 #clientupdate .userid1{border: none;}
+#user-name{border: none;}
 #tel1, #tel2, #tel3{width: 50px;}
 #addr{width: 250px;}
 .cliupdateTable1{margin-left: 280px;width: 400px;text-align: center;}
@@ -27,7 +27,7 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .jumun th,.gumsa th{background-color: rgb(173, 196, 136); color: black;}
 
 .save{width: 300px;height: 80px; margin-top: 150px;margin-left: 300px; border: 0px solid;padding: 20px;background-color: rgba(173, 196, 136, 0.445);text-align: center;line-height: 80px;}
-.save input{border:none;width: 150px; font-size: 20px;background-color:transparent;}
+.save input{border:none;width: 80px; font-size: 18px;background-color:transparent;}
 .bt{width: 150px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153); border-radius: 5px;margin-left: 400px;margin-top: 20px;cursor:pointer;}
 .bt1{background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
 .bt2{width: 110px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;float: left;cursor:pointer;}
@@ -40,9 +40,9 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .po1{width: 150px;}
 .box{margin-left: 160px; width: 630px;font-size: 12px;background-color: rgba(173, 196, 136, 0.445);padding: 20px;}
 
-#mypagemain{width: 100%; height: 100%;}
+#mypagemain{width: 100%;}
 #mypagepic{ margin: 50px 0 50px 500px;position: relative;}
-.memberid1{margin: 30px 0 30px 100px;font-size: 30px;position: absolute;}
+#userid{margin: 30px 0 30px 100px;font-size: 30px;position: absolute;border:none;}
 .icon{width: 100%; margin: 50px 0 50px 400px;}
 .icon-pic img{width: 100px; margin-left: 30px; margin-right: 30px; display: block;}
 .icon-pic p{text-align: center;font-size: 12px;margin:0 30px 0 30px;color: black;}
@@ -50,7 +50,8 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .icon-pic{float: left;}
 
 
-#book1{ margin-left: 300px;margin-top: 100px;width:360px;}
-.bookbox{border:0px none;}
+
+#book1{ margin-left: 300px;margin-top: 100px;width:500px;}
+.bookbox{border:0px none;width: 300px;}
 .bookbt{margin: 20px 0 0 400px; width: 100px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
-#mypagejumun{height: 300px; margin: 200px 0 0 300px;}
+#mypagejumun{height: 300px; margin: 200px 0 0 300px;} 
