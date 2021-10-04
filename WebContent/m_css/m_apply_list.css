@@ -192,13 +192,21 @@ header{
                 border: 1px solid gray;
                 padding: 1%;
             }
+            
+           		.list-img{
+            		width: 210px;
+            		height: 210px;
+            	}
                 .list-img img{
                     width: 200px;
                     height: 200px;
                 }
                 .list-text{
+                	width: 200px;
+                	height: 25px;
                     text-align: center;
                     font-size: 20px;
+
                 }
                 .list-text a{
                     text-decoration: none;
@@ -247,7 +255,6 @@ header{
                     	color: black;
                     }
             #page-div{
-            	background-color: yellow;
             	width: 100%; 
             	hight: 10%;
             	text-align: center;

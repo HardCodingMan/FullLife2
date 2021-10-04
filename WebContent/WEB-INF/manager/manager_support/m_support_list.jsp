@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,181 +45,33 @@
                 <div id="list-div">
                 <div class="search-div">
                     <form>
-                    <input type="text" id="search" value="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
+                    <input type="text" id="search" placeholder="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
                     <input type="submit" id="search-btn" value="검색">
                     </form>    
                 </div>
+                <c:forEach items="${requestScope.sList }" var="sup" varStatus="index">
                     <div class="list">
                         <div class="list-img">
-                            <img src="/img/insta1.jpg" alt="후원1">
+                            <img src="/fileupload/${sup.picPath }" alt="후원1">
                         </div>
                         <div class="list-text">
-                            <a href="/manager/m_support_reply">우리 동생이..</a> 
+                            <a href="/manager/m_support_detail?noticeNo=${sup.notiNo }">${sup.notiTitle }</a> 
                         </div>
                         <div class="list-percent">                      
                             달성률
                             <div class="prog">
-                                <div class="progs" id="progressing">80%</div>
+                                <div class="progs" id="progressing" style="width: ${(sup.nowSup/sup.needSup)*100 }%;">${(sup.nowSup/sup.needSup)*100 }%</div>
                             </div>
                         </div>
-                        <div class="list-btn">
-                            <form action="">
-                                <input type="submit" value="글 숨기기">
-                            </form>
+                          <div class="list-btn">
+                                <button type="submit" class="bt1"><a href="/manager/m_supprot_remove?notiNo=${sup.notiNo }">삭제</a></button>
                         </div>
+                        </div>
+                        </c:forEach>
                     </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="/img/insta2.jpg" alt="후원1">
-                        </div>
-                        <div class="list-text">
-                            <a href="/manager/m_support_reply">돈이 없어 수술을..</a> 
-                        </div>
-                        <div class="list-percent">
-                            달성률
-                            <div class="prog">
-                                <div class="progs" id="progressing">80%</div>
-                            </div>
-                        </div>
-                        <div class="list-btn">
-                            <form action="">
-                                <input type="submit" value="글 숨기기">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="/img/insta3.jpg" alt="후원1">
-                        </div>
-                        <div class="list-text">
-                            <a href="/manager/m_support_reply">기부금이..</a> 
-                        </div>
-                        <div class="list-percent">
-                            달성률
-                            <div class="prog">
-                                <div class="progs" id="progressing">80%</div>
-                            </div>
-                        </div>
-                        <div class="list-btn">
-                            <form action="">
-                                <input type="submit" value="글 숨기기">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="/img/insta4.jpg" alt="후원1">
-                        </div>
-                        <div class="list-text">
-                            <a href="/manager/m_support_reply">우리 오빠가..</a> 
-                        </div>
-                        <div class="list-percent">
-                            달성률
-                            <div class="prog">
-                                <div class="progs" id="progressing">80%</div>
-                            </div>
-                        </div>
-                        <div class="list-btn">
-                            <form action="">
-                                <input type="submit" value="글 숨기기">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="/img/insta5.jpg" alt="후원1">
-                        </div>
-                        <div class="list-text">
-                            <a href="/manager/m_support_reply">이쁜 우리 언니..</a> 
-                        </div>
-                        <div class="list-percent">
-                            달성률
-                            <div class="prog">
-                                <div class="progs" id="progressing">80%</div>
-                            </div>
-                        </div>
-                        <div class="list-btn">
-                            <form action="">
-                                <input type="submit" value="글 숨기기">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="/img/insta6.jpg" alt="후원1">
-                        </div>
-                        <div class="list-text">
-                            <a href="/manager/m_support_reply">모델 출신 오빠가..</a> 
-                        </div>
-                        <div class="list-percent">
-                            달성률
-                            <div class="prog">
-                                <div class="progs" id="progressing">80%</div>
-                            </div>
-                        </div>
-                        <div class="list-btn">
-                            <form action="">
-                                <input type="submit" value="글 숨기기">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="/img/insta7.jpg" alt="후원1">
-                        </div>
-                        <div class="list-text">
-                            <a href="/manager/m_support_reply">사랑해요</a> 
-                        </div>
-                        <div class="list-percent">
-                            달성률
-                            <div class="prog">
-                                <div class="progs" id="progressing">80%</div>
-                            </div>
-                        </div>
-                        <div class="list-btn">
-                            <form action="">
-                                <input type="submit" value="글 숨기기">
-                            </form>
-                        </div>
-                    </div>
-                    <div class="list">
-                        <div class="list-img">
-                            <img src="/img/insta8.jpg" alt="후원1">
-                        </div>
-                        <div class="list-text">
-                            <a href="/manager/m_support_reply">힘들어요</a> 
-                        </div>
-                        <div class="list-percent">
-                            달성률
-                            <div class="prog">
-                                <div class="progs" id="progressing">80%</div>
-                            </div>
-                        </div>
-                        <div class="list-btn">
-                            <form action="">
-                                <input type="submit" value="글 숨기기">
-                            </form>
-                        </div>
-                    </div>
-                <div class="list">
-                    <div class="list-img">
-                        <img src="/img/insta9.jpg" alt="후원1">
-                    </div>
-                    <div class="list-text">
-                        <a href="/manager/m_support_reply">이제 그만..</a> 
-                    </div>
-                    <div class="list-percent">
-                        달성률
-                        <div class="prog">
-                            <div class="progs" id="progressing">80%</div>
-                        </div>
-                    </div>
-                    <div class="list-btn">
-                        <form action="">
-                            <input type="submit" value="글 숨기기">
-                        </form>
-                    </div>
-                </div>
+            	<div id = "page-div">
+            		${pageNavi }
+            	</div>
             </div>
         </div>
 </body>
