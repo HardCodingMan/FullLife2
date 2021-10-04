@@ -16,7 +16,7 @@
         <div id="blank"></div>
         <div id="header-menu">
             <ul>
-                <li class="main-menu"><a href="#">장기이식</a></li>
+                <li class="main-menu"><a href="/reserve/organ">장기이식</a></li>
                 <li class="main-menu">
                     <a href="/Notice/Support/Supportintroduce">후원</a>
                     <ul class="serv-menu">
@@ -26,10 +26,10 @@
                     </ul>
                 </li>
                 <li class="main-menu">
-                    <a href="/ask/list">상담</a> 
+                    <a href="/faq/FAQ">상담</a> 
                     <ul class="serv-menu">
                         <li><a href="/faq/FAQ">FAQ</a></li>
-                        <li><a href="#">문의하기</a></li>
+                        <li><a href="/ask/list">문의하기</a></li>
                     </ul>
                 </li>
             </ul>

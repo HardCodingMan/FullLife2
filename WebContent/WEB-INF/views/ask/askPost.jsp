@@ -13,7 +13,7 @@
 	<jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
 	</header>
     <main>
-        <form>
+        <form action="/ask/post" method="post">
             <div id="main-navi">
                 <span>
                     <ul>
@@ -39,14 +39,14 @@
                         <label for="textarea"><strong>문의내용</strong></label>
                     </span>
                     <span class="contents_con">
-                        <textarea name="textarea" id="askContent" cols="100" rows="30" placeholder="내용을 입력해주세요"></textarea>
+                        <textarea name="askContent" id="askContent" cols="100" rows="30" placeholder="내용을 입력해주세요"></textarea>
                     </span>
                     <br>
                     <span class="contents-title">
                         <strong>공개여부</strong>
                     </span>
-                    공개 <input type="checkbox" name="open" value="Y" checked>
-                    비공개 <input type="checkbox" name="close" value="N">
+                    공개 <input type="radio" name="disclosure" value="Y" checked>
+                    비공개 <input type="radio" name="disclosure" value="N">
                     <br>
                     <div>
                         <input type="submit" value="문의작성" id="btn-submit">

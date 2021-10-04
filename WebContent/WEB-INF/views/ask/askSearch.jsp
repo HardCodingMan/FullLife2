@@ -13,7 +13,6 @@
 <header>
 <jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
 </header>
-	
 	<main>
         <div id="main-navi">
             <span>
@@ -50,8 +49,10 @@
                     </tr>
                     <c:forEach items="${requestScope.aList }" var="ask" varStatus="index">
                     <tr>
+                    
                         <td>${ask.askNo}</td>
                         <td><a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a></td>
+                        
                         <td>${ask.userId }</td>
                         <td>${ask.askDate }</td>
                         <td>${ask.reply }</td>

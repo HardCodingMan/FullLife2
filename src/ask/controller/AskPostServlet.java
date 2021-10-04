@@ -37,8 +37,9 @@ public class AskPostServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		String subject = request.getParameter("subject");
-		String contents = request.getParameter("contents");
+		String contents = request.getParameter("askContent");
 		String disclosure = request.getParameter("disclosure");
 		HttpSession session = request.getSession();
 		String writerId = (String)session.getAttribute("userId");
@@ -49,7 +50,8 @@ public class AskPostServlet extends HttpServlet {
 		ask.setUserId(writerId);
 		int result = new AskService().registerAsk(ask);
 		if(result>0){
-			request.getRequestDispatcher("/WEB-INF/views/ask/askList.jsp");
+//			request.getRequestDispatcher("/WEB-INF/views/ask/askList.jsp");
+			response.sendRedirect("/ask/list");
 		}else {
 			request.getRequestDispatcher("/WEB-INF/views/members/error.html");
 		}
