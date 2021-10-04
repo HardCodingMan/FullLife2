@@ -210,12 +210,16 @@ header{
                 #post-img{
                     padding-top: 4%;
                     width: 100%;
-                    height: 45%;
+                    height: 50%;
                     text-align: center;
+                }
+                #post-img img{
+                	width: 450px;
+                	height: 220px;
                 }
                 #post-text{
                     width: 98%;
-                    height: 50%;
+                    height: 48%;
                     padding-left:2%;
                     padding-top: 2%;
                 }
@@ -279,7 +283,7 @@ header{
                 margin-left: 25%;
                 text-align: center;
             }
-                #back input{
+                #back button{
                     width: 150px;
                     height: 40px;
                     font-size: 15px;
@@ -289,3 +293,9 @@ header{
                     cursor: pointer;
                     box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.514);
                 }
+                #back a{
+                	text-decoration: none;
+                	color: black;
+                	font-size: 20px;
+                }
+                
