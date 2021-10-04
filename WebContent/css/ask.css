@@ -1,0 +1,63 @@
+body{
+    margin: 0px;
+}
+#header-div{
+    height: 150px;
+    width: 100%;
+}
+main{
+    height: 100%;
+}   
+.wrapper{
+    width: 1535px;
+    margin: 0 auto;
+}
+    #ask-header{
+        margin-left:76px;
+        margin-right: 76px;
+        width: 50px;
+        border-bottom: 1px solid black;
+    }
+        #ask-header h2{
+            margin: 0;
+        }
+    #ask{
+        height: 445px;
+        margin-left: 153px;
+        margin-right: 153px;
+    }
+        #ask-title{
+            height: 50px;
+            background-color: rgb(226, 226, 226);
+        }
+            .title-one{
+                float:left;
+                margin-left: 20px;
+                margin-right: 20px;
+                line-height: 50px;
+            }
+            .title-two{
+                float: right;
+                line-height: 50px; 
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        #ask-contents{
+            margin-left: 123px;
+            margin-right: 123px;
+        }
+            #ask-contents p{
+                margin-top: 20ox;
+                margin-bottom: 20px;
+            }
+        #ask-answer{
+            margin-left: 123px;
+            margin-right: 123px;
+        }
+            #ask-enroll{
+                margin-top:20px;
+                margin-bottom: 20px;
+            }
+            #contents-answer{
+                margin-bottom: 20px;
+            }
