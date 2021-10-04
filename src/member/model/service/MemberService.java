@@ -31,13 +31,13 @@ public class MemberService {
 		return member;
 	}
 
-	public String getOneMemberByZumin(String userName, String zumin) {
+	public String getOneMemberByEmail(String userName, String email) {
 		String userId = "";
 		Connection conn = null;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			userId = new MemberDAO().selectOneMemberByZumin(zumin, userName, conn);
+			userId = new MemberDAO().selectOneMemberByEmail(email, userName, conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

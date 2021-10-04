@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +26,7 @@
             </ul>
         </aside>
         <article>
-            <form id="checkresult">
+            <form id="checkresult" action="/mypage/checkResult" method="post" name="checkResult">
                 <h3>검사내역조회</h3>
                 <table class="gumsa">
                     <tr>
@@ -35,13 +36,16 @@
                         <th>다운로드</th>
                        
                     </tr>
+                      <c:forEach items="${requestScope.cList}" var="checkResult" varStatus="index">
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>${checkResult.fileName}</td>
+                        <td>${checkResult.hospitalNo}</td>
+                        <td>${checkResult.checkDate}</td>
                         <td><input type="button" class="bt1" value="다운"></td>
                     </tr>
-                  
+                    <tr>
+                    <td colspan="7" align="center">${pageNavi}</td>
+                    </tr>
                 </table>
             </form>
             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
