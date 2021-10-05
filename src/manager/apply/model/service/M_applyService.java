@@ -113,18 +113,10 @@ public class M_applyService {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 		}finally {
 			JDBCTemplate.close(conn);
->>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
-=======
-		}finally {
-			JDBCTemplate.close(conn);
->>>>>>> ssolol
 		}
-		
 		return result;
 	}
 

@@ -11,14 +11,7 @@ import java.util.List;
 import common.JDBCTemplate;
 import manager.support.model.vo.M_supReply;
 import manager.support.model.vo.M_support;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import oracle.jdbc.proxy.annotation.Pre;
->>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
-=======
-import oracle.jdbc.proxy.annotation.Pre;
->>>>>>> ssolol
+
 
 public class M_supDAO {
 
@@ -180,17 +173,7 @@ public class M_supDAO {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				M_supReply reply = new M_supReply();
-<<<<<<< HEAD
-<<<<<<< HEAD
 				reply.setSupReNo(rset.getInt("SUPPROT_REPLY_NO"));
-=======
-				reply.setSupReNo(rset.getInt("SUPPORT_REPLY_NO"));
->>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
-=======
-				reply.setSupReNo(rset.getInt("SUPPORT_REPLY_NO"));
-				reply.setSupReNo(rset.getInt("SUPPROT_REPLY_NO"));
-
->>>>>>> ssolol
 				reply.setReUserId(rset.getString("USER_ID"));
 				reply.setSupReCon(rset.getString("REPLY_CONTENTS"));
 				reply.setSupReDate(rset.getDate("REPLY_DATE"));
@@ -209,16 +192,8 @@ public class M_supDAO {
 	public int deleteReplyOne(Connection conn, int replyNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-<<<<<<< HEAD
-<<<<<<< HEAD
 		String query = "DELETE FROM SUPPORT_REPLY WHERE SUPPORT_REPLY_NO=?";
-=======
-		String query = "DELETE FROM SUPPORT_REPLY WHERE SUPPORT_REPLY_NO = ?";
->>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
-=======
-		String query = "DELETE FROM SUPPORT_REPLY WHERE SUPPORT_REPLY_NO = ?";
->>>>>>> ssolol
-		
+
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, replyNo);
@@ -231,13 +206,6 @@ public class M_supDAO {
 		
 		return result;
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-	
-=======
-=======
->>>>>>> ssolol
 
 	public int levelCheckSup(Connection conn, int notiNo) {
 		PreparedStatement pstmt = null;
@@ -361,7 +329,6 @@ public class M_supDAO {
 		
 		return result;
 	}
->>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
 	
 	
 	

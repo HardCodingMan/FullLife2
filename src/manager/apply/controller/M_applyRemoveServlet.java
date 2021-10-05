@@ -28,14 +28,6 @@ public class M_applyRemoveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
-=======
-
->>>>>>> ssolol
 		int notiNo = Integer.parseInt(request.getParameter("notiNo"));
 		int result = new M_applyService().deleteApply(notiNo);
 		if(result > 0) {
