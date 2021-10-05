@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"  href="/css/applycontents.css">
 </head>
 <body>
@@ -34,22 +35,28 @@
                         <div id="contents-text"><p>${aOne.noticeContents }</p></div>
                     </div>
                     <div id="notice-bottom">
+                    ${sessionScope.userId }
                     ${nLike.userId }
                         <div id="like-butn">
-                        	<c:if test="${nLike.userId eq null}">
-	                        	<form action="/Notice/Apply/ApplyLike" method="post">
-	                        		추천수 : ${aOne.noticeLike }<BR>
-	                        		<input type="hidden" name="noticeNo" value="${aOne.noticeNo }">
-	                        		<input type="submit" value="추천하기">
+                        	<c:if test="${sessionScope.userId eq null}">
+	                        	<form action="/member/login" method="post">
+	                        		로그인을 하셔야합니다<BR>
+	                        		<input type="submit" value="로그인">
 	                        	</form>
                         	</c:if>
-                        	<c:if test="${nLike.userId ne null }">
-                        		<form action="/Notice/Apply/ApplyLike" method="post">
-	                        		추천수 : ${aOne.noticeLike }<BR>
-	                        		<input type="hidden" name="noticeNo" value="${aOne.noticeNo }">
-	                        		<input type="submit" value="추천하기">
-	                        	</form>
-	                        </c:if>
+                        	<c:choose>
+                        		<c:when test="${nLike.userId eq sessionScope.userId }">
+			                        		추천수 : ${aOne.noticeLike }<BR>
+			                        		<button>이미 추천을 하셨습니다</button>
+                        		</c:when>
+                        		<c:when test="${sessionScope.userId ne nLike.userId}">
+                        			<form action="/Notice/Apply/ApplyLike" method="post">
+		                        		추천수 : ${aOne.noticeLike }<BR>
+		                        		<input type="hidden" name="noticeNo" value="${aOne.noticeNo }">
+		                        		<input type="submit" value="추천하기">
+	                        		</form>
+                        		</c:when>
+                        	</c:choose>
                         </div>
                     </div>
                 </div>
@@ -58,14 +65,30 @@
                     <div id="reply-count"><h2>댓글</h2></div>
                     <div id="reply-contents">
                         <table id="reply-table">
-                            <tr>
+                            <tr class="">
                                 <th id="th-id">아이디</th><th id="th-contents">내용</th><th id="th-enroll">작성일</th>
                             </tr>
                             <c:forEach items="${aOne.replist }" var="aOne">
-                            <tr>
+                            <tr class="tr">
                                 <td>${aOne.replyUserId }</td>
                                 <td>${aOne.replyContents }</td>
-                                <td>${aOne.replyDate }</td>
+                                <td>
+                                	${aOne.replyDate }
+                                	<c:if test="${sessionScope.userId eq aOne.replyUserId }">
+                                	<a href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
+									<a href="/Notice/Apply/ApplyReplyDelete?noticeNo=${aOne.noticeNo }&replyNo=${aOne.replyNo}">삭제</a>
+									</c:if>
+                                </td>
+                            </tr>
+                            <tr class="tr" style="display:none;">
+                            	<td>${aOne.replyUserId }</td>
+                                <td>
+                                    <input type="text" class="text-input" value="${aOne.replyContents }" id="modifyReply">
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" onclick="modifyReply(this,${aOne.replyNo},${aOne.noticeNo })">수정</a>&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" onclick="hideModifyReply(this)">취소</a>
+                                </td>
                             </tr>
                             </c:forEach>
                             <tr id="reply-input">
@@ -76,6 +99,11 @@
                                 </form>    
                             </tr>
                         </table>
+                        <form action="/Notice/Apply/ApplyReplyModify" method="post" id="modifyForm">
+							<input type="hidden" name="replyContents" id="modifyReplyContents">
+							<input type="hidden" name="replyNo" id="modifyReplyNo">
+							<input type="hidden" name="noticeNo" id="modifyNoticeNo">
+						</form>
                     </div>
                 </div>
                 <div id="bottom-butn">
@@ -88,5 +116,23 @@
             <footer>
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
     </footer>
+    <script>
+            function modifyReply(obj, replyNo, noticeNo){
+                var contents = $(obj).parent().prev().find("input").val();
+                //var contents = $("#modifyReply").val(); 이렇게하면 다바뀜 아이디값이 다 같아서 
+                $("#modifyReplyContents").val(contents);
+                $("#modifyReplyNo").val(replyNo);
+                $("#modifyNoticeNo").val(noticeNo);
+                $("#modifyForm").submit();
+            }
+            function showModifyReply(obj){
+                $(obj).parents("tr").next().show();
+                $(obj).parents("tr").hide();
+            }
+            function hideModifyReply(obj){
+                $(obj).parents("tr").prev().show();
+                $(obj).parents("tr").hide();
+            }
+        </script>
 </body>
 </html>

@@ -153,13 +153,16 @@ public class ApplyNoticeDAO {
 				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
 				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
 				notice.setNoticeContents(rset.getString("NOTICE_CONTENTS"));
-				notice.setViews(rset.getInt("VIEWS"));
+				int viewsCount = rset.getInt("VIEWS");
+				notice.setViews(viewsCount);
+				viewsCount++;
 				notice.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				notice.setNoticeLike(rset.getInt("NOTICE_LIKE"));
 				notice.setPicPath(rset.getString("PIC_PATH"));
 				notice.setPicSize(rset.getLong("PIC_SIZE"));
 				notice.setPicName(rset.getString("PIC_NAME"));
 				notice.setUserId(rset.getString("USER_ID"));
+				countUpdate(conn, viewsCount, noticeNo);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -169,6 +172,27 @@ public class ApplyNoticeDAO {
 			JDBCTemplate.close(rset);
 		}
 		return notice;
+	}
+	
+	private int countUpdate(Connection conn, int viewsCount, int applyNoticeNo) {
+		int updateViews = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "UPDATE NOTICE SET VIEWS = ? WHERE NOTICE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, viewsCount);
+			pstmt.setInt(2, applyNoticeNo);
+			rset = pstmt.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return updateViews;
 	}
 
 	public List<ApplyNoticeReply> selectAllNoticeReply(Connection conn, int noticeNo) {
@@ -200,14 +224,15 @@ public class ApplyNoticeDAO {
 		}
 		return aList;
 	}
-	public NoticeLike updateLike(Connection conn, int noticeNo) {
+	public NoticeLike updateLike(Connection conn, int noticeNo, String userId) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from NOTICE_LIKE where NotiCE_NO = ?";
+		String query = "select * from NOTICE_LIKE where NotiCE_NO = ? AND USER_ID = ?";
 		NoticeLike nLike = null;
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, noticeNo);
+			pstmt.setString(2, userId);
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				nLike = new NoticeLike();
@@ -390,7 +415,9 @@ public class ApplyNoticeDAO {
 				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
 				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
 				notice.setNoticeContents(rset.getString("NOTICE_CONTENTS"));
-				notice.setViews(rset.getInt("VIEWS"));
+				int viewsCount = rset.getInt("VIEWS");
+				notice.setViews(viewsCount);
+				viewsCount++;
 				notice.setEnrollDate(rset.getDate("ENROLL_DATE"));
 				notice.setNowSupport(rset.getInt("NOW_SUPPORT"));
 				notice.setNeedSupport(rset.getInt("NEED_SUPPORT"));
@@ -399,6 +426,7 @@ public class ApplyNoticeDAO {
 				notice.setPicSize(rset.getLong("PIC_SIZE"));
 				notice.setPicName(rset.getString("PIC_NAME"));
 				notice.setUserId(rset.getString("USER_ID"));
+				supportCountUpdate(conn, viewsCount, noticeNo);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -408,6 +436,27 @@ public class ApplyNoticeDAO {
 			JDBCTemplate.close(rset);
 		}
 		return notice;
+	}
+	
+	private int supportCountUpdate(Connection conn, int viewsCount, int applyNoticeNo) {
+		int updateViews = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		String query = "UPDATE NOTICE SET VIEWS = ? WHERE NOTICE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, viewsCount);
+			pstmt.setInt(2, applyNoticeNo);
+			rset = pstmt.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return updateViews;
 	}
 
 	public int insertSupportNoticeReply(Connection conn, String replyContents, int noticeNo, String userId) {
@@ -443,7 +492,7 @@ public class ApplyNoticeDAO {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				ApplyNoticeReply applyReply = new ApplyNoticeReply();
-				applyReply.setReplyNo(rset.getInt("SUPPROT_REPLY_NO"));
+				applyReply.setReplyNo(rset.getInt("SUPPORT_REPLY_NO"));
 				applyReply.setReplyUserId(rset.getString("USER_ID"));
 				applyReply.setReplyContents(rset.getString("REPLY_CONTENTS"));
 				applyReply.setReplyDate(rset.getDate("REPLY_DATE"));
@@ -459,6 +508,79 @@ public class ApplyNoticeDAO {
 		}
 		return aList;
 	}
+
+	public int deleteNoticeReplyOne(Connection conn, int replyNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM APPLY_REPLY WHERE APPLY_REPLY_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, replyNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateReplyOne(Connection conn, int replyNo, String replyContents) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE APPLY_REPLY SET APPLY_REPLY_CONTENTS = ? WHERE APPLY_REPLY_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, replyContents);
+			pstmt.setInt(2, replyNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int deleteSupportReplyOne(Connection conn, int replyNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "DELETE FROM SUPPORT_REPLY WHERE SUPPORT_REPLY_NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, replyNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateSupportReplyOne(Connection conn, int replyNo, String replyContents) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE SUPPORT_REPLY SET REPLY_CONTENTS = ? WHERE SUPPORT_REPLY_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, replyContents);
+			pstmt.setInt(2, replyNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
 	
 
 
