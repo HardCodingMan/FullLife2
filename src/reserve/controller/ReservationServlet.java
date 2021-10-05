@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import patient.model.vo.patient;
 import reserve.model.service.ReserveService;
-import reserve.model.vo.Reserve;
 
 /**
  * Servlet implementation class Reservation
@@ -42,7 +42,7 @@ public class ReservationServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String patientName = request.getParameter("patientName");
-		int patientZumin = Integer.parseInt(request.getParameter("patientZumin"));
+		String patientZumin = request.getParameter("patientZumin");
 		String patientPhone = request.getParameter("patientPhone");
 		String patientAddr = request.getParameter("patientAddr");
 		String relation = request.getParameter("relation");
@@ -50,16 +50,15 @@ public class ReservationServlet extends HttpServlet {
 		int hosNo = Integer.parseInt(request.getParameter("hospitlNo"));
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
-		Reserve reserve = new Reserve();
-		reserve.setPatientName(patientName);
-		reserve.setPatientZumin(patientZumin);
-		reserve.setPatientPhone(patientPhone);
-		reserve.setPatientAddr(patientAddr);
-		reserve.setRelation(relation);
-		reserve.setOrganNo(organNo);
-		reserve.setHospitalNo(hosNo);
-		reserve.setUserId(userId);
-		reserve.setUserId(userId);
+		patient patient = new patient();
+		patient.setPatientName(patientName);
+		patient.setPatientZumin(patientZumin);
+		patient.setPatientPhone(patientPhone);
+		patient.setPatientAddr(patientAddr);
+		patient.setRelation(relation);
+		patient.setOrganNo(organNo);
+		patient.setHospitalNo(hosNo);
+		patient.setUserId(userId);
 //		int result = new ReserveService().patientInfoCheck(reserve);
 //		if(result>0) {
 //			response.sendRedirect("/reserve/reservation");

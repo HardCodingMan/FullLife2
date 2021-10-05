@@ -8,7 +8,6 @@ import common.JDBCTemplate;
 import hospital.model.dao.HospitalDAO;
 import hospital.model.vo.Hospital;
 import reserve.model.dao.ReserveDAO;
-import reserve.model.vo.Reserve;
 
 public class ReserveService {
 	private JDBCTemplate jdbcTemplate;
