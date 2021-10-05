@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import apply.model.service.ApplyNoticeService;
 import apply.model.vo.Notice;
@@ -32,6 +33,8 @@ public class ApplyNoticeServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
 		int currentPage = 0;
 		String getCurrentPage =	request.getParameter("currentPage");
 		if(getCurrentPage == null) {
@@ -42,6 +45,7 @@ public class ApplyNoticeServlet extends HttpServlet {
 		ApplyPage applyPage = new ApplyNoticeService().printAllApply(currentPage);
 		List<Notice> aList = applyPage.getaList(); 
 		if(!aList.isEmpty()) {
+			request.setAttribute("userId", userId);
 			request.setAttribute("aList", aList);
 			request.setAttribute("pageNavi", applyPage.getPageNavi());
 			request.getRequestDispatcher("/WEB-INF/views/Notice/Apply/ApplyNotice.jsp").forward(request, response);

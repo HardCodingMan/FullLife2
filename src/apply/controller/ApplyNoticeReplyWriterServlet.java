@@ -40,7 +40,6 @@ public class ApplyNoticeReplyWriterServlet extends HttpServlet {
 		String userId = (String)session.getAttribute("userId"); 
 		String replyContents = request.getParameter("replyContents");
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		System.out.println(noticeNo);
 		int result = new ApplyNoticeService().registerApplyReply(replyContents, noticeNo, userId);
 		if(result > 0) {
 			//상세페이지 (댓글을 작성한 페이지로 이동)
