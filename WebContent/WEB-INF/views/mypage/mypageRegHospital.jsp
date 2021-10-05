@@ -52,7 +52,7 @@
                     </table>
                     <input type="submit" value="예약취소" class="bookbt">
                 </form>        
-                    <br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br> <br><br><br><br><br><br><br><br>
         </article>
     </div>
 <footer>
