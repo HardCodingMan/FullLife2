@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>FullLife</title>
 <link rel="stylesheet" href="/css/reservation_check.css">
+
 </head>
 <body>
  <header>
@@ -21,8 +22,8 @@
                         <h4>장기 선택 확인</h4> 
                     </div>
                     <div id="viscera">
-                        <input type="text" name="" id="" value="심장">&nbsp;&nbsp;
-                        <input type="text" name="" id="" value="1">
+                        <input type="text" name="" id="" value=${sessionScope.organNo }>&nbsp;&nbsp;
+                        <input type="text" name="" id="" value=${sessionScope.organQuantity }>
                     </div>
                 </div>
                 <div id="buyer-check">
@@ -30,9 +31,9 @@
                        <h4>환자 정보</h4> 
                     </div>
                     <div id="buyer">
-                        <label for="">이름</label><input type="text" name="" id="" value="임정현"><br>
-                        <label for="">주민번호</label><input type="text" name="" id="" value="123456-7894567"><br>
-                        <label for="">연락처</label><input type="text" name="" id="" value="010-1234-7894">
+                        <label for="">이름</label><input type="text" name="" id="" value=${sessionScope.patientName }><br>
+                        <label for="">주민번호</label><input type="text" name="" id="" value=${sessionScope.patientZumin }><br>
+                        <label for="">연락처</label><input type="text" name="" id="" value=${sessionScope.patientPhone }>
                     </div>
                 </div>
                 <div id="hospital-check">
@@ -40,9 +41,9 @@
                         <h4>병원</h4>
                     </div>
                     <div id="hospital">
-                        <label for="">병원이름</label><input type="text" name="" id="" value="서울대병원"><br>
-                        <label for="">예약날짜</label><input type="text" name="" id="" value="2021.12.15"><br>
-                        <label for="">예약시간</label><input type="text" name="" id="" value="15:00">
+                        <label for="">병원이름</label><input type="text" name="" id="" value=${sessionScope.hospitalNo }><br>
+                        <label for="">예약날짜</label><input type="text" name="" id="" value=${sessionScope.hospitalTime }><br>
+                        <label for="">예약시간</label><input type="text" name="" id="" value=${sessionScope.hospitalTime }>
                     </div>
                 </div>
                 <div id="modify-btn">
@@ -55,8 +56,8 @@
                         <h4>결제 내역</h4>
                     </div>
                     <div id="payment">
-                        <label for="">구매장기</label><input type="text" name="" id="" value="심장"><br>
-                        <label for="">계약금</label><input type="text" name="" id="" value="1,000,000">
+                        <label for="">구매장기</label><input type="text" name="" id="" value=${requestScope.organ.organNo }><br>
+                        <label for="">계약금</label><input type="text" name="" id="" value=${requestScope.organPrice }>
                     </div>
                 </div>
                 <div id="pay-check">

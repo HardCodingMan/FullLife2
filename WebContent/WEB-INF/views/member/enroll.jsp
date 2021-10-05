@@ -65,7 +65,7 @@
    <main id="fullLifeWrap">
         <header class="header">
             <h2>
-                <a href="#">Full Life</a>
+                <a href="/">Full Life</a>
                 <br> 회원가입
             </h2>
         </header>
@@ -83,6 +83,11 @@
             </h4>
                 <input type="password" class="wrong-input" name="userPwd" id="userPwd" placeholder="비밀번호(숫자,영문,특수문자(!,@,#,%,&) 조합) 최소8자" required><br>
                 <input type="password" class="wrong-input" name="userRePwd" id="userRePwd" placeholder="비밀번호 확인" required>
+        </div>
+        <div id="name">
+        	<h4 class="join_title">
+        	이름</h4>
+        	<input type="text" class="wrong-input" name="userName" id="userName" placeholder="이름을 입력해주세요">
         </div>
         <div id="zumin">
             <h4 class="join_title">
