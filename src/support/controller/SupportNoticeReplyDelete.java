@@ -1,4 +1,4 @@
-package apply.controller;
+package support.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,23 +6,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import apply.model.service.ApplyNoticeService;
-import apply.model.vo.Notice;
-import apply.model.vo.NoticeLike;
 
 /**
- * Servlet implementation class ApplyContentsServlet
+ * Servlet implementation class SupportNoticeReplyDelete
  */
-@WebServlet("/Notice/Apply/ApplyContents")
-public class ApplyContentsServlet extends HttpServlet {
+@WebServlet("/Notice/Support/SupportReplyDelete")
+public class SupportNoticeReplyDelete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ApplyContentsServlet() {
+    public SupportNoticeReplyDelete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,20 +28,13 @@ public class ApplyContentsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		HttpSession session = request.getSession();
-		String userId = (String)session.getAttribute("userId");
-		NoticeLike nLike = new ApplyNoticeService().updateLike(noticeNo, userId);
-		Notice aOne = new ApplyNoticeService().printOneByNo(noticeNo);
-		if(aOne != null) {
-			request.setAttribute("aOne", aOne);
-			request.setAttribute("nLike", nLike);
-			request.setAttribute("userId", userId);
-			// NoticeReply setAttribute 해줌
-			request.getRequestDispatcher("/WEB-INF/views/Notice/Apply/ApplyContents.jsp").forward(request, response);
+		int replyNo = Integer.parseInt(request.getParameter("replyNo"));
+		int result = new ApplyNoticeService().removeSupportReplyOne(replyNo);
+		if(result > 0) {
+			response.sendRedirect("/Notice/Support/SupportContents?noticeNo="+noticeNo);
 		}else {
-			request.getRequestDispatcher("/WEB-INF/views/Notice/ApplyError.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/notice/NoticeError.html").forward(request, response);
 		}
 	}
 

@@ -45,7 +45,9 @@
                     </c:forEach>
                 </ul>
             </div>
+            <c:if test="${sessionScope.userId ne null }">
             <a href="/Notice/Apply/ApplyNoticeWriter"><button id="write">글쓰기</button></a>
+            </c:if>
             <div id="page">${pageNavi }</div>
         </section>
         </div>
