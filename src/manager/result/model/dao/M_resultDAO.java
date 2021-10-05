@@ -165,6 +165,99 @@ public class M_resultDAO {
 		return result;
 	}
 
+	public List<M_patient> getSearchResult(Connection conn, int keyword, int currentPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<M_patient> pList = null;
+		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY RESULT_NO DESC)AS NUM,RESULT_NO,PATIENT.USER_ID,PATIENT_NAME,FILE_NAME FROM PATIENT LEFT JOIN RESULT ON PATIENT.USER_ID=RESULT.USER_ID WHERE RESULT_NO=?) WHERE NUM BETWEEN ? AND ?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setInt(1, keyword);
+			int viewCountPerPage = 10;
+			int start = currentPage * viewCountPerPage -(viewCountPerPage -1);
+			int end = currentPage * viewCountPerPage;
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			pList = new ArrayList<M_patient>();
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				M_patient patient = new M_patient();
+				patient.setResultNo(rset.getInt("RESULT_NO"));
+				patient.setUserId(rset.getString("USER_ID"));
+				patient.setpName(rset.getString("PATIENT_NAME"));
+				patient.setFileName(rset.getString("FILE_NAME"));
+				pList.add(patient);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return pList;
+	}
+
+	public String getSearchPageNavi(Connection conn, int keyword, int currentPage) {
+		int pageCountPerView = 5;
+		int viewTotalCount = searchTotalCount(conn, keyword);
+		int viewCountPerPage = 10;
+		int pageTotalCount = 0;
+		if(viewTotalCount % viewCountPerPage >0) {
+			pageTotalCount = viewTotalCount / viewCountPerPage+1;
+		}else {
+			pageTotalCount = viewTotalCount / viewCountPerPage;
+		}
+		
+		int startNavi = ((currentPage -1)/pageCountPerView)*pageCountPerView+1;
+		int endNavi = startNavi + pageCountPerView -1;
+		if(endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi ==1) {
+			needPrev = false;
+		}
+		if(endNavi == pageTotalCount) {
+			needNext = false;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		if(needPrev) {
+			sb.append("<a href='/manager/m_result_search?searchKeyword="+keyword+"&currentPage="+(startNavi-1)+"'> [이전] </a>");			
+		}
+		for(int i = startNavi; i<=endNavi; i++) {
+			sb.append("<a href='/manager/m_result_search?searchKeyword="+keyword+"&currentPage="+i+"'> "+i+" </a>");
+		}
+		if(needNext) {
+			sb.append("<a href='/manager/m_result_search?searchKeyword="+keyword+"&currentPage="+(endNavi+1)+"'> [다음] </a>");
+		}
+		
+		return sb.toString();
+	}
+	
+	private int searchTotalCount(Connection conn, int keyword) {
+		int result = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM PATIENT WHERE RESULT_NO="+keyword;
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				result = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		return result;
+	}
 	
 	
 	
@@ -176,9 +269,4 @@ public class M_resultDAO {
 	
 	
 	
-	
-	
-	
-	
-	
-}
+	}
