@@ -29,14 +29,12 @@
                     <div><p id="notice-views">조회수 ${aOne.views }</p></div>
                 </div>
                 <div id="notice-contents-section">
-                    <div id="notice-title"><p>${aOne.noticeTitle }</p></div>
+                    <div id="notice-title"><p id="No">글번호 : ${aOne.noticeNo }</p><p id="userId">글쓴이 : ${aOne.userId }</p><p id="title">${aOne.noticeTitle }</p></div>
                     <div id="notice-contents">
                         <div id="contents-img"><img src="/fileupload/${aOne.picName }" alt="후원 게시글 첨부사진"></div>
                         <div id="contents-text"><p>${aOne.noticeContents }</p></div>
                     </div>
                     <div id="notice-bottom">
-                    ${sessionScope.userId }
-                    ${nLike.userId }
                         <div id="like-butn">
                         	<c:if test="${sessionScope.userId eq null}">
 	                        	<form action="/member/login" method="post">
@@ -45,7 +43,7 @@
 	                        	</form>
                         	</c:if>
                         	<c:choose>
-                        		<c:when test="${nLike.userId eq sessionScope.userId }">
+                        		<c:when test="${nLike.userId eq sessionScope.userId and sessionScope.userId ne null}">
 			                        		추천수 : ${aOne.noticeLike }<BR>
 			                        		<button>이미 추천을 하셨습니다</button>
                         		</c:when>
@@ -93,7 +91,7 @@
                             </c:forEach>
                             <tr id="reply-input">
                                 <form action="/Notice/Apply/ApplyNoticeReplyWriter" method="post">
-                                    <td>댓글 작성 : </td> <td><input type="text" name="replyContents" placeholder="댓글을 작성해보세요" id="text-input"></td>
+                                    <td>댓글 작성 : </td> <td><input type="text" name="replyContents" placeholder="댓글을 작성해보세요" class="text-input"></td>
                                         <td><input type="hidden" name="noticeNo" value="${aOne.noticeNo }">
                                         <input type="submit" value="작성"></td>
                                 </form>    
@@ -108,7 +106,9 @@
                 </div>
                 <div id="bottom-butn">
                     <a href="/Notice/Apply/ApplyNotice"><button id="list">목록</button></a>
+                    <c:if test="${sessionScope.userId eq aOne.userId }">
                     <a href="/Notice/Apply/ApplyNoticeDelete?noticeNo=${aOne.noticeNo }"><button id="delete">삭제</button></a>
+                    </c:if>
                 </div>
             </section>
             </div>
