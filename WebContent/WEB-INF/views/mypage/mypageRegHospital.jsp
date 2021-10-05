@@ -31,23 +31,23 @@
                     <table id="book1">
                         <tr>
                             <td>예약병원 |</td>
-                            <td><input class="bookbox" type="text" name="" value="${requestScope.info.hospitalName }" readonly></td>
+                            <td><input class="bookbox" type="text" name="" value="${requestScope.info.hospitalName }" readonly onfocus="this.blur()"></td>
                         </tr>
                         <tr>
                             <td>병원위치 |</td>
-                            <td><input class="bookbox" type="text" name="" value="${requestScope.info.hospitalAddr }" readonly></td>
+                            <td><input class="bookbox" type="text" name="" value="${requestScope.info.hospitalAddr }" readonly onfocus="this.blur()"></td>
                         </tr>
                         <tr>
                             <td>검사날짜 |</td>
-                            <td><input class="bookbox" type="text" name="" value="${requestScope.info.checkDate }" readonly></td>
+                            <td><input class="bookbox" type="text" name="" value="${requestScope.info.checkDate }" readonly onfocus="this.blur()"></td>
                         </tr>
                         <tr>
                             <td>예약시간 |</td>
-                            <td><input class="bookbox" type="text" name="" value="${requestScope.info.hospitalTime }"  readonly></td>
+                            <td><input class="bookbox" type="text" name="" value="${requestScope.info.hospitalTime }"  readonly onfocus="this.blur()"></td>
                         </tr>
                         <tr>
                             <td>이식장기 |</td>
-                            <td><input class="bookbox" type="text" name="" value="${requestScope.bodyPart }"  readonly></td>
+                            <td><input class="bookbox" type="text" name="" value="${requestScope.bodyPart }"  readonly onfocus="this.blur()"></td>
                         </tr>
                     </table>
                     <input type="submit" value="예약취소" class="bookbt">
