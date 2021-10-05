@@ -19,7 +19,7 @@
             <div class="login-auto">
                 <input type="radio" name="save-id" id="save-id" value="save-id"><label for="save-id">아이디 저장</label>
                 <div class="login-util">
-                    <a href="/member/findInfo">아이디 | 비밀번호 찾기</a>
+                    <a href="/member/findInfo">아이디 · 비밀번호 찾기</a>
                 </div>
             </div>
             <div class="register-util">

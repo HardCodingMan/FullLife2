@@ -143,7 +143,7 @@
         </div><br>
     
         <div id="joinBox">
-            <input type="submit" value="회원가입 완료">
+            <input type="submit" id="join_box" value="회원가입 완료">
         </div>
     </form>
     </main>
