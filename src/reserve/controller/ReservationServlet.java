@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import patient.model.vo.patient;
+import patient.model.vo.Patient;
 import reserve.model.service.ReserveService;
 
 /**
@@ -50,7 +50,7 @@ public class ReservationServlet extends HttpServlet {
 		int hosNo = Integer.parseInt(request.getParameter("hospitlNo"));
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
-		patient patient = new patient();
+		Patient patient = new Patient();
 		patient.setPatientName(patientName);
 		patient.setPatientZumin(patientZumin);
 		patient.setPatientPhone(patientPhone);

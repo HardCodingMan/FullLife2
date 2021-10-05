@@ -5,8 +5,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--     <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-<!--     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>회원가입</title>
     <link rel="stylesheet" type="text/css" href="/css/join.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -14,21 +12,28 @@
 <body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    function checkAgreeAll(checkbox)  {
-    const selectall 
-        = document.querySelector('input[class="check"]');
-    
-    if(checkbox.checked === false)  {
-        selectall.checked = false;
-    }
-    }
-    function agreeAll(agreeAll){
-        console.log('실행');
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach((checkbox) => {checkbox.checked = agreeAll.checked;
-    })
-    }
+ $(document).ready(function() {
+	
+	$("#agreeAll").click(function(){
+	    if( $("#agreeAll").is(':checked') ){
+	      $("input[type=checkbox]").prop("checked", true);
+	    }else{
+	      $("input[type=checkbox]").prop("checked", false);
+	    }
+	});
 
+	$("input[name=check]").click(function(){
+		var total = $("input[name=check]").length;
+		var checked = $("input[name=check]:checked").length;
+		
+		if(total != checked) 
+			$("#agreeAll").prop("checked",false);
+		else
+			$("#agreeAll").prop("checked",true);
+		
+	});
+	});
+	
     function searchAddr(){
         new daum.Postcode({
             oncomplete: function(data) {
@@ -130,25 +135,25 @@
        
         <div id="checkbox_group">
             <div>
-                <input type="checkbox" class="check" name='agreeAll' value='agreeAll' onclick='agreeAll(this)'> 
+                <input type="checkbox" class="check" name='agreeAll' id="agreeAll" >
                 <label for="agreeAll">전체동의</label>
             </div>
             <div>
-                <input type="checkbox" class="check" name="personalInfo" id=""   onclick='checkAgreeAll(this)'> 
+                <input type="checkbox" class="check" name="check" id="" > 
                 <label for="personalInfo">개인정보 수집(필수)</label>
             </div>
             <div>
-                <input type="checkbox" class="check" name="useTerm" id="" onclick='checkAgreeAll(this)'>
+                <input type="checkbox" class="check" name="check" id="" >
                 <label for="useTerm">Full Life 이용약관(필수)</label>
             </div>
             <div>
-                <input type="checkbox" class="check" name="ageAgree" id="" onclick='checkAgreeAll(this)'> 
+                <input type="checkbox" class="check" name="check" id="" > 
                 <label for="ageAgree">만 14세 미만 가입 제한(필수)</label>
             </div>
         </div><br>
     
         <div id="joinBox">
-            <input type="submit" id="join_box" value="회원가입 완료">
+        	<button id="join_box"><a href="/member/login">회원가입 완료</a></button>
         </div>
     </form>
     </main>
