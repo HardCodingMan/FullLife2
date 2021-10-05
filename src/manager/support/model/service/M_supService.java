@@ -81,8 +81,6 @@ public class M_supService {
 		return result;
 	}
 
-<<<<<<< HEAD
-
 	public int updateSup(int notiNo) {
 		int result = 0;
 		Connection conn = null;
@@ -128,8 +126,6 @@ public class M_supService {
 		return pd;
 	}
 
-=======
->>>>>>> master
 	
 	
 	

@@ -194,24 +194,18 @@ header{
             }
             
            		.list-img{
-<<<<<<< HEAD
             		width: 250px;
             		height: 220px;
-=======
             		width: 210px;
             		height: 210px;
->>>>>>> master
             	}
                 .list-img img{
                     width: 230px;
                     height: 200px;
                 }
                 .list-text{
-<<<<<<< HEAD
                 	width: 250px;
-=======
                 	width: 200px;
->>>>>>> master
                 	height: 25px;
                     text-align: center;
                     font-size: 20px;
