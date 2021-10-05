@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디 찾기</title>
-    <link rel="stylesheet" href="../../../css/findId.css">
+    <link rel="stylesheet" href="/css/findId.css">
     <script src="../js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -62,8 +62,13 @@
             </div>
             <div class="id-email">
                 <form action="/member/findId" method="post">
+<<<<<<< HEAD
                     <input type="email" name="email" id="" placeholder="이메일을 입력해주세요.">
                     <input type="text" name="user-name" id="" placeholder="이름을 입력해주세요." style="width:290px; height:40px; font-size:13px; margin:10px;"><br>	
+=======
+                    <input type="password" name="zumin" id="" placeholder="주민번호를 입력 (예시 1234561234567)"style="margin-top:22px;">
+                    <input type="text" name="user-name" id="" placeholder="이름을 입력해주세요."style="width:290px; height:40px; font-size:13px; margin:10px;"><br>	
+>>>>>>> 65e0fc52dbaf73764a2c0fb1bc253973dcea512d
                     <input type="submit" value="아이디 찾기">
                 </form>
             </div>
