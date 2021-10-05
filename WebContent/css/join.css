@@ -8,11 +8,13 @@ h2{
 }
 header a {
     text-decoration: none;
-    color:black;
+    color:rgb(173, 196, 136);
+    font-size: 36px;
 }
 header a:visited{
     text-decoration: none;
     color:black;
+    font-size: 16px;
 }
 #fullLifeWrap{
     position:relative;
@@ -37,14 +39,25 @@ input{
 }
 #join_box{
     height:35px;
-    width:360px;    
+    width:360px; 
+    cursor:pointer;   
+    background-color: rgb(173, 196, 136);
+    border: none;
+    font-weight: bold;
 
 }
+#join_box:hover{background-color: rgb(191, 216, 150);}
 #searchBox{
     height:40px;
     width:70px;
     float:left;
+    cursor:pointer;
+    background-color: rgb(173, 196, 136);
+    border: none;
+    font-size: 12px;
+    font-weight: bold;
 }
+#searchBox:hover{background-color: rgb(191, 216, 150);}
 .check{
     height:15px;
     width:15px;
@@ -54,6 +67,8 @@ input{
 }
 #checkbox_group >div> label{
     display:block;
+    color: gray;
+    font-size: 12px;
     /* background-color: ivory; */
 }
 .join_title{
