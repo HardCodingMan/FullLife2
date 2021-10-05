@@ -274,9 +274,22 @@
             </div>
         </div>
         <br><br><br><br>
+        <c:if test="${sessionScope.userId eq null}">
+         <form action="/member/login" method="get">
         <div id="bottom-btn">
              <button id="purchase" ><a href="/reserve/reservation">예약하러가기</a></button>
         </div>
+        </c:if>
+        </form>
+        
+        <c:if test="${sessionScope.userId ne null }">
+        <form action="/reserve/reservation" method="post">
+        <div id="bottom-btn">
+             <button id="purchase" ><a href="/reserve/reservation">예약하러가기</a></button>
+        </div>
+        </c:if>
+        </form>
+                    
         <br><br><br><br>
     </main>
 
