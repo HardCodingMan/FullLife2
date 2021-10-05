@@ -1,0 +1,36 @@
+body{background-color:rgb(241, 241, 241);}
+.login-header {
+    margin: 170px auto ;
+    padding-top: 50px;
+    width: 400px;
+    height: 500px;
+    border: none;
+    text-align: center;
+    background-color: white;
+}
+.login-header h4{margin-top: -50px;color: rgb(173, 196, 136);}
+
+    #admin-id, #admin-pwd {
+        height: 40px;
+        width: 350px;
+        font-size: 10px;
+        margin-top: 18px;
+    }
+    #login-btn {
+        height: 40px;
+        width: 350px;
+        background-color: rgb(173, 196, 136);
+        color: white;
+        margin-top: 18px;
+        border: none;
+
+    }
+    #login-btn:hover{background-color: rgb(191, 216, 150);}
+.login-auto {
+    text-align: left;
+    margin: 10px 0 0 20px;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: row;
+    text-align: 15px;
+}
