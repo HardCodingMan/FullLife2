@@ -2,7 +2,8 @@ package patient.model.vo;
 
 import java.sql.Date;
 
-public class patient {
+public class Patient {
+	private int resultNo;
 	private String patientName;
 	private String patientAddr;
 	private String patientPhone;
@@ -14,13 +15,14 @@ public class patient {
 	private String userId;
 	private int historyNo;
 	
-	public patient() {}
+	public Patient() {}
+	
+	
 
-	
-	
-	public patient(String patientName, String patientAddr, String patientPhone, String relation, String patientZumin,
-			int organNo, Date hospitalTime, int hospitalNo, String userId, int historyNo) {
+	public Patient(int resultNo, String patientName, String patientAddr, String patientPhone, String relation,
+			String patientZumin, int organNo, Date hospitalTime, int hospitalNo, String userId, int historyNo) {
 		super();
+		this.resultNo = resultNo;
 		this.patientName = patientName;
 		this.patientAddr = patientAddr;
 		this.patientPhone = patientPhone;
@@ -34,6 +36,14 @@ public class patient {
 	}
 
 
+
+	public int getResultNo() {
+		return resultNo;
+	}
+
+	public void setResultNo(int resultNo) {
+		this.resultNo = resultNo;
+	}
 
 	public String getPatientName() {
 		return patientName;
@@ -117,12 +127,13 @@ public class patient {
 
 	@Override
 	public String toString() {
-		return "환자이름=" + patientName + ", 주소=" + patientAddr + ", 전화번호=" + patientPhone
-				+ ", 구매자와의관계=" + relation + ", 환자주민번호=" + patientZumin + ", 장기식별번호=" + organNo
-				+ ", 병원예약시간=" + hospitalTime + ", 병원고유번호=" + hospitalNo + ", 아이디=" + userId
-				+ ", 주문번호=" + historyNo;
+		return "검사번호=" + resultNo + ", 환자이름=" + patientName + ", 환자주소=" + patientAddr
+				+ ", 환자연락처=" + patientPhone + ", 구매자와의관계=" + relation + ", 환자주민번호=" + patientZumin
+				+ ", 장기식별번호=" + organNo + ", 병원예약시간=" + hospitalTime + ", 병원고유번호=" + hospitalNo + ", 회원아이디="
+				+ userId + ", 주문번호=" + historyNo;
 	}
-	
+
+
 	
 
 }
