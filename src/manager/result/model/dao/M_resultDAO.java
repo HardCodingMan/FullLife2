@@ -124,11 +124,11 @@ public class M_resultDAO {
 		return totalValue;
 	}
 
-//	public int insertResultFile(Connection conn, M_result m_result) {
-//		PreparedStatement pstmt = null;
-//		int result = 0;
-//		String query = "";
-//		return 0;
-//	}
+	public int insertResultFile(Connection conn, M_result m_result) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		return 0;
+	}
 
 }

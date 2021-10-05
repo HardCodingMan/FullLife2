@@ -192,6 +192,10 @@ header{
                 border: 1px solid gray;
                 padding: 1%;
             }
+            	.list-img{
+            		width: 210px;
+            		height: 210px;
+            	}
                 .list-img img{
                     width: 200px;
                     height: 200px;
@@ -218,7 +222,7 @@ header{
                         float: right;
                     }
                     .progs{
-                        width: 80%;
+/*                         width: 80%; */
                         height: 100%;
                         background: rgb(225, 149, 240);
                         color:#fff;
@@ -241,8 +245,8 @@ header{
                     margin-top: 10%;
                     text-align: center;
                 }
-                    .list-btn input{
-                        width: 50%;
+                    .list-btn button{
+                        width: 40%;
                         height: 30px;
                         background-color: rgba(135, 207, 235, 0.699);
                         border-radius: 5px;
@@ -251,3 +255,13 @@ header{
                         box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.514);
                         font-size: 15px;
                     }
+                    .list-btn a{
+                    	text-decoration: none;
+                    	color: black;
+                    }
+            #page-div{
+            	width: 100%; 
+            	hight: 10%;
+            	text-align: center;
+            }
+                
