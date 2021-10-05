@@ -32,4 +32,21 @@ public class ReserveService {
 		return hospitals;
 	}
 
-}
+//	public int patientInfoCheck(Reserve reserve) {
+//		int result = 0;
+//		Connection conn = null;
+//		
+//		try {
+//			conn = jdbcTemplate.createConnection();
+//			result= new ReserveDAO().checkInfo(conn, reserve);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			JDBCTemplate.close(conn);
+//		}
+//		
+//		return result;
+	}
+
+

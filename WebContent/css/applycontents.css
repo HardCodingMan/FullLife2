@@ -40,14 +40,24 @@ main{
         height: 100%;
     } 
         #notice-title{
-            text-align: center;
             border-top: 2px solid black;
             border-bottom: 2px solid black;
         }
-        #notice-title p{
-            font-size: 20px;
-            font-weight: bold;
-        }
+         #No{
+                float: left;
+                line-height: 30px;
+                font: 13px;
+            }
+            #title{
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+            #userId{
+                float: right;
+                line-height: 30px;
+                font: 13px;
+            }
         #contents-img{
             margin-top: 25px;
             text-align: center;
@@ -87,7 +97,11 @@ main{
     }
     #reply-table{
         text-align: center;
+        border-collapse: collapse;
     }
+    	.tr{
+            border-bottom: 1px solid gray;
+        }
         #th-id{
             width: 150px;
         }
@@ -100,7 +114,7 @@ main{
         th,td{
             padding:15px;
         }
-        #text-input{
+        .text-input{
             width: 500px;
             height: 50px;
         }

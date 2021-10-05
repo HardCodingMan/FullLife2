@@ -15,6 +15,8 @@ body {
 }
 .find-title > p {
     line-height: 60px;
+    font-size: 18px;
+    font-weight: bold;
 }
 .find-field1 {
     display: flex;
@@ -27,11 +29,12 @@ body {
     height: 100%;
     width: 40%;
     text-align: center;
-    border: 1px solid #eeeeee;
+    border: 1px solid rgb(173, 196, 136);
     cursor: pointer;
+    line-height: 10px;
 }
 .find-field1 > div:last-child {
-    background-color: #e0e0e0;
+    background-color: rgb(173, 196, 136);
 }
 .find-field1 > div > p {
     font-size: 15px;
@@ -68,33 +71,36 @@ body {
     width: 300px;
     height: 40px;
     margin-top: 50px;
-    background-color: #f5f5f5;
-    color: grey;
+    background-color: rgb(173, 196, 136);
+    color: black;
     font-size: 13px;
     font-weight: bolder;
     font-family: sans-serif;
     border: none;
+    cursor:pointer;
 }
 .pw-email input:last-child:hover {
-    background-color: #e0e0e0;
+    background-color: rgb(191, 216, 150);
 }
 .pw-phone {
     width: 290px;
-    text-align: center;
+    text-align: left;
     margin: 50px auto;
     display: none;
+    color:gray;
+    font-size:14px;
 }
 .pw-phone input {
     width: 300px;
     height: 40px;
     margin-top: 50px;
-    background-color: #f5f5f5;
-    color: grey;
+    background-color: rgb(173, 196, 136);
+    color: black;
     font-size: 13px;
     font-weight: bolder;
     font-family: sans-serif;
     border: none;
 }
 .pw-phone input:hover {
-    background-color: #e0e0e0;
+    background-color: rgb(191, 216, 150);
 }

@@ -1,0 +1,250 @@
+#navi{
+  height: 50px;
+  background-color: lavender;
+  width:100%;
+  display:block;
+  margin:0;
+  list-style-type: none;
+}
+.subMenu{
+  display: inline-block;
+  padding: 15px;
+  text-align: center;
+  
+}
+#navi a{
+  border-left: 1px solid #1d1c1c;
+  padding-left:10px;
+}
+#navi a:visited{
+  color:black;
+  text-decoration: none;
+}
+#navi a:link{
+  color:black;
+  text-decoration: none;
+  /* list-style-type: none; */
+}
+/* .division-lightsand{
+  background-color: #f6f3f2;
+  margin-top: 50px;
+  height: 70%;
+  width: 100%;
+
+} */
+.division-light{
+  background-color: #f6f3f2;
+  margin-top: 50px;
+  height: 70%;
+  width: 100%;
+}
+#bioprinting, #findHos-main, #organDetail, #afterPurchase{
+  margin-top: 50px;
+  width:80%;
+  margin-left: 10%;
+}
+/* #organNavi{
+    background-color: white;
+} */
+#bioInk{
+  text-align: center;
+}
+/* 장기설명 파트 */
+.main input[type=radio] {
+ display: none;
+}
+#tab-1:checked ~ .tab label:nth-child(1),
+#tab-2:checked ~ .tab label:nth-child(2),
+#tab-3:checked ~ .tab label:nth-child(3),
+#tab-4:checked ~ .tab label:nth-child(4),
+#tab-5:checked ~ .tab label:nth-child(5) {
+background-color: rgba(0, 0, 0, 0.2);
+
+box-shadow: 3px 3px 3px rgb(150, 149, 149);
+}
+.content > div {
+ display: none;
+}
+.menuPic{
+  height:99px;
+  width:94px;
+  object-fit: cover;
+  margin: 0;
+  padding:0;
+}
+#tab-1:checked ~ .content div:nth-child(1),
+#tab-2:checked ~ .content div:nth-child(2),
+#tab-3:checked ~ .content div:nth-child(3),
+#tab-4:checked ~ .content div:nth-child(4),
+#tab-5:checked ~ .content div:nth-child(5) {
+ display: block;
+}
+.tab {
+    background-color: white;
+  text-align: center;
+  overflow: hidden;
+}
+.tab label {
+  width: 5%;
+  text-align: center;
+  padding: 15px 0;
+}
+.content {
+/* background-color: rgba(0, 0, 0, 0.2); */
+min-height: 250px;
+/* margin-left: 5%; */
+}
+.content > div{
+ padding: 0 30px 30px 30px;
+ 
+ /* line-height: 1.5; */
+ font-size: 17px;
+}
+#liver-pic{
+  width: 80%;
+  height: 500px;
+  margin-top: 0;
+  margin-left: 10%;
+  background-image: url("/img/liverExplanation.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#heart-pic{
+  width: 80%;
+  height: 500px;
+  margin-left: 10%;
+  background-image: url("/img/heartPic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#tooth-pic{
+  width: 80%;
+  height: 500px;
+  margin-left: 10%;
+  background-image: url("/img/toothpic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#bone-pic{
+  width: 80%;
+  height: 500px;
+  margin-left: 10%;
+  background-image: url("/img/bonepic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#lung-pic{
+  width: 80%;
+  height: 500px;
+  margin-left: 10%;
+  background-image: url("/img/lungPic.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+#money{
+  margin-left: 5%;
+  padding-top: 25%;
+  color: lavender;
+}
+#detail-purchase{
+  margin-left: 5%;
+}
+
+#introVideo{
+  text-align: center;
+}
+
+#detail-navi td{
+  display:inline-block;
+}
+.btn-div{
+    background-color: khaki;
+    width: 100%;
+    height: 150px;
+}
+.main{
+    width: 100%;
+    background-color: #f6f3f2;
+}
+
+/* 협력병원 파트 */
+h1{
+  text-align: center;
+}
+
+#hosPic{
+  width: 100%;
+  /* height: 500px; */
+  /* margin-left: 10%; */
+  display:inline-block;
+  text-align: center;
+  /* background-color: lawngreen;
+  float:left; */
+}
+#hosPic2{
+  /* margin-top:0; */
+  text-align: center;
+  width:100%;
+  /* object-fit: ; */
+}
+#hosDesc{ 
+  height:100%;
+  /* width:40%; */
+  /* background-color:lightcoral; */
+  /* display:inline-block; */
+  margin-bottom: 0  ;
+}
+#button{
+  text-align: center;
+  display:block;
+  margin-top: 10px;
+}
+#btn-hos{
+  width:600px;
+  height:50px;
+  background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;
+}
+table{
+  border-collapse: collapse;
+}
+.colored{
+  background-color: wheat;
+  width: 186px;
+  height:100px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 30px;
+  letter-spacing: -.4px;
+  border-radius: 50px;
+  box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.5);
+}
+#afterPurchase tr td>li{margin-top: 15px; font-size: 12px;color: gray; }
+.purText{
+  vertical-align: top;
+}
+/* 마지막 구매 예약 파트 */
+#purchase{
+  width:600px;
+  height:50px;
+  background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;
+}
+#bottom-btn{
+  text-align: center;
+}
+#bottom-btn a:link{
+	text-decoration: none;
+	color: black;
+}
+h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
+

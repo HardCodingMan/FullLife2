@@ -4,12 +4,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.jsp.tagext.PageData;
 
 import apply.model.dao.ApplyNoticeDAO;
 import apply.model.vo.Notice;
 import apply.model.vo.NoticeLike;
-import apply.model.vo.ApplyNoticeFile;
 import apply.model.vo.ApplyNoticeReply;
 import apply.model.vo.ApplyPage;
 import common.JDBCTemplate;
@@ -35,7 +33,6 @@ public class ApplyNoticeService {
 				JDBCTemplate.rollback(conn);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -53,7 +50,6 @@ public class ApplyNoticeService {
 			ap.setaList(applyDAO.pageAllNotice(conn, currentPage));
 			ap.setPageNavi(applyDAO.getPageNavi(conn, currentPage));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -71,8 +67,10 @@ public class ApplyNoticeService {
 			applyNotice = applyDAO.selectOneByNo(conn, noticeNo);
 			aList = applyDAO.selectAllNoticeReply(conn, noticeNo);
 			applyNotice.setReplist(aList);
+			if(applyNotice != null) {
+				JDBCTemplate.commit(conn);
+			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -80,21 +78,19 @@ public class ApplyNoticeService {
 		return applyNotice;
 	}
 	
-	public NoticeLike updateLike(int noticeNo) {
+	public NoticeLike updateLike(int noticeNo, String userId) {
 		Connection conn = null;
 		NoticeLike nLike = null;
 		ApplyNoticeDAO applyDAO = new ApplyNoticeDAO();
 		try {
 			conn = jdbcTemplate.createConnection();
-			nLike = applyDAO.updateLike(conn, noticeNo);
+			nLike = applyDAO.updateLike(conn, noticeNo, userId);
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			conn = jdbcTemplate.createConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return nLike;
@@ -113,7 +109,6 @@ public class ApplyNoticeService {
 				JDBCTemplate.rollback(conn);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -134,7 +129,6 @@ public class ApplyNoticeService {
 				JDBCTemplate.rollback(conn);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -155,7 +149,6 @@ public class ApplyNoticeService {
 				JDBCTemplate.rollback(conn);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -176,7 +169,6 @@ public class ApplyNoticeService {
 				JDBCTemplate.rollback(conn);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -194,7 +186,6 @@ public class ApplyNoticeService {
 			ap.setaList(applyDAO.pageAllSupportNotice(conn, currentPage));
 			ap.setPageNavi(applyDAO.getSupportPageNavi(conn, currentPage));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -213,7 +204,6 @@ public class ApplyNoticeService {
 			aList = applyDAO.selectAllSupportNoticeReply(conn, noticeNo);
 			notice.setReplist(aList);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
@@ -234,12 +224,110 @@ public class ApplyNoticeService {
 				JDBCTemplate.rollback(conn);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
 		}
 		return result;
+	}
+
+	public int removeNoitceReplyOne(int replyNo) {
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new ApplyNoticeDAO().deleteNoticeReplyOne(conn, replyNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public int modifyReplyOne(int replyNo, String replyContents) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new ApplyNoticeDAO().updateReplyOne(conn, replyNo, replyContents);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public int removeSupportReplyOne(int replyNo) {
+		Connection conn = null;
+		int result = 0;
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new ApplyNoticeDAO().deleteSupportReplyOne(conn, replyNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public int modifySupportReplyOne(int replyNo, String replyContents) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new ApplyNoticeDAO().updateSupportReplyOne(conn, replyNo, replyContents);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
+	public ApplyPage printSearchNotice(String searchKeyword, int currentPage) {
+		Connection conn = null;
+		List<Notice> nList = null;
+		String searchPageNavi = null;
+		ApplyPage ap = new ApplyPage();
+		ApplyNoticeDAO nDAO = new ApplyNoticeDAO();
+		try {
+			conn = jdbcTemplate.createConnection();
+			nList = new ApplyNoticeDAO().selectSearchNotice(conn, searchKeyword, currentPage);
+			searchPageNavi = nDAO.getSearchPageNaiv(conn, searchKeyword, currentPage);
+			ap.setaList(nList);
+			ap.setPageNavi(searchPageNavi);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return ap;
 	}
 
 

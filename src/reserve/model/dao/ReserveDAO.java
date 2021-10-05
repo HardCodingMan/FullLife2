@@ -1,6 +1,7 @@
 package reserve.model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,5 +40,12 @@ public class ReserveDAO {
 			}
 			return hospitals;
 		}
+
+//	public int checkInfo(Connection conn, Reserve reserve) {
+//		PreparedStatement pstmt = null;
+//		int result = 0;
+//		String query = "SELECT USER_NAME, ZUMIN, PHONE, ADDRESS FROM MEMBER"
+//		return 0;
+//	}
 
 }

@@ -17,7 +17,7 @@
         </div>
         <aside id="menucontainer">
             <ul class="menu">
-          		<li><a href="/mypage/cliUpdate}">회원정보 수정</a></li>
+          		<li><a href="/mypage/cliUpdate">회원정보 수정</a></li>
                 <li><a href="/mypage/history">주문내역</a></li>
                 <li><a href="/mypage/point">포인트조회/충전</a></li>
                 <li><a href="/mypage/regHospital">병원예약조회</a></li>
@@ -33,7 +33,7 @@
                     <table class="cliupdateTable">
                         <tr>
                             <td>아이디</td>
-                            <td><input type="text" class="userid1" id="user-id" value=${sessionScope.userId } readonly></td>
+                            <td><input type="text" class="userid1" id="user-id" value=${sessionScope.userId } readonly onfocus="this.blur()"></td>
                         </tr>
                         </table>
                         <table class="cliupdateTable1" style="background-color: rgba(173, 196, 136, 0.445);">
@@ -47,21 +47,17 @@
                             </tr>
                             <tr>
                                 <td>신규 비밀번호</td>
-                                <td><input type="password" name="pw2" id="user-newPw"></td>
+                                <td><input type="password" name="pw2" id="user-newPw" placeholder="숫자,영문,특수문자조합 최소8자" ></td>
                             </tr>
                             <tr>
                                 <td>비밀번호 확인</td>
-                                <td><input type="password" name="pw2" id="user-reNewPw"><br></td>
+                                <td><input type="password" name="pw2" id="user-reNewPw"placeholder="신규비밀번호와 동일하게 입력"><br></td>
                             </tr>
                         </table>
                         <table class="cliupdateTable3">
                         <tr>
                             <td>이름</td>
-                            <td><input type="text" name="name" id="user-name" value=${requestScope.member.userName } readonly></td>
-                        </tr>
-                        <tr>
-                            <td>주민등록번호</td>
-                            <td><input type="password" name="zumin" id="zumin1"></td>
+                            <td><input type="text" name="name" id="user-name" value=${requestScope.member.userName } readonly onfocus="this.blur()"></td>
                         </tr>
                         <tr>
                             <td>연락처</td>
@@ -83,7 +79,7 @@
                         </tr>
                         <tr>
                             <td>주소</td>
-                            <td><input type="text" name="addr" id="addr"></td>
+                            <td><input type="text" name="addr" id="addr" placeholder="주소입력"></td>
                         </tr>
                        
                     </table>

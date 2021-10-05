@@ -11,6 +11,10 @@ import java.util.List;
 import common.JDBCTemplate;
 import manager.support.model.vo.M_supReply;
 import manager.support.model.vo.M_support;
+<<<<<<< HEAD
+=======
+import oracle.jdbc.proxy.annotation.Pre;
+>>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
 
 public class M_supDAO {
 
@@ -172,7 +176,11 @@ public class M_supDAO {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				M_supReply reply = new M_supReply();
+<<<<<<< HEAD
 				reply.setSupReNo(rset.getInt("SUPPROT_REPLY_NO"));
+=======
+				reply.setSupReNo(rset.getInt("SUPPORT_REPLY_NO"));
+>>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
 				reply.setReUserId(rset.getString("USER_ID"));
 				reply.setSupReCon(rset.getString("REPLY_CONTENTS"));
 				reply.setSupReDate(rset.getDate("REPLY_DATE"));
@@ -191,7 +199,11 @@ public class M_supDAO {
 	public int deleteReplyOne(Connection conn, int replyNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
+<<<<<<< HEAD
 		String query = "DELETE FROM SUPPORT_REPLY WHERE SUPPORT_REPLY_NO=?";
+=======
+		String query = "DELETE FROM SUPPORT_REPLY WHERE SUPPORT_REPLY_NO = ?";
+>>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -205,8 +217,134 @@ public class M_supDAO {
 		
 		return result;
 	}
+<<<<<<< HEAD
 	
 	
+=======
+
+	public int levelCheckSup(Connection conn, int notiNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE NOTICE SET LEVELCHECK=? WHERE NOTICE_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "H");
+			pstmt.setInt(2, notiNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	public List<M_support> getSearchSup(Connection conn, String keyword, int currentPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<M_support> sList = null;
+		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN, PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,NOTICE_LIKE FROM NOTICE WHERE LEVELCHECK='Y' AND NOTICE_TITLE LIKE ?) WHERE NUM BETWEEN ? AND ?";
+		System.out.println("1"+sList);
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, "%"+keyword+"%");
+			int viewCountPerPage = 10;
+			int start = currentPage * viewCountPerPage -(viewCountPerPage -1);
+			int end = currentPage * viewCountPerPage;
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			sList = new ArrayList<M_support>();
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				M_support sup = new M_support();
+				sup.setNotiNo(rset.getInt("NOTICE_NO"));
+				sup.setNotiTitle(rset.getString("NOTICE_TITLE"));
+				sup.setNotiCon(rset.getString("NOTICE_CONTENTS"));
+				sup.setViews(rset.getInt("VIEWS"));
+				sup.setEnroll(rset.getDate("ENROLL_DATE"));
+				sup.setNowSup(rset.getInt("NOW_SUPPORT"));
+				sup.setNeedSup(rset.getInt("NEED_SUPPORT"));
+				sup.setSupHuman(rset.getInt("SUPPORT_HUMAN"));
+				sup.setPicPath(rset.getString("PIC_PATH"));
+				sup.setPicSize(rset.getLong("PIC_SIZE"));
+				sup.setPicName(rset.getString("PIC_NAME"));
+				sup.setLevel(rset.getString("LEVELCHECK").charAt(0));
+				sup.setUserId(rset.getString("USER_ID"));
+				sup.setNotiLike(rset.getInt("NOTICE_LIKE"));
+				sList.add(sup);
+			}
+			System.out.println(sList);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return sList;
+	}
+
+	public String getSearchPageNavi(Connection conn, String keyword, int currentPage) {
+		int pageCountPerView = 5;
+		int viewTotalCount = searchTotalCount(conn, keyword);
+		int viewCountPerPage = 10;
+		int pageTotalCount = 0;
+		if(viewTotalCount % viewCountPerPage > 0) {
+			pageTotalCount = viewTotalCount/ viewCountPerPage +1;
+		}else {
+			pageTotalCount = viewTotalCount / viewCountPerPage;
+		}
+		
+		int startNavi = ((currentPage-1)/pageCountPerView)*pageCountPerView+1;
+		int endNavi = startNavi +pageCountPerView -1;
+		if(endNavi > pageTotalCount) {
+			endNavi = pageTotalCount;
+		}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi ==1) {
+			needPrev = false;
+		}
+		if(endNavi == pageTotalCount) {
+			needNext = false;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		if(needPrev) {
+			sb.append("<a href='/manager/m_support_search?searchKeyword="+keyword+"&currentPage="+(startNavi-1)+"'> [이전] </a>");
+		}
+		for(int i = startNavi; i<=endNavi; i++) {
+			sb.append("<a href='/manager/m_support_search?searchKeyword="+keyword+"&currentPage="+i+"'>"+i+"</a>");
+		}
+		if(needNext) {
+			sb.append("<a href='/manager/m_support_search?searchKeyword="+keyword+"&currentPage="+(endNavi+1)+"'> [다음] </a>");
+		}
+		
+		return sb.toString();
+	}
+	
+	private int searchTotalCount(Connection conn, String keyword) {
+		int result = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE WHERE NOTICE_TITLE LIKE '%"+keyword+"%'";
+		
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				result = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(stmt);
+			JDBCTemplate.close(rset);
+		}
+		
+		return result;
+	}
+>>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
 	
 	
 	

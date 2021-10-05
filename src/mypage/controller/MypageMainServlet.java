@@ -6,6 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.service.MemberService;
+import member.model.vo.Member;
 
 /**
  * Servlet implementation class MypageMain
@@ -26,8 +30,11 @@ public class MypageMainServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response); 
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		Member member = new MemberService().updateMemberInfo(userId);
+		request.setAttribute("member", member);
+		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response); 
 
 		}
 	

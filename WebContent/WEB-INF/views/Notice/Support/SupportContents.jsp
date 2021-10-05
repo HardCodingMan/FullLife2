@@ -55,17 +55,37 @@
                             <tr>
                                 <td>${sOne.replyUserId }</td>
                                 <td>${sOne.replyContents }</td>
-                                <td>${sOne.replyDate }</td>
+                                <td>${sOne.replyDate }
+                                	<c:if test="${sessionScope.userId eq sOne.replyUserId }">
+                                	<a href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
+									<a href="/Notice/Support/SupportReplyDelete?noticeNo=${sOne.noticeNo }&replyNo=${sOne.replyNo}">삭제</a>
+									</c:if>
+                                </td>
+                            </tr>
+                            <tr class="tr" style="display:none;">
+                            	<td>${sOne.replyUserId }</td>
+                                <td>
+                                    <input type="text" class="text-input" value="${sOne.replyContents }" id="modifyReply">
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0)" onclick="modifyReply(this,${sOne.replyNo},${sOne.noticeNo })">수정</a>&nbsp;&nbsp;
+                                    <a href="javascript:void(0)" onclick="hideModifyReply(this)">취소</a>
+                                </td>
                             </tr>
                         </c:forEach>
                         <tr id="reply-input">
                             <form action="/Notice/Support/SupportNoticeReplyWriter" method="post">
-                                 <td>댓글 작성 : </td> <td><input type="text" name="replyContents" placeholder="댓글을 작성해보세요" id="text-input"></td>
+                                 <td>댓글 작성 : </td> <td><input type="text" name="replyContents" placeholder="댓글을 작성해보세요" class="text-input"></td>
                                      <td><input type="hidden" name="noticeNo" value="${sOne.noticeNo }">
                                      <input type="submit" value="작성"></td>
                             </form>     
                         </tr>
                     </table>
+                    <form action="/Notice/Support/SupportReplyModify" method="post" id="modifyForm">
+							<input type="hidden" name="replyContents" id="modifyReplyContents">
+							<input type="hidden" name="replyNo" id="modifyReplyNo">
+							<input type="hidden" name="noticeNo" id="modifyNoticeNo">
+					</form>
                 </div>
             </div>
                 <div id="bottom-butn">
@@ -84,6 +104,23 @@
             }else{
                 $('.hide').hide();
             }
+        }
+        
+        function modifyReply(obj, replyNo, noticeNo){
+            var contents = $(obj).parent().prev().find("input").val();
+            //var contents = $("#modifyReply").val(); 이렇게하면 다바뀜 아이디값이 다 같아서 
+            $("#modifyReplyContents").val(contents);
+            $("#modifyReplyNo").val(replyNo);
+            $("#modifyNoticeNo").val(noticeNo);
+            $("#modifyForm").submit();
+        }
+        function showModifyReply(obj){
+            $(obj).parents("tr").next().show();
+            $(obj).parents("tr").hide();
+        }
+        function hideModifyReply(obj){
+            $(obj).parents("tr").prev().show();
+            $(obj).parents("tr").hide();
         }
     </script>
 </body>

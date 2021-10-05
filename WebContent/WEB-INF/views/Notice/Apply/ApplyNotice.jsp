@@ -14,9 +14,15 @@
     </header>
     <main>
         <div class="wrapper">
-        <section>
-            <div id="applynotice-header">
-                <h2>신청 게시판</h2>
+        <section id="main-header">
+            <div id="supportnotice-header">
+                <h2>후원 게시판</h2>
+            </div>
+            <div id="search">
+            	<form action="/Notice/Apply/ApplyNoticeSearch" method="get">
+                	<input type="text" name="searchKeyword">
+                	<input type="submit" value="검색">
+                </form>
             </div>
         </section>
         <section id="notice-section">
@@ -45,8 +51,10 @@
                     </c:forEach>
                 </ul>
             </div>
+            <c:if test="${sessionScope.userId ne null }">
             <a href="/Notice/Apply/ApplyNoticeWriter"><button id="write">글쓰기</button></a>
-            <div id="page">${pageNavi }</div>
+            </c:if>
+            <br><div id="page">${pageNavi }</div>
         </section>
         </div>
     </main>

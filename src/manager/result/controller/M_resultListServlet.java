@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import manager.member.moder.vo.M_PageData;
 import manager.result.model.service.M_resultService;
 import manager.result.model.vo.M_FilePage;
+import manager.result.model.vo.M_patient;
 import manager.result.model.vo.M_result;
 
 /**
@@ -41,10 +42,10 @@ public class M_resultListServlet extends HttpServlet {
 		}else {
 			currentPage = Integer.parseInt(getCurrentPage);
 		}
-		M_FilePage fPd = new M_resultService().printAllResult(currentPage);
-		List<M_result> fList = fPd.getfPdList();
-		if(!fList.isEmpty()) {
-			request.setAttribute("fList", fList);
+		M_FilePage fPd = new M_resultService().printAllPatient(currentPage);
+		List<M_patient> pList = fPd.getfPdList();
+		if(!pList.isEmpty()) {
+			request.setAttribute("pList", pList);
 			request.setAttribute("pageNavi", fPd.getPageNavi());
 			request.getRequestDispatcher("/WEB-INF/manager/manager_result/m_result_list.jsp").forward(request, response);
 		}else {

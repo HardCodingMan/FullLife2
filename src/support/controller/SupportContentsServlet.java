@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import apply.model.service.ApplyNoticeService;
 import apply.model.vo.Notice;
@@ -31,10 +32,12 @@ public class SupportContentsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		Notice sOne = new ApplyNoticeService().printOneBySupportNo(noticeNo);
-		System.out.println(sOne.getReplist());
 		if(sOne != null) {
+			request.setAttribute("userId", userId);
 			request.setAttribute("sOne", sOne);
 			// NoticeReply setAttribute 해줌
 			request.getRequestDispatcher("/WEB-INF/views/Notice/Support/SupportContents.jsp").forward(request, response);
@@ -47,8 +50,6 @@ public class SupportContentsServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

@@ -81,6 +81,55 @@ public class M_supService {
 		return result;
 	}
 
+<<<<<<< HEAD
+=======
+
+	public int updateSup(int notiNo) {
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn=jdbcTemplate.createConnection();
+			result = new M_supDAO().levelCheckSup(conn, notiNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+
+		return result;
+	}
+
+
+	public M_supPage printSearchSup(String keyword, int currentPage) {
+		Connection conn = null;
+		List<M_support> sList = null;
+		String searchPageNavi = null;
+		M_supPage pd = new M_supPage();
+		M_supDAO sDao = new M_supDAO();
+		System.out.println("service"+keyword);
+		try {
+			conn = jdbcTemplate.createConnection();
+			sList = sDao.getSearchSup(conn, keyword, currentPage);
+			searchPageNavi = sDao.getSearchPageNavi(conn, keyword, currentPage);
+			pd.setsList(sList);
+			pd.setPageNavi(searchPageNavi);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+
+		return pd;
+	}
+
+>>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
 	
 	
 	
