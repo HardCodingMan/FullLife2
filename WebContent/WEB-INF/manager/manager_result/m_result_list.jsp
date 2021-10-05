@@ -55,6 +55,7 @@
                             <th>회원 아이디</th>
                             <th>환자 이름</th>
                             <th>파일 이름</th>
+                            <th>병원 입력</th>
                             <th>결과 업로드</th>
                             <th>결과 삭제</th>
                         </tr>
@@ -64,14 +65,16 @@
                             <td>${pList.userId }</td>
                             <td>${pList.pName }</td>
                             <td>${pList.fileName }</td>
+	    	             <form action="/manager/m_file_upload" method="post" enctype="multipart/form-data">
                             <td>
-	    	                   <form action="/manager/m_file_upload" method="post" enctype="multipart/form-data">
-	                            	<input type="hidden" name="user-id" value="${pList.userId }">
-<!-- 	                            	<label class="file-btn" for="upload-file">파일 선택</label>&nbsp;&nbsp; -->
-	                            	<input type="file" id="upload-file" name="up-file">
-	                            	<input type="submit" class="blue-btn" value="업로드">
-		                       </form>
+                            	<input type="text" name="hos-no" placeholder="병원 번호 입력" style="width: 60px;">
                             </td>
+                            <td>
+	                            <input type="hidden" name="user-id" value="${pList.userId }">
+	                            <input type="file" id="upload-file" name="up-file">
+	                            <input type="submit" class="blue-btn" value="업로드">
+                            </td>
+		                  </form>
                             <td>
 		                       <form action = "/manager/m_file_remove" method="post">
 	                            	<input type="hidden" name="file-path" value="${pList.filePath }">
@@ -83,7 +86,7 @@
                         </tr>
                         </c:forEach>
                         <tr>
-                        	<td colspan="6">
+                        	<td colspan="7">
                         		${pageNavi }
                         	</td>
                         </tr>
