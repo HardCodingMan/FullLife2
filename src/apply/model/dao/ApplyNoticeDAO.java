@@ -581,6 +581,84 @@ public class ApplyNoticeDAO {
 		return result;
 	}
 
+	public List<Notice> selectSearchNotice(Connection conn, String searchKeyword, int currentPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Notice> aList = null;
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY NOTICE_NO DESC) AS NUM, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, PIC_PATH, PIC_SIZE, PIC_NAME, USER_ID, NOTICE_LIKE FROM NOTICE WHERE NOTICE_TITLE LIKE ? AND LEVELCHECK = 'N') WHERE NUM BETWEEN ? AND ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			int viewCountPerPage = 10; // 한 페이지에 10개의 게시물
+			int start = currentPage * viewCountPerPage - (viewCountPerPage - 1);
+			int end = currentPage * viewCountPerPage;
+			pstmt.setString(1, "%"+searchKeyword+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			aList = new ArrayList<Notice>();
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Notice notice = new Notice();
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
+				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
+				notice.setNoticeContents(rset.getString("NOTICE_CONTENTS"));
+				notice.setViews(rset.getInt("VIEWS"));
+				notice.setNoticeLike(rset.getInt("NOTICE_LIKE"));
+				notice.setPicName(rset.getString("PIC_NAME"));
+				notice.setUserId(rset.getString("USER_ID"));
+				aList.add(notice);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return aList;
+	}
+
+	public String getSearchPageNaiv(Connection conn, String searchKeyword, int currentPage) {
+		int pageCountView = 5;
+		int viewTotalCount = totalCount(conn);
+		int viewCountPage = 8;
+		int totalCountPage = 0;
+		int totalCountPageMod = viewTotalCount % viewCountPage;
+		if(totalCountPageMod > 0) {
+			totalCountPage = viewTotalCount / viewCountPage +1;
+		}else {
+			totalCountPage = viewTotalCount / viewCountPage;
+		}
+		int startNavi =((currentPage - 1) / pageCountView) * pageCountView + 1;
+		int endNavi = startNavi + pageCountView - 1;
+		if(endNavi > totalCountPage) {
+			endNavi = totalCountPage;
+		}
+		boolean needPrev = true;
+		boolean needNext = true;
+		if(startNavi == 1) {
+			needPrev = false;
+		}
+		if(endNavi == totalCountPage) {
+			needNext = false;
+		}
+		StringBuilder sb = new StringBuilder();
+		if(needPrev) {
+			sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + (startNavi-1) + "'> [이전] </a>");
+		}
+		for(int i = startNavi; i <= endNavi; i++) {
+			if(i == currentPage) {
+				sb.append(i);
+			}else {
+				sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + i + "'>" + i + " </a>");
+			}
+		}
+		if(needNext) {
+			sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + (endNavi+1) + "'> [다음] </a>");
+		}
+		return sb.toString();
+	}
+
 	
 
 

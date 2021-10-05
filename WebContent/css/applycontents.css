@@ -40,14 +40,24 @@ main{
         height: 100%;
     } 
         #notice-title{
-            text-align: center;
             border-top: 2px solid black;
             border-bottom: 2px solid black;
         }
-        #notice-title p{
-            font-size: 20px;
-            font-weight: bold;
-        }
+         #No{
+                float: left;
+                line-height: 30px;
+                font: 13px;
+            }
+            #title{
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+            #userId{
+                float: right;
+                line-height: 30px;
+                font: 13px;
+            }
         #contents-img{
             margin-top: 25px;
             text-align: center;
