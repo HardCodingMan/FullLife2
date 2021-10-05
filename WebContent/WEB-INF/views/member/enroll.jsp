@@ -151,7 +151,11 @@
         </div><br>
     
         <div id="joinBox">
+<<<<<<< HEAD
             <input type="submit" value="회원가입 완료" onclick="return check();">
+=======
+            <input type="submit" id="join_box" value="회원가입 완료">
+>>>>>>> 61f3e455be7507ba87c4028071bf9c284b6e0b16
         </div>
     </form>
     </main>
