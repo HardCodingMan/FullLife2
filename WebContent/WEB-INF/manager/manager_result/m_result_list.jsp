@@ -41,39 +41,50 @@
             검사 결과 관리
         </div>
         <div id="line-div"></div>
-        <div id="contents">
+       <div id="contents">
             <div id="search-div">
                 <div id="search">
                     <form action="">
-                        주문 번호 검색 :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="" id="" placeholder="주문 번호를 입력해주세요">
+                        검사 번호 검색 :&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="" id="" placeholder="주문 번호를 입력해주세요">
                     </form>
                 </div>
-           </div>
-            <form action="/manager/m_file_upload" method="post">
-                   <input type="submit" id="upload-btn" value="업로드">
-           </form>
+            </div>
             <div id="table-div">
                     <table border="1" cellspacing="0">
                         <tr>
-                            <th>주문 번호</th>
+                            <th>검사 번호</th>
                             <th>회원 아이디</th>
+                            <th>환자 이름</th>
                             <th>파일 이름</th>
+                            <th>결과 업로드</th>
                             <th>결과 삭제</th>
                         </tr>
-                        <c:forEach items="${fList }" var="data" varStatus="index">
+                    <c:forEach items="${requestScope.pList }" var="pList" varStatus="index">
                         <tr>
-                            <td>${data.resultNo }</td>
-                            <td>${data.userId }</td>
-                            <td>${data.fileName }</td>
+                            <td>${pList.resultNo }</td>
+                            <td>${pList.userId }</td>
+                            <td>${pList.pName }</td>
+                            <td>${pList.fileName }</td>
+                       <form action="/manager/m_file_upload" method="post" enctype="multipart/form-data">
                             <td>
-                                <form action="/manager/m_file_remove" method="post">
-                                    <input type="submit" value="삭제">
-                                </form>
+                            	<input type="hidden" name="user-id" value="${pList.userId }">
+                            	<label class="file-btn" for="upload-file">파일 선택</label>&nbsp;&nbsp;
+                            	<input type="file" id="upload-file" name="upFile" style="display: none;">
+                            	<input type="submit" value="업로드">
                             </td>
+                       </form>
+                       <form action = "/manager/m_file_remove" method="post">
+                            <td>
+                            	<input type="hidden" name="file-path" value="${pList.filePath }">
+                            	<input type="hidden" name="file-name" value="${pList.fileName }">
+                            	<input type="hidden" name="file-user" value="${pList.userId }">
+                                <input type="submit" value="삭제">
+                            </td>
+                       </form>
                         </tr>
                         </c:forEach>
                         <tr>
-                        	<td colspan="4" align="center">
+                        	<td colspan="6">
                         		${pageNavi }
                         	</td>
                         </tr>

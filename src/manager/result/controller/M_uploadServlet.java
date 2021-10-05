@@ -15,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import manager.result.model.service.M_resultService;
+import manager.result.model.vo.M_patient;
 import manager.result.model.vo.M_result;
 
 /**
@@ -47,24 +48,26 @@ public class M_uploadServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		String uploadFilePath = request.getServletContext().getRealPath("upload");
-		System.out.println("업로드 리얼 패스 :"+uploadFilePath);
 		int uploadFileLimit = 5*1024*1024;
+		System.out.println(uploadFilePath);
 		String encType = "UTF-8";
 		
 		MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileLimit, encType, new DefaultFileRenamePolicy());
 		
 		//2. 파일에 대한 정보 저장
+		String fileUser = multi.getParameter("user-id");
 		String fileName = multi.getFilesystemName("upFile");
 		File uploadFile = multi.getFile("upFile");
 		String filePath = uploadFile.getPath();
-		double fileSize = uploadFile.length();
+		long fileSize = uploadFile.length();
 
-		M_result m_result = new M_result();
-		m_result.setFileName(fileName);
-		m_result.setFilePath(filePath);
-		m_result.setFileSize(fileSize);
+		M_patient patient = new M_patient();
+		patient.setUserId(fileUser);
+		patient.setFileName(fileName);
+		patient.setFilePath(filePath);
+		patient.setFileSize(fileSize);
 		
-		int result = new M_resultService().registerResultFile(m_result);
+		int result = new M_resultService().registerResultFile(patient);
 		if(result > 0) {
 			response.sendRedirect("/manager/m_result_list");
 		}else {
