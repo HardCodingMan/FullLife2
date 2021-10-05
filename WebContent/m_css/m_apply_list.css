@@ -196,6 +196,7 @@ header{
            		.list-img{
             		width: 250px;
             		height: 220px;
+
             	}
                 .list-img img{
                     width: 230px;
@@ -233,7 +234,7 @@ header{
                         line-height: 50px;
                         font-size: 20px;
                         font-weight: bold;
-                        color: darkblue;
+                        color: gold;
                     }
 
                 .list-btn{
