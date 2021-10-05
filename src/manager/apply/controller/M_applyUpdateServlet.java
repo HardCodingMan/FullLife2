@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import manager.apply.model.service.M_applyService;
 
 /**
- * Servlet implementation class M_applyRemoveServlet
+ * Servlet implementation class M_applyUpdateServlet
  */
-@WebServlet("/manager/m_apply_remove")
-public class M_applyRemoveServlet extends HttpServlet {
+@WebServlet("/manager/M_apply_update")
+public class M_applyUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public M_applyRemoveServlet() {
+    public M_applyUpdateServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,12 +28,8 @@ public class M_applyRemoveServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 		int notiNo = Integer.parseInt(request.getParameter("notiNo"));
-		int result = new M_applyService().deleteApply(notiNo);
+		int result = new M_applyService().updateApply(notiNo);
 		if(result > 0) {
 			response.sendRedirect("/manager/m_apply_list");
 		}else {

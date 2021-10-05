@@ -124,6 +124,7 @@ public class M_resultDAO {
 		return totalValue;
 	}
 
+<<<<<<< HEAD
 	public int insertResultFile(Connection conn, M_patient patient) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -144,6 +145,13 @@ public class M_resultDAO {
 		}
 		
 		return result;
+=======
+	public int insertResultFile(Connection conn, M_result m_result) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		return 0;
+>>>>>>> master
 	}
 
 	public int deleteFile(Connection conn, String fileUser, String fileName) {

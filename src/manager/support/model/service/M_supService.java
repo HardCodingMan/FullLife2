@@ -81,6 +81,7 @@ public class M_supService {
 		return result;
 	}
 
+<<<<<<< HEAD
 
 	public int updateSup(int notiNo) {
 		int result = 0;
@@ -127,6 +128,8 @@ public class M_supService {
 		return pd;
 	}
 
+=======
+>>>>>>> master
 	
 	
 	
