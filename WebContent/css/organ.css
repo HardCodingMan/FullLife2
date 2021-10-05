@@ -105,7 +105,7 @@ min-height: 250px;
   height: 500px;
   margin-top: 0;
   margin-left: 10%;
-  background-image: url("../img/organTrans/liverExplanation.jpg");
+  background-image: url("/img/liverExplanation.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -115,7 +115,7 @@ min-height: 250px;
   width: 80%;
   height: 500px;
   margin-left: 10%;
-  background-image: url("../img/organTrans/heartPic.jpg");
+  background-image: url("/img/heartPic.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -125,7 +125,7 @@ min-height: 250px;
   width: 80%;
   height: 500px;
   margin-left: 10%;
-  background-image: url("../img/organTrans/toothPic.png");
+  background-image: url("/img/toothpic.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -135,7 +135,7 @@ min-height: 250px;
   width: 80%;
   height: 500px;
   margin-left: 10%;
-  background-image: url("../img/organTrans/bonepic.jpg");
+  background-image: url("/img/bonepic.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -145,7 +145,7 @@ min-height: 250px;
   width: 80%;
   height: 500px;
   margin-left: 10%;
-  background-image: url("../img/organTrans/lungPic.jpg");
+  background-image: url("/img/lungPic.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   border: 2px solid rgba(0, 0, 0, 0.2);
@@ -242,6 +242,9 @@ table{
 #bottom-btn{
   text-align: center;
 }
-
+#bottom-btn a:link{
+	text-decoration: none;
+	color: black;
+}
 h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
 
