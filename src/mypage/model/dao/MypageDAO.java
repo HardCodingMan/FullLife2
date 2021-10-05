@@ -12,6 +12,7 @@ import member.model.vo.Member;
 import mypage.model.vo.BookedHospitalInfo;
 import mypage.model.vo.CheckResult;
 import mypage.model.vo.History;
+import patient.model.vo.Patient;
 
 public class MypageDAO {
    
@@ -202,7 +203,7 @@ public class MypageDAO {
 		      PreparedStatement pstmt = null;
 		      ResultSet rset = null;
 		      List<CheckResult>cList = null;
-		      String query="SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY RESULT_NO DESC)AS NUM, RESULT_NO, FILE_NAME, FILE_PATH, FILE_SIZE, CHECK_DATE, USER_ID, HOSPITAL_NO FROM RESULT) WHERE NUM BETWEEN ? AND ?";
+		      String query="SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY RESULT_NO DESC)AS NUM, RESULT_NO,PATIENT.USER_ID,PATIENT_NAME,FILE_NAME FROM PATIENT LEFT JOIN RESULT ON PATIENT.USER_ID=RESULT.USER_ID) WHERE NUM BETWEEN ? AND ?";
 		      
 		      try {
 				 pstmt = conn.prepareStatement(query);
@@ -214,15 +215,12 @@ public class MypageDAO {
 		         rset = pstmt.executeQuery();
 		         cList= new ArrayList<CheckResult>();
 		         while(rset.next()) {
-		             CheckResult res = new CheckResult();
-		             res.setResultNo(rset.getInt("RESULT_NO"));
-		             res.setFileName(rset.getString("FILE_NAME"));
-		             res.setFilePath(rset.getString("FILE_PATH"));
-		             res.setFileSize(rset.getInt("FILE_SIZE"));
-		             res.setCheckDate(rset.getDate("CHECK_DATE"));
-		             res.setUserId(rset.getString("USER_ID"));
-		             res.setHospitalNo(rset.getInt("HOSPITAL_NO"));
-		             cList.add(res);
+		        	 CheckResult result = new CheckResult();
+		        	 result.setResultNo(rset.getInt("RESULT_NO"));
+		        	 result.setFileName(rset.getString("FILE_NAME"));
+		        	 result.setHospitalNo(rset.getInt("HOSPITAL_NO"));
+		        	 result.setCheckDate(rset.getDate("CHECK_DATE"));
+		             cList.add(result);
 		          }
 			} catch (SQLException e) {
 				e.printStackTrace();
