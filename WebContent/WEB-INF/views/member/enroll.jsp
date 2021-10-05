@@ -65,11 +65,7 @@
    <main id="fullLifeWrap">
         <header class="header">
             <h2>
-<<<<<<< HEAD
-                <a href="/">Full Life</a>
-=======
                 <a href="/index.jsp">Full Life</a>
->>>>>>> 65e0fc52dbaf73764a2c0fb1bc253973dcea512d
                 <br> 회원가입
             </h2>
         </header>
