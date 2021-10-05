@@ -20,7 +20,7 @@
         <div>
             <div id="mypagemain">
             <hr style="width: 1100px;">
-                <form action="/mypage/main" method="post" id="mypagepic" name="mypagemain"><img src="/img/mypic.png" alt="" style="width: 100px;"><input type="text" class="userid2" id="userid" value=${sessionScope.userId } readonly></form> 
+                <form action="/mypage/main" method="post" id="mypagepic" name="mypagemain"><img src="/img/mypic.png" alt="" style="width: 100px;"><input type="text" class="userid2" id="userid" value=${sessionScope.userId } readonly onfocus="this.blur()"></form> 
             <hr style="width: 1100px;">
             </div>
             <div class="icon">
