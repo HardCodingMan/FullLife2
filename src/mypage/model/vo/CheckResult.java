@@ -10,13 +10,16 @@ public class CheckResult {
 	private Date checkDate;
 	private String userId;
 	private int hospitalNo;
+	private String hospitalName;
 
 	
 	public CheckResult() {}
 	
 	
+
+
 	public CheckResult(int fileNo, String fileName, String filePath, int fileSize, Date checkDate, String userId,
-			int hospitalNo) {
+			int hospitalNo, String hospitalName) {
 		super();
 		this.fileNo = fileNo;
 		this.fileName = fileName;
@@ -25,7 +28,10 @@ public class CheckResult {
 		this.checkDate = checkDate;
 		this.userId = userId;
 		this.hospitalNo = hospitalNo;
+		this.hospitalName = hospitalName;
 	}
+
+
 
 
 	public int getFileNo() {
@@ -98,12 +104,26 @@ public class CheckResult {
 	}
 
 
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+
 	@Override
 	public String toString() {
-		return "파일번호=" + fileNo + ", 파일이름=" + fileName + ", 파일경로=" + filePath + ", 파일사이즈="
-				+ fileSize + ", 검사날짜=" + checkDate + ", 회원아이디=" + userId + ", 병원고유번호=" + hospitalNo;
+		return "CheckResult [fileNo=" + fileNo + ", fileName=" + fileName + ", filePath=" + filePath + ", fileSize="
+				+ fileSize + ", checkDate=" + checkDate + ", userId=" + userId + ", hospitalNo=" + hospitalNo
+				+ ", hospitalName=" + hospitalName + "]";
 	}
 	
+	
+
+
 
 
 }

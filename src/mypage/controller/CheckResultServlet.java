@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import mypage.model.service.MypageService;
 import mypage.model.vo.CheckResult;
 import mypage.model.vo.CheckResultPage;
-import mypage.model.vo.HistoryPage;
 
 /**
  * Servlet implementation class MypageCheckResult
@@ -34,18 +33,18 @@ public class CheckResultServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int checkPage = 0;
+		int checkResultPage = 0;
 		String getCheckResultPage = request.getParameter("checkResultPage");
 		if(getCheckResultPage == null) {
-			checkPage = 1; 
+			checkResultPage = 1; 
 		}else {
-			checkPage = Integer.parseInt(getCheckResultPage);
+			checkResultPage = Integer.parseInt(getCheckResultPage);
 		}
-		CheckResultPage checkResultPage = new MypageService().printCheckResult(checkResultPage);
-		List<CheckResult> cList = checkResultPage.getcList();
+		CheckResultPage result = new MypageService().printCheckResult(checkResultPage);
+		List<CheckResult> cList = result.getcList();
 		if(!cList.isEmpty()) {
 			request.setAttribute("cList", cList);
-			request.setAttribute("pageNavi", checkResultPage.getPageNavi());
+			request.setAttribute("pageNavi", result.getPageNavi());
 			request.getRequestDispatcher("/WEB-INF/views/mypage/mypageCheckResult.jsp").forward(request, response);
 		}else {
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypageCheckResult.jsp");

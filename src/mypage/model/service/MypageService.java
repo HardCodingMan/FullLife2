@@ -36,20 +36,20 @@ public class MypageService {
 	}
 	
 	public CheckResultPage printCheckResult(int checkResultPage) {
-		CheckResultPage checkPage = new CheckResultPage();
+		CheckResultPage result = new CheckResultPage();
 		Connection conn = null;
 		MypageDAO cDao = new MypageDAO();
 		
 		try {
 			conn=jdbcTemplate.createConnection();
-			checkPage.setcList(cDao.selectCheckResult(conn, checkResultPage));
-			checkPage.setPageNavi(cDao.getPageNavi(conn, checkResultPage));
+			result.setcList(cDao.selectCheckResult(conn, checkResultPage));
+			result.setPageNavi(cDao.getPageNavi(conn, checkResultPage));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
 			JDBCTemplate.close(conn);
 		}
-		return checkPage;
+		return result;
 	}
 
 

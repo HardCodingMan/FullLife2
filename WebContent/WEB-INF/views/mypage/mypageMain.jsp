@@ -55,8 +55,7 @@
 					<tr>
                 	 <td colspan="7" align="center">${pageNavi}</td>
                 	 <tr>            
-                </table>
-                
+                </table>  
             </form>
             <br>
     </article>

@@ -30,6 +30,7 @@
                 <h3>검사내역조회</h3>
                 <table class="gumsa">
                     <tr>
+                    	<th>파일번호</th>
                         <th>첨부파일</th>
                         <th>병원명</th>
                         <th>검사날짜</th>
@@ -38,17 +39,19 @@
                     </tr>
                       <c:forEach items="${requestScope.cList}" var="checkResult" varStatus="index">
                     <tr>
+                    	<td>${checkResult.fileNo}</td>
                         <td>${checkResult.fileName}</td>
                         <td>${checkResult.hospitalNo}</td>
                         <td>${checkResult.checkDate}</td>
                         <td><input type="button" class="bt1" value="다운"></td>
                     </tr>
+                    </c:forEach>
                     <tr>
-                    <td colspan="7" align="center">${pageNavi}</td>
+                    <td colspan="5" align="center">${pageNavi}</td>
                     </tr>
                 </table>
             </form>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br>
         </article>
     </div>
 <footer>
