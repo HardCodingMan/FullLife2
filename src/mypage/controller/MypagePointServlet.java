@@ -33,12 +33,8 @@ public class MypagePointServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		Member member = new MemberService().getMemberTotalPoint(userId);
-		if(member != null) {
-			int totalpoint = member.getTotalPoint();
-			request.setAttribute("totalpoint", totalpoint);
-		} else {
-			request.setAttribute("totalpoint", 0);
-		}
+		int totalpoint = member.getTotalPoint();
+		request.setAttribute("totalpoint", totalpoint);
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypagePoint.jsp").forward(request, response);
 	}
 

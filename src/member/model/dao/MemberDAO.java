@@ -128,4 +128,58 @@ public class MemberDAO {
 		
 		return false;
 	}
+
+	public Member updateMemberPage(String userId, Connection conn) {
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		Member member = null;
+		String query = "SELECT * FROM MEMBER WHERE USER_ID = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				member = new Member();
+				member.setUserId(rset.getString("USER_ID"));
+				member.setUserPwd(rset.getString("USER_PWD"));
+				member.setUserZumin(rset.getString("ZUMIN"));
+				member.setUserName(rset.getString("USER_NAME"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return member;
 	}
+
+	public Member getTotalpoint(String userId, Connection conn) {
+		Member member = null;
+		String query = "SELECT TOTALPOINT FROM MEMBER WHERE USER_ID = ?";
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				member = new Member();
+				member.setTotalPoint(rset.getInt("TOTALPOINT"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return member;
+	}
+
+}

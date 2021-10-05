@@ -91,7 +91,23 @@ public class MemberService {
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			member = new MemberDAO().updateMemberInfo(userId, conn);
+			member = new MemberDAO().updateMemberPage(userId, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return member;
+	}
+
+	public Member getMemberTotalPoint(String userId) {
+		Member member = null;
+		Connection conn = null;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			member = new MemberDAO().getTotalpoint(userId, conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -101,5 +117,5 @@ public class MemberService {
 		return member;
 	}
 	
-
+	
 }

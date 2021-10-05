@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,7 +58,7 @@
                         <table class="cliupdateTable3">
                         <tr>
                             <td>이름</td>
-                            <td><input type="text" name="name" id="user-name" value=${requestScope.member.userName } readonly onfocus="this.blur()"></td>
+                            <td><input type="text" name="name" id="user-name" value="${member.userName }" readonly onfocus="this.blur()"></td>
                         </tr>
                         <tr>
                             <td>연락처</td>
@@ -109,14 +110,14 @@
         let zumin = document.querySelector("#zumin1");
         let userZumin = document.querySelector("#user-zumin");
         let idRegex = /[a-zA-Z0-9]{5,11}$/;
-        let pwRegex = /[a-zA-Z0-9$!@#%&]{8,}$/;
-        let newPwRegex = /[a-zA-Z0-9$!@#%&]{8,}$/;
-        let checkPwRegex = /[a-zA-Z0-9$!@#%&]{8,}$/;
-//         let zuminRegex =/^(?:[0-9]{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[1,2][0-9]|3[0,1]))[1-4][0-9]{6}$ /;
+        let pwRegex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
+        let newPwRegex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
+        let checkPwRegex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
         let phRegex1 = /[010]$/;
         let phRegex2 = /[0-9]{4}$/;
         let phRegex3 = /[0-9]{4}$/;
 
+       console.log(userName.value);
       
 
         function check(){
@@ -124,7 +125,7 @@
             if(!idRegex.test(userId.value)){
                 alert("아이디를 입력하세요.");
                 return false;
-            } else if(!userPw.value == originPwd.value || userPw.value == ""){
+            } else if(userPw.value != originPwd.value || userPw.value == ""){
                 alert("현재 비밀번호를 입력해주세요.");
                 return false;
             } else if(!newPwRegex.test(userNewPw.value) || userNewPw.value == ""){
@@ -177,7 +178,7 @@
             }
             
         });
-        
+      
         userNewPw.addEventListener("keyup", function(){
             if(this.value.length > 1){
                 if(!newPwRegex.test(userNewPw.value)){
@@ -197,18 +198,12 @@
         });
         zumin.addEventListener("blur", function(){
             if(userZumin.value != zumin.value){
-                resultDiv.innerHTML = "<h5 style='color:red'>유효한 주민번호가 아닙니다.</h5>";
+                resultDiv.innerHTML = "<h5 style='color:red'>본인 주민번호가 아닙니다.</h5>";
             } else {
-                resultDiv.innerHTML = "<h5 style='color:blue'>유효한 주민번호입니다.</h5>";
+                resultDiv.innerHTML = "<h5 style='color:blue'>본인 주민번호입니다.</h5>";
             }
         });
-//         zumin.addEventListener("blur", function(){
-//             if(!zuminRegex.test(zumin.value)){
-//                 resultDiv.innerHTML = "<h5 style='color:red'>유효한 주민번호가 아닙니다.</h5>";
-//             } else {
-//                 resultDiv.innerHTML = "<h5 style='color:blue'>유효한 주민번호입니다.</h5>";
-//             }
-//         });
+
         checkNewPw.addEventListener("blur", function(){
             if(checkNewPw.value == userNewPw.value){
                 resultDiv.innerHTML = "<h5 style='color:blue'>비밀번호가 일치합니다.</h5>"
