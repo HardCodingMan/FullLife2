@@ -194,15 +194,15 @@ header{
             }
             
            		.list-img{
-            		width: 210px;
-            		height: 210px;
+            		width: 250px;
+            		height: 220px;
             	}
                 .list-img img{
-                    width: 200px;
+                    width: 230px;
                     height: 200px;
                 }
                 .list-text{
-                	width: 200px;
+                	width: 250px;
                 	height: 25px;
                     text-align: center;
                     font-size: 20px;
@@ -237,18 +237,19 @@ header{
                     }
 
                 .list-btn{
-                    margin-top: 10%;
+                	width:100%;
+                    margin-top: 6%;
                     text-align: center;
                 }
                     .list-btn button{
-                        width: 40%;
-                        height: 30px;
+                        width: 30%;
+                        height: 32px;
                         background-color: rgba(135, 207, 235, 0.699);
                         border-radius: 5px;
                         border: 1px solid rgba(128, 128, 128, 0.671);
                         cursor: pointer;
                         box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.514);
-                        font-size: 15px;
+                        font-size: 14px;
                     }
                     .list-btn a{
                     	text-decoration: none;

@@ -64,7 +64,7 @@
                             </div>
                         </div>
                           <div class="list-btn">
-                                <button type="submit" class="bt1"><a href="/manager/m_supprot_remove?notiNo=${sup.notiNo }">삭제</a></button>
+                                <button type="submit" class="bt1"><a href="/manager/m_support_remove?notiNo=${sup.notiNo }">후원 완료</a></button>
                         </div>
                         </div>
                         </c:forEach>

@@ -4,16 +4,16 @@ import java.util.List;
 
 public class M_FilePage {
 
-	private List<M_result> fPdList;
+	private List<M_patient> fPdList;
 	private String fPageNavi;
 	
 	public M_FilePage() {}
 
-	public List<M_result> getfPdList() {
+	public List<M_patient> getfPdList() {
 		return fPdList;
 	}
 
-	public void setfPdList(List<M_result> fPdList) {
+	public void setfPdList(List<M_patient> fPdList) {
 		this.fPdList = fPdList;
 	}
 

@@ -81,6 +81,28 @@ public class M_supService {
 		return result;
 	}
 
+
+	public int updateSup(int notiNo) {
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn=jdbcTemplate.createConnection();
+			result = new M_supDAO().levelCheckSup(conn, notiNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+
+		return result;
+	}
+
 	
 	
 	
