@@ -87,7 +87,11 @@ main{
     }
     #reply-table{
         text-align: center;
+        border-collapse: collapse;
     }
+    	.tr{
+            border-bottom: 1px solid gray;
+        }
         #th-id{
             width: 150px;
         }
@@ -100,7 +104,7 @@ main{
         th,td{
             padding:15px;
         }
-        #text-input{
+        .text-input{
             width: 500px;
             height: 50px;
         }

@@ -125,7 +125,7 @@ main{
         th,td{
             padding:15px;
         }
-        #text-input{
+        .text-input{
             width: 500px;
             height: 50px;
         }
