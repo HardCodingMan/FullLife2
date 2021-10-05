@@ -64,22 +64,22 @@
                             <td>${pList.userId }</td>
                             <td>${pList.pName }</td>
                             <td>${pList.fileName }</td>
+                       <form action="/manager/m_file_upload" method="post" enctype="multipart/form-data">
                             <td>
-	    	                   <form action="/manager/m_file_upload" method="post" enctype="multipart/form-data">
-	                            	<input type="hidden" name="user-id" value="${pList.userId }">
-<!-- 	                            	<label class="file-btn" for="upload-file">파일 선택</label>&nbsp;&nbsp; -->
-	                            	<input type="file" id="upload-file" name="up-file">
-	                            	<input type="submit" class="blue-btn" value="업로드">
-		                       </form>
+                            	<input type="hidden" name="user-id" value="${pList.userId }">
+                            	<label class="file-btn" for="upload-file">파일 선택</label>&nbsp;&nbsp;
+                            	<input type="file" id="upload-file" name="upFile" style="display: none;">
+                            	<input type="submit" value="업로드">
                             </td>
+                       </form>
+                       <form action = "/manager/m_file_remove" method="post">
                             <td>
-		                       <form action = "/manager/m_file_remove" method="post">
-	                            	<input type="hidden" name="file-path" value="${pList.filePath }">
-	                            	<input type="hidden" name="file-name" value="${pList.fileName }">
-	                            	<input type="hidden" name="file-user" value="${pList.userId }">
-	                                <input type="submit" class="blue-btn" value="삭제">
-		                       </form>
+                            	<input type="hidden" name="file-path" value="${pList.filePath }">
+                            	<input type="hidden" name="file-name" value="${pList.fileName }">
+                            	<input type="hidden" name="file-user" value="${pList.userId }">
+                                <input type="submit" value="삭제">
                             </td>
+                       </form>
                         </tr>
                         </c:forEach>
                         <tr>
