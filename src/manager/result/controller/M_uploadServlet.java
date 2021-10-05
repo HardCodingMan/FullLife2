@@ -56,8 +56,8 @@ public class M_uploadServlet extends HttpServlet {
 		
 		//2. 파일에 대한 정보 저장
 		String fileUser = multi.getParameter("user-id");
-		String fileName = multi.getFilesystemName("upFile");
-		File uploadFile = multi.getFile("upFile");
+		String fileName = multi.getFilesystemName("up-file");
+		File uploadFile = multi.getFile("up-file");
 		String filePath = uploadFile.getPath();
 		long fileSize = uploadFile.length();
 
