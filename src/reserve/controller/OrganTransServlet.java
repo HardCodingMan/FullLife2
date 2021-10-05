@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import member.model.service.MemberService;
 import member.model.vo.Member;
 import reserve.model.service.ReserveService;
-import reserve.model.vo.Reserve;
 
 /**
  * Servlet implementation class organTrans

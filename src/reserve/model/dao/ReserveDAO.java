@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import hospital.model.vo.Hospital;
-import reserve.model.vo.Reserve;
 
 public class ReserveDAO {
 
