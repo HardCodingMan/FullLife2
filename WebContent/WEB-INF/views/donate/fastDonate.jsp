@@ -24,8 +24,6 @@
             let percentage1 = progress1.getAttribute("data-done");
             let percentage2 = progress2.getAttribute("data-done");
             
-            console.log(progress1.getAttribute("data-done"));
-            console.log(progress2.getAttribute("data-done"));
 
             prevBtn.addEventListener("click", function(){
                 document.querySelector(".support-info1").style.display = "block";
@@ -79,26 +77,26 @@
             
             <div class="slide-wrapper">
                 <div class="support-info1">
-                    <h1>BEST1. ${requestScope.firstSupport.noticeTitle }</h1>
-                    <img src="${firstSupport.picPath }" alt="" width="90%" height="70%">
+                    <h1>BEST1. ${requestScope.firstRank.noticeTitle }</h1>
+                    <img src="${firstRank.picPath }" alt="" width="90%" height="70%">
                     <div class="support-percentage">
-                        <p>조회수: ${requestScope.firstSupport.supportHuman }</p>
-                        <p>달성금액: ${requestScope.firstSupport.nowSupport}</p>
-                        <p>달성률: ${requestScope.firstPercentage }</p>
+                        <p>조회수: ${requestScope.firstRank.views }</p>
+                        <p>달성금액: ${requestScope.firstRank.nowSupport}</p>
+                        <p>달성률: ${requestScope.percentage1 }</p>
                         <div class="progress-bar">
-                            <div class="progress-done" id="bar1" data-done="${requestScope.firstPercentage }"></div>
+                            <div class="progress-done" id="bar1" data-done="${requestScope.percentage1 }"></div>
                         </div>
                     </div>
                 </div>
                 <div class="support-info2">
-                    <h1>BEST2. ${requestScope.secondSupport.noticeTitle }</h1>
-                    <img src="${secondSupport.picPath }" alt="" width="90%" height="70%">
+                    <h1>BEST2. ${requestScope.secondRank.noticeTitle }</h1>
+                    <img src="${secondRank.picPath }" alt="" width="90%" height="70%">
                     <div class="support-percentage">
-                        <p>조회수: ${secondSupport.views }</p>
-                        <p>달성금액: ${requestScope.secondSupport.nowSupport }</p>
-                        <p>달성률: ${requestScope.secondPercentage }</p>
+                        <p>조회수: ${secondRank.views }</p>
+                        <p>달성금액: ${requestScope.secondRank.nowSupport }</p>
+                        <p>달성률: ${requestScope.percentage2 }</p>
                         <div class="progress-bar second">
-                            <div class="progress-done" id="bar2" data-done="${requestScope.secondPercentage }"></div>
+                            <div class="progress-done" id="bar2" data-done="${requestScope.percentage2 }"></div>
                         </div>
                     </div>
                 </div>

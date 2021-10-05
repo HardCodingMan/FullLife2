@@ -49,7 +49,7 @@
                     <div>
                         <label>
                             <input type="radio" name="choice" id="email-radio" value="email" checked>
-                            주민번호
+                            이메일
                         </label>
                     </div>
                     <div>
@@ -62,7 +62,7 @@
             </div>
             <div class="id-email">
                 <form action="/member/findId" method="post">
-                    <input type="password" name="zumin" id="" placeholder="주민번호를 입력 (예시 1234561234567)">
+                    <input type="email" name="email" id="" placeholder="이메일을 입력해주세요.">
                     <input type="text" name="user-name" id="" placeholder="이름을 입력해주세요." style="width:290px; height:40px; font-size:13px; margin:10px;"><br>	
                     <input type="submit" value="아이디 찾기">
                 </form>

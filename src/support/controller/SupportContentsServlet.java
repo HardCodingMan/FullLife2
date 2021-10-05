@@ -7,10 +7,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import apply.model.service.ApplyNoticeService;
-import apply.model.vo.Notice;
-import apply.model.vo.NoticeLike;
-
 /**
  * Servlet implementation class SupportContentsServlet
  */
@@ -30,17 +26,7 @@ public class SupportContentsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		Notice sOne = new ApplyNoticeService().printOneBySupportNo(noticeNo);
-		System.out.println(sOne.getReplist());
-		if(sOne != null) {
-			request.setAttribute("sOne", sOne);
-			// NoticeReply setAttribute 해줌
-			request.getRequestDispatcher("/WEB-INF/views/Notice/Support/SupportContents.jsp").forward(request, response);
-		}else {
-			request.getRequestDispatcher("/WEB-INF/views/Notice/ApplyError.jsp").forward(request, response);
-		}
+		request.getRequestDispatcher("/WEB-INF/views/Notice/Support/SupportContents.jsp").forward(request, response);
 	}
 
 	/**
