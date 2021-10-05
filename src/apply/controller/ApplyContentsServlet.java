@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import apply.model.service.ApplyNoticeService;
 import apply.model.vo.Notice;
@@ -32,11 +33,14 @@ public class ApplyContentsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		NoticeLike nLike = new ApplyNoticeService().updateLike(noticeNo);
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		NoticeLike nLike = new ApplyNoticeService().updateLike(noticeNo, userId);
 		Notice aOne = new ApplyNoticeService().printOneByNo(noticeNo);
 		if(aOne != null) {
 			request.setAttribute("aOne", aOne);
 			request.setAttribute("nLike", nLike);
+			request.setAttribute("userId", userId);
 			// NoticeReply setAttribute 해줌
 			request.getRequestDispatcher("/WEB-INF/views/Notice/Apply/ApplyContents.jsp").forward(request, response);
 		}else {

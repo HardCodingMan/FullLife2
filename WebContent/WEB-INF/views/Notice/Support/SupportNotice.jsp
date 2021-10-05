@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"  href="/css/supportnotice.css">
+
 </head>
 <body>
 	<header>
@@ -50,7 +51,6 @@
                     </c:forEach>
                 </ul>
             </div>
-            <a href="/Notice/Apply/ApplyNoticeWriter"><button id="write">글쓰기</button></a>
             <div id="page">${pageNavi }</div>
         </section>
         </div>
