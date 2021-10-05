@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>아이디 찾기</title>
-    <link rel="stylesheet" href="../../../css/findpw.css">
+    <link rel="stylesheet" href="/css/findpw.css">
     <script src="../js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -34,7 +34,7 @@
         <section class="find">
             <div>
                 <div class="find-title">
-                    <p>아이디 찾기</p>
+                    <p>비밀번호 찾기</p>
                 </div>
                 <div class="find-field1">
                     <div>
@@ -64,7 +64,7 @@
             <div class="pw-email">
                 <form action="/member/findPw" method="post">
                     <input type="text" name="user-id" id="" placeholder="아이디를 입력해주세요."><br>
-                    <input type="text" name="user-name" id="" placeholder="이름을 입력해주세요."><br>
+                    <input type="text" name="user-name" id="" placeholder="이름을 입력해주세요." ><br>
                     <input type="submit" value="비밀번호 찾기">
                 </form>
             </div>
