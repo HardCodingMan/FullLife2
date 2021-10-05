@@ -1,4 +1,4 @@
-package manager.support.controller;
+package manager.result.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,21 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import manager.support.model.service.M_supService;
-import manager.support.model.vo.M_supPage;
-import manager.support.model.vo.M_support;
+import manager.result.model.service.M_resultService;
+import manager.result.model.vo.M_FilePage;
+import manager.result.model.vo.M_patient;
 
 /**
- * Servlet implementation class M_supportSearchServlet
+ * Servlet implementation class M_resultSearchServlet
  */
-@WebServlet("/manager/m_support_search")
-public class M_supportSearchServlet extends HttpServlet {
+@WebServlet("/manager/m_result_search")
+public class M_resultSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public M_supportSearchServlet() {
+    public M_resultSearchServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,22 +32,19 @@ public class M_supportSearchServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String keyword = request.getParameter("searchKeyword");
-		System.out.println(keyword);
+		int keyword = Integer.parseInt(request.getParameter("searchKeyword"));
 		int currentPage = 1;
 		String currentPageVal = request.getParameter("currentPage");
 		
 		if(currentPageVal != null) {
-			currentPage = Integer.parseInt(currentPageVal);
+			currentPage = Integer.parseInt("currentPage");
 		}
-		
-		M_supPage pd = new M_supService().printSearchSup(keyword, currentPage);
-		List<M_support> sList = pd.getsList();
-		System.out.println(pd.toString());
-		if(!sList.isEmpty()) {
-			request.setAttribute("sList", sList);
+		M_FilePage pd = new M_resultService().printSearchResult(keyword, currentPage);
+		List<M_patient> pList = pd.getfPdList();
+		if(!pList.isEmpty()) {
+			request.setAttribute("pList", pList);
 			request.setAttribute("pageNavi", pd.getPageNavi());
-			request.getRequestDispatcher("/WEB-INF/manager/manager_support/m_support_search.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_result/m_result_search.jsp").forward(request, response);
 		}else {
 			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
 		}

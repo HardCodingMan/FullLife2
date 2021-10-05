@@ -103,6 +103,30 @@ public class M_supService {
 		return result;
 	}
 
+
+	public M_supPage printSearchSup(String keyword, int currentPage) {
+		Connection conn = null;
+		List<M_support> sList = null;
+		String searchPageNavi = null;
+		M_supPage pd = new M_supPage();
+		M_supDAO sDao = new M_supDAO();
+		System.out.println("service"+keyword);
+		try {
+			conn = jdbcTemplate.createConnection();
+			sList = sDao.getSearchSup(conn, keyword, currentPage);
+			searchPageNavi = sDao.getSearchPageNavi(conn, keyword, currentPage);
+			pd.setsList(sList);
+			pd.setPageNavi(searchPageNavi);
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+
+		return pd;
+	}
+
 	
 	
 	

@@ -100,6 +100,29 @@ public class M_resultService {
 		return result;
 	}
 
+
+	public M_FilePage printSearchResult(int keyword, int currentPage) {
+		Connection conn = null;
+		List<M_patient> pList = null;
+		String searchPageNavi = null;
+		M_FilePage pd = new M_FilePage();
+		M_resultDAO rDao = new M_resultDAO();
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			pList = rDao.getSearchResult(conn, keyword, currentPage);
+			searchPageNavi = rDao.getSearchPageNavi(conn, keyword, currentPage);
+			pd.setfPdList(pList);
+			pd.setPageNavi(searchPageNavi);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return pd;
+	}
+
 	
 	
 	
