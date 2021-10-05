@@ -238,19 +238,19 @@ header{
                     }
 
                 .list-btn{
-                	width:100%;
+                	width: 100;
                     margin-top: 6%;
                     text-align: center;
                 }
                     .list-btn button{
-                        width: 30%;
+                        width: 29%;
                         height: 32px;
                         background-color: rgba(135, 207, 235, 0.699);
                         border-radius: 5px;
                         border: 1px solid rgba(128, 128, 128, 0.671);
                         cursor: pointer;
                         box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.514);
-                        font-size: 14px;
+                        font-size: 12px;
                     }
                     .list-btn a{
                     	text-decoration: none;
