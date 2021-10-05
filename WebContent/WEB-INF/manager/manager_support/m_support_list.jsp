@@ -45,12 +45,21 @@
                 <div id="list-div">
                 <div class="search-div">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <form>
                     <input type="text" id="search" placeholder="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
 =======
                     <form action="/manager/m_support_search" method="get">
                     <input type="text" id="search" name="searchKeyword" placeholder="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
 >>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
+=======
+                    <form action="/manager/m_support_search" method="get">
+                    <input type="text" id="search" name="searchKeyword" placeholder="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
+=======
+                    <form>
+                    <input type="text" id="search" placeholder="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
+>>>>>>> master
+>>>>>>> ssolol
                     <input type="submit" id="search-btn" value="검색">
                     </form>    
                 </div>
@@ -70,10 +79,17 @@
                         </div>
                           <div class="list-btn">
 <<<<<<< HEAD
+<<<<<<< HEAD
                                 <button type="submit" class="bt1"><a href="/manager/m_supprot_remove?notiNo=${sup.notiNo }">삭제</a></button>
 =======
                                 <button type="submit" class="bt1"><a href="/manager/m_support_remove?notiNo=${sup.notiNo }">후원 완료</a></button>
 >>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
+=======
+                                <button type="submit" class="bt1"><a href="/manager/m_support_remove?notiNo=${sup.notiNo }">후원 완료</a></button>
+=======
+                                <button type="submit" class="bt1"><a href="/manager/m_supprot_remove?notiNo=${sup.notiNo }">삭제</a></button>
+>>>>>>> master
+>>>>>>> ssolol
                         </div>
                         </div>
                         </c:forEach>

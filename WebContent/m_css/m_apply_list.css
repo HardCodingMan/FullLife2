@@ -195,12 +195,19 @@ header{
             
            		.list-img{
 <<<<<<< HEAD
+<<<<<<< HEAD
             		width: 210px;
             		height: 210px;
 =======
             		width: 250px;
             		height: 220px;
 >>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
+=======
+            		width: 250px;
+            		height: 220px;
+            		width: 210px;
+            		height: 210px;
+>>>>>>> ssolol
             	}
                 .list-img img{
                     width: 230px;
@@ -208,10 +215,15 @@ header{
                 }
                 .list-text{
 <<<<<<< HEAD
+<<<<<<< HEAD
                 	width: 200px;
 =======
                 	width: 250px;
 >>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
+=======
+                	width: 250px;
+                	width: 200px;
+>>>>>>> ssolol
                 	height: 25px;
                     text-align: center;
                     font-size: 20px;
@@ -242,7 +254,7 @@ header{
                         line-height: 50px;
                         font-size: 20px;
                         font-weight: bold;
-                        color: darkblue;
+                        color: gold;
                     }
 
                 .list-btn{

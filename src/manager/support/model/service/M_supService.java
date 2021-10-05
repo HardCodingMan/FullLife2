@@ -82,8 +82,11 @@ public class M_supService {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
+=======
+>>>>>>> ssolol
 	public int updateSup(int notiNo) {
 		int result = 0;
 		Connection conn = null;
@@ -129,7 +132,10 @@ public class M_supService {
 		return pd;
 	}
 
+<<<<<<< HEAD
 >>>>>>> 0b8b31763b892601bd08fbfdfc73c26b044b36ce
+=======
+>>>>>>> ssolol
 	
 	
 	
