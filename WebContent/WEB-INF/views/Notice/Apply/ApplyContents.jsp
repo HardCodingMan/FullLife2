@@ -29,7 +29,7 @@
                     <div><p id="notice-views">조회수 ${aOne.views }</p></div>
                 </div>
                 <div id="notice-contents-section">
-                    <div id="notice-title"><p id="No">글번호 : ${aOne.noticeNo }</p><p id="userId">글쓴이 : ${aOne.userId }</p><p id="title">${aOne.noticeTitle }</p></div>
+                    <div id="notice-title"><p id="No">글번호 : ${aOne.noticeNo }</p><p id="userId">글쓴이 : ${aOne.userId }</p><p id="title">${aOne.userId }</p></div>
                     <div id="notice-contents">
                         <div id="contents-img"><img src="/fileupload/${aOne.picName }" alt="후원 게시글 첨부사진"></div>
                         <div id="contents-text"><p>${aOne.noticeContents }</p></div>
