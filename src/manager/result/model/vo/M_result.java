@@ -2,7 +2,7 @@ package manager.result.model.vo;
 
 public class M_result {
 
-	private int resultNo;
+	private int fileNo;
 	private String fileName;
 	private String filePath;
 	private double fileSize;
@@ -12,12 +12,13 @@ public class M_result {
 	
 	public M_result() {}
 
-	public int getResultNo() {
-		return resultNo;
+	
+	public int getFileNo() {
+		return fileNo;
 	}
 
-	public void setResultNo(int resultNo) {
-		this.resultNo = resultNo;
+	public void setFileNo(int fileNo) {
+		this.fileNo = fileNo;
 	}
 
 	public String getFileName() {
@@ -68,11 +69,14 @@ public class M_result {
 		this.hospitalNo = hospitalNo;
 	}
 
+
 	@Override
 	public String toString() {
-		return "M_result [resultNo=" + resultNo + ", fileName=" + fileName + ", filePath=" + filePath + ", fileSize="
+		return "M_result [fileNo=" + fileNo + ", fileName=" + fileName + ", filePath=" + filePath + ", fileSize="
 				+ fileSize + ", checkDate=" + checkDate + ", userId=" + userId + ", hospitalNo=" + hospitalNo + "]";
 	}
+
+
 	
 	
 	

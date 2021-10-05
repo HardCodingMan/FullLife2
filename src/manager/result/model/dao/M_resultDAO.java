@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import common.JDBCTemplate;
+import manager.result.model.vo.M_patient;
 import manager.result.model.vo.M_result;
+import oracle.jdbc.proxy.annotation.Pre;
 
 public class M_resultDAO {
 
@@ -22,11 +24,11 @@ public class M_resultDAO {
 //		return null;
 //	}
 
-	public List<M_result> selectAllResult(Connection conn, int currentPage) {
+	public List<M_patient> selectAllPatient(Connection conn, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY RESULT_NO DESC)AS NUM, RESULT_NO,FILE_NAME,FILE_PATH,FILE_SIZE,CHECK_DATE,USER_ID,HOSPITAL_NO FROM RESULT) WHERE NUM BETWEEN ? AND ?";
-		List<M_result> fList = null;
+		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY RESULT_NO DESC)AS NUM, RESULT_NO,PATIENT.USER_ID,PATIENT_NAME,FILE_NAME FROM PATIENT LEFT JOIN RESULT ON PATIENT.USER_ID=RESULT.USER_ID) WHERE NUM BETWEEN ? AND ?";
+		List<M_patient> fList = null;
 		
 		try {
 			pstmt=conn.prepareStatement(query);
@@ -36,17 +38,15 @@ public class M_resultDAO {
 			pstmt.setInt(1, start);
 			pstmt.setInt(2, end);
 			rset = pstmt.executeQuery();
-			fList = new ArrayList<M_result>();
+			fList = new ArrayList<M_patient>();
 			while(rset.next()) {
-				M_result result = new M_result();
-				result.setResultNo(rset.getInt("RESULT_NO"));
-				result.setFileName(rset.getString("FILE_NAME"));
-				result.setFilePath(rset.getString("FILE_PATH"));
-				result.setFileSize(rset.getDouble("FILE_SIZE"));
-				result.setCheckDate(rset.getString("CHECK_DATE"));
-				result.setUserId(rset.getString("USER_ID"));
-				result.setHospitalNo(rset.getInt("HOSPITAL_NO"));
-				fList.add(result);
+				M_patient patient = new M_patient();
+				patient.setResultNo(rset.getInt("RESULT_NO"));
+				patient.setUserId(rset.getString("USER_ID"));
+				patient.setpName(rset.getString("PATIENT_NAME"));
+				patient.setFileName(rset.getString("FILE_NAME"));
+
+				fList.add(patient);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -106,7 +106,7 @@ public class M_resultDAO {
 		int totalValue = 0;
 		Statement stmt = null;
 		ResultSet rset = null;
-		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM RESULT";
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM PATIENT";
 		
 		try {
 			stmt = conn.createStatement();
@@ -124,11 +124,61 @@ public class M_resultDAO {
 		return totalValue;
 	}
 
-	public int insertResultFile(Connection conn, M_result m_result) {
+	public int insertResultFile(Connection conn, M_patient patient) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "";
-		return 0;
+		String query = "INSERT INTO RESULT VALUES(SEQ_RESULT.NEXTVAL, ?,?,?,SYSDATE,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, patient.getFileName());
+			pstmt.setString(2, patient.getFilePath());
+			pstmt.setLong(3, patient.getFileSize());
+			pstmt.setString(4, patient.getUserId());
+			pstmt.setInt(5, patient.getHosNo());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
 	}
 
+	public int deleteFile(Connection conn, String fileUser, String fileName) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "DELETE FROM RESULT WHERE USER_ID=? AND FILE_NAME=?";
+		
+		try {
+			pstmt=conn.prepareStatement(query);
+			pstmt.setString(1, fileUser);
+			pstmt.setString(2, fileName);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
