@@ -12,7 +12,7 @@ body{background-color:rgb(241, 241, 241);}
     #user-id, #user-pw {
         height: 40px;
         width: 350px;
-        font-size: 10px;
+        font-size: 13px;
         margin-top: 18px;
     }
     #login-btn {
