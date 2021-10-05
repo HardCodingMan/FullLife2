@@ -8,6 +8,8 @@
 <title>예약하기</title>
 <link rel="stylesheet" type="text/css" href="/css/reservation.css">
 
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 </head>
 <body>
 <script>
@@ -26,6 +28,7 @@ window.onload = function() {
     	<jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
     </header>
     <main>
+    <form action="/reserve/reservation" method="post">
         <div id="main-navi">
             <h2>예약하기</h2>
         </div>
@@ -33,11 +36,11 @@ window.onload = function() {
             <h4><u>장기선택(중복가능)</u></h4>
             <table id="organTable">
                 <tr>
-                    <td><img src="../img/organTrans/liver.png" class="btn-organ"></td>
-                    <td><img src="../img/organTrans/heart.png" class="btn-organ"></td>
-                    <td><img src="../img/organTrans/tooth.png" class="btn-organ"></td>
-                    <td><img src="../img/organTrans/bone.png" class="btn-organ"></td>
-                    <td><img src="../img/organTrans/lung.png" class="btn-organ"></td>
+                    <td><img src="/img/liver.png" name="liver" class="btn-organ"></td>
+                    <td><img src="/img/heart.png" name="heart" class="btn-organ"></td>
+                    <td><img src="/img/tooth.png" name="tooth" class="btn-organ"></td>
+                    <td><img src="/img/bone.png" name="bone" class="btn-organ"></td>
+                    <td><img src="/img/lung.png" name="lung" class="btn-organ"></td>
                 </tr>
                 <tr>
                     <td>폐</td>
@@ -87,44 +90,20 @@ window.onload = function() {
                 <tr>
                     <td>
                         <select id="region">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        	<option value="" selected>----- 병원 선택 ------</option>
-=======
->>>>>>> origin/Hyunseok
-=======
->>>>>>> 5c3b789bfc223a181bc4cdbbe572cac4e2184544
-=======
->>>>>>> origin/Hyunseok
+                        	<option value="" disabled <c:if test="${metroCity eq null }">selected</c:if>>지역 선택</option>
                             <option value="seoul"<c:if test="${metroCity eq  'seoul'}">selected</c:if>>서울
                             <option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option>
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
                             <option value="busan" <c:if test="${metroCity eq 'busan' }">selected</c:if>>부산</option>
                             <option value="gwangju"<c:if test="${metroCity eq 'gwangju' }">selected</c:if>>광주</option>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 <!--                         	<option value="" selected>----- 병원 선택 ------</option> -->
 <!--                             <option value="seoul">서울</option> -->
 <!--                             <option value="daejeon">대전</option> -->
 <!--                             <option value="daegu">대구</option> -->
 <!--                             <option value="busan">부산</option> -->
 <!--                             <option value="gwangju">광주</option> -->
-=======
->>>>>>> origin/Hyunseok
-=======
-=======
-                        	<option value="" selected>----- 병원 선택 ------</option>
-                            <option value="seoul">서울</option>
-                            <option value="daejeon">대전</option>
-                            <option value="daegu">대구</option>
-                            <option value="busan">부산</option>
-                            <option value="gwangju">광주</option>
->>>>>>> e656fdeda676b8b971d3033e5531efe878fb775c
->>>>>>> 5c3b789bfc223a181bc4cdbbe572cac4e2184544
-=======
->>>>>>> origin/Hyunseok
+
                         </select>
                     </td>           
                 </tr>
@@ -133,62 +112,28 @@ window.onload = function() {
             <div id="hosDetail">
                 <div id="viewHos">
                     <h4>병원명</h4>
-<<<<<<< HEAD
-    				<div id="result">
-    				<c:forEach items="${requestScope.hospitals }" var="hospital" varStatus="index" >
-    				<label><input type="radio" id="hospital-name" name="chosen-hospital"><b style="font-size:25px">${hospital.hospitalName }</b>
-                		<h4 style="margin:10px">${hospital.hospitalAddr }</h4></label>  <button onclick=>위치보기</button>
-
-    				<c:forEach items="${requestScope.hospitals}" var="hospital" varStatus="index" >
-    				<label><input type="radio" id="hospital-name" name="chosen-hospital"><b style="font-size:25px">${hospital.hospitalName }</b>
-                		<h4 style="margin:10px">${hospital.hospitalAddr }</h4></label>  <button onclick="selectHospital(${hospital.hospitalAddr}})">위치보기</button>
-
-           			 </c:forEach>
-           			 </div>
-                </div>
-                <div id="dateTime">
-                	<div id="map" style="width:500px;height:400px;">
-                	<h4>지도</h4>
-					<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=977b62db984a36094fb13c99f6a75050&libraries=services"></script>
-					<script>
-				            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-				            mapOption = {
-				                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-				                level: 3 
-				            };  
-				            
-				            var map = new kakao.maps.Map(mapContainer, mapOption); 
-				            var geocoder = new kakao.maps.services.Geocoder();
-				            geocoder.addressSearch('서울 서초구 반포대로 222', function (result, status) {
-				                if (status === kakao.maps.services.Status.OK) {
-				                    var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-				                    
-				                    var marker = new kakao.maps.Marker({
-				                        map: map,
-				                        position: coords
-				                    });
-				                    var infowindow = new kakao.maps.InfoWindow({
-				                        content: '<div style="width:150px;text-align:center;padding:6px 0;">서울성모병원</div>'
-				                    });
-				                    infowindow.open(map, marker);
-				                    map.setCenter(coords);
-				                } 
-				            });    
-		            </script>
-		            </div>         
-=======
                 <div id="result">
                 <c:forEach items="${requestScope.hospitals}" var="hospital" varStatus="index" >
-                <label><input type="radio" id="hospital-name" name="chosen-hospital" hidden><b style="font-size:25px">${hospital.hospitalName }</b>
-                      <h4 style="margin:10px">${hospital.hospitalAddr }</h4></label>  <button onclick="selectHospital(${hospital.hospitalAddr}})">위치보기</button>
-                     </c:forEach>
+                <label><input type="text" id="hospital-name" name="chosen-hospital" value="${hospital.hospitalName }">
+<%--                  <span id="addr">${hospital.hospitalAddr }</span> --%>
+      <input type="text" id="addr" value="${hospital.hospitalAddr }">
+                 
+                 </span></label>
+<!--                   <input type="submit" value="위치보기" onclick="selectHospital()"> -->
+                 <button onclick="selectHospital()">위치보기</button>
+                </c:forEach>
                      </div>
                 </div>
                 <div id="dateTime">
-                   <div id="map" style="width:500px;height:400px;">
                    <h4>지도</h4>
+                   <div id="map" style="width:500px; height:400px;">
                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=977b62db984a36094fb13c99f6a75050&libraries=services"></script>
                <script>
+               function selectHospital(){
+            	   var e = document.getElementById('addr').value;
+            	   var name = document.getElementById('hospital-name').value;
+            	   console.log(e);
+            	   console.log(name);
                         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                         mapOption = {
                             center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -197,7 +142,7 @@ window.onload = function() {
                         
                         var map = new kakao.maps.Map(mapContainer, mapOption); 
                         var geocoder = new kakao.maps.services.Geocoder();
-                        geocoder.addressSearch('서울 서초구 반포대로 222', function(result, status) {
+                        geocoder.addressSearch(e, function(result, status) {
                             if (status === kakao.maps.services.Status.OK) {
                                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
                                 
@@ -206,17 +151,21 @@ window.onload = function() {
                                     position: coords
                                 });
                                 var infowindow = new kakao.maps.InfoWindow({
-                                    content: '<div style="width:150px;text-align:center;padding:6px 0;">서울성모병원</div>'
+                                    content: '<div style="width:150px;text-align:center;padding:6px 0;">'+name+'</div>'
                                 });
                                 infowindow.open(map, marker);
                                 map.setCenter(coords);
                             } 
                         });    
+               }
                   </script>
-                  </div>         
->>>>>>> origin/Hyunseok
+                  </div>     
                     <div id="selectTime">
-                        <h4>시간</h4>
+                        <h4>날짜 및 시간</h4>
+                        
+                      	<div id="Date">
+                      	
+                      	</div> 
                         <div id="timeBtns">
                             <input type="button" value="09:00" class="btn-time">
                             <input type="button" value="10:00" class="btn-time">
@@ -229,6 +178,7 @@ window.onload = function() {
                             <input type="button" value="17:00" class="btn-time">
                             <input type="button" value="18:00" class="btn-time">
                         </div> 
+                       
                     </div>
                 </div>
             </div>
@@ -238,43 +188,39 @@ window.onload = function() {
         <div id="info">
             <div id="buyerInfo">
                 <h4><u>예약자정보</u></h4>
-                <form>
                     <label>
-                        <span>이름</span><input type="text" name="userName" id="userName" class="input1" placeholder="이름을 입력해주세요">
+                        <span>이름</span><input type="text" name="user-name" id="user-name" class="input1" value="${sessionScope.userId }" placeholder="이름을 입력해주세요">
                     </label><br>
                     <label>
-                        <span>주민등록번호</span><input type="text" name="zumin" id="zumin" class="input1"  placeholder="-을 제외한 13자리를 입력해주세요">
+                        <span>주민등록번호</span><input type="text" name="user-zumin" id="user-zumin" class="input1" value="${sessionScope.userZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
                     </label><br>
                     <label>
-                        <span>전화번호</span><input type="text" name="phone" id="phone" class="input1"  placeholder="-을 제외한 11자리를 입력해주세요">
+                        <span>전화번호</span><input type="text" name="user-phone" id="user-phone" class="input1" value="${sessionScope.userPhone }" placeholder="-을 제외한 11자리를 입력해주세요">
                     </label><br>
                     <label>
-                        <span>주소</span><input type="text" name="addr" id="addr" class="input1">
+                        <span>주소</span><input type="text" name="user-addr" id="user-addr" class="input1" value="${sessionScope.userAddr }">
                     </label><br>
-                    <label><input type="checkbox" name="check-agree" id="check-agree" checked> 구매자와 이식 받는자가 같습니다.</label>
-                </form>
-            </div>
+                    <label><input type="checkbox" name="check" id="check" > 구매자와 이식 받는자가 같습니다.</label>
+             </div>
             <br>
             <br>
             <div id="realInfo">
             <h4><u>환자정보</u></h4>
-            <form>
                 <label>
-                    <span>이름</span> <input type="text" name="userName" id="userName" class="input1"  placeholder="이름을 입력해주세요">
+                    <span>이름</span> <input type="text" name="patient-name" id="patient-name" class="input1" value="${requestScope.reserve.patientName }" placeholder="이름을 입력해주세요">
                 </label><br>
                 <label>
-                    <span>주민등록번호</span> <input type="text" name="zumin" id="zumin" class="input1"  placeholder="-을 제외한 13자리를 입력해주세요">
+                    <span>주민등록번호</span> <input type="text" name="patient-zumin" id="patient-zumin" class="input1" value="${requestScope.reserve.patientZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
                 </label><br>
                 <label>
-                    <span>전화번호</span> <input type="text" name="phone" id="phone" class="input1"  placeholder="-을 제외한 11자리를 입력해주세요">
+                    <span>전화번호</span> <input type="text" name="patient-phone" id="patient-phone" class="input1" value="${requestScope.reserve.patientPhone }" placeholder="-을 제외한 11자리를 입력해주세요">
                 </label><br>
                 <label>
-                    <span>주소</span> <input type="text" name="addr" id="addr" class="input1" >
+                    <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input1" value="${requestScope.reserve.patientAddr }" >
                 </label><br>
                 <div id="relation"> 
-                    <span>환자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="" id="parent"> 자녀<input type="checkbox" name="" id="child"></label><br>
+                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="parent" id="parent"> 자녀<input type="checkbox" name="child" id="child"></label><br>
                 </div>
-            </form>
             </div>
         </div>
         <br>
@@ -405,7 +351,7 @@ window.onload = function() {
                     d.이용자의 아이디 및 비밀번호의 관리의 부실로 인한 모든 책임은 이용자가 부담합니다.
                     e.이용자는 아이디 및 비밀번호를 도난당하거나 제3자에게 사용되고 있음을 인지한 경우에는 바로 바이오기술센터에 통보하고 바이오기술센터의 안내가 있는 경우에는 그에 따라야 합니다.
                 </textarea><br>
-                <input type="checkbox" name="" id=""> 위의 이용약관을 읽고 이해했습니다.<br><br><br>
+                <input type="checkbox" name="" id="" required> 위의 이용약관을 읽고 이해했습니다.<br><br><br>
                 <h4>개인정보 처리방침 동의</h4>
                 <textarea name="" id="" cols="175" rows="20">
                     FullLife는 법령의 규정에 따라 수집·보유 및 처리하는 개인정보를 공공업무의 적절한 수행과 정보주체의 권익을 보호하기 위하여 적법하고 적정하게 취급할 것입니다. 또한, 진흥원은 관련 법령에서 규정한 바에 따라 진흥원에서 보유하고 있는 개인정보에 대한 열람청구권 및 정정청구권 등 이용자의 권익을 존중하며, 여러분은 이러한 법령상 권익의 침해 등에 대하여 행정심판법에서 정하는바에 따라 행정심판을 청구할 수 있으며, 개인정보분쟁조정위원회, 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 진흥원의 개인정보 처리방침은 현행 「개인정보보호법」에 근거를 두고 있습니다. 개인정보를 처리하는 우리원 소관 홈페이지의 경우 해당 홈페이지에 별도의 개인정보처리방침을 정하여 운영하고 있습니다.
@@ -434,13 +380,14 @@ window.onload = function() {
                     
                     제4조 개인정보 처리의 위탁
                     FullLife는 원칙적으로 이용자의 동의없이 해당 개인정보의 처리를 타인에게 위탁하지 않습니다. 다만, 진흥원이 제3자에게 개인정보의 처리업무를 위탁하는 경우에는 위탁 업무의 내용과 수탁자를 해당 서비스의 홈페이지에 게시합니다. 당 홈페이지는 개인정보 처리와 관련한 별도의 위탁사항이 없음을 알려드립니다.
-                    </textarea>><br>
-                    <input type="checkbox" name="" id="">위의 개인정보 수집 및 이용에 관한 약관을 읽고 이해했습니다.            
+                    </textarea><br>
+                    <input type="checkbox" name="" id="" required>위의 개인정보 수집 및 이용에 관한 약관을 읽고 이해했습니다.            
             </div>
         </div><br>
         <div id="btn-reserve">
-            <input type="submit" value="예약하기">
+            <button id="nextButton"><a href="/reserve/reservationCheck">예약하기</a></button> 
         </div>
+        </form>
     </main>
     <footer>
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
