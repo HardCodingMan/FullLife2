@@ -1,32 +1,25 @@
-package manager.result.controller;
+package manager.support.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import manager.member.moder.vo.M_PageData;
-import manager.result.model.service.M_resultService;
-import manager.result.model.vo.M_FilePage;
-import manager.result.model.vo.M_patient;
-import manager.result.model.vo.M_result;
+import manager.support.model.service.M_supService;
 
 /**
- * Servlet implementation class ResultListServlet
+ * Servlet implementation class M_supportRemoveServlet
  */
-@WebServlet("/manager/m_result_list")
-public class M_resultListServlet extends HttpServlet {
+@WebServlet("/manager/m_support_remove")
+public class M_supportRemoveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public M_resultListServlet() {
+    public M_supportRemoveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,19 +28,10 @@ public class M_resultListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int currentPage = 0;
-		String getCurrentPage = request.getParameter("currentPage");
-		if(getCurrentPage == null) {
-			currentPage = 1;
-		}else {
-			currentPage = Integer.parseInt(getCurrentPage);
-		}
-		M_FilePage fPd = new M_resultService().printAllPatient(currentPage);
-		List<M_patient> pList = fPd.getfPdList();
-		if(!pList.isEmpty()) {
-			request.setAttribute("pList", pList);
-			request.setAttribute("pageNavi", fPd.getPageNavi());
-			request.getRequestDispatcher("/WEB-INF/manager/manager_result/m_result_list.jsp").forward(request, response);
+		int notiNo = Integer.parseInt(request.getParameter("notiNo"));
+		int result = new M_supService().updateSup(notiNo);
+		if(result > 0) {
+			response.sendRedirect("/manager/m_support_list");
 		}else {
 			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
 		}
