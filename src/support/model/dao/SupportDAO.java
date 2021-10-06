@@ -11,26 +11,24 @@ import support.model.vo.Support;
 public class SupportDAO {
 
 	public Support selectFirstSupport(Connection conn, int firstRank) {
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY (NOW_SUPPORT/NEED_SUPPORT)*100 DESC) AS NUM, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, SUPPORT_HUMAN, NEED_SUPPORT, NOW_SUPPORT, PIC_PATH FROM SUPPORT_NOTICE) WHERE NUM = ?";
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY (NOW_SUPPORT/NEED_SUPPORT)*100 DESC) AS NUM, NOTICE_NO, NOTICE_TITLE, PIC_NAME, NOTICE_CONTENTS, VIEWS, SUPPORT_HUMAN, NEED_SUPPORT, NOW_SUPPORT, PIC_PATH FROM NOTICE) WHERE NUM = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Support support = null;
-		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, firstRank);
-			
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				support = new Support();
 				support.setNoticeTitle(rset.getString("NOTICE_TITLE"));
 				support.setViews(rset.getInt("VIEWS"));
 				support.setPicPath(rset.getString("PIC_PATH"));
+				support.setPicName(rset.getString("PIC_NAME"));
 				support.setNoticeNo(rset.getInt("NOTICE_NO"));
 				support.setNeedSupport(rset.getInt("NEED_SUPPORT"));
 				support.setNowSupport(rset.getInt("NOW_SUPPORT"));
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,7 +40,7 @@ public class SupportDAO {
 	}
 
 	public Support selectSecondSupport(Connection conn, int secondRank) {
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY (NOW_SUPPORT/NEED_SUPPORT)*100 DESC) AS NUM, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, SUPPORT_HUMAN, NEED_SUPPORT, NOW_SUPPORT, PIC_PATH FROM SUPPORT_NOTICE) WHERE NUM = ?";
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER(ORDER BY (NOW_SUPPORT/NEED_SUPPORT)*100 DESC) AS NUM, NOTICE_NO, NOTICE_TITLE, PIC_NAME, NOTICE_CONTENTS, VIEWS, SUPPORT_HUMAN, NEED_SUPPORT, NOW_SUPPORT, PIC_PATH FROM NOTICE) WHERE NUM = ?";
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Support support = null;
@@ -50,18 +48,17 @@ public class SupportDAO {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, secondRank);
-			
 			rset = pstmt.executeQuery();
 			if(rset.next()) {
 				support = new Support();
 				support.setNoticeTitle(rset.getString("NOTICE_TITLE"));
 				support.setViews(rset.getInt("VIEWS"));
 				support.setPicPath(rset.getString("PIC_PATH"));
+				support.setPicName(rset.getString("PIC_NAME"));
 				support.setNoticeNo(rset.getInt("NOTICE_NO"));
 				support.setNeedSupport(rset.getInt("NEED_SUPPORT"));
 				support.setNowSupport(rset.getInt("NOW_SUPPORT"));
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,8 +66,6 @@ public class SupportDAO {
 			JDBCTemplate.close(pstmt);
 			JDBCTemplate.close(rset);
 		}
-		
-		
 		return support;
 	}
 

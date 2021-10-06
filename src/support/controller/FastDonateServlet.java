@@ -6,7 +6,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
 import support.model.service.SupportService;
 import support.model.vo.Support;
 
@@ -29,33 +32,28 @@ public class FastDonateServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int firstRank = Integer.parseInt(request.getParameter("rank1"));
-		int secondRank = Integer.parseInt(request.getParameter("rank2"));
-		int percentage1 = 0;
-		int percentage2 = 0;
-		Support firstSupport = new SupportService().getFirstSupportNotice(firstRank);
-		Support secondSupport = new SupportService().getSecondSupportNotice(secondRank);
-		/*
-		 	int x = 33;
-			int y = 100;
-			System.out.println( (double) x / (double) y * 100.0 + "%");
-		 */
-		double nowSupport1 = firstSupport.getNowSupport();
-		double nowSupport2 = secondSupport.getNowSupport();
-		double needSupport1 = firstSupport.getNeedSupport();
-		double needSupport2 = secondSupport.getNeedSupport();
-		percentage1 = (int) (nowSupport1 / needSupport1 * 100);
-		percentage2 = (int) (nowSupport2 / needSupport2 * 100);
-		
-		if(firstSupport != null && secondSupport != null) {
-			request.setAttribute("firstSupport", firstSupport);
-			request.setAttribute("secondSupport", secondSupport);
-			request.setAttribute("firstPercentage", percentage1);
-			request.setAttribute("secondPercentage", percentage2);
-			request.getRequestDispatcher("/WEB-INF/views/donate/fastDonate.jsp").forward(request, response);
-			
-		} 
-	
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
+		int rank1 = Integer.parseInt(request.getParameter("rank1"));
+		int rank2 = Integer.parseInt(request.getParameter("rank2"));
+//		System.out.println(rank1 +","+ rank2);
+		Member member = new MemberService().getMemberTotalPoint(userId);
+		Support firstRank = new SupportService().getFirstSupportNotice(rank1);
+		Support secondRank = new SupportService().getSecondSupportNotice(rank2);
+		int firstNow = firstRank.getNowSupport();
+		int firstNeed = firstRank.getNeedSupport();
+		int secondNow = secondRank.getNowSupport();
+		int secondNeed = secondRank.getNeedSupport();
+		double percentage1 = (double)firstNow / (double) firstNeed * 100;
+		double percentage2 = (double)secondNow / (double)secondNeed * 100;
+		System.out.println(firstRank.getPicName());
+		System.out.println(percentage2);
+		request.setAttribute("member", member);
+		request.setAttribute("percentage1", percentage1);
+		request.setAttribute("percentage2", percentage2);
+		request.setAttribute("firstRank", firstRank);
+		request.setAttribute("secondRank", secondRank);
+		request.getRequestDispatcher("/WEB-INF/views/donate/fastDonate.jsp").forward(request, response);
 	}
 
 	/**
@@ -65,5 +63,4 @@ public class FastDonateServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

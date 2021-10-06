@@ -2,6 +2,7 @@ package mypage.model.service;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
 import common.JDBCTemplate;
 import member.model.vo.Member;
 import mypage.model.dao.MypageDAO;
@@ -96,7 +97,6 @@ public class MypageService {
 		return result;
 	}
 
-	
 	public int modifyMemberInfo(Member member) {
 		int result = 0;
 		Connection conn = null;
@@ -116,10 +116,7 @@ public class MypageService {
 		} finally {
 			JDBCTemplate.close(conn);
 		}
-		
-		
 		return result;
 	} 
-
 	
 }

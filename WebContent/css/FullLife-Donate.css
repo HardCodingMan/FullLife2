@@ -154,33 +154,36 @@ header{
     margin: auto;
     width: 80%;
     height: 80%;
+    text-align: center;
 }
 
-.input-footer > p, .input-footer > form > p {
+.input-footer p {
     font-weight: 500;
     font-family:'Do Hyeon', sans-serif;
-    padding: 40px 0 10px 0;
-    margin: 0;
+    padding: 10px 0 30px 0;
+    margin-top:10px;
 }
 .input-footer > form {
     margin-top: 30px;
 }
-    #point-btn {
-        position: relative;
-        top: 70px;
-        height: 50px;
-        width: 100%;
-        background-color: #eeeeee;
-        border: none;
-        border-radius: 3px;
-        font-size: 13px;
-        font-weight: 900;
-        cursor: pointer;
-    }
-    #point-btn:hover {
-        background-color: #bdbdbd;
-        color: white;
-    }
+.support-btn {
+    position: relative;
+    top: 60px;
+    width: 100%;
+    background-color: #eeeeee;
+    border: none;
+    border-radius: 3px;
+    font-weight: 900;
+    cursor: pointer;
+}
+.support-btn:hover {
+    background-color: #bdbdbd;
+    color: white;
+}
+#pointBtn {
+	position:relative;
+	top: 0px;
+}
 .slide-wrapper {
     width: 70%;
     height: 100%;
