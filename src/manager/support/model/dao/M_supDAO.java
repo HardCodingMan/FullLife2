@@ -173,7 +173,9 @@ public class M_supDAO {
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
 				M_supReply reply = new M_supReply();
+				reply.setSupReNo(rset.getInt("SUPPORT_REPLY_NO"));
 				reply.setSupReNo(rset.getInt("SUPPROT_REPLY_NO"));
+
 				reply.setReUserId(rset.getString("USER_ID"));
 				reply.setSupReCon(rset.getString("REPLY_CONTENTS"));
 				reply.setSupReDate(rset.getDate("REPLY_DATE"));
@@ -192,8 +194,8 @@ public class M_supDAO {
 	public int deleteReplyOne(Connection conn, int replyNo) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "DELETE FROM SUPPORT_REPLY WHERE SUPPORT_REPLY_NO=?";
-
+		String query = "DELETE FROM SUPPORT_REPLY WHERE SUPPORT_REPLY_NO = ?";
+		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, replyNo);

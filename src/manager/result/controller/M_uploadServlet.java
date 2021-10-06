@@ -55,6 +55,7 @@ public class M_uploadServlet extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request, uploadFilePath, uploadFileLimit, encType, new DefaultFileRenamePolicy());
 		
 		//2. 파일에 대한 정보 저장
+		int hosNo = Integer.parseInt(multi.getParameter("hos-no"));
 		String fileUser = multi.getParameter("user-id");
 		String fileName = multi.getFilesystemName("up-file");
 		File uploadFile = multi.getFile("up-file");
@@ -62,6 +63,7 @@ public class M_uploadServlet extends HttpServlet {
 		long fileSize = uploadFile.length();
 
 		M_patient patient = new M_patient();
+		patient.setHosNo(hosNo);
 		patient.setUserId(fileUser);
 		patient.setFileName(fileName);
 		patient.setFilePath(filePath);
