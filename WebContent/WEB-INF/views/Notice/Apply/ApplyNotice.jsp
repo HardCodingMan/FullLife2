@@ -16,7 +16,7 @@
         <div class="wrapper">
         <section id="main-header">
             <div id="supportnotice-header">
-                <h2>후원 게시판</h2>
+                <h2>신청 게시판</h2>
             </div>
             <div id="search">
             	<form action="/Notice/Apply/ApplyNoticeSearch" method="get">
@@ -40,7 +40,7 @@
                                 </div>
                                 <div id="list-text2">
                                     <div>조회수 : ${aOne.views }<br>추천수 : ${aOne.noticeLike }</div>
-                                    <div>심사중</div>
+                                    <div>${aOne.simsa }</div>
                                 </div>
                             </div>
                         </a>
