@@ -93,31 +93,34 @@
             </div>
             
             <div class="slide-wrapper">
+            	<a href="/Notice/Support/SupportContents?noticeNo=${requestScope.firstRank.noticeNo }" style="text-decoration:none; color:black;">
                 <div class="support-info1">
                     <h1>BEST1. ${requestScope.firstRank.noticeTitle }</h1>
                     <img src="/fileupload/${requestScope.firstRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
                     <div class="support-percentage">
                         <p>조회수: ${requestScope.firstRank.views }</p>
                         <p>달성금액: ${requestScope.firstRank.nowSupport}</p>
-                        <p>달성률: ${requestScope.percentage1 }</p>
+                        <p>달성률: ${requestScope.percentage1 }%</p>
                         <div class="progress-bar">
                             <div class="progress-done" id="bar1" data-done="${requestScope.percentage1 }"></div>
                         </div>
                     </div>
                 </div>
+                </a>
+                <a href="/Notice/Support/SupportContents?noticeNo=${requestScope.secondRank.noticeNo }" style="text-decoration:none; color:black;">
                 <div class="support-info2">
                     <h1>BEST2. ${requestScope.secondRank.noticeTitle }</h1>
                     <img src="/fileupload/${requestScope.secondRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
                     <div class="support-percentage">
                         <p>조회수: ${secondRank.views }</p>
                         <p>달성금액: ${requestScope.secondRank.nowSupport }</p>
-                        <p>달성률: ${requestScope.percentage2 }</p>
+                        <p>달성률: ${requestScope.percentage2 }%</p>
                         <div class="progress-bar second">
                             <div class="progress-done" id="bar2" data-done="${requestScope.percentage2 }"></div>
                         </div>
                     </div>
                 </div>
-                
+                </a>
                 <div class="btn-div">
                     <button class="prev"><i class="fas fa-chevron-left"></i></button>
                     <button class="next"><i class="fas fa-chevron-right"></i></button>
