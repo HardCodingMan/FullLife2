@@ -202,7 +202,7 @@ public class MypageDAO {
 		      PreparedStatement pstmt = null;
 		      ResultSet rset = null;
 		      List<CheckResult>cList = null;
-		      String query="SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY RESULT_NO DESC)AS NUM, RESULT_NO,PATIENT.USER_ID,PATIENT_NAME,FILE_NAME FROM PATIENT LEFT JOIN RESULT ON PATIENT.USER_ID=RESULT.USER_ID) WHERE NUM BETWEEN ? AND ?";
+		      String query="SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY RESULT_NO DESC)AS NUM, FILE_NO, FILE_NAME, CHECK_DATE FROM RESULT LEFT JOIN HOSPITAL ON HOSPITAL.HOSPITAL_NO=RESULT.HOSPITAL_NO) WHERE NUM BETWEEN ? AND ?";
 		      
 		      try {
 				 pstmt = conn.prepareStatement(query);
@@ -215,7 +215,7 @@ public class MypageDAO {
 		         cList= new ArrayList<CheckResult>();
 		         while(rset.next()) {
 		        	 CheckResult result = new CheckResult();
-		        	 result.setResultNo(rset.getInt("RESULT_NO"));
+		        	 result.setFileNo(rset.getInt("FILE_NO"));
 		        	 result.setFileName(rset.getString("FILE_NAME"));
 		        	 result.setHospitalNo(rset.getInt("HOSPITAL_NO"));
 		        	 result.setCheckDate(rset.getDate("CHECK_DATE"));
