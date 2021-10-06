@@ -11,7 +11,9 @@
 </head>
 <body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 <script>
+
  $(document).ready(function() {
 	
 	$("#agreeAll").click(function(){
@@ -31,7 +33,7 @@
 		else
 			$("#agreeAll").prop("checked",true);
 		
-		});
+	});
 	});
 	
     function searchAddr(){
@@ -250,7 +252,7 @@
     userPw.addEventListener("keyup", function(){
         if(this.value.length > 1){
             if(!pwRegex.test(userPw.value)){
-            	pwOut.innerHTML = "<h5 style='color:red'>* 숫자, 영문, 특수문자 각 1자리 이상이면서<br> 8자에서 16자이내 사용 가능합니다.<br> * 사용 가능한 특수 문자 : $!@#%& </h5>";
+               pwOut.innerHTML = "<h5 style='color:red'>* 숫자, 영문, 특수문자 각 1자리 이상이면서<br> 8자에서 16자이내 사용 가능합니다.<br> * 사용 가능한 특수 문자 : $!@#%& </h5>";
                 userPw.addEventListener("blur", function(){
                     if(!pwRegex.test(userPw.value)){
                         userPw.value = "";
@@ -296,21 +298,21 @@
             this.value = "";
         }
     });
-	   function openIdChk(){
-   		var userId = $("#user-id").val();
+      function openIdChk(){
+         var userId = $("#user-id").val();
         $.ajax({
-     	  type: "POST",
-     	  url: "./idCheck",
-     	  data: {userId: userId},
-     	  success: function(result){
-     		  if(result == 1){
-     			  $("#id-out").html("<h6 style='color:red; font-size:15px; font-family:'Do Hyeon', sans-serif;'>사용중인 아이디입니다.</h6>");
-     		  } else if(result == 0) {
-     			  $("#id-out").html("<h6 style='color:blue; font-size:15px; font-family:'Do Hyeon', sans-serif;'>사용할 수 있는 아이디입니다.</h6>");
-     		  }
-     	  }
+          type: "POST",
+          url: "./idCheck",
+          data: {userId: userId},
+          success: function(result){
+             if(result == 1){
+                $("#id-out").html("<h6 style='color:red; font-size:15px; font-family:'Do Hyeon', sans-serif;'>사용중인 아이디입니다.</h6>");
+             } else if(result == 0) {
+                $("#id-out").html("<h6 style='color:blue; font-size:15px; font-family:'Do Hyeon', sans-serif;'>사용할 수 있는 아이디입니다.</h6>");
+             }
+          }
         });
-	   }
+      }
     </script>
 </body>
 </html>

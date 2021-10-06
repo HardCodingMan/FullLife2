@@ -16,9 +16,9 @@
         <form action="/ask/post" method="post">
             <div id="main-navi">
                 <span>
-                    <ul>
+                    <ul class="subMenu">
+                        <li><a href="/faq/FAQ">FAQ</a></li>
                         <li>문의</li>
-                        <li><a href="#">FAQ</a></li>
                     </ul>
                 </span>
             </div>
