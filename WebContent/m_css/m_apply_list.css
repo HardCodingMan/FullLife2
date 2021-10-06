@@ -226,7 +226,7 @@ header{
                         line-height: 25px;
                         border-right: 1px solid gray;
                     }
-                    #list-text2 div:last-child{
+                    #apply-text{
                         width: 49%;
                         height: 100%;
                         float: left;
@@ -235,6 +235,16 @@ header{
                         font-size: 20px;
                         font-weight: bold;
                         color: gold;
+                    }
+                     #apply-text2{
+                        width: 49%;
+                        height: 100%;
+                        float: left;
+                        text-align: center;
+                        line-height: 50px;
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: darkblue;
                     }
 
                 .list-btn{

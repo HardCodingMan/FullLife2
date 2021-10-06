@@ -9,6 +9,7 @@ import manager.apply.model.dao.M_applyDAO;
 import manager.apply.model.vo.M_apply;
 import manager.apply.model.vo.M_applyPage;
 import manager.apply.model.vo.M_applyReply;
+import oracle.net.aso.j;
 
 public class M_applyService {
 
@@ -141,6 +142,27 @@ public class M_applyService {
 		}
 		
 		return pd;
+	}
+
+	public int updateSimsa(int notiNo) {
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new M_applyDAO().updateSimsaApply(conn, notiNo);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
 	}
 
 	

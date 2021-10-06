@@ -59,7 +59,12 @@
                         </div>
                         <div id="list-text2">
                             <div>조회수 : ${apply.views } <br>추천수 : ${apply.notiLike }</div>
-                            <div>심사중</div>
+                           <c:if test="${apply.simsa eq '신청' }">
+                            	<div id="apply-text">${apply.simsa }</div>
+                            </c:if>
+                            <c:if test="${apply.simsa eq '심사중' }">
+                            	<div id="apply-text2">${apply.simsa }</div>
+                            </c:if>
                         </div>
                         <div class="list-btn">
                                 <button type="submit"><a href="/manager/m_apply_update?notiNo=${apply.notiNo }">심사완료</a></button>&nbsp;&nbsp;

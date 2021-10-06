@@ -19,6 +19,7 @@ public class M_apply {
 	private String picName;
 	private char level;
 	private String userId;
+	private String simsa;
 	//댓글
 	private List<M_applyReply> replies;
 	
@@ -117,14 +118,23 @@ public class M_apply {
 		this.userId = userId;
 	}
 
+	public String getSimsa() {
+		return simsa;
+	}
+
+	public void setSimsa(String simsa) {
+		this.simsa = simsa;
+	}
+
 	@Override
 	public String toString() {
 		return "M_apply [notiNo=" + notiNo + ", notiTitle=" + notiTitle + ", notiCon=" + notiCon + ", views=" + views
 				+ ", enroll=" + enroll + ", notiLike=" + notiLike + ", nowSup=" + nowSup + ", needSup=" + needSup
 				+ ", supHuman=" + supHuman + ", picPath=" + picPath + ", picSize=" + picSize + ", picName=" + picName
-				+ ", level=" + level + ", userId=" + userId + ", replies=" + replies + "]";
+				+ ", level=" + level + ", userId=" + userId + ", simsa=" + simsa + ", replies=" + replies + "]";
 	}
 
+	
 	
 	
 	
