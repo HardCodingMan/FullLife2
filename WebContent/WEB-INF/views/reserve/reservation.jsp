@@ -33,7 +33,7 @@ window.onload = function() {
             <h2>예약하기</h2>
         </div>
         <div id="organSelect">
-            <h4><u>장기선택(중복가능)</u></h4>
+            <h4>장기선택(중복가능)</h4>
             <table id="organTable">
                     <tr>
                         <td>
@@ -94,7 +94,7 @@ window.onload = function() {
         <br>
         <hr>
         <div id="findHos">
-            <h4><u>병원선택</u></h4>
+            <h4>병원선택</h4>
             <div id="findArea">
                 <tr>
                     <td>
@@ -192,7 +192,7 @@ window.onload = function() {
         <hr>
         <div id="info">
             <div id="buyerInfo">
-                <h4><u>예약자정보</u></h4>
+                <h4>예약자정보</h4>
                     <label>
                         <span>이름</span><input type="text" name="user-name" id="user-name" class="input1" value="${requestScope.member.userName }" placeholder="이름을 입력해주세요">
                     </label><br>
@@ -210,7 +210,7 @@ window.onload = function() {
             <br>
             <br>
             <div id="realInfo">
-            <h4><u>환자정보</u></h4>
+            <h4>환자정보</h4>
                 <label>
                     <span>이름</span> <input type="text" name="patient-name" id="patient-name" class="input1" value="${requestScope.patient.patientName }" placeholder="이름을 입력해주세요">
                 </label><br>
@@ -388,11 +388,13 @@ window.onload = function() {
                     </textarea><br>
                     <input type="checkbox" name="" id="" required>위의 개인정보 수집 및 이용에 관한 약관을 읽고 이해했습니다.            
             </div>
+            <br><br><br>
         </div><br>
         <div id="btn-reserve">
             <button id="nextButton"><a href="/reserve/reservationCheck">결제 및 예약완료 </a></button> 
         </div>
         </form>
+        <br><br><br>
     </main>
     <footer>
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
