@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import apply.model.service.ApplyNoticeService;
+import apply.model.vo.Notice;
+
 /**
  * Servlet implementation class SupportContentsServlet
  */
@@ -27,15 +30,14 @@ public class SupportContentsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< HEAD
-		request.getRequestDispatcher("/WEB-INF/views/Notice/Support/SupportContents.jsp").forward(request, response);
-=======
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		Notice sOne = new ApplyNoticeService().printOneBySupportNo(noticeNo);
+		int sOnePercentage = (int)((double)sOne.getNowSupport() / (double)sOne.getNeedSupport() * 100);
 		if(sOne != null) {
+			request.setAttribute("percentage", sOnePercentage);
 			request.setAttribute("userId", userId);
 			request.setAttribute("sOne", sOne);
 			// NoticeReply setAttribute 해줌
@@ -43,7 +45,6 @@ public class SupportContentsServlet extends HttpServlet {
 		}else {
 			request.getRequestDispatcher("/WEB-INF/views/Notice/ApplyError.jsp").forward(request, response);
 		}
->>>>>>> 19ffe8aee7964f072206bb00ad913e1cb277f624
 	}
 
 	/**
