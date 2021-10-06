@@ -6,7 +6,7 @@ public class CheckResult {
 	private int fileNo;
 	private String fileName;
 	private String filePath;
-	private int fileSize;
+	private long fileSize;
 	private Date checkDate;
 	private String userId;
 	private int hospitalNo;
@@ -18,7 +18,7 @@ public class CheckResult {
 	
 
 
-	public CheckResult(int fileNo, String fileName, String filePath, int fileSize, Date checkDate, String userId,
+	public CheckResult(int fileNo, String fileName, String filePath, long fileSize, Date checkDate, String userId,
 			int hospitalNo, String hospitalName) {
 		super();
 		this.fileNo = fileNo;
@@ -64,12 +64,12 @@ public class CheckResult {
 	}
 
 
-	public int getFileSize() {
+	public long getFileSize() {
 		return fileSize;
 	}
 
 
-	public void setFileSize(int fileSize) {
+	public void setFileSize(long fileSize) {
 		this.fileSize = fileSize;
 	}
 
