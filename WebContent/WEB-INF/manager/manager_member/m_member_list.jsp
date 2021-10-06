@@ -14,7 +14,16 @@
             <a href="#"><img src="/img/fulllife로고3 (1).png" alt=""></a>
         </div>
         <div id="logout">
-            <button>로그아웃</button>
+           <c:if test="${sessionScope.userId eq null }">
+               <button><a href="/manager/login">LOGIN</a></button>
+            </c:if>
+            <c:if test="${sessionScope.userId ne null }">
+               <button style="width:90px;"><a href="/manager/m_member_list?userId=${sessionScope.userId }">
+               MYPAGE</a></button>
+               <div class="logout">
+               <a href="/manager/logout"><img src="/img/logout.png" style="width:20px;"></a>
+               </div>
+            </c:if>
         </div>
     </header>
     <aside id="left-aside">
