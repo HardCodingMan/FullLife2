@@ -16,7 +16,7 @@ body{
     background-color: rgba(129, 153, 90, 0.719);
     text-align: center;
     padding-top: 2%;
-    background: linear-gradient(to top, ivory 1%, rgba(129, 153, 90, 0.514) 30%, rgba(129, 153, 90, 0.719)95%,rgba(255, 255, 240, 0.678) 100%);
+    background: linear-gradient(to top, ivory 1%, rgba(129, 153, 90, 0.397) 5%, rgba(129, 153, 90, 0.671)50%,rgba(129, 153, 90, 0.521) 95%,rgba(255, 255, 240, 0.678) 100%);
    
 }
 
@@ -73,5 +73,6 @@ body{
   }
     .btn-div button a{
             text-decoration: none;
+            display: block;
             color: black;
         }
