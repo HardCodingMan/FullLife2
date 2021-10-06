@@ -42,7 +42,7 @@ public class ApplyNoticeDAO {
 	public List<Notice> pageAllNotice(Connection conn, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "select * from(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM, NOTICE_no, USER_ID,(select Count(*) from NOTICE_LIKE l where l.NOTICE_NO=r.NOTICE_NO) as NOTICE_LIKE, NOTICE_TITLE, PIC_NAME, NOTICE_CONTENTS ,VIEWS FROM NOTICE r WHERE LEVELCHECK = 'N') where NUM BETWEEN ? AND ?";
+		String query = "select * from(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM, NOTICE_no, USER_ID,(select Count(*) from NOTICE_LIKE l where l.NOTICE_NO=r.NOTICE_NO) as NOTICE_LIKE, NOTICE_TITLE, PIC_NAME, NOTICE_CONTENTS ,VIEWS, SIMSA FROM NOTICE r WHERE LEVELCHECK = 'N' OR LEVELCHECK = 'S') where NUM BETWEEN ? AND ?";
 		List<Notice> aList = null;
 		
 		try {
@@ -64,6 +64,7 @@ public class ApplyNoticeDAO {
 				notice.setNoticeLike(rset.getInt("NOTICE_LIKE"));
 				notice.setPicName(rset.getString("PIC_NAME"));
 				notice.setUserId(rset.getString("USER_ID"));
+				notice.setSimsa(rset.getString("SIMSA"));
 				aList.add(notice);
 			}
 		} catch (SQLException e) {
@@ -587,7 +588,7 @@ public class ApplyNoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<Notice> aList = null;
-		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY NOTICE_NO DESC) AS NUM, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, PIC_PATH, PIC_SIZE, PIC_NAME, USER_ID, NOTICE_LIKE FROM NOTICE WHERE NOTICE_TITLE LIKE ? AND LEVELCHECK = 'N') WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY NOTICE_NO DESC) AS NUM, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, PIC_PATH, PIC_SIZE, PIC_NAME, USER_ID, NOTICE_LIKE, SIMSA FROM NOTICE WHERE NOTICE_TITLE LIKE ? AND LEVELCHECK = 'N' OR LEVELCHECK = 'S') WHERE NUM BETWEEN ? AND ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -608,6 +609,7 @@ public class ApplyNoticeDAO {
 				notice.setNoticeLike(rset.getInt("NOTICE_LIKE"));
 				notice.setPicName(rset.getString("PIC_NAME"));
 				notice.setUserId(rset.getString("USER_ID"));
+				notice.setSimsa(rset.getString("SIMSA"));
 				aList.add(notice);
 			}
 		} catch (SQLException e) {
@@ -699,6 +701,62 @@ public class ApplyNoticeDAO {
 			JDBCTemplate.close(pstmt);
 		}
 		return aList;
+	}
+
+	public int updateUserPoint(Connection conn, String userId, int point) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE MEMBER SET TOTALPOINT = TOTALPOINT - ? WHERE USER_ID = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, point);
+			pstmt.setString(2, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateNowSupport(Connection conn, int noticeNo, int point) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE NOTICE SET NOW_SUPPORT = NOW_SUPPORT + ? WHERE NOTICE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, point);
+			pstmt.setInt(2, noticeNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int updateSupportHuman(Connection conn, int noticeNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE NOTICE SET SUPPORT_HUMAN = SUPPORT_HUMAN + 1 WHERE NOTICE_NO = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, noticeNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
 	}
 
 	

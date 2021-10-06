@@ -39,11 +39,8 @@
                                     <p class="notice-title">${aOne.noticeTitle }</p>
                                 </div>
                                 <div id="list-text2">
-                                    <div>조회수 : ${aOne.views }</div>
-                                    <div>추천수 : ${aOne.noticeLike }</div>
-                                </div>
-                                <div class="list-btn">
-                                    <button>자세히보기</button>
+                                    <div>조회수 : ${aOne.views }<br>추천수 : ${aOne.noticeLike }</div>
+                                    <div>${aOne.simsa }</div>
                                 </div>
                             </div>
                         </a>
