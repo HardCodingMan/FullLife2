@@ -12,7 +12,7 @@
 
 	<header>
         <div id="logo">
-            <a href="#"><img src="/img/fulllife로고3 (1).png" alt=""></a>
+            <a href="/manager/m_main"><img src="/img/fulllife로고3 (1).png" alt=""></a>
         </div>
         <div id="logout">
            <c:if test="${sessionScope.adminId eq null }">
