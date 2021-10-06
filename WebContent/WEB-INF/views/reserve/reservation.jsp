@@ -90,19 +90,12 @@ window.onload = function() {
                 <tr>
                     <td>
                         <select id="region">
-                        	<option value="" disabled <c:if test="${metroCity eq null }">selected</c:if>>지역 선택</option>
+                        	<option value="" disabled selected> 지역 선택</option>
                             <option value="seoul"<c:if test="${metroCity eq  'seoul'}">selected</c:if>>서울
                             <option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option>
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
                             <option value="busan" <c:if test="${metroCity eq 'busan' }">selected</c:if>>부산</option>
                             <option value="gwangju"<c:if test="${metroCity eq 'gwangju' }">selected</c:if>>광주</option>
-
-<!--                         	<option value="" selected>----- 병원 선택 ------</option> -->
-<!--                             <option value="seoul">서울</option> -->
-<!--                             <option value="daejeon">대전</option> -->
-<!--                             <option value="daegu">대구</option> -->
-<!--                             <option value="busan">부산</option> -->
-<!--                             <option value="gwangju">광주</option> -->
 
                         </select>
                     </td>           
