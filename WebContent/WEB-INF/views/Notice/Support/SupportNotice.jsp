@@ -15,9 +15,15 @@
     </header>
     <main>
         <div class="wrapper">
-        <section>
+        <section id="main-header">
             <div id="supportnotice-header">
                 <h2>후원 게시판</h2>
+            </div>
+            <div id="search">
+            	<form action="/Notice/Support/SupportNoticeSearch" method="get">
+                	<input type="text" name="searchKeyword">
+                	<input type="submit" value="검색">
+                </form>
             </div>
         </section>
         <section id="notice-section">
@@ -37,9 +43,9 @@
                                 <p>조회수 : ${sOne.views }</p>
                             </div>
                             <div class="list-percent">                      
-                               	 달성률 : ${sOne.nowSupport }
+                               	 달성률 : ${sOne.nowSupport/sOne.needSupport*100 }%
                                 <div class="prog">
-                                    <div class="progs" id="progressing">80%</div>
+                                    <div class="progs" id="progressing">${sOne.nowSupport/sOne.needSupport*100 }%</div>
                                 </div>
                             </div>
                             <div class="list-btn">
