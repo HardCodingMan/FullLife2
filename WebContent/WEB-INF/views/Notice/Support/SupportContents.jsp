@@ -35,7 +35,7 @@
                     <div id="contents-text"><p>${sOne.noticeContents }</p></div>
                 </div>
                 <div id="notice-bottom">
-                    <div id="point-text"><p id="goal">&nbsp;필요 달성 금액 :&nbsp;</p><p id="goal-money">${sOne.needSupport }원</p><p id="goal-rate">달성률 95%&nbsp;</p></div>
+                    <div id="point-text"><p id="goal">&nbsp;필요 달성 금액 :&nbsp;</p><p id="goal-money">${sOne.needSupport }원</p><p id="goal-rate">달성률 ${sOne.nowSupport/sOne.needSupport*100 }%&nbsp;</p></div>
                     <p id="now-support">현재 후원된 금액 : ${sOne.nowSupport }</p>
                     <div id="point-butn">
                     	<c:if test="${sessionScope.userId eq null }">
@@ -45,7 +45,7 @@
                     	<button onclick="hide();">포인트 후원</button>
                     	</c:if>
                     </div>
-                    <div id="point-view" class="hide"><p>보유한 포인트 : 9999999</p></div>
+                    <div id="point-view" class="hide"><p>보유한 포인트 : ${sOne.totalpoint }</p></div>
                     <div id="point-sub" class="hide"><input type="submit" value="후원하기"><input type="reset" value="취소"></div>
                     <div id="point-input" class="hide"><input type="text" name="" id="" size="35" placeholder="기부할 포인트를 입력해주세요"></div>
                 </div>
