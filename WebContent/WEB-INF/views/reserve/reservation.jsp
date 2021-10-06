@@ -28,59 +28,68 @@ window.onload = function() {
     	<jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
     </header>
     <main>
-    <form action="/reserve/reservation" method="post">
+    <form id="form" action="/reserve/reservation" method="post">
         <div id="main-navi">
             <h2>예약하기</h2>
         </div>
         <div id="organSelect">
             <h4><u>장기선택(중복가능)</u></h4>
             <table id="organTable">
-                <tr>
-                    <td><img src="/img/liver.png" name="liver" class="btn-organ"></td>
-                    <td><img src="/img/heart.png" name="heart" class="btn-organ"></td>
-                    <td><img src="/img/tooth.png" name="tooth" class="btn-organ"></td>
-                    <td><img src="/img/bone.png" name="bone" class="btn-organ"></td>
-                    <td><img src="/img/lung.png" name="lung" class="btn-organ"></td>
-                </tr>
-                <tr>
-                    <td>폐</td>
-                    <td>심장</td>
-                    <td>치아</td>
-                    <td>뼈</td>
-                    <td>간</td>
-                </tr>
-                <tr>
-                    <td>
-                        <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </td>
-                    <td></td>
-                    <td>
-                        <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                        </select>
-                    </td><td>
-                        <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </td><td>
-                        <select>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+                    <tr>
+                        <td>
+                            <input type="checkbox" name="rd-liver" value="liver" id="tab-1">
+                            <label for="tab-1"><img src="/img/liver.png" name="liver" class="btn-organ"></label>
+                        </td>
+                        <td> 
+                            <input type="checkbox" name="rd-heart" id="tab-2">
+                            <label for="tab-2"><img src="/img/heart.png" name="heart" class="btn-organ"></label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="rd-tooth" id="tab-3">
+                            <label for="tab-3"><img src="/img/tooth.png" name="tooth" class="btn-organ"></label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="rd-bone" id="tab-4">
+                            <label for="tab-4"><img src="/img/bone.png" name="bone" class="btn-organ"></label>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="rd-lung" id="tab-5">
+                            <label for="tab-5"><img src="/img/lung.png" name="lung" class="btn-organ"></label>
+                        </td>
+                    </tr>
+                    <tr id="select">
+                        <td>간</td>
+                        <td>심장</td>
+                        <td>
+                           	 치아<br>
+                            <select>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </td>
+                        <td>
+                           	 뼈<br>
+                            <select>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </td>
+                        <td>
+                           	 폐<br>
+                            <select>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                            </select>
+                        </td>
+                    </tr>
+                    
+             </table>
         </div>
         <br>
         <hr>
@@ -90,7 +99,7 @@ window.onload = function() {
                 <tr>
                     <td>
                         <select id="region">
-                        	<option value="" disabled selected> 지역 선택</option>
+                        	<option value=""selected> 지역 선택</option>
                             <option value="seoul"<c:if test="${metroCity eq  'seoul'}">selected</c:if>>서울
                             <option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option>
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
@@ -107,13 +116,13 @@ window.onload = function() {
                     <h4>병원명</h4>
                 <div id="result">
                 <c:forEach items="${requestScope.hospitals}" var="hospital" varStatus="index" >
-                <label><input type="text" id="hospital-name" name="chosen-hospital" value="${hospital.hospitalName }">
+                <label><h3>${hospital.hospitalName }</h3><br>
+<%--                 <input type="text" id="hospital-name" name="chosen-hospital" value="${hospital.hospitalName }"> --%>
 <%--                  <span id="addr">${hospital.hospitalAddr }</span> --%>
-      <input type="text" id="addr" value="${hospital.hospitalAddr }">
-                 
+<%--       			<input type="text" id="addr" value="${hospital.hospitalAddr }"> --%>
+                 ${hospital.hospitalAddr }
                  </span></label>
-<!--                   <input type="submit" value="위치보기" onclick="selectHospital()"> -->
-                 <button onclick="selectHospital()">위치보기</button>
+                 <button value="${hospital.hospitalAddr }-${hospital.hospitalName }" onclick="selectHospital(this.value)">위치보기</button>
                 </c:forEach>
                      </div>
                 </div>
@@ -122,11 +131,14 @@ window.onload = function() {
                    <div id="map" style="width:500px; height:400px;">
                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=977b62db984a36094fb13c99f6a75050&libraries=services"></script>
                <script>
-               function selectHospital(){
-            	   var e = document.getElementById('addr').value;
-            	   var name = document.getElementById('hospital-name').value;
-            	   console.log(e);
-            	   console.log(name);
+               
+               function selectHospital(val){
+//             	   var e = document.getElementById('addr').value;
+//             	   var f= "${hospital.hospitalAddr }";
+            	   var name = val.split("-")[1];
+            	   var address = val.split("-")[0];
+            	   console.log(val.split("-")[0]);
+            	   console.log(val.split("-")[1]);
                         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                         mapOption = {
                             center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -135,7 +147,7 @@ window.onload = function() {
                         
                         var map = new kakao.maps.Map(mapContainer, mapOption); 
                         var geocoder = new kakao.maps.services.Geocoder();
-                        geocoder.addressSearch(e, function(result, status) {
+                        geocoder.addressSearch(address, function(result, status) {
                             if (status === kakao.maps.services.Status.OK) {
                                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
                                 
@@ -200,16 +212,16 @@ window.onload = function() {
             <div id="realInfo">
             <h4><u>환자정보</u></h4>
                 <label>
-                    <span>이름</span> <input type="text" name="patient-name" id="patient-name" class="input1" value="${requestScope.reserve.patientName }" placeholder="이름을 입력해주세요">
+                    <span>이름</span> <input type="text" name="patient-name" id="patient-name" class="input1" value="${requestScope.patient.patientName }" placeholder="이름을 입력해주세요">
                 </label><br>
                 <label>
-                    <span>주민등록번호</span> <input type="text" name="patient-zumin" id="patient-zumin" class="input1" value="${requestScope.reserve.patientZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
+                    <span>주민등록번호</span> <input type="text" name="patient-zumin" id="patient-zumin" class="input1" value="${requestScope.patient.patientZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
                 </label><br>
                 <label>
-                    <span>전화번호</span> <input type="text" name="patient-phone" id="patient-phone" class="input1" value="${requestScope.reserve.patientPhone }" placeholder="-을 제외한 11자리를 입력해주세요">
+                    <span>전화번호</span> <input type="text" name="patient-phone" id="patient-phone" class="input1" value="${requestScope.patient.patientPhone }" placeholder="-을 제외한 11자리를 입력해주세요">
                 </label><br>
                 <label>
-                    <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input1" value="${requestScope.reserve.patientAddr }" >
+                    <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input1" value="${requestScope.patient.patientAddr }" >
                 </label><br>
                 <div id="relation"> 
                     <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="parent" id="parent"> 자녀<input type="checkbox" name="child" id="child"></label><br>
@@ -378,7 +390,7 @@ window.onload = function() {
             </div>
         </div><br>
         <div id="btn-reserve">
-            <button id="nextButton"><a href="/reserve/reservationCheck">예약하기</a></button> 
+            <button id="nextButton"><a href="/reserve/reservationCheck">결제 및 예약완료 </a></button> 
         </div>
         </form>
     </main>
