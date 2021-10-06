@@ -43,9 +43,7 @@ public class EnrollServlet extends HttpServlet {
 		int result = new MemberService().registerMember(member);
 		
 		if(result > 0) {
-			response.sendRedirect("/WEB-INF/views/members/success.html");
+			response.sendRedirect("/member/login");
 		}
-	
-	
-		}
+	}
 }
