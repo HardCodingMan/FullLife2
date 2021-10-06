@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -52,7 +54,9 @@
             <div id="ask-butn">
             <!-- 목록, 삭제 버튼 -->
                 <a href="/ask/list"><button>목록</button></a>
+                <c:if test="${sessionScope.userId eq askOne.userId && sessionScope.userId ne null}">
                 <a href="/ask/remove?askNo=${askOne.askNo }"><button>삭제</button></a>
+                </c:if>
             </div>
         </section>
         </div>
