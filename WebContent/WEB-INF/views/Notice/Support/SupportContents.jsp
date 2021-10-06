@@ -37,7 +37,14 @@
                 <div id="notice-bottom">
                     <div id="point-text"><p id="goal">&nbsp;필요 달성 금액 :&nbsp;</p><p id="goal-money">${sOne.needSupport }원</p><p id="goal-rate">달성률 95%&nbsp;</p></div>
                     <p id="now-support">현재 후원된 금액 : ${sOne.nowSupport }</p>
-                    <div id="point-butn"><button onclick="hide();">포인트 후원</button></div>
+                    <div id="point-butn">
+                    	<c:if test="${sessionScope.userId eq null }">
+							로그인 후 <br>이용가능
+                        </c:if>
+                        <c:if test="${sessionScope.userId ne null }">
+                    	<button onclick="hide();">포인트 후원</button>
+                    	</c:if>
+                    </div>
                     <div id="point-view" class="hide"><p>보유한 포인트 : 9999999</p></div>
                     <div id="point-sub" class="hide"><input type="submit" value="후원하기"><input type="reset" value="취소"></div>
                     <div id="point-input" class="hide"><input type="text" name="" id="" size="35" placeholder="기부할 포인트를 입력해주세요"></div>
@@ -77,7 +84,12 @@
                             <form action="/Notice/Support/SupportNoticeReplyWriter" method="post">
                                  <td>댓글 작성 : </td> <td><input type="text" name="replyContents" placeholder="댓글을 작성해보세요" class="text-input"></td>
                                      <td><input type="hidden" name="noticeNo" value="${sOne.noticeNo }">
-                                     <input type="submit" value="작성"></td>
+                                     <c:if test="${sessionScope.userId eq null }">
+													로그인 후 <br>이용가능
+                                        </c:if>
+                                     <c:if test="${sessionScope.userId ne null  }">
+                                      	<input type="submit" value="작성"></td>
+                                   	 </c:if>
                             </form>     
                         </tr>
                     </table>
