@@ -405,7 +405,7 @@ public class ApplyNoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Notice notice = null;
-		String query = "select NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,PIC_PATH, PIC_SIZE, PIC_NAME, USER_ID, NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN, (select totalpoint from member m where m.user_id= n.user_id ) as totalpoin from notice n where notice_no= ?";
+		String query = "select NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,PIC_PATH, PIC_SIZE, PIC_NAME, USER_ID, NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN, (select totalpoint from member m where m.user_id= n.user_id ) as totalpoint from notice n where notice_no= ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, noticeNo);
@@ -426,7 +426,7 @@ public class ApplyNoticeDAO {
 				notice.setPicSize(rset.getLong("PIC_SIZE"));
 				notice.setPicName(rset.getString("PIC_NAME"));
 				notice.setUserId(rset.getString("USER_ID"));
-				notice.setTotalpoint(rset.getInt("TOTALPOINT"));
+				notice.setTotalpoint(rset.getInt("totalpoint"));
 				supportCountUpdate(conn, viewsCount, noticeNo);
 			}
 			System.out.println(notice.toString());
@@ -659,6 +659,46 @@ public class ApplyNoticeDAO {
 			sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + (endNavi+1) + "'> [다음] </a>");
 		}
 		return sb.toString();
+	}
+
+	public List<Notice> selectSearchSupport(Connection conn, String searchKeyword, int currentPage) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		List<Notice> aList = null;
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() OVER (ORDER BY NOTICE_NO DESC) AS NUM, NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, PIC_PATH, PIC_SIZE, PIC_NAME, USER_ID, NOTICE_LIKE, NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN FROM NOTICE WHERE NOTICE_TITLE LIKE ? AND LEVELCHECK = 'Y') WHERE NUM BETWEEN ? AND ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			int viewCountPerPage = 10; // 한 페이지에 10개의 게시물
+			int start = currentPage * viewCountPerPage - (viewCountPerPage - 1);
+			int end = currentPage * viewCountPerPage;
+			pstmt.setString(1, "%"+searchKeyword+"%");
+			pstmt.setInt(2, start);
+			pstmt.setInt(3, end);
+			aList = new ArrayList<Notice>();
+			rset = pstmt.executeQuery();
+			while(rset.next()) {
+				Notice notice = new Notice();
+				notice.setNoticeNo(rset.getInt("NOTICE_NO"));
+				notice.setNoticeTitle(rset.getString("NOTICE_TITLE"));
+				notice.setNoticeContents(rset.getString("NOTICE_CONTENTS"));
+				notice.setViews(rset.getInt("VIEWS"));
+				notice.setNoticeLike(rset.getInt("NOTICE_LIKE"));
+				notice.setPicName(rset.getString("PIC_NAME"));
+				notice.setUserId(rset.getString("USER_ID"));
+				notice.setNowSupport(rset.getInt("NOW_SUPPORT"));
+				notice.setNeedSupport(rset.getInt("NEED_SUPPORT"));
+				notice.setSupportHuman(rset.getInt("SUPPORT_HUMAN"));
+				aList.add(notice);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return aList;
 	}
 
 	
