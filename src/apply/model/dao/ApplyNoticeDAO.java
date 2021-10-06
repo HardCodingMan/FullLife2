@@ -18,7 +18,7 @@ public class ApplyNoticeDAO {
 	public int insertNotice(Connection conn, Notice notice) {
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO NOTICE VALUES(SEQ_NOTICE_NO.NEXTVAL, ?, ?,DEFAULT,DEFAULT, DEFAULT, ?, DEFAULT, ?, ?, ?, DEFAULT, ?,DEFAULT)";
+		String query = "INSERT INTO NOTICE VALUES(SEQ_NOTICE_NO.NEXTVAL, ?, ?,DEFAULT,DEFAULT, DEFAULT, ?, DEFAULT, ?, ?, ?, DEFAULT, ?,DEFAULT,DEFAULT)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
