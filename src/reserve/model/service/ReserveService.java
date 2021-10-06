@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import hospital.model.dao.HospitalDAO;
 import hospital.model.vo.Hospital;
+import patient.model.vo.Patient;
 import reserve.model.dao.ReserveDAO;
 
 public class ReserveService {
@@ -32,21 +33,22 @@ public class ReserveService {
 		return hospitals;
 	}
 
-//	public int patientInfoCheck(Reserve reserve) {
-//		int result = 0;
-//		Connection conn = null;
-//		
-//		try {
-//			conn = jdbcTemplate.createConnection();
-//			result= new ReserveDAO().checkInfo(conn, reserve);
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}finally {
-//			JDBCTemplate.close(conn);
-//		}
-//		
-//		return result;
+	public int orderComplete(Patient patient) {
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result= new ReserveDAO().orderCom(conn, patient);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
 	}
+}
 
 
