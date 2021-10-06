@@ -44,7 +44,7 @@
                         <c:forEach items="${requestScope.hList}" var="history" varStatus="index">
                     <tr>
                         <td>${history.historyNo}</td>
-                        <td>${history.organNo}</td>
+                        <td>${history.organName}</td>
                         <td>${history.organQuantity}</td>
                         <td>${history.hospitalNo}</td>
                         <td>${history.payment}</td>

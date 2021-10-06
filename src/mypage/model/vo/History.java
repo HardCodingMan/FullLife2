@@ -13,13 +13,12 @@ public class History {
 	private String userId;
 	private int hospitalNo;
 	private String hospitalName;
+	private String organName;
 	
 	public History() {}
-	
-
 
 	public History(int historyNo, int organNo, int organQuantity, Date historyDate, int payment, Date paymentDate,
-			int usedPoint, String userId, int hospitalNo, String hospitalName) {
+			int usedPoint, String userId, int hospitalNo, String hospitalName, String organName) {
 		super();
 		this.historyNo = historyNo;
 		this.organNo = organNo;
@@ -31,9 +30,8 @@ public class History {
 		this.userId = userId;
 		this.hospitalNo = hospitalNo;
 		this.hospitalName = hospitalName;
+		this.organName = organName;
 	}
-
-
 
 	public int getHistoryNo() {
 		return historyNo;
@@ -107,26 +105,30 @@ public class History {
 		this.hospitalNo = hospitalNo;
 	}
 
-	
 	public String getHospitalName() {
 		return hospitalName;
 	}
-
-
 
 	public void setHospitalName(String hospitalName) {
 		this.hospitalName = hospitalName;
 	}
 
+	public String getOrganName() {
+		return organName;
+	}
 
+	public void setOrganName(String organName) {
+		this.organName = organName;
+	}
 
 	@Override
 	public String toString() {
 		return "History [historyNo=" + historyNo + ", organNo=" + organNo + ", organQuantity=" + organQuantity
 				+ ", historyDate=" + historyDate + ", payment=" + payment + ", paymentDate=" + paymentDate
 				+ ", usedPoint=" + usedPoint + ", userId=" + userId + ", hospitalNo=" + hospitalNo + ", hospitalName="
-				+ hospitalName + "]";
+				+ hospitalName + ", organName=" + organName + "]";
 	}
+	
 
 
 
