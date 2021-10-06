@@ -194,9 +194,8 @@ header{
 .support-info1, .support-info2 {
     height: 100%;
     width: 70%;
-    border: 1px solid black;
+    border: 1px solid orange;
     margin: auto;
-    text-align: center;
     cursor: pointer;
 }
 .support-info1 > h1, .support-info2 > h1 {
@@ -210,6 +209,32 @@ header{
     font-family: 'Do Hyeon', sans-serif;
     margin: 0;
     margin-left: -300px;
+}
+.pic-box {
+    width: 80%;
+    height: 70%;
+    margin: auto;
+}
+.view-support-div {
+    height: 35px;
+    width: 80%;
+    display: flex;
+    margin: auto;
+}
+.view-support-div > div:first-child {
+    width: 50%;
+    height: 100%;
+    margin: 0;
+}
+.view-support-div > div:last-child {
+    width: 50%;
+    height: 100%;
+    margin: 0;
+    text-align: right;
+}
+.view-support-div p {
+    font-size: 5px;
+    font-weight: 700;
 }
 .btn-div {
     margin: 0 auto;

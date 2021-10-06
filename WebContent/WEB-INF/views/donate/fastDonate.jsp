@@ -95,12 +95,20 @@
             <div class="slide-wrapper">
             	<a href="/Notice/Support/SupportContents?noticeNo=${requestScope.firstRank.noticeNo }" style="text-decoration:none; color:black;">
                 <div class="support-info1">
-                    <h1>BEST1. ${requestScope.firstRank.noticeTitle }</h1>
-                    <img src="/fileupload/${requestScope.firstRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
+                    <h1 style="text-align:center; font-family:'Do Hyeon', sans-serif;"">인기사연글 ${requestScope.firstRank.noticeTitle }</h1>
+                    <div class="pic-box">
+                        <img src="/fileupload/${requestScope.firstRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
+                    </div>
                     <div class="support-percentage">
-                        <p>조회수: ${requestScope.firstRank.views }</p>
-                        <p>달성금액: ${requestScope.firstRank.nowSupport}</p>
-                        <p>달성률: ${requestScope.percentage1 }%</p>
+                        <div class="view-support-div">
+                            <div>
+                                <p>조회수: ${firstRank.views }</p>
+                                <p>달성금액: ${requestScope.firstRank.nowSupport } point</p>
+                            </div>
+                            <div>
+                                <p>달성률: ${requestScope.percentage1 }%</p>
+                            </div>
+                        </div>
                         <div class="progress-bar">
                             <div class="progress-done" id="bar1" data-done="${requestScope.percentage1 }"></div>
                         </div>
@@ -109,12 +117,21 @@
                 </a>
                 <a href="/Notice/Support/SupportContents?noticeNo=${requestScope.secondRank.noticeNo }" style="text-decoration:none; color:black;">
                 <div class="support-info2">
-                    <h1>BEST2. ${requestScope.secondRank.noticeTitle }</h1>
-                    <img src="/fileupload/${requestScope.secondRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
+                    <h1 style="text-align:center; font-family:'Do Hyeon', sans-serif;">인기사연글 ${requestScope.secondRank.noticeTitle }</h1>
+                    <div class="pic-box">
+                        <img src="/fileupload/${requestScope.secondRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
+                    </div>
                     <div class="support-percentage">
-                        <p>조회수: ${secondRank.views }</p>
-                        <p>달성금액: ${requestScope.secondRank.nowSupport }</p>
-                        <p>달성률: ${requestScope.percentage2 }%</p>
+                        <div class="view-support-div">
+                            <div>
+                                <p>조회수: ${secondRank.views }</p>
+                                <p>달성금액: ${requestScope.secondRank.nowSupport } point</p>
+                                
+                            </div>
+                            <div>
+                                <p>달성률: ${requestScope.percentage2 }%</p>
+                            </div>
+                        </div>
                         <div class="progress-bar second">
                             <div class="progress-done" id="bar2" data-done="${requestScope.percentage2 }"></div>
                         </div>
