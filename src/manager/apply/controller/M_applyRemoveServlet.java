@@ -29,7 +29,8 @@ public class M_applyRemoveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int notiNo = Integer.parseInt(request.getParameter("notiNo"));
-		int result = new M_applyService().deleteApply(notiNo);
+		String userId =request.getParameter("userId");
+		int result = new M_applyService().deleteApply(notiNo, userId);
 		if(result > 0) {
 			response.sendRedirect("/manager/m_apply_list");
 		}else {
