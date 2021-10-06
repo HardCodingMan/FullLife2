@@ -46,13 +46,25 @@ public class ReserveDAO {
 	
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "";
+		String query = "INSERT INTO PATIENT VALUES(SEQ_PATIENT.NEXTVAL, ?,?,?,?,?,?,?,?,?)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, patient.getPatientName());
+			pstmt.setString(2, patient.getPatientAddr());
+			pstmt.setString(3, patient.getPatientPhone());
+			pstmt.setString(4, patient.getRelation());
+			pstmt.setString(5, patient.getPatientZumin());
+			pstmt.setInt(6, patient.getOrganNo());
+			pstmt.setDate(7, patient.getHospitalTime());
+			pstmt.setInt(8, patient.getHospitalNo());
+			pstmt.setString(9, patient.getUserId());
+			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
 		}
 		
 		return result;
