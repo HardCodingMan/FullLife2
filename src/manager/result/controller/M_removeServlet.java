@@ -47,7 +47,7 @@ public class M_removeServlet extends HttpServlet {
 			removeFile.delete();
 			response.sendRedirect("/manager/m_result_list");
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_result/m_result_list.jsp").forward(request, response);
 		}
 	}
 

@@ -26,7 +26,7 @@ public class M_applyReplyServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/manager/manager_apply/m_apply_reply.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/manager/manager_apply/m_apply_list.jsp").forward(request, response);
 	}
 
 	/**

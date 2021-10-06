@@ -53,7 +53,7 @@ public class M_askAnswerServlet extends HttpServlet {
 		if(result>0) {
 			response.sendRedirect("/manager/m_ask_list");
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_ask/m_ask_answer.jsp").forward(request, response);
 		}
 		
 //		char a = (char) b;
