@@ -20,6 +20,7 @@ public class Notice {
 	private String picName;
 	private char levelCheck;
 	private String userId;
+	private int totalpoint;
 		// 댓글
 		private List<ApplyNoticeReply> replist;
 		
@@ -58,6 +59,14 @@ public class Notice {
 		this.levelCheck = levelCheck;
 		this.userId = userId;
 		this.replist = replist;
+	}
+
+	public int getTotalpoint() {
+		return totalpoint;
+	}
+
+	public void setTotalpoint(int totalpoint) {
+		this.totalpoint = totalpoint;
 	}
 
 	public int getNoticeNo() {
@@ -178,8 +187,10 @@ public class Notice {
 				+ ", views=" + views + ", enrollDate=" + enrollDate + ", noticeLike=" + noticeLike + ", nowSupport="
 				+ nowSupport + ", needSupport=" + needSupport + ", supportHuman=" + supportHuman + ", picPath="
 				+ picPath + ", picSize=" + picSize + ", picName=" + picName + ", levelCheck=" + levelCheck + ", userId="
-				+ userId + ", replist=" + replist + "]";
+				+ userId + ", totalpoint=" + totalpoint + ", replist=" + replist + "]";
 	}
+
+	
 
 	
 	
