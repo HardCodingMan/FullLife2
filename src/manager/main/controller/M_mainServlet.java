@@ -1,4 +1,4 @@
-package manager.login.controller;
+package manager.main.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,19 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class M_logoutServlet
+ * Servlet implementation class M_mainServlet
  */
-@WebServlet("/manager/logout")
-public class M_logoutServlet extends HttpServlet {
+@WebServlet("/manager/m_main")
+public class M_mainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public M_logoutServlet() {
+    public M_mainServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,11 +26,7 @@ public class M_logoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		if(session != null) {
-			session.invalidate();
-			response.sendRedirect("/manager/m_main");
-		}
+		request.getRequestDispatcher("/WEB-INF/manager/manager_main/m_main.jsp").forward(request, response);
 	}
 
 	/**
