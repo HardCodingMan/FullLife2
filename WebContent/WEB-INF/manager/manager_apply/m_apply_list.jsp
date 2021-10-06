@@ -60,10 +60,15 @@
                         </div>
                         <div id="list-text2">
                             <div>조회수 : ${apply.views } <br>추천수 : ${apply.notiLike }</div>
-                            <div id="apply-text">신청</div>
+                            <c:if test="${apply.simsa eq '신청' }">
+                           		<div id="apply-text">${apply.simsa }</div>
+                            </c:if>
+                            <c:if test="${apply.simsa eq '심사중' }">
+                            	<div id="apply-text2">${apply.simsa }</div>
+                            </c:if>
                         </div>
                         <div class="list-btn">
-                        		<button type="submit" id="apply-btn">심사 시작</button>&nbsp;
+                              <button type="submit" id="apply-btn"><a href="/manager/m_apply_simsa?notiNo=${apply.notiNo }">심사 시작</a></button>&nbsp;
                                 <button type="submit"><a href="/manager/m_apply_update?notiNo=${apply.notiNo }">심사 완료</a></button>&nbsp;
                                 <button type="submit" class="bt1"><a href="/manager/m_apply_remove?notiNo=${apply.notiNo }">삭제</a></button>
                         </div>
@@ -71,17 +76,17 @@
                     </c:forEach>
                 </div>
                     <div id="page-div">
-                    	${pageNavi }
+                       ${pageNavi }
                     </div>
             
             </div>
         </div>
- <script>
+ <!-- <script>
 
     $("#apply-btn").click(function(){
         $("#apply-text").text("심사중");
         $("#apply-text").css('color','darkblue')
     });
-</script>
+</script> -->
 </body>
 </html>
