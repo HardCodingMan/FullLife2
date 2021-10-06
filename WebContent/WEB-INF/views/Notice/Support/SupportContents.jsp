@@ -47,7 +47,7 @@
                     </div>
                     <div id="point-view" class="hide"><p>보유한 포인트 : ${sOne.totalpoint }</p></div>
                     <form action="/Notice/Support/PointSupport" method="post">
-                    	<input type="hidden" name="noticeNo" value="${sOne.noticeNo }">
+                    	<input type="hidden" name="noticeNo">
                     	<div id="point-sub" class="hide"><input type="submit" value="후원하기"><input type="reset" value="취소"></div>
                     	<div id="point-input" class="hide"><input type="text" name="support-point" id="" size="35" placeholder="기부할 포인트를 입력해주세요"></div>
                     </form>
