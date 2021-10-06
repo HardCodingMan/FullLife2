@@ -15,18 +15,19 @@ import mypage.model.vo.History;
 public class MypageDAO {
    
 
-   public List<History> selectAllList(Connection conn, int historyPage, History history) {
+   public List<History> selectAllList(Connection conn, int historyPage, String userId) {
       PreparedStatement pstmt = null;
       ResultSet rset = null;
       List<History>hList = null;
-      String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY HISTORY_NO DESC)AS NUM, HISTORY_NO, ORGAN_NO, ORGAN_QUANTITY, HISTORY_DATE, PAYMENT, PAYMENT_DATE, USED_POINT, USER_ID, HOSPITAL_NO FROM HISTORY WHERE USER_ID = ? ) WHERE NUM BETWEEN ? AND ?";
+      String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY HISTORY_NO DESC)AS NUM, HISTORY_NO, ORGAN_NO, ORGAN_QUANTITY, HISTORY_DATE, PAYMENT, PAYMENT_DATE, USED_POINT, USER_ID, HOSPITAL_NO FROM HISTORY WHERE USER_ID = ?) WHERE NUM BETWEEN ? AND ?";
       
       try {
          pstmt = conn.prepareStatement(query);
-         pstmt.setString(1, history.getUserId());
+//         pstmt.setString(1, history.getUserId());
          int viewCountPerPage =10;
          int start = historyPage*viewCountPerPage -(viewCountPerPage-1);
          int end = historyPage*viewCountPerPage;
+         pstmt.setString(1, userId);
          pstmt.setInt(2, start);
          pstmt.setInt(3, end);
          rset = pstmt.executeQuery();

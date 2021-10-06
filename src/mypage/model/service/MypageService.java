@@ -20,14 +20,14 @@ public class MypageService {
 	
 
 
-	public HistoryPage printAllList(int historyPage, History history) {
+	public HistoryPage printAllList(int historyPage, String userId) {
 		HistoryPage hisPage = new HistoryPage();
 		Connection conn = null;
 		MypageDAO hDao = new MypageDAO();
 		
 		try {
 			conn=jdbcTemplate.createConnection();
-			hisPage.sethList(hDao.selectAllList(conn, historyPage, history));
+			hisPage.sethList(hDao.selectAllList(conn, historyPage, userId));
 			hisPage.setPageNavi(hDao.getPageNavi(conn, historyPage));
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -118,6 +118,8 @@ public class MypageService {
 			JDBCTemplate.close(conn);
 		}
 		return result;
-	} 
+	}
+
+
 	
 }
