@@ -22,6 +22,7 @@ public class HospitalService {
 		
 		try {
 			conn = jdbcTemplate.createConnection();
+			System.out.println(done);
 			hospitals = new HospitalDAO().selectAllHospital(conn, done);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

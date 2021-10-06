@@ -40,15 +40,15 @@ public class MemberDAO {
 		return member;
 	}
 
-	public String selectOneMemberByEmail(String email, String userName, Connection conn) {
+	public String selectOneMemberByZumin(String zumin, String userName, Connection conn) {
 		PreparedStatement pstmt = null;
-		String query = "SELECT * FROM MEMBER WHERE EMAIL = ? AND USER_NAME = ?";
+		String query = "SELECT * FROM MEMBER WHERE ZUMIN = ? AND USER_NAME = ?";
 		ResultSet rset = null;
 		String userId = "";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, email);
+			pstmt.setString(1, zumin);
 			pstmt.setString(2, userName);
 			rset = pstmt.executeQuery();
 			
@@ -117,11 +117,51 @@ public class MemberDAO {
 			return result;
 		}
 
-	public Member updateTotalPoint(Connection conn, String userId) {
+	public boolean duplicateIdCheck(String id) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		boolean x = false;
+		
+		StringBuffer query = new StringBuffer();
+		query.append("SELECT USER_ID FROM MEMBER WHERE USER_ID = ?");
+		
+		return false;
+	}
+
+	public Member updateMemberPage(String userId, Connection conn) {
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 		Member member = null;
 		String query = "SELECT * FROM MEMBER WHERE USER_ID = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			
+			if(rset.next()) {
+				member = new Member();
+				member.setUserId(rset.getString("USER_ID"));
+				member.setUserPwd(rset.getString("USER_PWD"));
+				member.setUserZumin(rset.getString("ZUMIN"));
+				member.setUserName(rset.getString("USER_NAME"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return member;
+	}
+
+	public Member getTotalpoint(String userId, Connection conn) {
+		Member member = null;
+		String query = "SELECT TOTALPOINT FROM MEMBER WHERE USER_ID = ?";
+		ResultSet rset = null;
+		PreparedStatement pstmt = null;
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -142,31 +182,4 @@ public class MemberDAO {
 		return member;
 	}
 
-	public Member updateOneMember(String userId, Connection conn) {
-		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		Member member = null;
-		String query = "SELECT * FROM MEMBER WHERE USER_ID = ?";
-		
-		try {
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, userId);
-			rset = pstmt.executeQuery();
-			if(rset.next()) {
-				member = new Member();
-				member.setUserName(rset.getString("USER_NAME"));
-				member.setUserPwd(rset.getString("USER_PWD"));
-				member.setUserZumin(rset.getString("ZUMIN"));
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(rset);
-			JDBCTemplate.close(pstmt);
-		}
-		return member;
-	}
-	}
-
+}
