@@ -15,15 +15,23 @@ ul{
     width: 1535px;
     margin: 0 auto;
 }
+   #main-header{
+    	margin-top: 10px;
+        width: 100%;
+        height: 40px;
+    }
     #supportnotice-header{
         margin-left:5%;
-        margin-right:5%;
-        width: 130px;
         border-bottom: 1px solid black;
+        float: left;
     }
         #supportnotice-header h2{
             margin: 0;
         }
+    #search{
+        width: 300px;
+        float: right;
+    }
      #notice-section{
             margin-left: 10%;
             margin-right: 10%;

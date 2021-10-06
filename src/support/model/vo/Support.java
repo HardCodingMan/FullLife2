@@ -3,6 +3,7 @@ package support.model.vo;
 import java.sql.Date;
 
 public class Support {
+
 	private int noticeNo;
 	private String noticeTitle;
 	private String noticeContents;
@@ -15,37 +16,8 @@ public class Support {
 	private double picSize;
 	private String userId;
 	private int percentage;
-	private String picName;
 	
-	public Support() {
-		// TODO Auto-generated constructor stub
-	}
-
-	
-	
-	public String getPicName() {
-		return picName;
-	}
-
-
-
-	public void setPicName(String picName) {
-		this.picName = picName;
-	}
-
-
-
-	public int getPercentage() {
-		return percentage;
-	}
-
-
-
-	public void setPercentage(int percentage) {
-		this.percentage = percentage;
-	}
-
-
+	public Support() {}
 
 	public int getNoticeNo() {
 		return noticeNo;
@@ -135,12 +107,13 @@ public class Support {
 		this.userId = userId;
 	}
 
-	@Override
-	public String toString() {
-		return "Support [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeContents=" + noticeContents
-				+ ", views=" + views + ", enrollDate=" + enrollDate + ", nowSupport=" + nowSupport + ", needSupport="
-				+ needSupport + ", supportHuman=" + supportHuman + ", picPath=" + picPath + ", picSize=" + picSize
-				+ ", userId=" + userId + "]";
+	public int getPercentage() {
+		return percentage;
 	}
+
+	public void setPercentage(int percentage) {
+		this.percentage = percentage;
+	};
+	
 	
 }
