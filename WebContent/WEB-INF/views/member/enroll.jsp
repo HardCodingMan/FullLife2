@@ -84,7 +84,7 @@
             </h4>
                 <input type="text" class="wrong-input" id="userId" name="userId" placeholder="아이디 입력(5~11자)" required>
                 <input type="button" onclick="openIdChk();" value="본인인증"><br>
-                <span id="id-out">안녕</span>
+                <span id="id-out"></span>
         </div>
         <div id="password">
             <h4 class="join_title">
@@ -92,7 +92,7 @@
             </h4>
                 <input type="password" class="wrong-input" name="userPwd" id="userPwd" placeholder="비밀번호(숫자,영문,특수문자(!,@,#,%,&) 조합) 최소8자" required><br>
                 <input type="password" class="wrong-input" name="userRePwd" id="userRePwd" placeholder="비밀번호 확인" required><br>
-                <span id="pw-out">안녕</span>
+                <span id="pw-out"></span>
         </div>
         <div id="name">
            <h4 class="join_title">
@@ -104,7 +104,7 @@
                 주민등록번호
             </h4>
                 <input type="text" class="wrong-input" name="userZumin" id="userZumin" placeholder="-를 제외한 숫자 13자리를 입력해주세요" size="13"><br>
-                <span id="zumin-out">안녕</span>
+                <span id="zumin-out"></span>
         </div>
         <div id="phone">
             <h4 class="join_title">
