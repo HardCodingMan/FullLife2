@@ -163,6 +163,7 @@
             }
         });
     </script>
+     <br><br><br><br>
     <footer>
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
     </footer>
