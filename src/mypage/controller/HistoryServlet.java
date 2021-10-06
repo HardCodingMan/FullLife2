@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.tagext.PageData;
 import mypage.model.service.MypageService;
 import mypage.model.vo.History;
@@ -40,8 +41,12 @@ public class HistoryServlet extends HttpServlet {
 		}else {
 			historyPage = Integer.parseInt(getHistoryPage);
 		}
-		HistoryPage hisPage = new MypageService().printAllList(historyPage);
+		HistoryPage hisPage = new MypageService().printAllList(historyPage, history);
 		List<History> hList = hisPage.gethList();
+		HttpSession session = request.getSession();
+		String memberId = (String)session.getAttribute("userId");
+		History history = new History();
+		history.setUserId(memberId);
 		if(!hList.isEmpty()) {
 			request.setAttribute("hList", hList);
 			request.setAttribute("pageNavi", hisPage.getPageNavi());
