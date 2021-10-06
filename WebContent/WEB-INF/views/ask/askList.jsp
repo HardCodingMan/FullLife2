@@ -18,8 +18,8 @@
         <div id="main-navi">
             <span>
                 <ul class="subMenu">
+                    <li><a href="/faq/FAQ">FAQ</a></li>
                     <li>문의</li>
-                    <li><a href="#">FAQ</a></li>
                 </ul>
             </span>
         </div>
@@ -27,17 +27,28 @@
             <div id="contents-header"><u><strong>문의</strong></u></div>
             <hr>
             <div id="top">
-            <div class="search">
-            <form action="/ask/search" method="get">
-                        <input type="text" name="searchKeyword" id="searchWord" placeholder="검색할 단어를 입력하세요">&nbsp;&nbsp;
-                        <input type="submit" value="검색">
-            </form>
-            </div>
+	           <div class="search">
+		           <form action="/ask/search" method="get">
+                       <input type="text" name="searchKeyword" id="searchWord" placeholder="검색할 단어를 입력하세요">&nbsp;&nbsp;
+                       <input type="submit" value="검색">
+		           </form>
+	           </div>
                 <span class="inquiry">
-                <button><a href="/ask/post">문의하기</a></button>
+		            <c:if test="${sessionScope.userId eq null }">
+		            <form action="/member/login" method="get">
+		                <button>문의하기</button>
+		            </form>
+		            </c:if>
+                </span>
+        		<span class="inquiry">
+		            <c:if test="${sessionScope.userId ne null}">
+		         		<form action="/ask/post" method="get">
+		                <button>문의하기</button>
+		                </form>
+		        	</c:if>
                 </span>
             </div>
-            <div >
+            <div>
                 <table border="1px">
                     <tr>
                         <th class="inquiryNo">글 번호</th>
@@ -51,7 +62,20 @@
                     <c:forEach items="${requestScope.aList }" var="ask" varStatus="index">
                     <tr>
                         <td>${ask.askNo}</td>
-                        <td><a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a></td>
+                        <td>
+                        <c:if test="${ask.disclosure eq 'N'}" >
+	                        <a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a>
+	                        <c:choose>
+				                <c:when test="${session.userId eq ask.userId }">
+				                    <c:out value="${ask.askSubject }"/>
+				                </c:when>
+			                	<c:otherwise>비밀글은 작성자와 관리자만 볼 수 있습니다.</c:otherwise>
+				            </c:choose>
+				        </c:if>
+				        <c:if test="${ask.disclosure eq 'Y'}" >
+				            <c:out value="${ask.askSubject }"/>
+				        </c:if>
+                        </td>
                         <td>${ask.userId }</td>
                         <td>${ask.askDate }</td>
                         <td>${ask.reply }</td>
