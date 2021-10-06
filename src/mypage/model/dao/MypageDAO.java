@@ -12,8 +12,6 @@ import member.model.vo.Member;
 import mypage.model.vo.BookedHospitalInfo;
 import mypage.model.vo.CheckResult;
 import mypage.model.vo.History;
-import patient.model.vo.Patient;
-
 public class MypageDAO {
    
 
@@ -202,7 +200,7 @@ public class MypageDAO {
 		      PreparedStatement pstmt = null;
 		      ResultSet rset = null;
 		      List<CheckResult>cList = null;
-		      String query="SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY RESULT_NO DESC)AS NUM, FILE_NO, FILE_NAME, CHECK_DATE FROM RESULT LEFT JOIN HOSPITAL ON HOSPITAL.HOSPITAL_NO=RESULT.HOSPITAL_NO) WHERE NUM BETWEEN ? AND ?";
+		      String query="SELECT *FROM(SELECT ROW_NUMBER() OVER(ORDER BY FILE_NO DESC)AS NUM, FILE_NO, FILE_NAME, HOSPITAL_NAME, CHECK_DATE FROM RESULT LEFT JOIN HOSPITAL ON HOSPITAL.HOSPITAL_NO=RESULT.HOSPITAL_NO)WHERE NUM BETWEEN ? AND ?";
 		      
 		      try {
 				 pstmt = conn.prepareStatement(query);
@@ -217,7 +215,7 @@ public class MypageDAO {
 		        	 CheckResult result = new CheckResult();
 		        	 result.setFileNo(rset.getInt("FILE_NO"));
 		        	 result.setFileName(rset.getString("FILE_NAME"));
-		        	 result.setHospitalNo(rset.getInt("HOSPITAL_NO"));
+		        	 result.setHospitalName(rset.getString("HOSPITAL_NAME"));
 		        	 result.setCheckDate(rset.getDate("CHECK_DATE"));
 		             cList.add(result);
 		          }
@@ -275,7 +273,7 @@ public class MypageDAO {
 	   }
 	
 
-	   private int resultTotalCount(Connection conn) {
+	   private int resultCount(Connection conn) {
 	      int totalValue = 0;
 	      Statement stmt = null;
 	      ResultSet rset = null;
