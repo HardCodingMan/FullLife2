@@ -96,7 +96,7 @@ public class MemberDAO {
 	public int insertMember(Connection conn, Member member) {
 			PreparedStatement pstmt = null;
 			int result = 0;
-			String query= "";
+			String query= "INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT,0)";
 //			INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,'0')
 			try {
 				pstmt = conn.prepareStatement(query);
@@ -159,7 +159,7 @@ public class MemberDAO {
 
 	public Member getTotalpoint(String userId, Connection conn) {
 		Member member = null;
-		String query = "SELECT TOTALPOINT FROM MEMBER WHERE USER_ID = ?";
+		String query = "SELECT * FROM MEMBER WHERE USER_ID = ?";
 		ResultSet rset = null;
 		PreparedStatement pstmt = null;
 		
@@ -170,6 +170,7 @@ public class MemberDAO {
 			if(rset.next()) {
 				member = new Member();
 				member.setTotalPoint(rset.getInt("TOTALPOINT"));
+				member.setUserName(rset.getString("USER_NAME"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -182,4 +183,42 @@ public class MemberDAO {
 		return member;
 	}
 
+	public int checkMyId(String userId, Connection conn) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "SELECT * FROM MEMBER WHERE USER_ID = ?";
+		ResultSet rset = null;
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				result = 1;
+			} else {
+				result = 0;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
