@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+
+}
+.header{
+    height: 800px;
+    position: relative;
+    padding-top: 5%;
+    background-color: ivory;
+}
+.main-div{
+    position: relative;
+    top: 100px;
+    width: 100%;
+    height: 500px;
+    background-color: rgba(129, 153, 90, 0.719);
+    text-align: center;
+    padding-top: 2%;
+    background: linear-gradient(to top, ivory 1%, rgba(129, 153, 90, 0.514) 30%, rgba(129, 153, 90, 0.719)95%,rgba(255, 255, 240, 0.678) 100%);
+   
+}
+
+#title{
+    font-size: 20px;
+    letter-spacing: 15px;
+    color: rgb(75, 75, 75);
+}
+.btn-div{
+    margin-top: 6%;
+    padding-left: 2%;
+}
+.btn-div>button{
+    letter-spacing: 4px;
+    background:ivory;
+    color:black;
+    border:none;
+    position:relative;
+    height:70px;
+    width: 130px;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    font-weight: bold;
+    border: 1px solid #518665c2;
+    border-radius: 5px;
+    margin-right: 100px;
+  }
+  .btn-div>button:hover{
+    background:ivory;
+    color:#1d7c42c2;
+    font-weight: bold;
+    border: none;
+  }
+  .btn-div>button:before,.btn-div>button:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #2cb862c2;
+    transition:400ms ease all;
+  }
+  .btn-div>button:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .btn-div>button:hover:before,.btn-div>button:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+    .btn-div button a{
+            text-decoration: none;
+            color: black;
+        }
