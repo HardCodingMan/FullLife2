@@ -46,7 +46,7 @@ public class M_resultSearchServlet extends HttpServlet {
 			request.setAttribute("pageNavi", pd.getPageNavi());
 			request.getRequestDispatcher("/WEB-INF/manager/manager_result/m_result_search.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_result/m_result_list.jsp").forward(request, response);
 		}
 	}
 

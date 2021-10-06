@@ -47,7 +47,7 @@ public class M_memberListServlet extends HttpServlet {
 			request.setAttribute("pageNavi", pageData.getPageNavi());
 			request.getRequestDispatcher("/WEB-INF/manager/manager_member/m_member_list.jsp").forward(request, response);
 		}else {
-			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/manager_fail/m_search_fail.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/manager/manager_member/m_member_list.jsp");
 			view.forward(request, response);
 		}
 		

@@ -36,7 +36,7 @@ public class M_supportDetailServlet extends HttpServlet {
 			request.setAttribute("hList", sup);
 			request.getRequestDispatcher("/WEB-INF/manager/manager_support/m_support_detail.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_support/m_support_detail.jsp").forward(request, response);
 		}
 	}
 
