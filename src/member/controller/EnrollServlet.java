@@ -38,7 +38,10 @@ public class EnrollServlet extends HttpServlet {
 		String addr3 = request.getParameter("addr3");
 		String address = addr1 + " " +addr2 +" "+addr3;
 		String email = request.getParameter("userEmail");
-			
+		System.out.println(email);
+		System.out.println(zumin);
+		System.out.println(address);
+		System.out.println(name);
 		Member member = new Member(userId, userPwd, name, zumin, phone, address, email);
 		int result = new MemberService().registerMember(member);
 		
