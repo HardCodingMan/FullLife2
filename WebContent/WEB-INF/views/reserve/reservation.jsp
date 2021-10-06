@@ -37,23 +37,23 @@ window.onload = function() {
             <table id="organTable">
                     <tr>
                         <td>
-                            <input type="checkbox" name="rd-liver" value="liver" id="tab-1">
+                            <input type="checkbox" name="organNo" value="2" id="tab-1">
                             <label for="tab-1"><img src="/img/liver.png" name="liver" class="btn-organ"></label>
                         </td>
                         <td> 
-                            <input type="checkbox" name="rd-heart" value="heart" id="tab-2">
+                            <input type="checkbox" name="organNo" value="1" id="tab-2">
                             <label for="tab-2"><img src="/img/heart.png" name="heart" class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-tooth" value="tooth" id="tab-3">
+                            <input type="checkbox" name="organNo" value="3" id="tab-3">
                             <label for="tab-3"><img src="/img/tooth.png" name="tooth" class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-bone" value="bone" id="tab-4">
+                            <input type="checkbox" name="organNo" value="4" id="tab-4">
                             <label for="tab-4"><img src="/img/bone.png" name="bone" class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-lung" value="lung" id="tab-5">
+                            <input type="checkbox" name="organNo" value="5" id="tab-5">
                             <label for="tab-5"><img src="/img/lung.png" name="lung" class="btn-organ"></label>
                         </td>
                     </tr>
@@ -205,26 +205,26 @@ window.onload = function() {
                     <label>
                         <span>주소</span><input type="text" name="user-addr" id="user-addr" class="input1" value="${sessionScope.userAddr }">
                     </label><br>
-                    <label><input type="checkbox" name="check" id="check" > 구매자와 이식 받는자가 같습니다.</label>
+                    <label><input type="checkbox" name="relation" id="check" value="self"> 구매자와 이식 받는자가 같습니다.</label>
              </div>
             <br>
             <br>
             <div id="realInfo">
             <h4>환자정보</h4>
                 <label>
-                    <span>이름</span> <input type="text" name="patient-name" id="patient-name" class="input1" value="${requestScope.patient.patientName }" placeholder="이름을 입력해주세요">
+                    <span>이름</span> <input type="text" name="patient-name" id="patient-name" class="input1" placeholder="이름을 입력해주세요">
                 </label><br>
                 <label>
-                    <span>주민등록번호</span> <input type="text" name="patient-zumin" id="patient-zumin" class="input1" value="${requestScope.patient.patientZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
+                    <span>주민등록번호</span> <input type="text" name="patient-zumin" id="patient-zumin" class="input1" placeholder="-을 제외한 13자리를 입력해주세요">
                 </label><br>
                 <label>
-                    <span>전화번호</span> <input type="text" name="patient-phone" id="patient-phone" class="input1" value="${requestScope.patient.patientPhone }" placeholder="-을 제외한 11자리를 입력해주세요">
+                    <span>전화번호</span> <input type="text" name="patient-phone" id="patient-phone" class="input1" placeholder="-을 제외한 11자리를 입력해주세요">
                 </label><br>
                 <label>
-                    <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input1" value="${requestScope.patient.patientAddr }" >
+                    <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input1">
                 </label><br>
                 <div id="relation"> 
-                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="parent" id="parent"> 자녀<input type="checkbox" name="child" id="child"></label><br>
+                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="relation" id="parent" value="parent"></label> <label>자녀<input type="checkbox" name="relation" id="child" value="child"></label><br>
                 </div>
             </div>
         </div>
@@ -233,7 +233,7 @@ window.onload = function() {
         <div id="agree">
             <div id="agree-first">
                 <h4>이용약관</h4>
-                <textarea name="" id="" cols="175" rows="20">
+                <textarea name="" id="" cols="175" rows="20" style="margin: 0px; width: 1100px; height: 300px;">
                     제1장 총칙
 
                     제1조 목적
@@ -358,7 +358,7 @@ window.onload = function() {
                 </textarea><br>
                 <input type="checkbox" name="" id="" required> 위의 이용약관을 읽고 이해했습니다.<br><br><br>
                 <h4>개인정보 처리방침 동의</h4>
-                <textarea name="" id="" cols="175" rows="20">
+                <textarea name="" id="" cols="175" rows="20" style="margin: 0px; width: 1100px; height: 300px;">
                     FullLife는 법령의 규정에 따라 수집·보유 및 처리하는 개인정보를 공공업무의 적절한 수행과 정보주체의 권익을 보호하기 위하여 적법하고 적정하게 취급할 것입니다. 또한, 진흥원은 관련 법령에서 규정한 바에 따라 진흥원에서 보유하고 있는 개인정보에 대한 열람청구권 및 정정청구권 등 이용자의 권익을 존중하며, 여러분은 이러한 법령상 권익의 침해 등에 대하여 행정심판법에서 정하는바에 따라 행정심판을 청구할 수 있으며, 개인정보분쟁조정위원회, 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 진흥원의 개인정보 처리방침은 현행 「개인정보보호법」에 근거를 두고 있습니다. 개인정보를 처리하는 우리원 소관 홈페이지의 경우 해당 홈페이지에 별도의 개인정보처리방침을 정하여 운영하고 있습니다.
                     제1조 개인정보의 처리 목적
                     FullLife는 소관 업무 수행 및 민원처리 등의 목적으로 최소한으로 개인정보를 수집하고 있으며, 자세한 사항은 각 부서에서 운영하는 소관 홈페이지에 게재하여 정보주체가 확인할 수 있도록 안내를 하고 있습니다. 당 홈페이지에는 수집하는 개인정보 항목이 없음을 알려드립니다.
@@ -390,9 +390,38 @@ window.onload = function() {
             </div>
             <br><br><br>
         </div><br>
-        <div id="btn-reserve">
-            <button id="nextButton"><a href="/reserve/reservationCheck">결제 및 예약완료 </a></button> 
-        </div>
+            <hr>
+        <div id="bottom-div">
+                    <div id="payment-check">
+                        <div id="payment-title">
+                            <h4>결제 내역</h4>
+                        </div>
+                        <div id="payment">
+                            <label for="">구매장기</label><input type="text" name="" id="" value=${requestScope.organ.organNo }><br>
+                            <label for="">계약금</label><input type="text" name="" id="" value=${requestScope.organ.organPrice }>
+                        </div>
+                    </div>
+                    <div id="pay-check">
+                        <label for="">총 금액</label><input type="text" name="" id="" value="1,000,000">
+                    </div>
+                                <hr>	
+                    <div id="rule-div">
+                        <div id="rule-title">
+                            <h4>규정</h4>
+                        </div>
+                        <div id="rule-img">
+                            <img src="/img/rule.jpg" alt="">
+                        </div>
+                        <div id="rule-check">
+                            <input type="checkbox" name="" id="">&nbsp;규정에 동의합니다
+                        </div><br><br>
+                    </div>
+                </div>
+                    <hr>
+            </div><br>
+            <div id="btn-reserve">
+            <a href="/reserve/reservationCheck"><input type="submit" id="nextButton" value="결제 및 예약완료"></a>
+            </div>
         </form>
         <br><br><br>
     </main>
