@@ -229,17 +229,38 @@ header{
                         margin-top: 5%;
                         width: 70%;
                         height: 50%;
-                        background: rgb(189, 177, 177);
+                       	border: 1px solid #F2709C;
+				    	border-radius: 30px;
                         float: right;
                     }
                     .progs{
 /*                         width: 80%; */
                         height: 100%;
-                        background: rgb(225, 149, 240);
+                        background: linear-gradient(to left, #F2709C, #FF9472);
+                        box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #f2709C;
                         color:#fff;
                         text-align: center;
                         line-height: 25px;
+                        border-radius: 30px;
                     }
+/*                     .progress-bar {
+				    height: 20px;
+				    width: 250px;
+				    margin: 25px auto;
+				    border: 1px solid #F2709C;
+				    border-radius: 30px;
+				}
+				.progress-done {
+				    height: 100%;
+				    width: 125px;
+				    border-radius: 30px;
+				    background: linear-gradient(to left, #F2709C, #FF9472);
+				    font-size: 13px;
+				    font-family: 'Do Hyeon', sans-serif;
+				    box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #f2709C;
+				    opacity: 0;
+				    transition: 0.5s ease;
+				} */
 
                     /* .prog2{
                         -webkit-appearance: none;
