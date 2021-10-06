@@ -8,7 +8,6 @@ import member.model.vo.Member;
 import mypage.model.dao.MypageDAO;
 import mypage.model.vo.BookedHospitalInfo;
 import mypage.model.vo.CheckResultPage;
-import mypage.model.vo.History;
 import mypage.model.vo.HistoryPage;
 
 public class MypageService {
