@@ -31,11 +31,14 @@ public class EnrollServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
 		String name = request.getParameter("UserName");
-		String zumin = request.getParameter("UserZumin");
-		String phone = request.getParameter("UserPhone");
-		String address = request.getParameter("UserAddr");
-		String email = request.getParameter("UserEmail");
-		System.out.println(userId);
+		String zumin = request.getParameter("userZumin");
+		String phone = request.getParameter("userPhone");
+		String addr1 = request.getParameter("addr1");
+		String addr2 = request.getParameter("addr2");
+		String addr3 = request.getParameter("addr3");
+		String address = addr1 + " " +addr2 +" "+addr3;
+		String email = request.getParameter("userEmail");
+		System.out.println(phone);
 			
 		Member member = new Member(userId, userPwd, name, zumin, phone, address, email);
 		int result = new MemberService().registerMember(member);

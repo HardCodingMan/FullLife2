@@ -78,7 +78,7 @@
             <h4 class="join_title">
                 아이디
             </h4>
-                <input type="text" class="wrong-input" id="user-id" name="userId" placeholder="아이디 입력(5~11자)" onkeydown="inputIdChk()" required><br>
+                <input type="text" class="wrong-input" id="user-id" name="userId" placeholder="아이디 입력(5~11자)" required><br>
                 <input type="button" value="중복확인" onclick="openIdChk();">
                 <span id="id-out"></span>
         </div>
@@ -151,11 +151,11 @@
         </div><br>
     
         <div id="joinBox">
-<<<<<<< HEAD
+
             <input type="submit" value="회원가입 완료" onclick="return check();">
-=======
-            <input type="submit" id="join_box" value="회원가입 완료">
->>>>>>> 61f3e455be7507ba87c4028071bf9c284b6e0b16
+
+<!--             <input type="submit" id="join_box" value="회원가입 완료"> -->
+
         </div>
     </form>
     </main>
@@ -298,13 +298,23 @@
                 this.value = "";
             }
         });
-        function openIdChk(){
-        	window.name = "parentForm";
-        	window.open("/checkIdJSP/idCheckForm.jsp", "chkForm", "width=500, height=300, resizable = no, scrollbars = no");
-        }
-        function inputIdChk(){
-        	document.userInfo.idDuplication.value = "idUncheck";
-        }
+   	   function openIdChk(){
+	   		var userId = $("#user-id").val();
+	        $.ajax({
+	     	  type: "POST",
+	     	  url: "./idCheck",
+	     	  data: {userId: userId},
+	     	  success: function(result){
+	     		  if(result == 1){
+	     			  $("#id-out").html("<h6 style='color:red; font-size:15px; font-family:'Do Hyeon', sans-serif;'>사용중인 아이디입니다.</h6>");
+	     		  } else if(result == 0) {
+	     			  $("#id-out").html("<h6 style='color:blue; font-size:15px; font-family:'Do Hyeon', sans-serif;'>사용할 수 있는 아이디입니다.</h6>");
+	     		  }
+	     	  }
+	        });
+   	   }
+       
+        
     </script>
 </body>
 </html>

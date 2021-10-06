@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
 import support.model.service.SupportService;
 import support.model.vo.Support;
 
@@ -34,7 +36,8 @@ public class FastDonateServlet extends HttpServlet {
 		String userId = (String)session.getAttribute("userId");
 		int rank1 = Integer.parseInt(request.getParameter("rank1"));
 		int rank2 = Integer.parseInt(request.getParameter("rank2"));
-		System.out.println(rank1 +","+ rank2);
+//		System.out.println(rank1 +","+ rank2);
+		Member member = new MemberService().getMemberTotalPoint(userId);
 		Support firstRank = new SupportService().getFirstSupportNotice(rank1);
 		Support secondRank = new SupportService().getSecondSupportNotice(rank2);
 		int firstNow = firstRank.getNowSupport();
@@ -43,8 +46,9 @@ public class FastDonateServlet extends HttpServlet {
 		int secondNeed = secondRank.getNeedSupport();
 		double percentage1 = (double)firstNow / (double) firstNeed * 100;
 		double percentage2 = (double)secondNow / (double)secondNeed * 100;
+		System.out.println(firstRank.getPicName());
 		System.out.println(percentage2);
-		
+		request.setAttribute("member", member);
 		request.setAttribute("percentage1", percentage1);
 		request.setAttribute("percentage2", percentage2);
 		request.setAttribute("firstRank", firstRank);

@@ -15,6 +15,7 @@ public class Support {
 	private double picSize;
 	private String userId;
 	private int percentage;
+	private String picName;
 	
 	public Support() {
 		// TODO Auto-generated constructor stub
@@ -22,6 +23,18 @@ public class Support {
 
 	
 	
+	public String getPicName() {
+		return picName;
+	}
+
+
+
+	public void setPicName(String picName) {
+		this.picName = picName;
+	}
+
+
+
 	public int getPercentage() {
 		return percentage;
 	}
