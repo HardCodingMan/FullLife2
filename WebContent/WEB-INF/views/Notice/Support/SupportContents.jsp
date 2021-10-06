@@ -29,7 +29,7 @@
                 <div><p id="notice-views">조회수 ${sOne.views }</p></div>
             </div>
             <div id="notice-contents-section">
-                <div id="notice-title"><p id="No">글번호 : ${sOne.noticeNo }</p><p id="userId">글쓴이 : ${sOne.userId }</p><p id="title">${sOne.userId }</p></div>
+                <div id="notice-title"><p id="No">글번호 : ${sOne.noticeNo }</p><p id="userId">글쓴이 : ${sOne.userId }</p><p id="title">${sOne.noticeContents }</p></div>
                 <div id="notice-contents">
                     <div id="contents-img"><img src="/fileupload/${sOne.picName }" alt="${aOne.picName }"></div>
                     <div id="contents-text"><p>${sOne.noticeContents }</p></div>
@@ -45,7 +45,7 @@
                     	<button onclick="hide();">포인트 후원</button>
                     	</c:if>
                     </div>
-                    <div id="point-view" class="hide"><p>보유한 포인트 : ${sOne.totalpoint }</p></div>
+                    <div id="point-view" class="hide"><p>보유한 포인트 : ${point.totalPoint }</p></div>
                     <form action="/Notice/Support/PointSupport" method="post">
                     	<input type="hidden" name="noticeNo" value="${sOne.noticeNo }">
                     	<div id="point-sub" class="hide"><input type="submit" value="후원하기"><input type="reset" value="취소"></div>
@@ -68,7 +68,7 @@
                                 <td>${sOne.replyDate }
                                 	<c:if test="${sessionScope.userId eq sOne.replyUserId }">
                                 	<a href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
-									<a href="/Notice/Support/SupportReplyDelete?noticeNo=${sOne.noticeNo }&replyNo=${sOne.replyNo}">삭제</a>
+									<a href="/Notice/Support/SupportReplyDelete?noticeNo=${sOne.noticeNo }&replyNo=${sOne.replyNo}&userId=${sOne.replyUserId}">삭제</a>
 									</c:if>
                                 </td>
                             </tr>
