@@ -8,6 +8,7 @@ import member.model.vo.Member;
 import mypage.model.dao.MypageDAO;
 import mypage.model.vo.BookedHospitalInfo;
 import mypage.model.vo.CheckResultPage;
+import mypage.model.vo.History;
 import mypage.model.vo.HistoryPage;
 
 public class MypageService {
@@ -19,14 +20,14 @@ public class MypageService {
 	
 
 
-	public HistoryPage printAllList(int historyPage) {
+	public HistoryPage printAllList(int historyPage, History history) {
 		HistoryPage hisPage = new HistoryPage();
 		Connection conn = null;
 		MypageDAO hDao = new MypageDAO();
 		
 		try {
 			conn=jdbcTemplate.createConnection();
-			hisPage.sethList(hDao.selectAllList(conn, historyPage));
+			hisPage.sethList(hDao.selectAllList(conn, historyPage, history));
 			hisPage.setPageNavi(hDao.getPageNavi(conn, historyPage));
 		} catch (SQLException e) {
 			e.printStackTrace();
