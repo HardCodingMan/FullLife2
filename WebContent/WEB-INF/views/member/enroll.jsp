@@ -141,25 +141,26 @@
        
         <div id="checkbox_group">
             <div>
-                <input type="checkbox" class="check" name='agreeAll' id="agreeAll" >
+                <input type="checkbox" class="check" name="agreeAll"
+                 id="agreeAll" >
                 <label for="agreeAll">전체동의</label>
             </div>
             <div>
-                <input type="checkbox" class="check" name="check" id="" > 
+                <input type="checkbox" class="check" name="check" id="check1" > 
                 <label for="personalInfo">개인정보 수집(필수)</label>
             </div>
             <div>
-                <input type="checkbox" class="check" name="check" id="" >
+                <input type="checkbox" class="check" name="check" id="check2" >
                 <label for="useTerm">Full Life 이용약관(필수)</label>
             </div>
             <div>
-                <input type="checkbox" class="check" name="check" id="" > 
+                <input type="checkbox" class="check" name="check" id="check3" > 
                 <label for="ageAgree">만 14세 미만 가입 제한(필수)</label>
             </div>
         </div><br>
     
         <div id="joinBox">
-        	<button id="join_box"><a href="/member/login">회원가입 완료</a></button>
+        	<button id="join_box""><a href="/member/login"  onclick="return check();">회원가입 완료</a></button>
         </div>
     </form>
     </main>
@@ -178,17 +179,15 @@
     let searchTag = document.querySelector("#searchBox");
     let postalTag = document.querySelector("#postalNum");
     let checkbox1 = document.querySelector("input[name=agreeAll]");
-    let checkbox2 = document.querySelector("input[name=useTerm]")
-    let checkbox3 = document.querySelector("input[name=personalInfo]");        
-    let checkbox4 = document.querySelector("input[name=ageAgree]");
-    
+    let checkbox2 = document.querySelector("#check1");
+    let checkbox3 = document.querySelector("#check2");        
+    let checkbox4 = document.querySelector("#check3");
+    let userNameTag = document.querySelector("#userName");
     let idRegex = /[a-zA-Z0-9]{5,11}$/;
     let pwRegex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
     let pwRegex2 = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
     let zuminRegex = /\d{2}([0]\d|[1][0-2])([0][1-9]|[1-2]\d|[3][0-1])[-]*[1-4]\d{6}/;
-
-    
-
+	let nameRegex = /[ㄱ-힣]{2,4}$/;
     function check(){
        
         if(!idRegex.test(userId.value)){
@@ -230,10 +229,15 @@
         } else if(roadTag.value == "" || postalTag.value == ""){
             alert("주소를 등록하여 주세요.");
             return false;
+        } else if(userNameTag.value == "" || !nameRegex.test(userNameTag.value)){
+        	alert("이름을 잘 입력해주세요.");
+        	return false;
         }
         return true;
     }
-
+	userId.addEventListener("blur", function(){
+		idOut.innerHTML = "";
+	});
     userId.addEventListener("keyup", function(){
         if(this.value.length > 1){
             if(!idRegex.test(userId.value)){
@@ -310,9 +314,9 @@
           data: {userId: userId},
           success: function(result){
              if(result == 1){
-                $("#id-out").html("<h6 style='color:red; font-size:15px; font-family:'Do Hyeon', sans-serif;'>사용중인 아이디입니다.</h6>");
+                $("#id-out").html("<h6 style='color:red; font-size:12px; font-family:'Do Hyeon', sans-serif;'>사용중인 아이디입니다.</h6>");
              } else if(result == 0) {
-                $("#id-out").html("<h6 style='color:blue; font-size:15px; font-family:'Do Hyeon', sans-serif;'>사용할 수 있는 아이디입니다.</h6>");
+                $("#id-out").html("<h6 style='color:blue; font-size:12px; font-family:'Do Hyeon', sans-serif;'>사용할 수 있는 아이디입니다.</h6>");
              }
           }
         });
