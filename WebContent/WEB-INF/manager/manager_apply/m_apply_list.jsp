@@ -53,14 +53,19 @@
                     <c:forEach items="${requestScope.apList }" var="apply" varStatus="index">
                     <div class="list">
                         <div class="list-img">
-                            <img src="/fileupload/${apply.picPath }" alt="후원1">
+                            <img src="/fileupload/${apply.picName }" alt="후원1">
                         </div>
                         <div class="list-text">
                             <a href="/manager/m_apply_detail?noticeNo=${apply.notiNo }">${apply.notiTitle }</a> 
                         </div>
                         <div id="list-text2">
                             <div>조회수 : ${apply.views } <br>추천수 : ${apply.notiLike }</div>
-                            <div id="apply-text">신청</div>
+                           <c:if test="${apply.simsa eq '신청' }">
+                            	<div id="apply-text">${apply.simsa }</div>
+                            </c:if>
+                            <c:if test="${apply.simsa eq '심사중' }">
+                            	<div id="apply-text2">${apply.simsa }</div>
+                            </c:if>
                         </div>
                         <div class="list-btn">
                         		<button type="submit" id="apply-btn">심사 시작</button>&nbsp;

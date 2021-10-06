@@ -17,7 +17,7 @@ public class M_applyDAO {
 	public List<M_apply> selectAllApply(Connection conn, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, NOTICE_LIKE, PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID FROM NOTICE WHERE LEVELCHECK='N') WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, NOTICE_LIKE, PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,SIMSA FROM NOTICE WHERE LEVELCHECK='N') WHERE NUM BETWEEN ? AND ?";
 		List<M_apply> apList = null;
 		
 		try {
@@ -42,6 +42,7 @@ public class M_applyDAO {
 				apply.setPicName(rset.getString("PIC_NAME"));
 				apply.setLevel(rset.getString("LEVELCHECK").charAt(0));
 				apply.setUserId(rset.getString("USER_ID"));
+				apply.setSimsa(rset.getString("SIMSA"));
 				apList.add(apply);
 			}
 		} catch (SQLException e) {
@@ -242,7 +243,7 @@ public class M_applyDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<M_apply> apList = null;
-		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, NOTICE_LIKE, PIC_PATH, PIC_SIZE, PIC_NAME,USER_ID FROM NOTICE WHERE LEVELCHECK='N'AND NOTICE_TITLE LIKE ?) WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, NOTICE_LIKE, PIC_PATH, PIC_SIZE, PIC_NAME,USER_ID,SIMSA FROM NOTICE WHERE LEVELCHECK='N'AND NOTICE_TITLE LIKE ?) WHERE NUM BETWEEN ? AND ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
@@ -266,6 +267,7 @@ public class M_applyDAO {
 				apply.setPicName(rset.getString("PIC_NAME"));
 				apply.setUserId(rset.getString("USER_ID"));
 				apply.setNotiLike(rset.getInt("NOTICE_LIKE"));
+				apply.setSimsa(rset.getString("SIMSA"));
 				apList.add(apply);
 				
 			}
@@ -335,6 +337,25 @@ public class M_applyDAO {
 		}finally {
 			JDBCTemplate.close(stmt);
 			JDBCTemplate.close(rset);
+		}
+		
+		return result;
+	}
+
+	public int updateSimsaApply(Connection conn, int notiNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE NOTICE SET SIMSA=? WHERE NOTICE_NO=?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1,"심사중");
+			pstmt.setInt(2, notiNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
 		}
 		
 		return result;
