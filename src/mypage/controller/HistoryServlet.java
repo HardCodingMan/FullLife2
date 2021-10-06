@@ -35,18 +35,16 @@ public class HistoryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int historyPage = 0;
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId");
 		String getHistoryPage = request.getParameter("historyPage");
 		if(getHistoryPage == null) {
 			historyPage = 1; 
 		}else {
 			historyPage = Integer.parseInt(getHistoryPage);
 		}
-		HistoryPage hisPage = new MypageService().printAllList(historyPage, history);
+		HistoryPage hisPage = new MypageService().printAllList(historyPage, userId);
 		List<History> hList = hisPage.gethList();
-		HttpSession session = request.getSession();
-		String memberId = (String)session.getAttribute("userId");
-		History history = new History();
-		history.setUserId(memberId);
 		if(!hList.isEmpty()) {
 			request.setAttribute("hList", hList);
 			request.setAttribute("pageNavi", hisPage.getPageNavi());
