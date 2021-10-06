@@ -44,9 +44,8 @@ public class FastDonateServlet extends HttpServlet {
 		int firstNeed = firstRank.getNeedSupport();
 		int secondNow = secondRank.getNowSupport();
 		int secondNeed = secondRank.getNeedSupport();
-		double percentage1 = (double)firstNow / (double) firstNeed * 100;
-		double percentage2 = (double)secondNow / (double)secondNeed * 100;
-		System.out.println(firstRank.getPicName());
+		int percentage1 = (int) ((double)firstNow / (double) firstNeed * 100);
+		int percentage2 = (int) ((double)secondNow / (double)secondNeed * 100);
 		System.out.println(percentage2);
 		request.setAttribute("member", member);
 		request.setAttribute("percentage1", percentage1);

@@ -122,14 +122,14 @@
                 주소
             </h4>
             <span class="join_box">
-                <input type="text" class="wrong-input" name="" id="postalNum" placeholder="우편번호" size="6"> 
+                <input type="text" class="wrong-input" name="addr1" id="postalNum" placeholder="우편번호" size="6"> 
             </span>
                 <span class="search_button">
                     <input type="button" value="주소검색" id="searchBox" onclick="searchAddr()">
                 </span>
                 <br>
-                <input type="text" id="roadAddress" placeholder="주소를 입력해주세요">
-                <input type="text" id="detailAddress" placeholder="상세주소를 입력해주세요" required>
+                <input type="text" id="roadAddress" name="addr2" placeholder="주소를 입력해주세요">
+                <input type="text" id="detailAddress" name="addr3" placeholder="상세주소를 입력해주세요" required>
                 <input type="hidden" id="sample6_extraAddress" placeholder="참고항목" >
         </div>
         <div id="email">

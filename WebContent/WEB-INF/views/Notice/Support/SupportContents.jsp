@@ -35,7 +35,7 @@
                     <div id="contents-text"><p>${sOne.noticeContents }</p></div>
                 </div>
                 <div id="notice-bottom">
-                    <div id="point-text"><p id="goal">&nbsp;필요 달성 금액 :&nbsp;</p><p id="goal-money">${sOne.needSupport }원</p><p id="goal-rate">달성률 ${sOne.nowSupport/sOne.needSupport*100 }%&nbsp;</p></div>
+                    <div id="point-text"><p id="goal">&nbsp;필요 달성 금액 :&nbsp;</p><p id="goal-money">${sOne.needSupport }원</p><p id="goal-rate">달성률 ${requestScope.percentage }%&nbsp;</p></div>
                     <p id="now-support">현재 후원된 금액 : ${sOne.nowSupport }</p>
                     <div id="point-butn">
                     	<c:if test="${sessionScope.userId eq null }">

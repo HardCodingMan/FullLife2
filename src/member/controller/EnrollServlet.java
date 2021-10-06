@@ -30,7 +30,7 @@ public class EnrollServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String userId = request.getParameter("userId");
 		String userPwd = request.getParameter("userPwd");
-		String name = request.getParameter("UserName");
+		String name = request.getParameter("userName");
 		String zumin = request.getParameter("userZumin");
 		String phone = request.getParameter("userPhone");
 		String addr1 = request.getParameter("addr1");
@@ -38,7 +38,6 @@ public class EnrollServlet extends HttpServlet {
 		String addr3 = request.getParameter("addr3");
 		String address = addr1 + " " +addr2 +" "+addr3;
 		String email = request.getParameter("userEmail");
-		System.out.println(phone);
 			
 		Member member = new Member(userId, userPwd, name, zumin, phone, address, email);
 		int result = new MemberService().registerMember(member);
