@@ -11,7 +11,6 @@ import java.util.List;
 import common.JDBCTemplate;
 import manager.result.model.vo.M_patient;
 import manager.result.model.vo.M_result;
-import oracle.jdbc.proxy.annotation.Pre;
 
 public class M_resultDAO {
 
@@ -144,6 +143,7 @@ public class M_resultDAO {
 		}
 		
 		return result;
+
 	}
 
 	public int deleteFile(Connection conn, String fileUser, String fileName) {

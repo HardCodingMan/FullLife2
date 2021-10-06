@@ -174,6 +174,8 @@ public class M_supDAO {
 			while(rset.next()) {
 				M_supReply reply = new M_supReply();
 				reply.setSupReNo(rset.getInt("SUPPORT_REPLY_NO"));
+				reply.setSupReNo(rset.getInt("SUPPROT_REPLY_NO"));
+
 				reply.setReUserId(rset.getString("USER_ID"));
 				reply.setSupReCon(rset.getString("REPLY_CONTENTS"));
 				reply.setSupReDate(rset.getDate("REPLY_DATE"));
@@ -329,6 +331,8 @@ public class M_supDAO {
 		
 		return result;
 	}
+	
+	
 	
 	
 	

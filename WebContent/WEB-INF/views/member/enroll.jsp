@@ -85,9 +85,9 @@
                 <input type="password" class="wrong-input" name="userRePwd" id="userRePwd" placeholder="비밀번호 확인" required>
         </div>
         <div id="name">
-        	<h4 class="join_title">
-        	이름</h4>
-        	<input type="text" class="wrong-input" name="userName" id="userName" placeholder="이름을 입력해주세요">
+           <h4 class="join_title">
+           이름</h4>
+           <input type="text" class="wrong-input" name="userName" id="userName" placeholder="이름을 입력해주세요">
         </div>
         <div id="zumin">
             <h4 class="join_title">

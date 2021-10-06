@@ -45,8 +45,8 @@
                 <div id="list-div">
                 <div class="search-div">
                     <form action="/manager/m_support_search" method="get">
-                    <input type="text" id="search" name="searchKeyword" placeholder="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
-                    <input type="submit" id="search-btn" value="검색">
+                   		 <input type="text" id="search" name="searchKeyword" placeholder="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
+                    	<input type="submit" id="search-btn" value="검색">
                     </form>    
                 </div>
                 <c:forEach items="${requestScope.sList }" var="sup" varStatus="index">
