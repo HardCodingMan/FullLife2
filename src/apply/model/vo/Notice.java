@@ -21,6 +21,7 @@ public class Notice {
 	private char levelCheck;
 	private String userId;
 	private int totalpoint;
+	private String simsa;
 		// 댓글
 		private List<ApplyNoticeReply> replist;
 		
@@ -179,6 +180,15 @@ public class Notice {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	
+
+	public String getSimsa() {
+		return simsa;
+	}
+
+	public void setSimsa(String simsa) {
+		this.simsa = simsa;
 	}
 
 	@Override

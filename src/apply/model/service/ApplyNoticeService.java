@@ -351,6 +351,46 @@ public class ApplyNoticeService {
 		return ap;
 	}
 
+	public int updatePoint(String userId, int noticeNo, int point) {
+		Connection conn = null;
+		int userPoint = 0;
+		int nowSupport = 0;
+		int supportHuman = 0;
+		int result = 0;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			userPoint = new ApplyNoticeDAO().updateUserPoint(conn, userId, point);
+			nowSupport = new ApplyNoticeDAO().updateNowSupport(conn,noticeNo, point);
+			supportHuman = new ApplyNoticeDAO().updateSupportHuman(conn, noticeNo);
+			boolean check1 = false;
+			boolean check2 = false;
+			boolean check3 = false;
+			if(userPoint > 0 ) {
+				check1 = true;
+			}
+			if(nowSupport > 0) {
+				check2 = true;
+			}
+			if(nowSupport > 0) {
+				check3 = true;
+			}
+			if(check1 == true && check2 == true && check3 == true) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+				System.out.println("펄스");
+			}
+			result = (userPoint+nowSupport+supportHuman);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			JDBCTemplate.close(conn);
+		}
+		return result;
+	}
+
 
 
 }
