@@ -23,6 +23,10 @@
     <main>
         <div class="division">
             <div id="bioprinting">
+                            <div id="button">
+                    <input type="submit" value="협력병원찾기" id="btn-hos">
+                </div>
+            
                 <div id="introVideo">
                     <h1>기술소개</h1>
                     <iframe width="600" height="400" src="https://www.youtube.com/embed/rgxDixvWbLE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -214,9 +218,6 @@
                     <div id="hosPic2">
                         <img src="/img/HospitalsLogo.png">
                     </div>
-                </div>
-                <div id="button">
-                    <input type="submit" value="협력병원찾기" id="btn-hos">
                 </div>
             </div>
         </div>

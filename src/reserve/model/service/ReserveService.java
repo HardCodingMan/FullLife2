@@ -40,6 +40,11 @@ public class ReserveService {
 		try {
 			conn = jdbcTemplate.createConnection();
 			result= new ReserveDAO().orderCom(conn, patient);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			}else {
+				JDBCTemplate.rollback(conn);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
