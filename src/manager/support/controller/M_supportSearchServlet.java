@@ -49,7 +49,7 @@ public class M_supportSearchServlet extends HttpServlet {
 			request.setAttribute("pageNavi", pd.getPageNavi());
 			request.getRequestDispatcher("/WEB-INF/manager/manager_support/m_support_search.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_support/m_support_list.jsp").forward(request, response);
 		}
 	}
 

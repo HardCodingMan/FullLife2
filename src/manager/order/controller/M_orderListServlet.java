@@ -46,7 +46,7 @@ public class M_orderListServlet extends HttpServlet {
 			request.setAttribute("pageNavi", pageData.getPageNavi());
 			request.getRequestDispatcher("/WEB-INF/manager/manager_order/m_order_list.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_order/m_order_list.jsp").forward(request, response);
 		}
 	}
 

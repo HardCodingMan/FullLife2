@@ -34,7 +34,7 @@ public class M_supReplyRemoveServlet extends HttpServlet {
 		if(result > 0) {
 			response.sendRedirect("/manager/m_support_detail?noticeNo="+notiNo);
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_support/m_support_list.jsp").forward(request, response);
 		}
 	}
 
