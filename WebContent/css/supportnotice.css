@@ -72,21 +72,26 @@ ul{
                         margin-top: 5%;
                         line-height: 40px;
                     }
-                        .prog{
-                            margin-top:3%;
-                            width: 70%;
-                            height: 50%;
-                            background: rgb(189, 177, 177);
-                            float: right;
-                        }
-                        .progs{
-                            width: 80%;
-                            height: 100%;
-                            background: rgb(225, 149, 240);
-                            color:#fff;
-                            text-align: center;
-                            line-height: 25px;
-                        }
+                         .prog{
+                        margin-top: 5%;
+                        width: 95%;
+                        height: 50%;
+                       	border: 1px solid #F2709C;
+				    	border-radius: 30px;
+                        float: right;
+                        margin-right: 2%;
+                        margin-bottom: 4%;
+                    }
+                    .progs{
+/*                         width: 80%; */
+                        height: 100%;
+                        background: linear-gradient(to left, #F2709C, #FF9472);
+                        box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #f2709C;
+                        color:#fff;
+                        text-align: center;
+                        line-height: 25px;
+                        border-radius: 30px;
+                    }
                     .list-btn{
                         margin-top: 10%;
                         text-align: center;
