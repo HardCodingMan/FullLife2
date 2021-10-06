@@ -18,6 +18,9 @@ h2{
 #organTable{
     text-align: center;
 }
+#form{
+    margin:0;
+}
 .btn-organ{
     box-shadow: 3px 3px 3px rgb(150, 149, 149);
 }
