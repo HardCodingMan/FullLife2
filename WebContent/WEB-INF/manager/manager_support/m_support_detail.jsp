@@ -48,7 +48,7 @@
                         </div>
                         <div id="post-contents">
                             <div id="post-img">
-                                <img src="/fileupload/${hList.picPath }" alt="후원사진">
+                                <img src="/fileupload/${hList.picName }" alt="후원사진">
                             </div>
                             <div id="post-text">
                               ${hList.notiCon }
@@ -76,7 +76,7 @@
                             <tr>
                                 <th>${reply.reUserId }</th>
                                 <th>${reply.supReCon }</th>
-                                <th><button><a href="/manager/m_support_reply_remove?notiNo=${hList.notiNo }&supReNo=${reply.supReNo}">삭제</a></button></th>
+                                <th><button><a href="/manager/m_support_reply_remove?notiNo=${hList.notiNo }&supReNo=${reply.supReNo}&reUserId=${reply.reUserId}">삭제</a></button></th>
                             </tr>
                             </c:forEach>
                        </table>

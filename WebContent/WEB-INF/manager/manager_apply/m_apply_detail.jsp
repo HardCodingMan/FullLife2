@@ -45,7 +45,7 @@
                             <div id="post-header">${apList.notiTitle }</div>
                             <div id="post-contents">
                                 <div id="post-img">
-                                    <img src="/fileupload/${apList.picPath }" alt="신청사진">
+                                    <img src="/fileupload/${apList.picName }" alt="신청사진">
                                 </div>
                                 <div id="post-text">
                                   ${apList.notiCon }
@@ -66,7 +66,7 @@
                             <tr>
                                 <th>${reply.reUserId }</th>
                                 <th>${reply.apReCon }</th>
-                                <th><button><a href="/manager/m_apply_reply_remove?notiNo=${apList.notiNo }&apReNo=${reply.apReNo}">삭제</a></button></th>
+                                <th><button><a href="/manager/m_apply_reply_remove?notiNo=${apList.notiNo }&apReNo=${reply.apReNo}&reUserId=${reply.reUserId}">삭제</a></button></th>
                             </tr>
 					</c:forEach>
                        </table>

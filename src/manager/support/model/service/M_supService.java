@@ -60,18 +60,22 @@ public class M_supService {
 	}
 
 
-	public int removeReplyOne(int replyNo) {
+	public int removeReplyOne(int replyNo, String reUser) {
 		Connection conn = null;
 		int result = 0;
+		int stealPoint = 0;
+		int stealReply= 0;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = new M_supDAO().deleteReplyOne(conn, replyNo);
-			if(result > 0) {
+			stealReply = new M_supDAO().deleteReplyOne(conn, replyNo);
+			stealPoint = new M_supDAO().stealPoint(conn, reUser);
+			if(stealReply > 0 && stealPoint > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
+			result = (stealReply + stealPoint);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -84,11 +88,12 @@ public class M_supService {
 	public int updateSup(int notiNo) {
 		int result = 0;
 		Connection conn = null;
+		int stealPoint = 0;
 		
 		try {
 			conn=jdbcTemplate.createConnection();
 			result = new M_supDAO().levelCheckSup(conn, notiNo);
-			if(result > 0) {
+			if(result > 0 && stealPoint > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
