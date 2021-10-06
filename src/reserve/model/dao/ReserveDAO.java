@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import hospital.model.vo.Hospital;
+import patient.model.vo.Patient;
 
 public class ReserveDAO {
 
@@ -41,11 +42,20 @@ public class ReserveDAO {
 			return hospitals;
 		}
 
-//	public int checkInfo(Connection conn, Reserve reserve) {
-//		PreparedStatement pstmt = null;
-//		int result = 0;
-//		String query = "SELECT USER_NAME, ZUMIN, PHONE, ADDRESS FROM MEMBER"
-//		return 0;
-//	}
+	public int orderCom(Connection conn, Patient patient) {
+	
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 
 }
