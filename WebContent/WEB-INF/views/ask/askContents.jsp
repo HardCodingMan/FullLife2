@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"  href="../css/ask.css">
+<link rel="stylesheet" type="text/css" href="../css/ask.css">
 </head>
 <body>
 	<div class="wrapper">
@@ -13,6 +13,14 @@
         <jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
     </header>
     <main>
+    <div id="main-navi">
+            <span class="subMenu">
+                <ul>
+                    <li><a href="/faq/FAQ">FAQ</a></li>
+                    <li>문의</li>
+                </ul>
+            </span>
+        </div>
         <section>
             <div id="ask-header">
                 <h2>문의</h2>

@@ -5,7 +5,7 @@ main{
     margin-bottom: 30px;
     height:20px;
 }
-ul>li{
+.subMenu>li{
     margin: 0 auto;
     height:100%;
     width:40px;
@@ -13,11 +13,11 @@ ul>li{
     list-style-type:none;
     display:inline-block;
 }
-ul a{
+.subMenu a{
     text-decoration: none;
     color: black;
 }
-ul:visited{
+.subMenu:visited{
     color:black;
 }
 #main-contents{

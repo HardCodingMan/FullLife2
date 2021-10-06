@@ -1,13 +1,32 @@
 body{
     margin: 0px;
 }
-#header-div{
-    height: 150px;
-    width: 100%;
-}
+/* #header-div{ */
+/*     height: 150px; */
+/*     width: 100%; */
+/* } */
 main{
     height: 100%;
 }   
+#main-navi{
+    margin-bottom: 30px;
+    height:20px;
+}
+.subMenu>ul>li{
+    margin: 0 auto;
+    height:100%;
+    width:40px;
+    text-decoration: none;
+    list-style-type:none;
+    display:inline-block;
+}
+.subMenu a{
+    text-decoration: none;
+    color: black;
+}
+.subMenu:visited{
+    color:black;
+}
 .wrapper{
     width: 1535px;
     margin: 0 auto;

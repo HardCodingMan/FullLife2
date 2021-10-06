@@ -274,21 +274,21 @@
             </div>
         </div>
         <br><br><br><br>
+        <div id="bottom-btn">
         <c:if test="${sessionScope.userId eq null}">
          <form action="/member/login" method="get">
-        <div id="bottom-btn">
-             <button id="purchase" ><a href="/reserve/reservation">예약하러가기</a></button>
-        </div>
-        </c:if>
+             <button id="purchase">예약하러가기</button>
         </form>
+        </c:if>
+        </div>
         
-        <c:if test="${sessionScope.userId ne null }">
-        <form action="/reserve/reservation" method="post">
         <div id="bottom-btn">
-             <button id="purchase" ><a href="/reserve/reservation">예약하러가기</a></button>
-        </div>
-        </c:if>
+        <c:if test="${sessionScope.userId ne null }">
+        <form action="/reserve/reservation" method="get"> 
+             <button id="purchase">예약하러가기</button>
         </form>
+        </c:if>
+        </div>
                     
         <br><br><br><br>
     </main>
