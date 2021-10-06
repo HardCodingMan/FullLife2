@@ -11,6 +11,7 @@ import apply.model.vo.NoticeLike;
 import apply.model.vo.ApplyNoticeReply;
 import apply.model.vo.ApplyPage;
 import common.JDBCTemplate;
+import member.model.vo.Member;
 
 public class ApplyNoticeService {
 
@@ -22,16 +23,21 @@ public class ApplyNoticeService {
 	
 	public int noticeWrite(Notice notice) {
 		Connection conn = null;
+		int insertNotice = 0;
+		int insertPoint = 0;
+		
 		int result = 0;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = new ApplyNoticeDAO().insertNotice(conn, notice);
-			if(result > 0) {
+			insertNotice = new ApplyNoticeDAO().insertNotice(conn, notice);
+			insertPoint = new ApplyNoticeDAO().insertPoint(conn, notice);
+			if(insertNotice > 0 && insertPoint > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
+			result = (insertNotice + insertPoint);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -99,15 +105,19 @@ public class ApplyNoticeService {
 	public int registerApplyReply(String replyContents, int noticeNo, String userId) {
 		Connection conn = null;
 		int result = 0;
+		int insertReply = 0;
+		int insertPoint = 0;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			result =  new ApplyNoticeDAO().insertNoticeReply(conn, replyContents, noticeNo, userId);
-			if(result > 0) {
+			insertReply =  new ApplyNoticeDAO().insertNoticeReply(conn, replyContents, noticeNo, userId);
+			insertPoint = new ApplyNoticeDAO().insertReplyPoint(conn, userId);
+			if(insertReply > 0 && insertPoint > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
+			result = (insertReply + insertPoint);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -214,15 +224,19 @@ public class ApplyNoticeService {
 	public int registerSupportReply(String replyContents, int noticeNo, String userId) {
 		Connection conn = null;
 		int result = 0;
+		int insertPoint = 0;
+		int insertReply = 0;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			result =  new ApplyNoticeDAO().insertSupportNoticeReply(conn, replyContents, noticeNo, userId);
-			if(result > 0) {
+			insertReply =  new ApplyNoticeDAO().insertSupportNoticeReply(conn, replyContents, noticeNo, userId);
+			insertPoint = new ApplyNoticeDAO().insertReplyPoint(conn, userId);
+			if(insertPoint > 0 && insertReply > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
+			result = (insertPoint + insertReply);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -231,17 +245,21 @@ public class ApplyNoticeService {
 		return result;
 	}
 
-	public int removeNoitceReplyOne(int replyNo) {
+	public int removeNoitceReplyOne(int replyNo, String userId) {
 		Connection conn = null;
 		int result = 0;
+		int deleteReply = 0;
+		int stealPoint = 0;
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = new ApplyNoticeDAO().deleteNoticeReplyOne(conn, replyNo);
-			if(result > 0) {
+			deleteReply = new ApplyNoticeDAO().deleteNoticeReplyOne(conn, replyNo);
+			stealPoint = new ApplyNoticeDAO().stealPoint(conn, userId);
+			if(deleteReply > 0 && stealPoint > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
+			result = (deleteReply + stealPoint);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -270,17 +288,21 @@ public class ApplyNoticeService {
 		return result;
 	}
 
-	public int removeSupportReplyOne(int replyNo) {
+	public int removeSupportReplyOne(int replyNo, String userId) {
 		Connection conn = null;
 		int result = 0;
+		int stealReply = 0;
+		int stealPoint = 0;
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = new ApplyNoticeDAO().deleteSupportReplyOne(conn, replyNo);
-			if(result > 0) {
+			stealReply = new ApplyNoticeDAO().deleteSupportReplyOne(conn, replyNo);
+			stealPoint = new ApplyNoticeDAO().stealPoint(conn, userId);
+			if(stealReply > 0 && stealPoint > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
+			result = (stealReply + stealPoint);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -389,6 +411,20 @@ public class ApplyNoticeService {
 			JDBCTemplate.close(conn);
 		}
 		return result;
+	}
+
+	public Member getPoint(String userId) {
+		Connection conn = null;
+		Member member = null;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			member = new ApplyNoticeDAO().getPoint(conn, userId);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return member;
 	}
 
 
