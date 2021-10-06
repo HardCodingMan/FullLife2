@@ -38,8 +38,8 @@ public class FindIdServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String userName = request.getParameter("user-name");
-		String email = request.getParameter("email");
-		String userId = new MemberService().getOneMemberByEmail(userName, email);
+		String zumin = request.getParameter("zumin");
+		String userId = new MemberService().getOneMemberByZumin(userName, zumin);
 		if(!userId.equals("")) {
 			request.setAttribute("userId", userId);
 		}

@@ -194,7 +194,6 @@ public class MypageDAO {
 			} finally {
 				JDBCTemplate.close(pstmt);
 			}
-			
 			return result;
 		}
 
@@ -227,8 +226,6 @@ public class MypageDAO {
 		         JDBCTemplate.close(rset);
 		         JDBCTemplate.close(pstmt);
 		      }
-		      
-		      
 		      return cList;
 	}
 		public String getresPageNavi(Connection conn, int checkResultPage) {
@@ -302,11 +299,3 @@ public class MypageDAO {
 
 
 	}
-
-	   
-
-
-
-
-
-

@@ -34,7 +34,7 @@ public class HospitalSelectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String location = request.getParameter("location1");
 		String done = "";
-		System.out.println(location);
+		System.out.println("location:"+location);
 		if(location.equals("gwangju")) {
 			done = "광주";
 		} else if(location.equals("seoul")) {
@@ -46,6 +46,7 @@ public class HospitalSelectServlet extends HttpServlet {
 		} else if(location.equals("daegu")) {
 			done = "대구";
 		}
+		System.out.println("done: "+done);
 		ArrayList<Hospital> hospitals = new ReserveService().getAllHospital(done);
 		if(!hospitals.isEmpty()) {
 			request.setAttribute("hospitals", hospitals);

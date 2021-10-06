@@ -31,13 +31,13 @@ public class MemberService {
 		return member;
 	}
 
-	public String getOneMemberByEmail(String userName, String email) {
+	public String getOneMemberByZumin(String userName, String zumin) {
 		String userId = "";
 		Connection conn = null;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			userId = new MemberDAO().selectOneMemberByEmail(email, userName, conn);
+			userId = new MemberDAO().selectOneMemberByZumin(zumin, userName, conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,30 +85,13 @@ public class MemberService {
 		return result;
 	}
 
-	public Member getMemberTotalPoint(String userId) {
-		Member member = null;
-		Connection conn = null;
-		
-		try {
-			conn = jdbcTemplate.createConnection();
-			member = new MemberDAO().updateTotalPoint(conn, userId);
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(conn);
-		}
-		return member;
-	}
-
 	public Member updateMemberInfo(String userId) {
 		Member member = null;
 		Connection conn = null;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			member = new MemberDAO().updateOneMember(userId, conn);
+			member = new MemberDAO().updateMemberPage(userId, conn);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -117,6 +100,39 @@ public class MemberService {
 		}
 		return member;
 	}
-	
 
+	public Member getMemberTotalPoint(String userId) {
+		Member member = null;
+		Connection conn = null;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			member = new MemberDAO().getTotalpoint(userId, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		return member;
+	}
+
+	public int checkId(String userId) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new MemberDAO().checkMyId(userId, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
+	
+	
 }

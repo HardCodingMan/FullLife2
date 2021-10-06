@@ -65,7 +65,7 @@
             </div>
             <div class="oneway-div">
                 <a href="/hospital/move"><button class="oneway-btn">협력병원 찾기</button></a>
-                <a href="/donate/move?rank1=1&rank2=2"><button class="oneway-btn">후원</button></a> 
+                <a href="/donate/move?rank1=1&rank2=2&userId=${sessionScope.userId }"><button class="oneway-btn">후원</button></a> 
             </div>
         </section>
         <section>

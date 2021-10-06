@@ -8,10 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import apply.model.service.ApplyNoticeService;
-import apply.model.vo.Notice;
-import apply.model.vo.NoticeLike;
-
 /**
  * Servlet implementation class SupportContentsServlet
  */
@@ -31,6 +27,9 @@ public class SupportContentsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
+		request.getRequestDispatcher("/WEB-INF/views/Notice/Support/SupportContents.jsp").forward(request, response);
+=======
 		request.setCharacterEncoding("UTF-8");
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
@@ -44,6 +43,7 @@ public class SupportContentsServlet extends HttpServlet {
 		}else {
 			request.getRequestDispatcher("/WEB-INF/views/Notice/ApplyError.jsp").forward(request, response);
 		}
+>>>>>>> 19ffe8aee7964f072206bb00ad913e1cb277f624
 	}
 
 	/**
