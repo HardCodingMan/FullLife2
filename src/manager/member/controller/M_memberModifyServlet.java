@@ -54,7 +54,7 @@ public class M_memberModifyServlet extends HttpServlet {
 		if(result > 0) {
 			response.sendRedirect("/manager/m_member_list");
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_member/m_member_modify.jsp").forward(request, response);
 		}
 	}
 

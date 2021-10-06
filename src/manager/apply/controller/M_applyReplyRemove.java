@@ -34,7 +34,7 @@ public class M_applyReplyRemove extends HttpServlet {
 		if(result > 0) {
 			response.sendRedirect("/manager/m_apply_detail?noticeNo="+notiNo);
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_apply/m_apply_list.jsp").forward(request, response);
 		}
 		
 	}
