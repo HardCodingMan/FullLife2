@@ -21,7 +21,7 @@ header a:visited{
     text-align:center;
     background-color: white;
     width:400px;
-    height:1000px;
+    height:1070px;
     margin:0 auto;
     padding:0;
 }
@@ -75,4 +75,8 @@ input{
     padding-left:22px;
     height:5px;
     text-align: left;
+}
+#join_box a{
+	text-decoration:none;
+	color:black;
 }
