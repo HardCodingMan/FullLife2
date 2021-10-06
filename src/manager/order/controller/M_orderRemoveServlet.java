@@ -33,7 +33,7 @@ public class M_orderRemoveServlet extends HttpServlet {
 		if(result>0) {
 			response.sendRedirect("/manager/m_order_list");
 		}else {
-			request.getRequestDispatcher("/WEB-INF/manager/manager_fail/m_search_fail.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/manager/manager_order/m_order_list.jsp").forward(request, response);
 		}
 	
 	}
