@@ -52,7 +52,7 @@
                 <c:forEach items="${requestScope.sList }" var="sup" varStatus="index">
                     <div class="list">
                         <div class="list-img">
-                            <img src="/fileupload/${sup.picPath }" alt="후원1">
+                            <img src="/fileupload/${sup.picName }" alt="후원1">
                         </div>
                         <div class="list-text">
                             <a href="/manager/m_support_detail?noticeNo=${sup.notiNo }">${sup.notiTitle }</a> 
