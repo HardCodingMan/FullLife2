@@ -405,7 +405,7 @@ public class ApplyNoticeDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		Notice notice = null;
-		String query = "SELECT NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,PIC_PATH, PIC_SIZE, PIC_NAME, USER_ID, NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN FROM NOTICE R WHERE NOTICE_NO = ?";
+		String query = "select NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,PIC_PATH, PIC_SIZE, PIC_NAME, USER_ID, NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN, (select totalpoint from member m where m.user_id= n.user_id ) as totalpoin from notice n where notice_no= ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, noticeNo);
@@ -426,8 +426,10 @@ public class ApplyNoticeDAO {
 				notice.setPicSize(rset.getLong("PIC_SIZE"));
 				notice.setPicName(rset.getString("PIC_NAME"));
 				notice.setUserId(rset.getString("USER_ID"));
+				notice.setTotalpoint(rset.getInt("TOTALPOINT"));
 				supportCountUpdate(conn, viewsCount, noticeNo);
 			}
+			System.out.println(notice.toString());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -93,7 +93,12 @@
                                 <form action="/Notice/Apply/ApplyNoticeReplyWriter" method="post">
                                     <td>댓글 작성 : </td> <td><input type="text" name="replyContents" placeholder="댓글을 작성해보세요" class="text-input"></td>
                                         <td><input type="hidden" name="noticeNo" value="${aOne.noticeNo }">
-                                        <input type="submit" value="작성"></td>
+                                        <c:if test="${sessionScope.userId eq null }">
+													로그인 후 <br>이용가능
+                                        </c:if>
+                                        <c:if test="${sessionScope.userId ne null  }">
+                                        	<input type="submit" value="작성"></td>
+                                       	</c:if>
                                 </form>    
                             </tr>
                         </table>
