@@ -10,21 +10,7 @@
 </head>
 <body>
     <header>
-        <div id="logo">
-            <a href="#"><img src="/img/fulllife로고3 (1).png" alt=""></a>
-        </div>
-        <div id="logout">
-           <c:if test="${sessionScope.userId eq null }">
-               <button><a href="/manager/login">LOGIN</a></button>
-            </c:if>
-            <c:if test="${sessionScope.userId ne null }">
-               <button style="width:90px;"><a href="/manager/m_member_list?userId=${sessionScope.userId }">
-               MYPAGE</a></button>
-               <div class="logout">
-               <a href="/manager/logout"><img src="/img/logout.png" style="width:20px;"></a>
-               </div>
-            </c:if>
-        </div>
+       <jsp:include page="/HeaderNFooterJSP/m_header.jsp"></jsp:include>
     </header>
     <aside id="left-aside">
         <div id="main-ul">
