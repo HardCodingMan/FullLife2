@@ -19,7 +19,7 @@
                 <h2>후원 게시판</h2>
             </div>
             <div id="search">
-            	<form action="/Notice/Apply/ApplyNoticeSearch" method="get">
+            	<form action="/Notice/Support/SupportNoticeSearch" method="get">
                 	<input type="text" name="searchKeyword">
                 	<input type="submit" value="검색">
                 </form>
@@ -28,30 +28,35 @@
         <section id="notice-section">
             <div class="notice">
                 <ul>
-                	<c:forEach items="${aList }" var="aOne">
+                	<c:forEach items="${sList }" var="sOne">
                     <li>
-                        <a href="/Notice/Apply/ApplyContents?noticeNo=${aOne.noticeNo }" class="notice-link">
+                        <a href="/Notice/Support/SupportContents?noticeNo=${sOne.noticeNo }" class="notice-link">
+                        <div class="list">
+                            <div class="list-img">
+                                <img src="/fileupload/${sOne.picName }" alt="${sOne.picName } class="list-img">
+                            </div>
+                            <div class="list-text">
+                                <p class="notice-title">${sOne.noticeTitle }</p>
+                            </div>
                             <div>
-                                <div class="list-img">
-                                    <img src="/fileupload/${aOne.picName }" alt="${aOne.picName }" class="li-img">
-                                </div>
-                                <div class="list-text">
-                                    <p class="notice-title">${aOne.noticeTitle }</p>
-                                </div>
-                                <div id="list-text2">
-                                    <div>조회수 : ${aOne.views }<br>추천수 : ${aOne.noticeLike }</div>
-                                    <div>심사중</div>
+                                <p>조회수 : ${sOne.views }</p>
+                            </div>
+                            <div class="list-percent">                      
+                               	 달성률 : ${sOne.nowSupport }
+                                <div class="prog">
+                                    <div class="progs" id="progressing">80%</div>
                                 </div>
                             </div>
+                            <div class="list-btn">
+                                <button>자세히보기</button>
+                            </div>
+                        </div>
                         </a>
                     </li>
                     </c:forEach>
                 </ul>
             </div>
-            <c:if test="${sessionScope.userId ne null }">
-            <a href="/Notice/Apply/ApplyNoticeWriter"><button id="write">글쓰기</button></a>
-            </c:if>
-            <br><div id="page">${pageNavi }</div>
+            <div id="page">${pageNavi }</div>
         </section>
         </div>
     </main>

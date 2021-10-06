@@ -330,6 +330,27 @@ public class ApplyNoticeService {
 		return ap;
 	}
 
+	public ApplyPage printSearchSupport(String searchKeyword, int currentPage) {
+		Connection conn = null;
+		List<Notice> nList = null;
+		String searchPageNavi = null;
+		ApplyPage ap = new ApplyPage();
+		ApplyNoticeDAO nDAO = new ApplyNoticeDAO();
+		try {
+			conn = jdbcTemplate.createConnection();
+			nList = new ApplyNoticeDAO().selectSearchSupport(conn, searchKeyword, currentPage);
+			searchPageNavi = nDAO.getSearchPageNaiv(conn, searchKeyword, currentPage);
+			ap.setaList(nList);
+			ap.setPageNavi(searchPageNavi);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(conn);
+		}
+		return ap;
+	}
+
 
 
 }
