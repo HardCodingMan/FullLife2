@@ -52,7 +52,7 @@
                     <c:forEach items="${requestScope.apList }" var="apply" varStatus="index">
                     <div class="list">
                         <div class="list-img">
-                            <img src="/fileupload/${apply.picPath }" alt="후원1">
+                            <img src="/fileupload/${apply.picName }" alt="후원1">
                         </div>
                         <div class="list-text">
                             <a href="/manager/m_apply_detail?noticeNo=${apply.notiNo }">${apply.notiTitle }</a> 
