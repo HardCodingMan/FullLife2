@@ -149,10 +149,11 @@ header{
         line-height: 400%;
         padding-left: 4%;
         font-size: 20px;
+        font-weight: bold;
     }
     #line-div{
-        width: 3%;
-        border-bottom: 1px solid gray;
+        width: 4%;
+        border-bottom: 3px solid rgb(4, 4, 78);
         margin-left: 4%;
     }
     #contents{
@@ -160,26 +161,35 @@ header{
         height: 90%;
         padding-top: 5%;
     }
-         .search-div{
-            width: 90%;
-            height: 12%;
-            margin-bottom: 3%;
-            border-bottom: 1px solid gray;
-        }
-            #search{
-                width: 250px;
-                height: 25px;
-                border-radius: 5px;
-                border: 1px solid gray;
-            }
-            #search-btn{
-                width: 60px;
-                height: 30px;
-                cursor: pointer;
-                box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.514);
-                border-radius: 5px;
-                border: 1px solid gray;
-            }
+    	.search-div{
+        width: 95%;
+        height: 13%;
+        margin-bottom: 3%;
+
+    }
+    #search{
+        width: 200px;
+        height: 30px;
+        border: 0;
+        border-bottom: 1px dotted gray;
+       
+    }
+    #search:focus{
+        background: aliceblue;
+
+    }
+    #search-btn{
+        width: 70px;
+        height: 35px;
+        border: 0;
+        border-bottom: 1px dotted gray;
+        background-color: rgba(128, 128, 128, 0.575);
+        cursor: pointer;
+        letter-spacing: 3px;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 5px;
+    }
         #table-div{
             width: 60%;
             height: 70%;
@@ -223,12 +233,24 @@ header{
         
         #table-div table{
             width: 95%;
-
             table-layout: fixed;
             text-align: center;
+            border-collapse: separate;
+            border-spacing: 1px;
+            border: 1px dotted rgba(196, 195, 195, 0.562);
         }
+            table td{
+                background-color: rgba(248, 248, 228, 0.24);
+                border-bottom: 1px solid rgba(196, 195, 195, 0.562);
+                height: 30px;
+                
+            }
+            table th{
+                border-bottom: 1px dotted rgb(145, 204, 51);
+                 height: 50px;
+            }
             table tr:first-child{
-                background-color:rgba(173, 196, 136, 0.541);;
+                background-color: rgba(126, 161, 102, 0.493);
             }
             table tr th:first-child{
                 width: 5%;
@@ -258,5 +280,9 @@ header{
 			  cursor: pointer;
 			  font-size: 12px;
         	
+        }
+        table a{
+        	text-decoration: none;
+        	color: black;
         }
         

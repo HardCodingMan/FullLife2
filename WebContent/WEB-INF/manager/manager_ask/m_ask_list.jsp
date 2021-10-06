@@ -45,11 +45,11 @@
             <div id="table-div">
                     <div class="search-div">
                         <form action="/manager/m_ask_search" method="get">
-                        <input type="text" id="search" name="searchId" placeholder="아이디를 검색하세요">&nbsp;&nbsp;&nbsp;
+                       <input type="text" id="search" name="searchId" placeholder="🔎아이디를 검색하세요">&nbsp;&nbsp;&nbsp;
                         <input type="submit" id="search-btn" value="검색">
                         </form>    
                     </div>
-                    <table border="1" cellspacing="0">
+                    <table>
                         <tr>
                             <th>문의 번호</th>
                             <th>회원 아이디</th>
