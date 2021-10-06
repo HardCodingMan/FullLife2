@@ -12,11 +12,14 @@ public class History {
 	private int usedPoint;
 	private String userId;
 	private int hospitalNo;
+	private String hospitalName;
 	
 	public History() {}
 	
+
+
 	public History(int historyNo, int organNo, int organQuantity, Date historyDate, int payment, Date paymentDate,
-			int usedPoint, String userId, int hospitalNo) {
+			int usedPoint, String userId, int hospitalNo, String hospitalName) {
 		super();
 		this.historyNo = historyNo;
 		this.organNo = organNo;
@@ -27,7 +30,10 @@ public class History {
 		this.usedPoint = usedPoint;
 		this.userId = userId;
 		this.hospitalNo = hospitalNo;
+		this.hospitalName = hospitalName;
 	}
+
+
 
 	public int getHistoryNo() {
 		return historyNo;
@@ -101,10 +107,28 @@ public class History {
 		this.hospitalNo = hospitalNo;
 	}
 
+	
+	public String getHospitalName() {
+		return hospitalName;
+	}
+
+
+
+	public void setHospitalName(String hospitalName) {
+		this.hospitalName = hospitalName;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "주문번호=" + historyNo + ", 장기식별번호=" + organNo + ", 주문수량=" + organQuantity
-				+ ", 주문날짜=" + historyDate + ", 결제금액=" + payment + ", 결제날짜=" + paymentDate
-				+ ", 사용된포인트=" + usedPoint + ", 회원아이디=" + userId + ", 병원고유번호=" + hospitalNo;
+		return "History [historyNo=" + historyNo + ", organNo=" + organNo + ", organQuantity=" + organQuantity
+				+ ", historyDate=" + historyDate + ", payment=" + payment + ", paymentDate=" + paymentDate
+				+ ", usedPoint=" + usedPoint + ", userId=" + userId + ", hospitalNo=" + hospitalNo + ", hospitalName="
+				+ hospitalName + "]";
 	}
+
+
+
+	
 }
