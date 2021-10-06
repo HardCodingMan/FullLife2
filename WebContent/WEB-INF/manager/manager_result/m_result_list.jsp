@@ -45,11 +45,11 @@
             <div id="table-div">
             <div class="search-div">
                     <form action="/manager/m_result_search" method="get">
-                      <input type="text" name="searchKeyword" id="search" placeholder="검사 번호를 입력해주세요">&nbsp;&nbsp;&nbsp;
+                      <input type="text" name="searchKeyword" id="search" placeholder="🔎검사 번호를 입력해주세요">&nbsp;&nbsp;&nbsp;
                         <input type="submit" id="search-btn" value="검색">
                     </form>
             </div>
-                    <table border="1" cellspacing="0">
+                    <table>
                         <tr>
                             <th>검사 번호</th>
                             <th>회원 아이디</th>
@@ -67,7 +67,7 @@
                             <td>${pList.fileName }</td>
 	    	             <form action="/manager/m_file_upload" method="post" enctype="multipart/form-data">
                             <td>
-                            	<input type="text" name="hos-no" placeholder="병원 번호 입력" style="width: 60px;">
+                            	<input type="text" name="hos-no" placeholder="병원 번호 입력" style="width: 60px; text-align: center;">
                             </td>
                             <td>
 	                            <input type="hidden" name="user-id" value="${pList.userId }">
