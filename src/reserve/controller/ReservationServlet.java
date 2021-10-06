@@ -1,6 +1,10 @@
 package reserve.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,13 +46,22 @@ public class ReservationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		String patientName = request.getParameter("patientName");
-		String patientZumin = request.getParameter("patientZumin");
-		String patientPhone = request.getParameter("patientPhone");
-		String patientAddr = request.getParameter("patientAddr");
+		String patientName = request.getParameter("patient-name");
+		String patientZumin = request.getParameter("patient-zumin");
+		String patientPhone = request.getParameter("patient-phone");
+		String patientAddr = request.getParameter("patient-addr");
 		String relation = request.getParameter("relation");
 		int organNo = Integer.parseInt(request.getParameter("organNo"));
-		int hosNo = Integer.parseInt(request.getParameter("hospitlNo"));
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			Date hosTime = dateFormat.parse(request.getParameter("hopitalTime"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}    
+		
+		int hosNo = Integer.parseInt(request.getParameter("hospitalNo"));
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		Patient patient = new Patient();
