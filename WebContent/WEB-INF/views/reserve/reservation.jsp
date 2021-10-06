@@ -41,19 +41,19 @@ window.onload = function() {
                             <label for="tab-1"><img src="/img/liver.png" name="liver" class="btn-organ"></label>
                         </td>
                         <td> 
-                            <input type="checkbox" name="rd-heart" id="tab-2">
+                            <input type="checkbox" name="rd-heart" value="heart" id="tab-2">
                             <label for="tab-2"><img src="/img/heart.png" name="heart" class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-tooth" id="tab-3">
+                            <input type="checkbox" name="rd-tooth" value="tooth" id="tab-3">
                             <label for="tab-3"><img src="/img/tooth.png" name="tooth" class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-bone" id="tab-4">
+                            <input type="checkbox" name="rd-bone" value="bone" id="tab-4">
                             <label for="tab-4"><img src="/img/bone.png" name="bone" class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-lung" id="tab-5">
+                            <input type="checkbox" name="rd-lung" value="lung" id="tab-5">
                             <label for="tab-5"><img src="/img/lung.png" name="lung" class="btn-organ"></label>
                         </td>
                     </tr>
@@ -194,7 +194,7 @@ window.onload = function() {
             <div id="buyerInfo">
                 <h4><u>예약자정보</u></h4>
                     <label>
-                        <span>이름</span><input type="text" name="user-name" id="user-name" class="input1" value="${sessionScope.userId }" placeholder="이름을 입력해주세요">
+                        <span>이름</span><input type="text" name="user-name" id="user-name" class="input1" value="${requestScope.member.userName }" placeholder="이름을 입력해주세요">
                     </label><br>
                     <label>
                         <span>주민등록번호</span><input type="text" name="user-zumin" id="user-zumin" class="input1" value="${sessionScope.userZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
