@@ -10,12 +10,7 @@
 </head>
 <body>
     <header>
-        <div id="logo">
-            <a href="#"><img src="/img/fulllife로고3 (1).png" alt=""></a>
-        </div>
-        <div id="logout">
-            <button>로그아웃</button>
-        </div>
+       <jsp:include page="/HeaderNFooterJSP/m_header.jsp"></jsp:include>
     </header>
     <aside id="left-aside">
         <div id="main-ul">
