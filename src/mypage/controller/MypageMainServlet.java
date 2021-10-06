@@ -35,7 +35,7 @@ public class MypageMainServlet extends HttpServlet {
 		Member member = new MemberService().updateMemberInfo(userId);
 		request.setAttribute("member", member);
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageMain.jsp").forward(request, response); 
-
+			
 		}
 	
 	/**
