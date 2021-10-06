@@ -83,13 +83,16 @@
                 아이디
             </h4>
                 <input type="text" class="wrong-input" id="userId" name="userId" placeholder="아이디 입력(5~11자)" required>
+                <input type="button" onclick="openIdChk();" value="본인인증"><br>
+                <span id="id-out">안녕</span>
         </div>
         <div id="password">
             <h4 class="join_title">
                 비밀번호
             </h4>
                 <input type="password" class="wrong-input" name="userPwd" id="userPwd" placeholder="비밀번호(숫자,영문,특수문자(!,@,#,%,&) 조합) 최소8자" required><br>
-                <input type="password" class="wrong-input" name="userRePwd" id="userRePwd" placeholder="비밀번호 확인" required>
+                <input type="password" class="wrong-input" name="userRePwd" id="userRePwd" placeholder="비밀번호 확인" required><br>
+                <span id="pw-out">안녕</span>
         </div>
         <div id="name">
            <h4 class="join_title">
@@ -100,7 +103,8 @@
             <h4 class="join_title">
                 주민등록번호
             </h4>
-                <input type="text" class="wrong-input" name="userZumin" id="userZumin" placeholder="-를 제외한 숫자 13자리를 입력해주세요" size="13">
+                <input type="text" class="wrong-input" name="userZumin" id="userZumin" placeholder="-를 제외한 숫자 13자리를 입력해주세요" size="13"><br>
+                <span id="zumin-out">안녕</span>
         </div>
         <div id="phone">
             <h4 class="join_title">
@@ -160,14 +164,14 @@
     </form>
     </main>
     <script>
-    let userId = document.querySelector("#user-id");
+    let userId = document.querySelector("#userId");
     let idOut = document.querySelector("#id-out");
-    let userPw = document.querySelector("#user-pw");
-    let userPw2 = document.querySelector("#user-rePw");
+    let userPw = document.querySelector("#userPwd");
+    let userPw2 = document.querySelector("#userRePwd");
     let pwOut = document.querySelector("#pw-out");
-    let phone = document.querySelector("#user-phone");
+    let phone = document.querySelector("#userPhone");
     let emailTag = document.querySelector("#userEmail");
-    let zuminTag = document.querySelector("#user-zumin");
+    let zuminTag = document.querySelector("#userZumin");
     let zuminOut = document.querySelector("#zumin-out");
     let roadTag = document.querySelector("#roadAddress");
     let detailTag = document.querySelector("#detailAddress");
@@ -199,7 +203,7 @@
         } else if(zuminTag.value == "" || !zuminRegex.test(zuminTag.value)){
             alert("주민번호를 입력해주세요.");
             return false;
-        } else if(emailTag.value == "" ){
+        } else if(emailTag.value == ""){
             alert("이메일을 입력해주세요.");
             return false;
         } else if(detailTag.value == ""){
@@ -299,7 +303,7 @@
         }
     });
       function openIdChk(){
-         var userId = $("#user-id").val();
+         var userId = $("#userId").val();
         $.ajax({
           type: "POST",
           url: "./idCheck",
