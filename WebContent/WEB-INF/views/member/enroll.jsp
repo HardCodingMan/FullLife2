@@ -31,7 +31,7 @@
 		else
 			$("#agreeAll").prop("checked",true);
 		
-	});
+		});
 	});
 	
     function searchAddr(){
