@@ -23,10 +23,6 @@
     <main>
         <div class="division">
             <div id="bioprinting">
-                            <div id="button">
-                    <input type="submit" value="협력병원찾기" id="btn-hos">
-                </div>
-            
                 <div id="introVideo">
                     <h1>기술소개</h1>
                     <iframe width="600" height="400" src="https://www.youtube.com/embed/rgxDixvWbLE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -219,6 +215,9 @@
                         <img src="/img/HospitalsLogo.png">
                     </div>
                 </div>
+                <div id="button">
+                    <input type="submit" value="협력병원찾기" id="btn-hos">
+                </div>
             </div>
         </div>
 
@@ -275,21 +274,21 @@
             </div>
         </div>
         <br><br><br><br>
-        <div id="bottom-btn">
         <c:if test="${sessionScope.userId eq null}">
          <form action="/member/login" method="get">
-             <button id="purchase">예약하러가기</button>
-        </form>
-        </c:if>
-        </div>
-        
         <div id="bottom-btn">
-        <c:if test="${sessionScope.userId ne null }">
-        <form action="/reserve/reservation" method="get"> 
-             <button id="purchase">예약하러가기</button>
-        </form>
-        </c:if>
+             <button id="purchase" ><a href="/reserve/reservation">예약하러가기</a></button>
         </div>
+        </c:if>
+        </form>
+        
+        <c:if test="${sessionScope.userId ne null }">
+        <form action="/reserve/reservation" method="post">
+        <div id="bottom-btn">
+             <button id="purchase" ><a href="/reserve/reservation">예약하러가기</a></button>
+        </div>
+        </c:if>
+        </form>
                     
         <br><br><br><br>
     </main>

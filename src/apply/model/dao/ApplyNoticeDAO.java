@@ -123,7 +123,7 @@ public class ApplyNoticeDAO {
 		int totalValue = 0;
 		Statement stmt = null;
 		ResultSet rset = null;
-		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE";
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE WHERE LEVELCHECK = 'N'";
 		try {
 			stmt = conn.createStatement();
 			rset = stmt.executeQuery(query);
@@ -364,7 +364,7 @@ public class ApplyNoticeDAO {
 
 	public String getSupportPageNavi(Connection conn, int currentPage) {
 		int pageCountView = 5;
-		int viewTotalCount = totalCount(conn);
+		int viewTotalCount = totalCountSupport(conn);
 		int viewCountPage = 8;
 		int totalCountPage = 0;
 		int totalCountPageMod = viewTotalCount % viewCountPage;
@@ -401,6 +401,28 @@ public class ApplyNoticeDAO {
 			sb.append("<a href='/Notice/Support/SupportNotice?currentPage=" + (endNavi+1) + "'> [다음] </a>");
 		}
 		return sb.toString();
+	}
+	
+	public int totalCountSupport(Connection conn) {
+		int totalValue = 0;
+		Statement stmt = null;
+		ResultSet rset = null;
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM NOTICE WHERE LEVELCHECK = 'Y'";
+		try {
+			stmt = conn.createStatement();
+			rset = stmt.executeQuery(query);
+			if(rset.next()) {
+				totalValue = rset.getInt("TOTALCOUNT");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(rset);
+			JDBCTemplate.close(stmt);
+		}
+		
+		return totalValue;
 	}
 
 	public Notice selectOneBySupportNo(Connection conn, int noticeNo) {
