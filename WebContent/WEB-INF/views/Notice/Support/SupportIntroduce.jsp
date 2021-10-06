@@ -20,7 +20,7 @@
         </section>
         <section>
             <div id="support-top">
-                <img src="img/new.jpg" alt="후원 이미지">
+                <img src="/upload/intro.png" alt="후원 이미지">
             </div>
             <div id="support-top-one">
                 <h3>Full Life 후원</h3><br>
