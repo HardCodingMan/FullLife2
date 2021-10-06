@@ -30,7 +30,8 @@ public class SupportNoticeReplyDelete extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		int replyNo = Integer.parseInt(request.getParameter("replyNo"));
-		int result = new ApplyNoticeService().removeSupportReplyOne(replyNo);
+		String userId = (String) request.getParameter("userId");
+		int result = new ApplyNoticeService().removeSupportReplyOne(replyNo, userId);
 		if(result > 0) {
 			response.sendRedirect("/Notice/Support/SupportContents?noticeNo="+noticeNo);
 		}else {
