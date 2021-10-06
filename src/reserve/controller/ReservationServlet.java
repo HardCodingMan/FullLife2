@@ -27,13 +27,6 @@ public class ReservationServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String metroCity = request.getParameter("metro-city");
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-	//		System.out.println(hospitalNo);
->>>>>>> 7117cd03e494f63d8cb6cde6e31fde4bba83b86c
->>>>>>> origin/KJW
 		request.setAttribute("metroCity", metroCity);
 		request.getRequestDispatcher("/WEB-INF/views/reserve/reservation.jsp").forward(request, response);
 	}
