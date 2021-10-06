@@ -143,7 +143,6 @@ public class M_resultDAO {
 		}
 		
 		return result;
-
 	}
 
 	public int deleteFile(Connection conn, String fileUser, String fileName) {

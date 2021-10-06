@@ -40,22 +40,24 @@ main{
     #notice-contents-section{
         height: 100%;
     } 
-        #notice-title{
-            text-align: center;
+         #notice-title{
             border-top: 2px solid black;
             border-bottom: 2px solid black;
         }
-        #notice-title p{
-            font-size: 20px;
-            font-weight: bold;
-        }
-        #contents-img{
-            margin-top: 25px;
-            text-align: center;
-        }
-            #contents-img img{
-                height: 390px;
-                width: 560px;
+         #No{
+                float: left;
+                line-height: 30px;
+                font: 13px;
+            }
+            #title{
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+            }
+            #userId{
+                float: right;
+                line-height: 30px;
+                font: 13px;
             }
         #contents-text{
             margin-left: 10px;

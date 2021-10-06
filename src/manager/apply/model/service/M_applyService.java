@@ -113,10 +113,10 @@ public class M_applyService {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+
 		}finally {
 			JDBCTemplate.close(conn);
 		}
-		
 		return result;
 	}
 
