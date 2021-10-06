@@ -35,7 +35,9 @@ public class SupportContentsServlet extends HttpServlet {
 		String userId = (String)session.getAttribute("userId");
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		Notice sOne = new ApplyNoticeService().printOneBySupportNo(noticeNo);
+		int sOnePercentage = (int)((double)sOne.getNowSupport() / (double)sOne.getNeedSupport() * 100);
 		if(sOne != null) {
+			request.setAttribute("percentage", sOnePercentage);
 			request.setAttribute("userId", userId);
 			request.setAttribute("sOne", sOne);
 			// NoticeReply setAttribute 해줌
