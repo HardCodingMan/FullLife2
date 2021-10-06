@@ -64,16 +64,15 @@
                         <td>${ask.askNo}</td>
                         <td>
                         <c:if test="${ask.disclosure eq 'N'}" >
-	                        <a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a>
 	                        <c:choose>
-				                <c:when test="${session.userId eq ask.userId }">
-				                    <c:out value="${ask.askSubject }"/>
+				                <c:when test="${sessionScope.userId eq ask.userId }">
+				                    <a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a>
 				                </c:when>
 			                	<c:otherwise>비밀글은 작성자와 관리자만 볼 수 있습니다.</c:otherwise>
 				            </c:choose>
 				        </c:if>
 				        <c:if test="${ask.disclosure eq 'Y'}" >
-				            <c:out value="${ask.askSubject }"/>
+				            <a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a>
 				        </c:if>
                         </td>
                         <td>${ask.userId }</td>
