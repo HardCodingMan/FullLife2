@@ -90,7 +90,7 @@ window.onload = function() {
                 <tr>
                     <td>
                         <select id="region">
-                        	<option value="" disabled selected> 지역 선택</option>
+                        	<option value="" selected disabled> 지역 선택</option>
                             <option value="seoul"<c:if test="${metroCity eq  'seoul'}">selected</c:if>>서울
                             <option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option>
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
