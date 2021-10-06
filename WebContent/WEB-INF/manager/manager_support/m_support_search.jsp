@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +46,7 @@
                 <div id="list-div">
                 <div class="search-div">
                     <form action="/manager/m_support_search" method="get">
-                    <input type="text" id="search" name="searchKeyword" placeholder="제목을 검색하세요">&nbsp;&nbsp;&nbsp;
+                    <input type="text" id="search" name="searchKeyword" placeholder="🔎제목을 검색하세요">&nbsp;&nbsp;&nbsp;
                     <input type="submit" id="search-btn" value="검색">
                     </form>    
                 </div>
@@ -60,7 +61,7 @@
                         <div class="list-percent">                      
                             달성률
                             <div class="prog">
-                                <div class="progs" id="progressing" style="width: ${(sup.nowSup/sup.needSup)*100 }%;">${(sup.nowSup/sup.needSup)*100 }%</div>
+                                <div class="progs" id="progressing" style="width: ${(sup.nowSup/sup.needSup)*100 }%;"><fmt:formatNumber value="${(sup.nowSup/sup.needSup)*100 }" pattern="0"/>%</div>
                             </div>
                         </div>
                           <div class="list-btn">

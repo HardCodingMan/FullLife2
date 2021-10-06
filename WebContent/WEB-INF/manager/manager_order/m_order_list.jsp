@@ -46,11 +46,11 @@
             <div id="table-div">
             		<div class="search-div">
                         <form action="/manager/m_order_search" method="get">
-                        <input type="text" id="search" name="searchNo" placeholder="주문번호를 검색하세요">&nbsp;&nbsp;&nbsp;
+                        <input type="text" id="search" name="searchNo" placeholder="🔎주문번호를 검색하세요">&nbsp;&nbsp;&nbsp;
                         <input type="submit" id="search-btn" value="검색">
                         </form>    
                     </div>
-                    <table border="1" cellspacing="0">
+                    <table>
                         <tr>
                             <th>주문 번호</th>
                             <th>장기 번호</th>
