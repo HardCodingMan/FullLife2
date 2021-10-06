@@ -43,7 +43,7 @@ public class SupportContentsServlet extends HttpServlet {
 			// NoticeReply setAttribute 해줌
 			request.getRequestDispatcher("/WEB-INF/views/Notice/Support/SupportContents.jsp").forward(request, response);
 		}else {
-			request.getRequestDispatcher("/WEB-INF/views/Notice/NoticeError.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/Notice/ApplyError.jsp").forward(request, response);
 		}
 	}
 
