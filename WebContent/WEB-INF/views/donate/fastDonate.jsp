@@ -65,20 +65,37 @@
                     <h1>후원</h1>
                 </div>
                 <div class="input-footer">
-                    <p>잔여포인트</p>
-                    <input type="text" value="1000 POINT"  style="width: 95%; height: 40px; border: none; background-color: #fafafa; font-family: 'Do Hyeon', sans-serif; font-size: 15px;" readonly>
-                    <form action="#">
-                        <p>포인트 입력</p>
-                        <input type="text" value="" placeholder="1000포인트 이상 기부 가능" style="width: 95%; height: 40px; font-family: 'Do Hyeon', sans-serif; font-size: 15px;"><br>
-                        <input type="submit" value="후원하기" id="point-btn">
+                     <!-- if userId is null -->
+                    <c:if test="${sessionScope.userId eq null }">
+                    <p>FULLLIFE 후원베스트글</p>
+                    <p>FULLLIFE 회원이 되어주세요</p>
+                    <form action="/member/enroll" method="get">
+                        <input type="submit" value="FULLLIFE 회원가입하러가기" class="support-btn" style="width: 95%; height: 50px; font-family: 'Do Hyeon', sans-serif; font-size: 15px;">
                     </form>
+                    <form action="/Notice/Support/SupportNotice" method="get">
+                        <input type="submit" value="후원게시판 구경하러가기" class="support-btn" style="width: 95%; height: 50px; font-family: 'Do Hyeon', sans-serif; font-size: 15px;">
+                    </form>
+                    <!-- /if -->
+                    </c:if>
+                     <!-- if userId not null -->
+                     <c:if test="${sessionScope.userId ne null }">
+                    <p style="font-size:20px;">FULLLIFE</p>
+                    <p>${requestScope.member.userName }님</p>
+                    <p style="margin: 0; padding:0; font-size:20px;">보유포인트</p>
+                    <p>${requestScope.member.totalPoint} point</p>
+                    
+                    <form action="/mypage/point" method="get">
+                        <input type="submit" value="포인트 충전하러가기" class="support-btn" id="pointBtn" style="width: 95%; height: 50px; font-family: 'Do Hyeon', sans-serif; font-size: 15px;">
+                    </form>
+                     <!-- /if -->
+                     </c:if>
                 </div>
             </div>
             
             <div class="slide-wrapper">
                 <div class="support-info1">
                     <h1>BEST1. ${requestScope.firstRank.noticeTitle }</h1>
-                    <img src="${firstRank.picPath }" alt="" width="90%" height="70%">
+                    <img src="/fileupload/${requestScope.firstRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
                     <div class="support-percentage">
                         <p>조회수: ${requestScope.firstRank.views }</p>
                         <p>달성금액: ${requestScope.firstRank.nowSupport}</p>
@@ -90,7 +107,7 @@
                 </div>
                 <div class="support-info2">
                     <h1>BEST2. ${requestScope.secondRank.noticeTitle }</h1>
-                    <img src="${secondRank.picPath }" alt="" width="90%" height="70%">
+                    <img src="/fileupload/${requestScope.secondRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
                     <div class="support-percentage">
                         <p>조회수: ${secondRank.views }</p>
                         <p>달성금액: ${requestScope.secondRank.nowSupport }</p>

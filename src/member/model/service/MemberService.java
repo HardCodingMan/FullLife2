@@ -116,6 +116,23 @@ public class MemberService {
 		}
 		return member;
 	}
+
+	public int checkId(String userId) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new MemberDAO().checkMyId(userId, conn);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
 	
 	
 }
