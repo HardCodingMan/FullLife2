@@ -68,7 +68,11 @@
    <main id="fullLifeWrap">
         <header class="header">
             <h2>
+<<<<<<< HEAD
                 <a href="/index.jsp">Full Life</a>
+=======
+                <a href="/">Full Life</a>
+>>>>>>> 7117cd03e494f63d8cb6cde6e31fde4bba83b86c
                 <br> 회원가입
             </h2>
         </header>
@@ -89,6 +93,11 @@
                 <input type="password" class="wrong-input" name="userPwd" id="user-pw" placeholder="비밀번호(숫자,영문,특수문자(!,@,#,%,&) 조합) 최소8자" required><br>
                 <input type="password" class="wrong-input" name="userRePwd" id="user-rePw" placeholder="비밀번호 확인" required><br>
                 <span id="pw-out"></span>
+        </div>
+        <div id="name">
+        	<h4 class="join_title">
+        	이름</h4>
+        	<input type="text" class="wrong-input" name="userName" id="userName" placeholder="이름을 입력해주세요">
         </div>
         <div id="zumin">
             <h4 class="join_title">
