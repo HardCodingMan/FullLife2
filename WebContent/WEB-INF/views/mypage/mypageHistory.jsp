@@ -43,7 +43,7 @@
                         <td>${history.historyNo}</td>
                         <td>${history.organNo}</td>
                         <td>${history.organQuantity}</td>
-                        <td>${history.hospitalNo}</td>
+                        <td>${history.hospitalName}</td>
                         <td>${history.payment}</td>
                         <td>${history.paymentDate}</td>
                         <td>${history.historyDate}</td>

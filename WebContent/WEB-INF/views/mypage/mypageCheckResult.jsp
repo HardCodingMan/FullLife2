@@ -41,7 +41,7 @@
                     <tr>
                     	<td>${checkResult.fileNo}</td>
                         <td>${checkResult.fileName}</td>
-                        <td>${checkResult.hospitalNo}</td>
+                        <td>${checkResult.hospitalName}</td>
                         <td>${checkResult.checkDate}</td>
                         <td><input type="button" class="bt1" value="다운"></td>
                     </tr>
