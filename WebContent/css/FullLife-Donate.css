@@ -277,6 +277,7 @@ header{
     box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #f2709C;
     opacity: 0;
     transition: 0.5s ease;
+    text-align:center;
 }
 /* -------------video-section------------------- */
 

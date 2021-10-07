@@ -96,8 +96,8 @@ public class MemberDAO {
 	public int insertMember(Connection conn, Member member) {
 			PreparedStatement pstmt = null;
 			int result = 0;
-			String query= "INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT,0)";
-//			INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,'0')
+			String query= "INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT,?)";
+//			INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,')
 			try {
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, member.getUserId());
@@ -106,7 +106,8 @@ public class MemberDAO {
 				pstmt.setString(4, member.getUserZumin());
 				pstmt.setString(5, member.getUserAddr());
 				pstmt.setString(6, member.getUserPhone());
-				result=pstmt.executeUpdate();
+				pstmt.setString(7, member.getUserEmail());
+				result = pstmt.executeUpdate();
 				
 			} catch (SQLException e) {
 				
