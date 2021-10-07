@@ -54,6 +54,13 @@ public Member(String userId, String userPwd, String userPhone, String userEmail,
 	this.userId = userId;
 }
 
+public Member(String newPwd, String phone, String email, String address) {
+	userPwd = newPwd;
+	userPhone = phone;
+	userEmail = email;
+	userAddr = address;
+}
+
 public String getUserId() {
       return userId;
    }

@@ -45,6 +45,7 @@ public class CheckResultServlet extends HttpServlet {
 		}
 		CheckResultPage result = new MypageService().printCheckResult(checkResultPage,userId);
 		List<CheckResult> cList = result.getcList();
+//		System.out.println("과연? "+cList.get(0).getFilePath());
 		if(!cList.isEmpty()) {
 			request.setAttribute("cList", cList);
 			request.setAttribute("pageNavi", result.getPageNavi());
