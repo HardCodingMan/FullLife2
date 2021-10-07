@@ -1,10 +1,21 @@
-#navi{
+navi{
   height: 50px;
   background-color: rgb(250, 250, 223);
-  width:100%;
-  display:block;
-  margin:0;
+  width:1583px;
+/*   display:block; */
+  margin-top:0px;
   list-style-type: none;
+  float:left;
+  padding:0;
+}
+navi>ul{
+	margin-top:0px;
+	width:80%;
+	float:left;
+}
+#buy{
+	width:20%;
+	float:left;
 }
 .subMenu{
   display: inline-block;
@@ -23,15 +34,8 @@
 #navi a:link{
   color:black;
   text-decoration: none;
-  /* list-style-type: none; */
 }
-/* .division-lightsand{
-  background-color: #f6f3f2;
-  margin-top: 50px;
-  height: 70%;
-  width: 100%;
 
-} */
 .division-light{
   background-color: #f6f3f2;
   margin-top: 50px;

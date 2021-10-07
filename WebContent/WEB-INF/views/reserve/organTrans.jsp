@@ -19,12 +19,22 @@
             <li class="subMenu"><a href="#findHos-main1">병원찾기</a></li>
             <li class="subMenu"><a href="#afterPurchase">구매 후 절차</a></li>
         </ul>
+        <div id="buy">
+	        <c:if test="${sessionScope.userId eq null}">
+	         <form action="/member/login" method="get">
+	             <button id="buy-btn">예약하러가기</button>
+	        </form>
+	        </c:if>
+	        <c:if test="${sessionScope.userId ne null }">
+	        <button id="buy-btn"><a href="/reserve/reservation?userId=${sessionScope.userId }">예약하러가기</a></button>
+	        </c:if>
+        </div>
     </navi>
     <main>
         <div class="division">
             <div id="bioprinting">
-                            <div id="button">
-                    <input type="submit" value="협력병원찾기" id="btn-hos">
+                <div id="button">
+               
                 </div>
             
                 <div id="introVideo">
@@ -285,9 +295,8 @@
         
         <div id="bottom-btn">
         <c:if test="${sessionScope.userId ne null }">
-        <form action="/reserve/reservation" method="get"> 
-             <button id="purchase">예약하러가기</button>
-        </form>
+             <button id="purchase"><a href="/reserve/reservation?userId=${sessionScope.userId }">예약하러가기</a></button>
+
         </c:if>
         </div>
                     
