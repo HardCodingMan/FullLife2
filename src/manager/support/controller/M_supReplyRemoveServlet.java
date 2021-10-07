@@ -30,7 +30,8 @@ public class M_supReplyRemoveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int notiNo = Integer.parseInt(request.getParameter("notiNo"));
 		int replyNo = Integer.parseInt(request.getParameter("supReNo"));
-		int result = new M_supService().removeReplyOne(replyNo);
+		String reUser = (String)request.getParameter("reUserId");
+		int result = new M_supService().removeReplyOne(replyNo, reUser);
 		if(result > 0) {
 			response.sendRedirect("/manager/m_support_detail?noticeNo="+notiNo);
 		}else {
