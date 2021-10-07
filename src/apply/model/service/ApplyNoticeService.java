@@ -172,16 +172,20 @@ public class ApplyNoticeService {
 	
 	public int insertLike(String userId, int noticeNo) {
 		Connection conn = null;
+		int insertLike = 0;
+		int insertPoint = 0;
 		int result = 0;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = new ApplyNoticeDAO().insertLike(conn, userId, noticeNo);
-			if(result > 0) {
+			insertLike = new ApplyNoticeDAO().insertLike(conn, userId, noticeNo);
+			insertPoint = new ApplyNoticeDAO().insertPointLike(conn, userId);
+			if(insertLike > 0 && insertPoint > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
+			result = (insertLike + insertPoint);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -405,7 +409,6 @@ public class ApplyNoticeService {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
-				System.out.println("펄스");
 			}
 			result = (userPoint+nowSupport+supportHuman);
 		} catch (SQLException e) {
