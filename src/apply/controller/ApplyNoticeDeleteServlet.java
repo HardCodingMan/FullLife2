@@ -29,7 +29,8 @@ public class ApplyNoticeDeleteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
-		int result = new ApplyNoticeService().removeNotice(noticeNo);
+		String userId = (String) request.getParameter("userId");
+		int result = new ApplyNoticeService().removeNotice(noticeNo, userId);
 		if(result > 0) {
 			// 삭제 성공하면 게시글 리스트로 이동 
 			response.sendRedirect("/Notice/Apply/ApplyNotice");

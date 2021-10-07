@@ -126,18 +126,22 @@ public class ApplyNoticeService {
 		return result;
 	}
 
-	public int removeNotice(int noticeNo) {
+	public int removeNotice(int noticeNo, String userId) {
 		int result = 0;
+		int deleteReply = 0;
+		int stealPoint = 0;
 		Connection conn = null;
 		
 		try {
 			conn = jdbcTemplate.createConnection();
-			result = new ApplyNoticeDAO().deleteApply(conn, noticeNo);
-			if(result > 0) {
+			deleteReply = new ApplyNoticeDAO().deleteApply(conn, noticeNo);
+			stealPoint = new ApplyNoticeDAO().stealPointNotice(conn, userId);
+			if(deleteReply > 0 && stealPoint > 0) {
 				JDBCTemplate.commit(conn);
 			}else {
 				JDBCTemplate.rollback(conn);
 			}
+			result = (deleteReply + stealPoint);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
