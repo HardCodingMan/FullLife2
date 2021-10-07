@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import mypage.model.service.MypageService;
 import mypage.model.vo.CheckResult;
@@ -34,13 +35,15 @@ public class CheckResultServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int checkResultPage = 0;
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute("userId"); 
 		String getCheckResultPage = request.getParameter("checkResultPage");
 		if(getCheckResultPage == null) {
 			checkResultPage = 1; 
 		}else {
 			checkResultPage = Integer.parseInt(getCheckResultPage);
 		}
-		CheckResultPage result = new MypageService().printCheckResult(checkResultPage);
+		CheckResultPage result = new MypageService().printCheckResult(checkResultPage,userId);
 		List<CheckResult> cList = result.getcList();
 		if(!cList.isEmpty()) {
 			request.setAttribute("cList", cList);

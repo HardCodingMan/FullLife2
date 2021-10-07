@@ -43,7 +43,12 @@
                         <td>${checkResult.fileName}</td>
                         <td>${checkResult.hospitalName}</td>
                         <td>${checkResult.checkDate}</td>
-                        <td><input type="button" class="bt1" value="다운"></td>
+                        <td>
+                        	<form action="/mypage/file_down" method="post">
+                        		<input type="hidden" name="file-path" value="${checkResult.filePath }">
+                        		<input type="submit" value="다운">
+                        	</form>
+                        </td>
                     </tr>
                     </c:forEach>
                     <tr>

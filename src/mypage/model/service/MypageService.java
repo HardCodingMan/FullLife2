@@ -36,14 +36,14 @@ public class MypageService {
 		return hisPage;
 	}
 	
-	public CheckResultPage printCheckResult(int checkResultPage) {
+	public CheckResultPage printCheckResult(int checkResultPage, String userId) {
 		CheckResultPage result = new CheckResultPage();
 		Connection conn = null;
 		MypageDAO cDao = new MypageDAO();
 		
 		try {
 			conn=jdbcTemplate.createConnection();
-			result.setcList(cDao.selectCheckResult(conn, checkResultPage));
+			result.setcList(cDao.selectCheckResult(conn, checkResultPage, userId));
 			result.setPageNavi(cDao.getPageNavi(conn, checkResultPage));
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -19,7 +19,7 @@ public class MypageDAO {
       PreparedStatement pstmt = null;
       ResultSet rset = null;
       List<History>hList = null;
-      String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY HISTORY_NO DESC)AS NUM, HISTORY_NO, ORGAN_NO, ORGAN_QUANTITY, HISTORY_DATE, PAYMENT, PAYMENT_DATE, USED_POINT, USER_ID, HOSPITAL_NAME FROM HISTORY LEFT JOIN HOSPITAL ON HISTORY.HOSPITAL_NO=HOSPITAL.HOSPITAL_NO WHERE USER_ID = ?)WHERE NUM BETWEEN ? AND ?";
+      String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY HISTORY_NO DESC)AS NUM, HISTORY_NO, ORGAN_NAME, ORGAN_QUANTITY, HISTORY_DATE, PAYMENT, PAYMENT_DATE, USED_POINT, USER_ID, HOSPITAL_NAME FROM HOSPITAL LEFT JOIN HISTORY ON HISTORY.HOSPITAL_NO=HOSPITAL.HOSPITAL_NO RIGHT JOIN ORGAN ON HISTORY.ORGAN_NO=ORGAN.ORGAN_NO WHERE USER_ID = ?)WHERE NUM BETWEEN ? AND ?";
       
       try {
          pstmt = conn.prepareStatement(query);
@@ -35,7 +35,7 @@ public class MypageDAO {
          while(rset.next()) {
             History his = new History();
             his.setHistoryNo(rset.getInt("HISTORY_NO"));
-            his.setOrganNo(rset.getInt("ORGAN_NO"));
+            his.setOrganName(rset.getString("ORGAN_NAME"));
             his.setOrganQuantity(rset.getInt("ORGAN_QUANTITY"));
             his.setHistoryDate(rset.getDate("HISTORY_DATE"));
             his.setPayment(rset.getInt("PAYMENT"));
@@ -198,25 +198,28 @@ public class MypageDAO {
 			return result;
 		}
 
-	   public List<CheckResult> selectCheckResult(Connection conn,  int checkResultPage) {
+	   public List<CheckResult> selectCheckResult(Connection conn,  int checkResultPage, String userId) {
 		      PreparedStatement pstmt = null;
 		      ResultSet rset = null;
 		      List<CheckResult>cList = null;
-		      String query="SELECT *FROM(SELECT ROW_NUMBER() OVER(ORDER BY FILE_NO DESC)AS NUM, FILE_NO, FILE_NAME, HOSPITAL_NAME, CHECK_DATE FROM RESULT LEFT JOIN HOSPITAL ON HOSPITAL.HOSPITAL_NO=RESULT.HOSPITAL_NO)WHERE NUM BETWEEN ? AND ?";
+		      String query="SELECT *FROM(SELECT ROW_NUMBER() OVER(ORDER BY FILE_NO DESC)AS NUM, FILE_NO, FILE_SIZE,FILE_NAME,FILE_PATH, HOSPITAL_NAME, CHECK_DATE FROM RESULT LEFT JOIN HOSPITAL ON HOSPITAL.HOSPITAL_NO=RESULT.HOSPITAL_NO WHERE USER_ID=?)WHERE NUM BETWEEN ? AND ?";
 		      
 		      try {
 				 pstmt = conn.prepareStatement(query);
 				 int viewCountPerPage =10;
 		         int start = checkResultPage*viewCountPerPage -(viewCountPerPage-1);
 		         int end = checkResultPage*viewCountPerPage;
-		         pstmt.setInt(1, start);
-		         pstmt.setInt(2, end);
+		         pstmt.setString(1, userId);
+		         pstmt.setInt(2, start);
+		         pstmt.setInt(3, end);
 		         rset = pstmt.executeQuery();
 		         cList= new ArrayList<CheckResult>();
 		         while(rset.next()) {
 		        	 CheckResult result = new CheckResult();
 		        	 result.setFileNo(rset.getInt("FILE_NO"));
+		        	 result.setFileSize(rset.getLong("FILE_SIZE"));
 		        	 result.setFileName(rset.getString("FILE_NAME"));
+		        	 result.setFilePath(rset.getString("FILE_PATH"));
 		        	 result.setHospitalName(rset.getString("HOSPITAL_NAME"));
 		        	 result.setCheckDate(rset.getDate("CHECK_DATE"));
 		             cList.add(result);
