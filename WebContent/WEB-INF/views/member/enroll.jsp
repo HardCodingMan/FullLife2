@@ -15,7 +15,7 @@
 <script>
 
  $(document).ready(function() {
-	
+	console.log(document.querySelector("#checkId-result").value);
 	$("#agreeAll").click(function(){
 	    if( $("#agreeAll").is(':checked') ){
 	      $("input[type=checkbox]").prop("checked", true);
@@ -82,16 +82,17 @@
             <h4 class="join_title">
                 아이디
             </h4>
-                <input type="text" class="wrong-input" id="userId" name="userId" placeholder="아이디 입력(5~11자)" required>
+                <input type="text" class="wrong-input" id="userId" name="userId" placeholder="아이디 입력(5~11자)">
                 <input type="button" onclick="openIdChk();" value="본인인증"><br>
+                <input type="hidden" id="checkId-result" value="0">
                 <span id="id-out"></span>
         </div>
         <div id="password">
             <h4 class="join_title">
                 비밀번호
             </h4>
-                <input type="password" class="wrong-input" name="userPwd" id="userPwd" placeholder="비밀번호(숫자,영문,특수문자(!,@,#,%,&) 조합) 최소8자" required><br>
-                <input type="password" class="wrong-input" name="userRePwd" id="userRePwd" placeholder="비밀번호 확인" required><br>
+                <input type="password" class="wrong-input" name="userPwd" id="userPwd" placeholder="비밀번호(숫자,영문,특수문자(!,@,#,%,&) 조합) 최소8자"><br>
+                <input type="password" class="wrong-input" name="userRePwd" id="userRePwd" placeholder="비밀번호 확인"><br>
                 <span id="pw-out"></span>
         </div>
         <div id="name">
@@ -129,7 +130,7 @@
                 </span>
                 <br>
                 <input type="text" id="roadAddress" name="addr2" placeholder="주소를 입력해주세요">
-                <input type="text" id="detailAddress" name="addr3" placeholder="상세주소를 입력해주세요" required>
+                <input type="text" id="detailAddress" name="addr3" placeholder="상세주소를 입력해주세요">
                 <input type="hidden" id="sample6_extraAddress" placeholder="참고항목" >
         </div>
         <div id="email">
@@ -159,12 +160,13 @@
             </div>
         </div><br>
     
-        <div id="joinBox">
-        	<button id="join_box""><a href="/member/login"  onclick="return check();">회원가입 완료</a></button>
+        <div id="joinBox">     	
+        	<input type="submit" id="join_box" onclick="return validCheck();" value="회원가입 완료">
         </div>
     </form>
     </main>
     <script>
+    let subBtn = document.querySelector("#join_box");
     let userId = document.querySelector("#userId");
     let idOut = document.querySelector("#id-out");
     let userPw = document.querySelector("#userPwd");
@@ -188,8 +190,9 @@
     let pwRegex2 = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
     let zuminRegex = /\d{2}([0]\d|[1][0-2])([0][1-9]|[1-2]\d|[3][0-1])[-]*[1-4]\d{6}/;
 	let nameRegex = /[ㄱ-힣]{2,4}$/;
-    function check(){
-       
+	
+	 function validCheck() {
+//        console.log("hello");
         if(!idRegex.test(userId.value)){
             alert("아이디를 입력하세요.");
             return false;
@@ -232,9 +235,13 @@
         } else if(userNameTag.value == "" || !nameRegex.test(userNameTag.value)){
         	alert("이름을 잘 입력해주세요.");
         	return false;
+        } else if(document.querySelector("#checkId-result").value == "1"){
+        	alert("중복확인해주세요.");
+        	return false;
         }
         return true;
     }
+    
 	userId.addEventListener("blur", function(){
 		idOut.innerHTML = "";
 	});
@@ -315,8 +322,10 @@
           success: function(result){
              if(result == 1){
                 $("#id-out").html("<h6 style='color:red; font-size:12px; font-family:'Do Hyeon', sans-serif;'>사용중인 아이디입니다.</h6>");
+                $("#checkId-result").val("1");
              } else if(result == 0) {
                 $("#id-out").html("<h6 style='color:blue; font-size:12px; font-family:'Do Hyeon', sans-serif;'>사용할 수 있는 아이디입니다.</h6>");
+                $("#checkId-result").val("0");
              }
           }
         });
