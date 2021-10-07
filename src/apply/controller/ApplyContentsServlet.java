@@ -37,7 +37,6 @@ public class ApplyContentsServlet extends HttpServlet {
 		String userId = (String)session.getAttribute("userId");
 		NoticeLike nLike = new ApplyNoticeService().updateLike(noticeNo, userId);
 		Notice aOne = new ApplyNoticeService().printOneByNo(noticeNo);
-		System.out.println(aOne.toString());
 		if(aOne != null) {
 			request.setAttribute("aOne", aOne);
 			request.setAttribute("nLike", nLike);
