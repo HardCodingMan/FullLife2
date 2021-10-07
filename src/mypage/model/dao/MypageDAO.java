@@ -19,7 +19,7 @@ public class MypageDAO {
       PreparedStatement pstmt = null;
       ResultSet rset = null;
       List<History>hList = null;
-      String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY HISTORY_NO DESC)AS NUM, HISTORY_NO, ORGAN_NO, ORGAN_QUANTITY, HISTORY_DATE, PAYMENT, PAYMENT_DATE, USED_POINT, USER_ID, HOSPITAL_NO FROM HISTORY WHERE USER_ID = ?) WHERE NUM BETWEEN ? AND ?";
+      String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY HISTORY_NO DESC)AS NUM, HISTORY_NO, ORGAN_NO, ORGAN_QUANTITY, HISTORY_DATE, PAYMENT, PAYMENT_DATE, USED_POINT, USER_ID, HOSPITAL_NAME FROM HISTORY LEFT JOIN HOSPITAL ON HISTORY.HOSPITAL_NO=HOSPITAL.HOSPITAL_NO WHERE USER_ID = ?)WHERE NUM BETWEEN ? AND ?";
       
       try {
          pstmt = conn.prepareStatement(query);
@@ -42,7 +42,7 @@ public class MypageDAO {
             his.setPaymentDate(rset.getDate("PAYMENT_DATE"));
             his.setUsedPoint(rset.getInt("USED_POINT"));
             his.setUserId(rset.getString("USER_ID"));
-            his.setHospitalNo(rset.getInt("HOSPITAL_NO"));
+            his.setHospitalName(rset.getString("HOSPITAL_NAME"));
             hList.add(his);
          }
       } catch (SQLException e) {
