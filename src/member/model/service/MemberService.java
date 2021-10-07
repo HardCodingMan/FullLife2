@@ -133,6 +133,50 @@ public class MemberService {
 		
 		return result;
 	}
+
+	public int deleteMember(String userId) {
+		Connection conn = null;
+		int result = 0;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new MemberDAO().deleteMember(userId, conn);
+			if(result > 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
+
+	public int modifyMember(Member member, String userId) {
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new MemberDAO().modifyMember(userId, member, conn);
+			if(result> 0) {
+				JDBCTemplate.commit(conn);
+			} else {
+				JDBCTemplate.rollback(conn);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
 	
 	
 }

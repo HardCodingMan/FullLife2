@@ -28,7 +28,7 @@
         <article>
             <div id="clientupdate">
                 <h3>회원정보 수정</h3>
-                <form action="https:/www.naver.com" method="post">
+                <form action="/member/modify" method="post">
                     <input type="hidden" name="userid" value="">
                     <div id="result-div" style="height: 30px; width: 200px; margin-left: 380px;margin-bottom: 20px;"></div>
                     <table class="cliupdateTable">
@@ -52,7 +52,7 @@
                             </tr>
                             <tr>
                                 <td>비밀번호 확인</td>
-                                <td><input type="password" name="pw2" id="user-reNewPw"placeholder="신규비밀번호와 동일하게 입력"><br></td>
+                                <td><input type="password" name="new-pw" id="user-reNewPw"placeholder="신규비밀번호와 동일하게 입력"><br></td>
                             </tr>
                         </table>
                         <table class="cliupdateTable3">
@@ -62,7 +62,7 @@
                         </tr>
                         <tr>
                             <td>연락처</td>
-                            <td><input type="text" name="tel" id="tel1" size="3">&nbsp;-&nbsp;<input type="text" name="tel" id="tel2" size="3">&nbsp;-&nbsp;<input type="text" name="tel" id="tel3" size="3"></td>
+                            <td><input type="text" name="tel1" id="tel1" size="3">&nbsp;-&nbsp;<input type="text" name="tel2" id="tel2" size="3">&nbsp;-&nbsp;<input type="text" name="tel3" id="tel3" size="3"></td>
                         </tr>
                         <tr>
                             <td>이메일</td>
@@ -86,9 +86,13 @@
                     </table>
                     <div class="cliupdateBtn">
                         <input type="submit" value="정보수정" class="clibt" onclick="return check();"><br>
-                        <input type="submit" value="회원탈퇴" class="clibt" onclick="">
                     </div>
                 </form>
+                <div class="cliupdateBtn">
+                	<form action="/member/delete" method="post">
+                       	<input type="submit" id="modBtn" value="회원탈퇴" class="clibt">
+                    </form>
+                </div>
             </div>
             <br><br><br><br><br><br><br><br><br><br><br>
         </article>
