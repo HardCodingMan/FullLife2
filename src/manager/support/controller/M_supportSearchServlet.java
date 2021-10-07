@@ -43,7 +43,6 @@ public class M_supportSearchServlet extends HttpServlet {
 		
 		M_supPage pd = new M_supService().printSearchSup(keyword, currentPage);
 		List<M_support> sList = pd.getsList();
-		System.out.println(pd.toString());
 		if(!sList.isEmpty()) {
 			request.setAttribute("sList", sList);
 			request.setAttribute("pageNavi", pd.getPageNavi());

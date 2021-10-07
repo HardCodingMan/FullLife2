@@ -18,12 +18,12 @@ public class M_supDAO {
 	public List<M_support> selectAllSup(Connection conn, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN, PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,NOTICE_LIKE FROM NOTICE WHERE LEVELCHECK='Y') WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOW_SUPPORT DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN, PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,NOTICE_LIKE FROM NOTICE WHERE LEVELCHECK='Y') WHERE NUM BETWEEN ? AND ?";
 		List<M_support> sList = null;
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			int viewCountPerPage = 10;
+			int viewCountPerPage = 6;
 			int start = currentPage * viewCountPerPage -(viewCountPerPage -1);
 			int end = currentPage * viewCountPerPage;
 			pstmt.setInt(1, start);
@@ -61,7 +61,7 @@ public class M_supDAO {
 	public String getPageNavi(Connection conn, int currentPage) {
 		int pageCountPerView = 5;
 		int viewTotalCount = totalCount(conn);
-		int viewCountPerPage = 10;
+		int viewCountPerPage = 6;
 		int pageTotalCount = 0;
 		int pageTotalCountMod = viewTotalCount % viewCountPerPage;
 		if(pageTotalCountMod >0) {
@@ -92,7 +92,7 @@ public class M_supDAO {
 			if(i == currentPage) {
 				sb.append(i);
 			}else {
-				sb.append("<a href='/manager/m_support_list?currentPage="+i+"'>"+i+"</a>");
+				sb.append("<a href='/manager/m_support_list?currentPage="+i+"'> "+i+" </a>");
 			}
 		}
 		if(needNext) {
@@ -228,12 +228,11 @@ public class M_supDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<M_support> sList = null;
-		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN, PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,NOTICE_LIKE FROM NOTICE WHERE LEVELCHECK='Y' AND NOTICE_TITLE LIKE ?) WHERE NUM BETWEEN ? AND ?";
-		System.out.println("1"+sList);
+		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOW_SUPPORT DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE,NOW_SUPPORT, NEED_SUPPORT, SUPPORT_HUMAN, PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,NOTICE_LIKE FROM NOTICE WHERE LEVELCHECK='Y' AND NOTICE_TITLE LIKE ?) WHERE NUM BETWEEN ? AND ?";
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, "%"+keyword+"%");
-			int viewCountPerPage = 10;
+			int viewCountPerPage = 6;
 			int start = currentPage * viewCountPerPage -(viewCountPerPage -1);
 			int end = currentPage * viewCountPerPage;
 			pstmt.setInt(2, start);
@@ -272,7 +271,7 @@ public class M_supDAO {
 	public String getSearchPageNavi(Connection conn, String keyword, int currentPage) {
 		int pageCountPerView = 5;
 		int viewTotalCount = searchTotalCount(conn, keyword);
-		int viewCountPerPage = 10;
+		int viewCountPerPage = 6;
 		int pageTotalCount = 0;
 		if(viewTotalCount % viewCountPerPage > 0) {
 			pageTotalCount = viewTotalCount/ viewCountPerPage +1;
@@ -299,7 +298,7 @@ public class M_supDAO {
 			sb.append("<a href='/manager/m_support_search?searchKeyword="+keyword+"&currentPage="+(startNavi-1)+"'> [이전] </a>");
 		}
 		for(int i = startNavi; i<=endNavi; i++) {
-			sb.append("<a href='/manager/m_support_search?searchKeyword="+keyword+"&currentPage="+i+"'>"+i+"</a>");
+			sb.append("<a href='/manager/m_support_search?searchKeyword="+keyword+"&currentPage="+i+"'> "+i+" </a>");
 		}
 		if(needNext) {
 			sb.append("<a href='/manager/m_support_search?searchKeyword="+keyword+"&currentPage="+(endNavi+1)+"'> [다음] </a>");

@@ -17,12 +17,12 @@ public class M_applyDAO {
 	public List<M_apply> selectAllApply(Connection conn, int currentPage) {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
-		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, NOTICE_LIKE, PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,SIMSA FROM NOTICE WHERE LEVELCHECK='N') WHERE NUM BETWEEN ? AND ?";
+		String query = "select * from(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE,NOTICE_CONTENTS,VIEWS,ENROLL_DATE,(select Count(*) from NOTICE_LIKE l where l.NOTICE_NO=r.NOTICE_NO) as NOTICE_LIKE,PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,SIMSA FROM NOTICE r WHERE LEVELCHECK = 'N' OR LEVELCHECK = 'S') where NUM BETWEEN ? AND ?";
 		List<M_apply> apList = null;
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			int viewCountPerPage = 10;
+			int viewCountPerPage = 6;
 			int start = currentPage * viewCountPerPage -(viewCountPerPage-1);
 			int end = currentPage* viewCountPerPage;
 			pstmt.setInt(1, start);
@@ -58,7 +58,7 @@ public class M_applyDAO {
 	public String getPageNavi(Connection conn, int currentPage) {
 		int pageCountPerView = 5;
 		int viewTotalCount = totalCount(conn);
-		int viewCountPerPage = 10;
+		int viewCountPerPage = 6;
 		int pageTotalCount = 0;
 		int pageTotalCountMod = viewTotalCount % viewCountPerPage;
 		if(pageTotalCountMod > 0) {
@@ -89,7 +89,7 @@ public class M_applyDAO {
 			if(i==currentPage) {
 				sb.append(i);
 			}else {
-				sb.append("<a href='/manager/m_apply_list?currentPage="+i+"'>"+i+"</a>");
+				sb.append("<a href='/manager/m_apply_list?currentPage="+i+" ' > "+i+" </a>");
 			}
 		}
 		if(needNext) {
@@ -243,16 +243,16 @@ public class M_applyDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rset = null;
 		List<M_apply> apList = null;
-		String query = "SELECT * FROM(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_NO, NOTICE_TITLE, NOTICE_CONTENTS, VIEWS, ENROLL_DATE, NOTICE_LIKE, PIC_PATH, PIC_SIZE, PIC_NAME,USER_ID,SIMSA FROM NOTICE WHERE LEVELCHECK='N'AND NOTICE_TITLE LIKE ?) WHERE NUM BETWEEN ? AND ?";
+		String query = "SELECT * FROM(select * from(SELECT ROW_NUMBER() OVER(ORDER BY NOTICE_NO DESC)AS NUM,NOTICE_no,NOTICE_TITLE,NOTICE_CONTENTS,VIEWS,ENROLL_DATE,(select Count(*) from NOTICE_LIKE l where l.NOTICE_NO=r.NOTICE_NO) as NOTICE_LIKE,PIC_PATH, PIC_SIZE, PIC_NAME,LEVELCHECK,USER_ID,SIMSA FROM NOTICE r WHERE LEVELCHECK = 'N' OR LEVELCHECK = 'S') where NUM BETWEEN ? AND ?)WHERE NOTICE_TITLE LIKE ?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, "%"+keyword+"%");
-			int viewCountPerPage = 10;
+			int viewCountPerPage = 6;
 			int start = currentPage * viewCountPerPage -(viewCountPerPage-1);
 			int end = currentPage * viewCountPerPage;
-			pstmt.setInt(2, start);
-			pstmt.setInt(3, end);
+			pstmt.setInt(1, start);
+			pstmt.setInt(2, end);
+			pstmt.setString(3, "%"+keyword+"%");
 			apList = new ArrayList<M_apply>();
 			rset = pstmt.executeQuery();
 			while(rset.next()) {
@@ -262,11 +262,12 @@ public class M_applyDAO {
 				apply.setNotiCon(rset.getString("NOTICE_CONTENTS"));
 				apply.setViews(rset.getInt("VIEWS"));
 				apply.setEnroll(rset.getDate("ENROLL_DATE"));
+				apply.setNotiLike(rset.getInt("NOTICE_LIKE"));
 				apply.setPicPath(rset.getString("PIC_PATH"));
 				apply.setPicSize(rset.getLong("PIC_SIZE"));
 				apply.setPicName(rset.getString("PIC_NAME"));
+				apply.setLevel(rset.getString("LEVELCHECK").charAt(0));
 				apply.setUserId(rset.getString("USER_ID"));
-				apply.setNotiLike(rset.getInt("NOTICE_LIKE"));
 				apply.setSimsa(rset.getString("SIMSA"));
 				apList.add(apply);
 				
@@ -284,7 +285,7 @@ public class M_applyDAO {
 	public String getSearchPageNavi(Connection conn, String keyword, int currentPage) {
 		int pageCountPerView = 5;
 		int viewTotalCount = searchTotalCount(conn, keyword);
-		int viewCountPerPage = 10;
+		int viewCountPerPage = 6;
 		int pageTotalCount = 0;
 		if(viewTotalCount % viewCountPerPage > 0) {
 			pageTotalCount = viewTotalCount/ viewCountPerPage +1;
@@ -311,7 +312,7 @@ public class M_applyDAO {
 			sb.append("<a href='/manager/m_apply_search?searchKeyword="+keyword+"&currentPage="+(startNavi-1)+"'> [이전] </a>");
 		}
 		for(int i = startNavi; i<=endNavi; i++) {
-			sb.append("<a href='/manager/m_apply_search?searchKeyword="+keyword+"&currentPage="+i+"'>"+i+"</a>");
+			sb.append("<a href='/manager/m_apply_search?searchKeyword="+keyword+"&currentPage="+i+" ' > "+i+" </a>");
 		}
 		if(needNext) {
 			sb.append("<a href='/manager/m_apply_search?searchKeyword="+keyword+"&currentPage="+(endNavi+1)+"'> [다음] </a>");
