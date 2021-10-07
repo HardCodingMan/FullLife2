@@ -174,8 +174,6 @@ public class M_supDAO {
 			while(rset.next()) {
 				M_supReply reply = new M_supReply();
 				reply.setSupReNo(rset.getInt("SUPPORT_REPLY_NO"));
-				reply.setSupReNo(rset.getInt("SUPPROT_REPLY_NO"));
-
 				reply.setReUserId(rset.getString("USER_ID"));
 				reply.setSupReCon(rset.getString("REPLY_CONTENTS"));
 				reply.setSupReDate(rset.getDate("REPLY_DATE"));
@@ -331,6 +329,25 @@ public class M_supDAO {
 		
 		return result;
 	}
+
+	public int stealPoint(Connection conn, String reUser) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query = "UPDATE MEMBER SET TOTALPOINT = TOTALPOINT -50 WHERE USER_ID = ?";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, reUser);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			JDBCTemplate.close(pstmt);
+		}
+
+		return result;
+	}
+
 	
 	
 	
