@@ -17,15 +17,14 @@
             <div id="main-navi">
                 <span>
                     <ul class="subMenu">
-                        <li><a href="/faq/FAQ">FAQ</a></li>
-                        <li>문의</li>
-                    </ul>
+	                    <li><a href="/faq/FAQ">FAQ</a></li>
+	                    <li><u><strong>문의</strong></u></li>
+	                    <hr>
+	                </ul>
                 </span>
             </div>
             <div id="main-contents">
-                <div><u><strong>문의</strong></u></div>
-                <hr>
-                
+                <br>
                 <div id="contents">
                     <br>
                     <span class="contents-title">

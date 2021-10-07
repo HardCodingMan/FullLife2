@@ -19,13 +19,16 @@
             <span>
                 <ul class="subMenu">
                     <li><a href="/faq/FAQ">FAQ</a></li>
-                    <li>문의</li>
+                    <li><u><strong>문의</strong></u></li>
+                    <hr>
                 </ul>
             </span>
         </div>
         <div id="main-contents">
-            <div id="contents-header"><u><strong>문의</strong></u></div>
-            <hr>
+        	<div id="main-pic">
+        		<img src="/img/ask.png">
+        	</div>
+            
             <div id="top">
 	           <div class="search">
 		           <form action="/ask/search" method="get">
@@ -33,22 +36,20 @@
                        <input type="submit" value="검색">
 		           </form>
 	           </div>
-                <span class="inquiry">
+                <div class="inquiry">
 		            <c:if test="${sessionScope.userId eq null }">
 		            <form action="/member/login" method="get">
 		                <button>문의하기</button>
 		            </form>
 		            </c:if>
-                </span>
-        		<span class="inquiry">
+                </div>
+        		<div class="inquiry">
 		            <c:if test="${sessionScope.userId ne null}">
-		         		<form action="/ask/post" method="get">
-		                <button>문의하기</button>
-		                </form>
+		         		<button><a href ="/ask/post">문의하기</a></button>
 		        	</c:if>
-                </span>
+                </div>
             </div>
-            <div>
+            <div id="table">
                 <table border="1px">
                     <tr>
                         <th class="inquiryNo">글 번호</th>
@@ -57,7 +58,6 @@
                         <th class="enrollDate">작성일</th>
                         <th class="status">답변여부</th>
                         <th class="disclosure">공개여부</th>
-                        
                     </tr>
                     <c:forEach items="${requestScope.aList }" var="ask" varStatus="index">
                     <tr>
@@ -82,14 +82,12 @@
                     </tr>
                     </c:forEach>
                     <tr>
-			<td colspan="6" align="center">
-				${pageNavi  }
-			</td>
-		</tr>
-
+						<td colspan="6" align="center">
+							${pageNavi  }
+						</td>
+					</tr>
                 </table>
             </div>
-        </div>
     </main>
     <footer>
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
