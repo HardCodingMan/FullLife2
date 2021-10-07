@@ -22,7 +22,7 @@
                 <li><a href="/mypage/history">주문내역</a></li>
                 <li><a href="/mypage/point">포인트조회/충전</a></li>
                 <li><a href="/mypage/regHospital">병원예약조회</a></li>
-                <li><a href="/mypage/checkResult">검사내역</a></li>
+                <li class="choice"><a href="/mypage/checkResult">검사내역</a></li>
             </ul>
         </aside>
         <article>
@@ -46,17 +46,17 @@
                         <td>
                         	<form action="/mypage/file_down" method="post">
                         		<input type="hidden" name="file-path" value="${checkResult.filePath }">
-                        		<input type="submit" value="다운">
+                        		<input type="image" src="/img/download.png" name="submit" value="다운" id="down" >
                         	</form>
                         </td>
                     </tr>
                     </c:forEach>
                     <tr>
-                    <td colspan="5" align="center">${pageNavi}</td>
+                    <td colspan="5" align="center" id="pageNavi">${pageNavi}</td>
                     </tr>
                 </table>
             </form>
-            <br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </article>
     </div>
 <footer>
