@@ -1,26 +1,26 @@
 package mypage.controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import member.model.service.MemberService;
 
 /**
- * Servlet implementation class ResultDownServlet
+ * Servlet implementation class DeleteMemberServlet
  */
-@WebServlet("/mypage/file_down")
-public class ResultDownServlet extends HttpServlet {
+@WebServlet("/member/delete")
+public class DeleteMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ResultDownServlet() {
+    public DeleteMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,25 +37,10 @@ public class ResultDownServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		request.setCharacterEncoding("UTF-8");
-		String filePath = request.getParameter("file-path");
-		System.out.println("뭐지? "+filePath);
-		File file = new File(filePath);
-		response.setContentType("application/octet-stream");
-		response.setContentLength((int)file.length());
-		String fileName = new String(file.getName().getBytes(), "ISO-8859-1");
-		response.setHeader("Content-Disposition", "attachment;filename="+fileName);
-		
-		FileInputStream fileIn = new FileInputStream(file);
-		ServletOutputStream output = response.getOutputStream();
-		
-		byte [] outputByte = new byte[4096];
-		while(fileIn.read(outputByte,0,4096) != -1) {
-			output.write(outputByte, 0, 4096);
-		}
-		fileIn.close();
-		output.flush();
-		output.close();
+		HttpSession session = request.getSession();
+		String userId = (String) session.getAttribute("userId");
+		session.invalidate();
+		response.sendRedirect("/index.jsp");
 		
 	}
 
