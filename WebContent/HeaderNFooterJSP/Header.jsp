@@ -35,7 +35,7 @@
             </ul>
         </div>
         <div id="btn-div">
-           	<c:if test="${sessionScope.userId eq null }">
+              <c:if test="${sessionScope.userId eq null }">
                <button><a href="/member/login">LOGIN</a></button>
             </c:if>
             <c:if test="${sessionScope.userId ne null }">
