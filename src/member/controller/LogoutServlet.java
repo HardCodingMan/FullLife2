@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 /**
  * Servlet implementation class LogoutServlet
  */
-@WebServlet("/member/logout")
+@WebServlet("/member/logout2")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,7 +30,8 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session != null) {
 			session.invalidate();
-			request.getRequestDispatcher("/WEB-INF/views/member/logout.html").forward(request, response);
+			response.sendRedirect("/index.jsp");
+//			request.getRequestDispatcher("/WEB-INF/views/member/logout.html").forward(request, response);
 		}
 	}
 
