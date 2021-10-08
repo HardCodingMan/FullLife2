@@ -42,7 +42,7 @@
                <button style="width:90px;"><a href="/mypage/main?userId=${sessionScope.userId }">
                MYPAGE</a></button>
                <div class="logout">
-               <a href="/member/logout"><img src="/img/logout.png" style="width:20px;"></a>
+               <a href="/member/logout2"><img src="/img/logout.png" style="width:20px;"></a>
                </div>
             </c:if>
         </div>
