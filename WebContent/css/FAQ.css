@@ -71,6 +71,7 @@ main{
     }
     .menu{
         text-align: center;
+        cursor: pointer;
     }
     .menu ul li{   
         text-align: center;
@@ -81,6 +82,6 @@ main{
     height: 150px;
 }
 h2:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
-#bio-question,#reservation-question,#support-question{ background-color: rgb(173, 196, 136);border-radius: 3px;width: 150px;height: 50px;border: 1px solid gray;font-weight: bold;font-size: 14px;}
+#bio-question,#reservation-question,#support-question{ background-color: rgb(173, 196, 136);border-radius: 3px;width: 150px;height: 50px;border: 1px solid gray;font-weight: bold;font-size: 14px;cursor: pointer;}
 #bio-question:active,#reservation-question:active,#support-question:active{background-color: rgb(203, 221, 174);}
 hr{width: 500px;}

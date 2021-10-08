@@ -16,6 +16,7 @@
 	<div class="wrapper">
         <div>
         <section>
+        <br>
             <div id="FAQ-header">
                 <h2>자주 묻는 질문</h2>
             </div>
