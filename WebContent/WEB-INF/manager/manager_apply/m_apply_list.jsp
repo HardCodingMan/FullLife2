@@ -8,6 +8,9 @@
 <title>FullLife</title>
 <link rel="stylesheet" href="/m_css/m_apply_list.css">
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
        <header>
