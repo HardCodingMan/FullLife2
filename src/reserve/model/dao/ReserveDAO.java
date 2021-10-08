@@ -1,4 +1,4 @@
-0package reserve.model.dao;
+package reserve.model.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
