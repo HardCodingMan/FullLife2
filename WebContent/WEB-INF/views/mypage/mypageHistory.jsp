@@ -19,7 +19,7 @@
         <aside id="menucontainer">
             <ul class="menu">
                  <li><a href="/mypage/cliUpdate">회원정보 수정</a></li>
-                <li><a href="/mypage/history">주문내역</a></li>
+                <li class="choice"><a href="/mypage/history">주문내역</a></li>
                 <li><a href="/mypage/point">포인트조회/충전</a></li>
                 <li><a href="/mypage/regHospital">병원예약조회</a></li>
                 <li><a href="/mypage/checkResult">검사내역</a></li>
@@ -50,7 +50,7 @@
                     </tr>
                 	 </c:forEach>
                 	 <tr>
-                	 <td colspan="7" align="center">${pageNavi}</td>
+                	 <td colspan="7" align="center" id="pageNavi">${pageNavi}</td>  
                 	 <tr>
                 </table>
             </form>
