@@ -66,7 +66,7 @@
                             </td>
                             <td>
 	                            <input type="hidden" name="user-id" value="${pList.userId }">
-	                            <input type="file" id="upload-file" name="up-file">
+	                            <input type="file" id="upload-file" name="up-file">&nbsp;&nbsp;
 	                            <input type="submit" class="blue-btn" value="업로드">
                             </td>
 		                  </form>

@@ -114,7 +114,6 @@ public class M_supService {
 		String searchPageNavi = null;
 		M_supPage pd = new M_supPage();
 		M_supDAO sDao = new M_supDAO();
-		System.out.println("service"+keyword);
 		try {
 			conn = jdbcTemplate.createConnection();
 			sList = sDao.getSearchSup(conn, keyword, currentPage);

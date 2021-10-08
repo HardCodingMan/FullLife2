@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,7 +52,7 @@
                                 <img src="/fileupload/${hList.picName }" alt="후원사진">
                             </div>
                             <div id="post-text">
-                              ${hList.notiCon }
+                            	<textarea rows="20" cols="85">${hList.notiCon }</textarea>
                             </div>
                             <div id="post-footer">
                                     <div id="footer1">
@@ -60,7 +61,7 @@
                                     </div>
                                     <div id="footer2">
                                         <span>달성률 : </span>
-                                        <span>${(hList.nowSup/hList.needSup)*100 }%</span>
+                                        <span><fmt:formatNumber value="${(hList.nowSup/hList.needSup)*100 }" pattern="0"/>%</span>
                                     </div>
                             </div>
                         </div>

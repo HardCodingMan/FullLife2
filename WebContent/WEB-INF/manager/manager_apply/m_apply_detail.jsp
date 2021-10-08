@@ -48,7 +48,7 @@
                                     <img src="/fileupload/${apList.picName }" alt="신청사진">
                                 </div>
                                 <div id="post-text">
-                                  ${apList.notiCon }
+                                  <textarea rows="20" cols="85">${apList.notiCon }</textarea>
                                 </div>
                                 <div id="post-footer">
                                     <div id="footer1">심사중</div>
