@@ -1,10 +1,12 @@
 body{overflow-x:hidden; overflow-y:auto;}
-.mypage{height: 40px; width: 100%;line-height: 10px; text-align: center;background-color: rgb(250, 250, 223);color: black;padding: 20px;}
+.mypage{height: 40px; width: 100%;line-height: 10px; text-align: center;background-color: ivory;color: black;padding: 20px;}
+#mymain{padding-top: 100px;}
 #menucontainer .menu li{list-style: none;}
 #menucontainer{width: 300px;height: 745px; background-color:white;border-right: 1px solid gray;float: left;position: relative;}
 .menu{padding: 0;text-align: center;position: relative;}
 .menu li a{height: 50px;line-height: 50px;display: block;padding: 0 40px;font-size: 16px;color: #555;text-decoration: none;}
-.menu li a:hover{background-color: rgb(173, 196, 136);color: white;}
+.choice{background-color: rgb(173, 196, 136);}
+.choice >a:visited{color: white;}
 #clientupdate,#checkresult,#order,#point1,#reghospital{ margin-left: 400px;margin-top: 80px;}
 
 h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
@@ -23,12 +25,12 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .cliupdateBtn{margin-left: 430px;margin-top: 40px;}
 .clibt{width: 100px;margin-top: 5px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
 .clibt:last-child {position:relative; bottom:30px;}
-.jumun,.gumsa{width: 900px; border: 1px solid; border-collapse: collapse; text-align: center;margin-left: 50px;margin-top: 150px;}
-.jumun th,.jumun td,.gumsa th,.gumsa td{border: 1px solid;padding: 10px 5px;}
-.jumun th,.gumsa th{background-color: rgb(173, 196, 136); color: black;}
+.jumun,.gumsa{width: 900px; border: 1px solid; border-collapse: collapse; text-align: center;margin-left: 50px;margin-top: 150px;border: none;}
+.jumun th,.gumsa th{ color: black;border-top: 2px solid rgb(173, 196, 136);border-bottom: 2px solid rgb(173, 196, 136); padding: 10px 5px;}
+.jumun td,.gumsa td{border-top: 1px solid lightgray; padding: 10px 5px;}
 
-.save{width: 300px;height: 80px; margin-top: 150px;margin-left: 300px; border: 0px solid;padding: 20px;background-color: rgba(173, 196, 136, 0.445);text-align: center;line-height: 80px;}
-.save input{border:none;width: 80px; font-size: 18px;background-color:transparent;}
+.save{width: 300px;height: 80px; margin-top: 150px;margin-left: 300px; border: 0px solid;padding: 20px;background-color: rgba(173, 196, 136, 0.445);text-align: center;line-height: 80px;border-radius: 5px;  box-shadow: 5px 5px 15px grey;}
+.save input{border:none;width: 90px; font-size: 20px;background-color:transparent;}
 .bt{width: 150px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153); border-radius: 5px;margin-left: 400px;margin-top: 20px;cursor:pointer;}
 .bt1{background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
 .bt2{width: 110px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;float: left;cursor:pointer;}
@@ -42,22 +44,25 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .box{margin-left: 160px; width: 630px;font-size: 12px;background-color: rgba(173, 196, 136, 0.445);padding: 20px;}
 
 #mypagemain{width: 100%;}
-#mypagepic{ margin: 50px 0 50px 500px;position: relative;}
+#mypagepic{ text-align: center;margin-right: 150px; position: relative;}
 #userid{margin: 30px 0 30px 100px;font-size: 30px;position: absolute;border:none;}
-.icon{width: 100%; margin: 50px 0 50px 400px;}
+#icon{width: 800px; margin: auto; text-align: center;display: block;}
 .icon-pic img{width: 100px; margin-left: 30px; margin-right: 30px; display: block;}
-.icon-pic p{text-align: center;font-size: 12px;margin:0 30px 0 30px;color: black;}
+.icon-pic p{text-align: center;font-size: 12px;margin:0 30px 0 30px;color: black;font-weight: bold;}
 .icon-pic a{text-decoration: none;}
 .icon-pic{float: left;}
 
 
-
+#user-id{border: none;}
+#user-newPw::-webkit-input-placeholder{font-size: 2px;}
+#user-reNewPw::-webkit-input-placeholder{font-size: 2px;}
 #book1{ margin-left: 300px;margin-top: 100px;width:500px;}
 .bookbox{border:0px none;width: 300px;}
 .bookbt{margin: 20px 0 0 400px; width: 100px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
-#mypagejumun{height: 300px; margin: 200px 0 0 300px;} 
+#mypagejumun{height: 300px; margin: 200px 0 0 300px;}
 
+#pageNavi a{text-decoration:none;}
+#pageNavi a:link{color:black;}
+#pageNavi a:visited{color:gray;}
 
-
-#user-newPw::-webkit-input-placeholder{font-size: 2px;}
-#user-reNewPw::-webkit-input-placeholder{font-size: 2px;}
+#down{width:30px;}
