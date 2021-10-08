@@ -19,10 +19,24 @@
             <li class="subMenu"><a href="#findHos-main1">병원찾기</a></li>
             <li class="subMenu"><a href="#afterPurchase">구매 후 절차</a></li>
         </ul>
+        <div id="buy">
+	        <c:if test="${sessionScope.userId eq null}">
+	         <form action="/member/login" method="get">
+	             <button id="buy-btn">예약하러가기</button>
+	        </form>
+	        </c:if>
+	        <c:if test="${sessionScope.userId ne null }">
+	        <button id="buy-btn"><a href="/reserve/reservation?userId=${sessionScope.userId }">예약하러가기</a></button>
+	        </c:if>
+        </div>
     </navi>
     <main>
         <div class="division">
             <div id="bioprinting">
+                <div id="button">
+               
+                </div>
+            
                 <div id="introVideo">
                     <h1>기술소개</h1>
                     <iframe width="600" height="400" src="https://www.youtube.com/embed/rgxDixvWbLE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -215,9 +229,6 @@
                         <img src="/img/HospitalsLogo.png">
                     </div>
                 </div>
-                <div id="button">
-                    <input type="submit" value="협력병원찾기" id="btn-hos">
-                </div>
             </div>
         </div>
 
@@ -274,21 +285,20 @@
             </div>
         </div>
         <br><br><br><br>
+        <div id="bottom-btn">
         <c:if test="${sessionScope.userId eq null}">
          <form action="/member/login" method="get">
-        <div id="bottom-btn">
-             <button id="purchase" ><a href="/reserve/reservation">예약하러가기</a></button>
-        </div>
-        </c:if>
+             <button id="purchase">예약하러가기</button>
         </form>
+        </c:if>
+        </div>
         
-        <c:if test="${sessionScope.userId ne null }">
-        <form action="/reserve/reservation" method="post">
         <div id="bottom-btn">
-             <button id="purchase" ><a href="/reserve/reservation">예약하러가기</a></button>
-        </div>
+        <c:if test="${sessionScope.userId ne null }">
+             <button id="purchase"><a href="/reserve/reservation?userId=${sessionScope.userId }">예약하러가기</a></button>
+
         </c:if>
-        </form>
+        </div>
                     
         <br><br><br><br>
     </main>
