@@ -249,18 +249,31 @@ public class MemberDAO {
 		return result;
 	}
 
+	public Member selectOneById(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member member = null;
+		String query="SELECT USER_NAME, ZUMIN, ADDRESS,PHONE,TOTALPOINT FROM MEMBER WHERE USER_ID =?";
 	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
+			rset = pstmt.executeQuery();
+			if(rset.next()) {
+				member = new Member();
+				member.setUserName(rset.getString("USER_NAME"));
+				member.setUserZumin(rset.getString("ZUMIN"));
+				member.setUserAddr(rset.getString("ADDRESS"));
+				member.setUserPhone(rset.getString("PHONE"));
+				member.setTotalPoint(rset.getInt("TOTALPOINT"));
+			}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+			}
+			return member;
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}
 }
