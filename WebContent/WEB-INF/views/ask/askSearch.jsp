@@ -17,14 +17,16 @@
         <div id="main-navi">
             <span>
                 <ul class="subMenu">
-                    <li><a href="/faq/FAQ">FAQ</a></li>
-                    <li>문의</li>
-                </ul>
+	                    <li><a href="/faq/FAQ">FAQ</a></li>
+	                    <li><u><strong>문의</strong></u></li>
+	                    <hr>
+	                </ul>
             </span>
         </div>
         <div id="main-contents">
-            <div id="contents-header"><u><strong>문의</strong></u></div>
-            <hr>
+      		<div id="main-pic">
+        		<img src="/img/ask.png">
+        	</div>
             <div id="top">
             <div class="search">
             <form action="/ask/search" method="get">
@@ -32,9 +34,18 @@
                         <input type="submit" value="검색">
             </form>
             </div>
-                <span class="inquiry">
-                <button><a href="/ask/post">문의하기</a></button>
-                </span>
+                <div class="inquiry">
+		            <c:if test="${sessionScope.userId eq null }">
+		            <form action="/member/login" method="get">
+		                <button>문의하기</button>
+		            </form>
+		            </c:if>
+                </div>
+        		<div class="inquiry">
+		            <c:if test="${sessionScope.userId ne null}">
+		         		<button><a href ="/ask/post">문의하기</a></button>
+		        	</c:if>
+                </div>
             </div>
             <div >
                 <table border="1px">
@@ -51,7 +62,19 @@
                     <tr>
                     
                         <td>${ask.askNo}</td>
-                        <td><a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a></td>
+                        <td>
+                        <c:if test="${ask.disclosure eq 'N'}" >
+	                        <c:choose>
+				                <c:when test="${sessionScope.userId eq ask.userId }">
+				                    <a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a>
+				                </c:when>
+			                	<c:otherwise>비밀글은 작성자와 관리자만 볼 수 있습니다.</c:otherwise>
+				            </c:choose>
+				        </c:if>
+				        <c:if test="${ask.disclosure eq 'Y'}" >
+				            <a href="/ask/askContents?askNo=${ask.askNo }"> ${ask.askSubject } </a>
+				        </c:if>
+                        </td>
                         
                         <td>${ask.userId }</td>
                         <td>${ask.askDate }</td>
