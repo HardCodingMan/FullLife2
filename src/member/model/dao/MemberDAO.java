@@ -96,8 +96,8 @@ public class MemberDAO {
 	public int insertMember(Connection conn, Member member) {
 			PreparedStatement pstmt = null;
 			int result = 0;
-			String query= "INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT,0)";
-//			INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,'0')
+			String query= "INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT,?)";
+//			INSERT INTO MEMBER VALUES (?,SEQ_MEMBER.NEXTVAL,?,?,?,?,?,DEFAULT,DEFAULT,')
 			try {
 				pstmt = conn.prepareStatement(query);
 				pstmt.setString(1, member.getUserId());
@@ -106,7 +106,8 @@ public class MemberDAO {
 				pstmt.setString(4, member.getUserZumin());
 				pstmt.setString(5, member.getUserAddr());
 				pstmt.setString(6, member.getUserPhone());
-				result=pstmt.executeUpdate();
+				pstmt.setString(7, member.getUserEmail());
+				result = pstmt.executeUpdate();
 				
 			} catch (SQLException e) {
 				
@@ -207,17 +208,57 @@ public class MemberDAO {
 		return result;
 	}
 
-	public Member selectOneById(Connection conn, String userId) {
+	public int deleteMember(String userId, Connection conn) {
+		int result = 0;
+		String query = "DELETE FROM MEMBER WHERE USER_ID = ?";
 		PreparedStatement pstmt = null;
-		ResultSet rset = null;
-		Member member = null;
-		String query="SELECT USER_NAME, ZUMIN, ADDRESS,PHONE,TOTALPOINT  FROM MEMBER WHERE USER_ID =?";
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		return result;
+	}
+
+	public int modifyMember(String userId, Member member, Connection conn) {
+		int result = 0;
+		String query = "UPDATE MEMBER SET USER_PWD = ?, PHONE = ?, EMAIL = ? WHERE USER_ID = ?";
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, member.getUserPwd());
+			pstmt.setString(2, member.getUserPhone());
+			pstmt.setString(3, member.getUserEmail());
+			pstmt.setString(4, userId);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		
+		return result;
+	}
+
+	public Member selectOneById(Connection conn, String userId) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		Member member = null;
+		String query="SELECT USER_NAME, ZUMIN, ADDRESS,PHONE,TOTALPOINT FROM MEMBER WHERE USER_ID =?";
+	
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, userId);
 			rset = pstmt.executeQuery();
-			
 			if(rset.next()) {
 				member = new Member();
 				member.setUserName(rset.getString("USER_NAME"));
@@ -226,28 +267,13 @@ public class MemberDAO {
 				member.setUserPhone(rset.getString("PHONE"));
 				member.setTotalPoint(rset.getInt("TOTALPOINT"));
 			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			JDBCTemplate.close(pstmt);
-		}
-		
-		return member;
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
+				JDBCTemplate.close(pstmt);
+			}
+			return member;
+	
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
