@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>FullLife</title>
 <link rel="stylesheet" href="/m_css/m_result_list.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
      <header>
