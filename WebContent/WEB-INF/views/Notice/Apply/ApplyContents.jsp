@@ -45,7 +45,7 @@
                         	<c:choose>
                         		<c:when test="${nLike.userId eq sessionScope.userId and sessionScope.userId ne null}">
 			                        		추천수 : ${aOne.noticeLike }<BR>
-			                        		<button>이미 추천을 하셨습니다</button>
+			                        		<button id="like-butn">이미 추천을 하셨습니다</button>
                         		</c:when>
                         		<c:when test="${sessionScope.userId ne nLike.userId}">
                         			<form action="/Notice/Apply/ApplyLike" method="post">
@@ -73,8 +73,8 @@
                                 <td>
                                 	${aOne.replyDate }
                                 	<c:if test="${sessionScope.userId eq aOne.replyUserId }">
-                                	<a href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
-									<a href="/Notice/Apply/ApplyReplyDelete?noticeNo=${aOne.noticeNo }&replyNo=${aOne.replyNo}&userId=${aOne.replyUserId}">삭제</a>
+                                	<a class="hide" href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
+									<a class="hide" href="/Notice/Apply/ApplyReplyDelete?noticeNo=${aOne.noticeNo }&replyNo=${aOne.replyNo}&userId=${aOne.replyUserId}">삭제</a>
 									</c:if>
                                 </td>
                             </tr>
@@ -83,7 +83,7 @@
                                 <td>
                                     <input type="text" class="text-input" value="${aOne.replyContents }" id="modifyReply">
                                 </td>
-                                <td>
+                                <td >
                                     <a href="javascript:void(0)" onclick="modifyReply(this,${aOne.replyNo},${aOne.noticeNo })">수정</a>&nbsp;&nbsp;
                                     <a href="javascript:void(0)" onclick="hideModifyReply(this)">취소</a>
                                 </td>
@@ -138,6 +138,13 @@
                 $(obj).parents("tr").prev().show();
                 $(obj).parents("tr").hide();
             }
+            $(".tr").click(function(){
+                if($(".hide").css("display") == 'none'){
+                    $(".hide").show();
+                }else{
+                    $(".hide").hide();
+                }
+            });
         </script>
 </body>
 </html>
