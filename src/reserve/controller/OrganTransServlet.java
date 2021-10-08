@@ -31,6 +31,9 @@ public class OrganTransServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//		String userId = request.getParameter("userId");
+//		Member member = new MemberService().printOneById(userId);
+//		request.setAttribute("member", member);
 		request.getRequestDispatcher("/WEB-INF/views/reserve/organTrans.jsp").forward(request, response);
 	}
 
@@ -54,11 +57,11 @@ public class OrganTransServlet extends HttpServlet {
 //		int zumin = (int)session.getAttribute("userZumin");
 //		String phone = (String)session.getAttribute("userPhone");
 //		String addr = (String)session.getAttribute("userAddr");
-//		Reserve reserve = new Reserve();
-//		reserve.setUserName(name);
-//		reserve.setUserZumin(zumin);
-//		reserve.setUserPhone(phone);
-//		reserve.setUserAddr(addr);
+//		Patient patient = new Patient();
+//		patient.setUserName(name);
+//		patient.setUserZumin(zumin);
+//		patient.setUserPhone(phone);
+//		patient.setUserAddr(addr);
 //		int result = new ReserveService().patientInfoCheck(reserve);
 //		if(result>0) {
 //			response.sendRedirect("/reserve/reservation");
