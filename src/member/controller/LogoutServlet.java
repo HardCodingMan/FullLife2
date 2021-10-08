@@ -30,7 +30,7 @@ public class LogoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session != null) {
 			session.invalidate();
-			response.sendRedirect("/index.jsp");
+			request.getRequestDispatcher("/WEB-INF/views/member/logout.html").forward(request, response);
 		}
 	}
 
