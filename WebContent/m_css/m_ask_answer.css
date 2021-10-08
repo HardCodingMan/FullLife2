@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Gowun Dodum', sans-serif;
 }
 
 #left-aside{
@@ -33,10 +34,9 @@ body{
             font-size: 20px;
             font-weight: bold;
             color: black;
+            font-family: 'Gowun Dodum', sans-serif;
         }
-    .serv-li{
-        list-style-type: none;
-    }
+
     .serv-li a{
             display: block;
             text-decoration: none;
@@ -44,18 +44,12 @@ body{
             font-weight: bold;
             color: black;
             padding-right:7%;
+            font-family: 'Gowun Dodum', sans-serif;
         }
     .serv-li{
         list-style-type: none;
-        margin-left: 5%;
     }
-    .serv-li a{
-            display: block;
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: bold;
-            color: black;
-        }
+
     #choice{
         background-color: rgb(173, 196, 136);
     }
@@ -90,10 +84,11 @@ body{
         line-height: 400%;
         padding-left: 4%;
         font-size: 20px;
+        font-family: 'Gowun Dodum', sans-serif;
     }
     #line-div{
-        width: 3%;
-        border-bottom: 1px solid gray;
+        width: 4%;
+        border-bottom: 3px solid rgb(4, 4, 78);
         margin-left: 4%;
     }
     #main-contents{
@@ -135,17 +130,22 @@ body{
     	height: 300px;
     }
 
-    #btnJoin{
-        margin-left:35%;
-        margin-top:5%;
-        width: 170px;
-        height: 50px;
-        background-color: skyblue;
-        font-size:17px;
-        display:block;
-        border-radius: 5px;
-        border: 1px solid gray;
-        cursor: pointer;
-        box-shadow: 2px 2px 2px 1px rgba(128, 128, 128, 0.514);
-    }
+        #btnJoin{
+			background-color: rgba(14, 89, 139, 0.808);
+			border: 2px solid rgba(60, 61, 61, 0.479);
+			color: white;
+			width: 130px;
+			height: 45px;
+			border-radius: 5px;
+			font-weight: bold;
+			font-size: 15px;
+			letter-spacing: 3px;
+			margin-left: 38%;
+		}
+
+		 #btnJoin:hover {
+			background-color: #fff;
+			border-color:  rgb(14, 89, 139);
+			color : darkblue;
+		}
     
