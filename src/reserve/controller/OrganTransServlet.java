@@ -38,8 +38,7 @@ public class OrganTransServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession();
-//		String userId = (String)session.getAttribute("userId");
+//		String userId = request.getParameter("userId");
 //		Member member = new MemberService().printOneById(userId);
 //		request.setAttribute("member", member);
 		request.getRequestDispatcher("/WEB-INF/views/reserve/reservation.jsp").forward(request, response);

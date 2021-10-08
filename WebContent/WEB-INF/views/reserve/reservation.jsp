@@ -7,26 +7,216 @@
 <meta charset="UTF-8">
 <title>예약하기</title>
 <link rel="stylesheet" type="text/css" href="/css/reservation.css">
-
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 </head>
 <body>
-<script>
-window.onload = function() {
-    var regionTag = document.querySelector("#region");
-    var result = "";
 
-    regionTag.addEventListener("change",function(){
-        result = regionTag.value;
-        location.href="/reserve/select?location1="+result;
-		console.log(result);
-    });
-}
-</script>
 	<header>
     	<jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
     </header>
+    <script>
+    
+	window.onload = function() {
+	    var regionTag = document.querySelector("#region");
+	    var result = "";
+	
+	    regionTag.addEventListener("change",function(){
+	        result = regionTag.value;
+	        location.href="/reserve/select?location1="+result;
+			console.log(result);
+	    });
+		
+	}
+	
+			$(document).ready(function(){
+				var liverName = document.getElementById('purchaseLiver');
+		    	var liverNo = document.getElementById('liverNo');
+		    	
+		        $("#tab-1").change(function(){
+		            if($("#tab-1").is(":checked")){
+		                liverNo.value = 1 ;
+		                liverName.innerHTML = '간';
+		            }else{
+		                liverNo.value= "";
+		                liverName.innerHTML = "";
+		            }
+		        });
+		    });
+			$(document).ready(function(){
+		    	var heartNo = document.getElementById('heartNo');
+		    	var heartName = document.getElementById('purchaseHeart');
+		        $("#tab-2").change(function(){
+		            if($("#tab-2").is(":checked")){
+		            	heartNo.value = 2 ;
+		            	heartName.innerHTML = "심장";
+		            }else{
+		            	heartNo.value= "";
+		            	heartName.innerHTML = "";
+		            }
+		        });
+		    });
+			$(document).ready(function(){
+		        var toothNo = document.getElementById('toothNo');
+		        var toothName = document.getElementById('purchaseTooth');
+		    	
+		    	$("#tab-3").change(function(){
+		            if($("#tab-3").is(":checked")){
+		            	toothNo.value = 3 ;
+		            	toothName.innerHTML = "치아";
+		            }else{
+		            	toothNo.value= "";
+		            	toothName.innerHTML = "";
+		            }
+		        });
+		    });
+			$(document).ready(function(){
+		    	var boneNo = document.getElementById('boneNo');
+		    	var boneName = document.getElementById('purchaseBone');
+		    	
+		        $("#tab-4").change(function(){
+		            if($("#tab-4").is(":checked")){
+		            	boneNo.value = 4 ;
+		            	boneName.innerHTML = "뼈";
+		            }else{
+		            	boneNo.value= "";
+		            	boneName.innerHTML = "";
+		            }
+		        });
+		    });
+			$(document).ready(function(){
+		        var lungNo = document.getElementById('lungNo');
+		        var lungName = document.getElementById('purchaseLung');
+		        $("#tab-5").change(function(){
+		            if($("#tab-5").is(":checked")){
+		            	lungNo.value = 5 ;
+		            	lungName.innerHTML = "폐";
+		            }else{
+		            	lungNo.value= "";
+		            	lungName.innerHTML = "";
+		            }
+		        });
+		    });
+			
+            function liverValue(val){
+                var organName = val.split("-")[0];
+                var organPrice = val.split("-")[1];
+                
+                
+                document.getElementById('liverPrice').innerHTML
+                = organPrice;
+                $('#liverPrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            }
+
+            function heartValue(val){
+                var organName = val.split("-")[0];
+                var organPrice = val.split("-")[1];
+                               
+                document.getElementById('heartPrice').innerHTML
+                = organPrice;
+                $('#heartPrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            }
+            function toothValue(val){
+                var organName = val.split("-")[0];
+                var organPrice = val.split("-")[1];
+                
+                document.getElementById('toothPrice').innerHTML
+                = organPrice;
+                $('#toothPrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            }
+            function boneValue(val){
+                var organName = val.split("-")[0];
+                var organPrice = val.split("-")[1];
+                
+                document.getElementById('bonePrice').innerHTML
+                = organPrice;
+                $('#bonePrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            }
+            function lungValue(val){
+                var organName = val.split("-")[0];
+                var organPrice = val.split("-")[1];
+                 
+                document.getElementById('lungPrice').innerHTML
+                = organPrice;
+                $('#lungPrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+            }
+            
+            function checkPrice(){
+				var liver = document.getElementById('liver').value;
+				var heart = document.getElementById('heart').value;
+            
+            	var teeth = document.getElementById('teeth').value;
+            	var bones = document.getElementById('bones').value;
+            	var lungs = document.getElementById('lungs').value;
+            	
+            	document.getElementById('liverQuan').innerHTML = liver;
+            	document.getElementById('heartQuan').innerHTML = heart;
+            	document.getElementById('toothQuan').innerHTML = teeth;
+            	document.getElementById('boneQuan').innerHTML = bones;
+            	document.getElementById('lungQuan').innerHTML = lungs;
+            	
+            	document.getElementById('liverQuantity').value = liver;
+            	document.getElementById('heartQuantity').value = heart;
+            	document.getElementById('toothQuantity').value = teeth;
+            	document.getElementById('boneQuantity').value = bones;
+            	document.getElementById('lungQuantity').value = lungs;
+            	
+            	var liverPrice = document.getElementById('liverPrice').innerHTML;
+            	var liverQuan = document.getElementById('liverQuan').innerHTML;
+            	var liverTotal = parseInt(liverPrice) * parseInt(liverQuan) * 1000000;
+				document.getElementById('liverTotal').innerHTML = liverTotal;
+				$(liverTotal).text(liverPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				
+				var heartPrice = document.getElementById('heartPrice').innerHTML;
+            	var heartQuan = document.getElementById('heartQuan').innerHTML;
+            	var heartTotal = parseInt(heartPrice) * parseInt(heartQuan) * 1000000;
+				document.getElementById('heartTotal').innerHTML = heartTotal;
+				$(heartTotal).text(heartPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				
+				var toothPrice = document.getElementById('toothPrice').innerHTML;
+            	var toothQuan = document.getElementById('toothQuan').innerHTML;
+            	var toothTotal = parseInt(toothPrice) * parseInt(toothQuan) * 1000000;
+				document.getElementById('toothTotal').innerHTML = toothTotal;
+				$(toothTotal).text(toothPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				
+				var bonePrice = document.getElementById('bonePrice').innerHTML;
+            	var boneQuan = document.getElementById('boneQuan').innerHTML;
+            	var boneTotal = parseInt(bonePrice) * parseInt(boneQuan) * 1000000;
+				document.getElementById('boneTotal').innerHTML = boneTotal;
+				$(boneTotal).text(bonePrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				
+				var lungPrice = document.getElementById('lungPrice').innerHTML;
+            	var lungQuan = document.getElementById('lungQuan').innerHTML;
+            	var lungTotal = parseInt(lungPrice) * parseInt(lungQuan) * 1000000;
+				document.getElementById('lungTotal').innerHTML = lungTotal;
+				$(lungTotal).text(lungPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				
+				console.log(liverTotal);
+				console.log(heartTotal);
+				console.log(toothTotal);
+				console.log(boneTotal);
+				console.log(lungTotal);
+				var sum = parseInt(liverTotal) + parseInt(heartTotal) +parseInt(toothTotal) + parseInt(boneTotal) + parseInt(lungTotal);
+				console.log(sum);
+				document.getElementById('finalOrganPrice').value = sum;
+				document.getElementById('finalBill').value =sum;
+            }
+               function pointUse(){
+            	   var currPoint = document.getElementById('currentPoint').value;
+            	   var usedPoint = document.getElementById('usedPoint').value;
+            	   
+            	   document.getElementById('pointDiscount').value = usedPoint;
+            	   console.log(currPoint);
+            	   console.log(usedPoint);
+            	   var remaining = parseInt(currPoint) - parseInt(usedPoint);
+            	   console.log(remaining);
+            	   
+            	   document.getElementById('currentPoint').value = remaining;
+            	   var finalBill= parseInt(document.getElementById('finalOrganPrice').value) - parseInt(pointDiscount);
+            	   console.log(finalBill)
+            	   document.getElementById('finalBill').value = finalBill;
+               }
+            </script>
     <main>
     <form id="form" action="/reserve/reservation" method="post">
         <div id="main-navi">
@@ -37,32 +227,46 @@ window.onload = function() {
             <table id="organTable">
                     <tr>
                         <td>
-                            <input type="checkbox" name="organNo" value="2" id="tab-1">
-                            <label for="tab-1"><img src="/img/liver.png" name="liver" class="btn-organ"></label>
+                            <input type="checkbox" name="rd-liver" value="간-20000000" id="tab-1" class="organSe" onclick="liverValue(this.value)">
+                            <label for="tab-1"><img src="/img/liver.png" name="liver"  class="btn-organ"></label>
                         </td>
                         <td> 
-                            <input type="checkbox" name="organNo" value="1" id="tab-2">
-                            <label for="tab-2"><img src="/img/heart.png" name="heart" class="btn-organ"></label>
+                            <input type="checkbox" name="rd-heart" id="tab-2" value="심장-10000000" class="organSe" onclick="heartValue(this.value)">
+                            <label for="tab-2"><img src="/img/heart.png" name="heart"  class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="organNo" value="3" id="tab-3">
-                            <label for="tab-3"><img src="/img/tooth.png" name="tooth" class="btn-organ"></label>
+                            <input type="checkbox" name="rd-tooth" id="tab-3" value="치아-2000000" class="organSe" onclick="toothValue(this.value)" >
+                            <label for="tab-3"><img src="/img/tooth.png" name="tooth"  class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="organNo" value="4" id="tab-4">
-                            <label for="tab-4"><img src="/img/bone.png" name="bone" class="btn-organ"></label>
+                            <input type="checkbox" name="rd-bone" id="tab-4" value="뼈-2000000" class="organSe" onclick="boneValue(this.value)">
+                            <label for="tab-4"><img src="/img/bone.png" name="bone"  class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="organNo" value="5" id="tab-5">
+                            <input type="checkbox" name="rd-lung" id="tab-5" value="폐-30000000" class="organSe" onclick="lungValue(this.value)">
                             <label for="tab-5"><img src="/img/lung.png" name="lung" class="btn-organ"></label>
                         </td>
                     </tr>
                     <tr id="select">
-                        <td>간</td>
-                        <td>심장</td>
+                        <td>
+                        	간<br>
+                        	<select name="quantity" id="liver">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                
+                            </select>
+                        </td>
+                        <td>
+                        	심장<br>
+                        	<select name="quantity" id="heart">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                            </select>
+                        	</td>
                         <td>
                            	 치아<br>
-                            <select>
+                            <select name="quantity" id="teeth">
+                                <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -75,14 +279,16 @@ window.onload = function() {
                         </td>
                         <td>
                            	 뼈<br>
-                            <select>
+                            <select name="quantity" id="bones">
+                                <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
                         </td>
                         <td>
                            	 폐<br>
-                            <select>
+                            <select name="quantity" id="lungs">
+                                <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
@@ -169,7 +375,8 @@ window.onload = function() {
                         <h4>날짜 및 시간</h4>
                         
                       	<div id="Date">
-                      	
+                      	<input type="date" value="xxx" min="yyy" max="zzz">	
+                      	<input type="time" min="09:00" max="17:00" step="3600">
                       	</div> 
                         <div id="timeBtns">
                             <input type="button" value="09:00" class="btn-time">
@@ -190,50 +397,150 @@ window.onload = function() {
         </div>    
         <br>
         <hr>
+        <script>
+        function NoMultiChk(chk){ 
+        	var obj = document.getElementsByName("relation");
+        	var a = document.getElementById('check').value;
+        	var b = document.getElementById('check');
+        	var size = document.getElementsByClassName('input2').length;
+        	for(var i=0; i<obj.length; i++){ 
+        		if(obj[i] != chk){ 
+        			obj[i].checked = false; 
+        	} 
+        	}
+        	
+        	function Check(){	
+        	if (b != chk){
+				for(var j=0; j<size; j++){
+					document.getElementsByClassName('input2')[j].value = "";
+        	}
+		}
+        	}
+        	console.log(a);
+        	console.log(size);
+        	console.log(b);
+        }
+        
+
+        </script>
         <div id="info">
             <div id="buyerInfo">
                 <h4>예약자정보</h4>
                     <label>
-                        <span>이름</span><input type="text" name="user-name" id="user-name" class="input1" value="${requestScope.member.userName }" placeholder="이름을 입력해주세요">
+                    <input type="hidden" name="userId" value="${requestScope.member.userId }">
+                        <span>이름</span><input type="text" name="user-name" id="user-name" class="input1" value="${member.userName }" placeholder="이름을 입력해주세요">
                     </label><br>
                     <label>
-                        <span>주민등록번호</span><input type="text" name="user-zumin" id="user-zumin" class="input1" value="${sessionScope.userZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
+                        <span>주민등록번호</span><input type="text" name="user-zumin" id="user-zumin" class="input1" value="${member.userZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
                     </label><br>
                     <label>
-                        <span>전화번호</span><input type="text" name="user-phone" id="user-phone" class="input1" value="${sessionScope.userPhone }" placeholder="-을 제외한 11자리를 입력해주세요">
+                        <span>전화번호</span><input type="text" name="user-phone" id="user-phone" class="input1" value="${requestScope.member.userPhone }" placeholder="-을 제외한 11자리를 입력해주세요">
                     </label><br>
                     <label>
-                        <span>주소</span><input type="text" name="user-addr" id="user-addr" class="input1" value="${sessionScope.userAddr }">
+                        <span>주소</span><input type="text" name="user-addr" id="user-addr" class="input1" value="${requestScope.member.userAddr }">
                     </label><br>
-                    <label><input type="checkbox" name="relation" id="check" value="self"> 구매자와 이식 받는자가 같습니다.</label>
+                    <label>
+                    <input type="checkbox" name="relation" id="check" value="self" onclick="NoMultiChk(this); Check();" checked> 구매자와 이식 받는자가 같습니다.
+                    </label>
              </div>
             <br>
             <br>
             <div id="realInfo">
             <h4>환자정보</h4>
                 <label>
-                    <span>이름</span> <input type="text" name="patient-name" id="patient-name" class="input1" placeholder="이름을 입력해주세요">
+                    <span>이름</span> <input type="text" name="patient-name" id="patient-name" class="input2" value="${member.userName }" placeholder="이름을 입력해주세요">
                 </label><br>
                 <label>
-                    <span>주민등록번호</span> <input type="text" name="patient-zumin" id="patient-zumin" class="input1" placeholder="-을 제외한 13자리를 입력해주세요">
+                    <span>주민등록번호</span> <input type="text" name="patient-zumin" id="patient-zumin" class="input2" value="${member.userZumin }" placeholder="-을 제외한 13자리를 입력해주세요">
                 </label><br>
                 <label>
-                    <span>전화번호</span> <input type="text" name="patient-phone" id="patient-phone" class="input1" placeholder="-을 제외한 11자리를 입력해주세요">
+                    <span>전화번호</span> <input type="text" name="patient-phone" id="patient-phone" class="input2" value="${requestScope.member.userPhone }" placeholder="-을 제외한 11자리를 입력해주세요">
                 </label><br>
                 <label>
-                    <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input1">
+                    <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input2" value="${requestScope.member.userAddr }">
                 </label><br>
                 <div id="relation"> 
-                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="relation" id="parent" value="parent"></label> <label>자녀<input type="checkbox" name="relation" id="child" value="child"></label><br>
+                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="relation" id="parent" value="parent" onclick="NoMultiChk(this)"></label> <label>자녀<input type="checkbox" name="relation" id="child" value="child" onclick="NoMultiChk(this)"></label><br>
+                </div><br><br><br>
+                <div id="btn-bill">
+                <input type="button" value="결제하기" onclick="checkPrice()">
                 </div>
             </div>
         </div>
-        <br>
+        <br>       
         <hr>
-        <div id="agree">
-            <div id="agree-first">
+        <div id="bottom-div">
+        	<div id="payment-check">
+            	<div id="payment-title">
+                	<h4>결제 내역</h4>
+                    
+                </div>
+                <table id="bill">
+                	<tr>
+                		<th>장기명</th>
+                		<th>수량</th>
+                		<th>개당 가격</th>
+                		<th>총가격</th>
+                	</tr>
+			        <tr>
+			            <td id="purchaseLiver"></td>
+			            <td id="liverQuan"></td>
+			            <td id="liverPrice"></td>
+			            <td id="liverTotal"></td>
+			            <td><input type="hidden" name="organNo" id="liverNo" value=""></td>
+			            <td><input type="hidden" name="organQuantity" id="liverQuantity" value=""></td>
+			        </tr>
+			        <tr>
+			            <td id="purchaseHeart"></td>
+			            <td id="heartQuan"></td>
+			            <td id="heartPrice"></td>
+			            <td id="heartTotal"></td>
+			            <td><input type="hidden" name="organNo" id="heartNo" value=""></td>
+			            <td><input type="hidden" name="organQuantity" id="heartQuantity" value=""></td>
+			        </tr>
+			        <tr>
+			            <td id="purchaseTooth"></td>
+			            <td id="toothQuan"></td>
+			            <td id="toothPrice"></td>
+			            <td id="toothTotal"></td>
+			            <td><input type="hidden" name="organNo" id="toothNo" value=""></td>
+			            <td><input type="hidden" name="organQuantity" id="toothQuantity" value=""></td>
+			        </tr>
+			        <tr>
+			            <td id="purchaseBone"></td>
+			            <td id="boneQuan"></td>
+			            <td id="bonePrice"></td>
+			            <td id="boneTotal"></td>
+			            <td><input type="hidden" name="organNo" id="boneNo" value=""></td>
+			            <td><input type="hidden" name="organQuantity" id="boneQuantity" value=""></td>
+			        </tr>
+			        <tr>
+			            <td id="purchaseLung"></td>
+			            <td id="lungQuan"></td>
+			            <td id="lungPrice"></td>
+			            <td id="lungTotal"></td>
+			            <td><input type="hidden" name="organNo" id="lungNo" value=""></td>
+			            <td><input type="hidden" name="organQuantity" id="lungQuantity" value=""></td>
+			        </tr>
+				</table>
+                            
+						<div id="point">
+                            <h4>사용가능한 포인트 : <input type="text" name="" id="currentPoint" value=${requestScope.member.totalPoint }>points</h4>
+                            <input type="text" name="" id="usedPoint" placeholder="사용할 포인트를 입력하세요" value="">
+                            <input type="button" value="포인트 사용" onclick="pointUse()">
+                        </div>
+                    </div><br><br>
+                    <div id="pay-check">
+                        <label for="">상품 금액</label><input type="text" name="" id="finalOrganPrice" value="" readonly>
+                        - <label for="">포인트 할인</label><input type="text" name="" id="pointDiscount" value="" readonly>
+                        <label for="">총 결제금액</label><input type="text" name="" id="finalBill" value="" readonly>
+                    </div>
+                    <hr>	
+                    </div>
+                    <div id="agree">
+                    <div id="rule-div">
                 <h4>이용약관</h4>
-                <textarea name="" id="" cols="175" rows="20" style="margin: 0px; width: 1100px; height: 300px;">
+                <textarea name="" id="" cols="175" rows="10" style="margin: 0px; width: 1100px; height: 300px;">
                     제1장 총칙
 
                     제1조 목적
@@ -356,9 +663,9 @@ window.onload = function() {
                     d.이용자의 아이디 및 비밀번호의 관리의 부실로 인한 모든 책임은 이용자가 부담합니다.
                     e.이용자는 아이디 및 비밀번호를 도난당하거나 제3자에게 사용되고 있음을 인지한 경우에는 바로 바이오기술센터에 통보하고 바이오기술센터의 안내가 있는 경우에는 그에 따라야 합니다.
                 </textarea><br>
-                <input type="checkbox" name="" id="" required> 위의 이용약관을 읽고 이해했습니다.<br><br><br>
+                <input type="checkbox" name="" id="" > 위의 이용약관을 읽고 이해했습니다.<br><br><br>
                 <h4>개인정보 처리방침 동의</h4>
-                <textarea name="" id="" cols="175" rows="20" style="margin: 0px; width: 1100px; height: 300px;">
+                <textarea name="" id="" cols="160" rows="10" style="margin: 0px; width: 1100px; height: 300px;">
                     FullLife는 법령의 규정에 따라 수집·보유 및 처리하는 개인정보를 공공업무의 적절한 수행과 정보주체의 권익을 보호하기 위하여 적법하고 적정하게 취급할 것입니다. 또한, 진흥원은 관련 법령에서 규정한 바에 따라 진흥원에서 보유하고 있는 개인정보에 대한 열람청구권 및 정정청구권 등 이용자의 권익을 존중하며, 여러분은 이러한 법령상 권익의 침해 등에 대하여 행정심판법에서 정하는바에 따라 행정심판을 청구할 수 있으며, 개인정보분쟁조정위원회, 개인정보침해신고센터 등에 분쟁해결이나 상담 등을 신청할 수 있습니다. 진흥원의 개인정보 처리방침은 현행 「개인정보보호법」에 근거를 두고 있습니다. 개인정보를 처리하는 우리원 소관 홈페이지의 경우 해당 홈페이지에 별도의 개인정보처리방침을 정하여 운영하고 있습니다.
                     제1조 개인정보의 처리 목적
                     FullLife는 소관 업무 수행 및 민원처리 등의 목적으로 최소한으로 개인정보를 수집하고 있으며, 자세한 사항은 각 부서에서 운영하는 소관 홈페이지에 게재하여 정보주체가 확인할 수 있도록 안내를 하고 있습니다. 당 홈페이지에는 수집하는 개인정보 항목이 없음을 알려드립니다.
@@ -386,39 +693,80 @@ window.onload = function() {
                     제4조 개인정보 처리의 위탁
                     FullLife는 원칙적으로 이용자의 동의없이 해당 개인정보의 처리를 타인에게 위탁하지 않습니다. 다만, 진흥원이 제3자에게 개인정보의 처리업무를 위탁하는 경우에는 위탁 업무의 내용과 수탁자를 해당 서비스의 홈페이지에 게시합니다. 당 홈페이지는 개인정보 처리와 관련한 별도의 위탁사항이 없음을 알려드립니다.
                     </textarea><br>
-                    <input type="checkbox" name="" id="" required>위의 개인정보 수집 및 이용에 관한 약관을 읽고 이해했습니다.            
-            </div>
-            <br><br><br>
+                    <input type="checkbox" name="" id="" >위의 개인정보 수집 및 이용에 관한 약관을 읽고 이해했습니다.            
+        <br><br>
+        	<h4>서비스 및 환불규정</h4>
+        	<textarea name="" id="" cols="160" rows="10" style="margin: 0px; width: 1100px; height: 300px;">
+				제 1 조 (목적)
+				이 약관은 FullLife(이하 ‘회사’라 합니다)가 제공하는 네이버 유료서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항 기타 필요한 사항을 규정함을 목적으로 합니다.
+				제 2 조 (약관의 게시와 개정)
+				①회사는 이 약관을 회원이 그 전부를 인쇄할 수 있고 확인할 수 있도록 기술적 조치를 취합니다.
+				②회사는 회원이 약관에 동의하기에 앞서 약관에 정하여져 있는 내용 중 청약철회 등과 같은 중요한 내용을 회원이 쉽게 이해할 수 있도록 별도의 연결화면 또는 팝업화면 등을 제공합니다.
+				③회사는 ‘콘텐츠산업진흥법’, ‘전자상거래등에서의소비자보호에관한법률’, ‘약관의규제에관한법률’ 등 관련 법령을 위배하지 않는 범위에서 이 약관을 개정할 수 있습니다.
+				④회사가 약관을 개정할 경우에는 적용일자 및 개정사유를 명시하여 서비스 초기 화면에 그 개정약관의 적용일자 7일 전부터 적용일자 전일까지 공지합니다. 다만, 회원에게 불리한 약관의 개정의 경우에는 30일 전부터 적용일자 전일까지 공지하며, 공지 외에 일정기간 서비스 내 전자우편, 전자쪽지, 로그인시 동의창 등의 전자적 수단을 통해 따로 명확히 통지하도록 합니다.
+				⑤회사가 전항에 따라 개정약관을 공지 또는 통지하면서 회원에게 전항의 공지기간 내에 의사표시를 하지 않으면 의사표시가 표명된 것으로 본다는 뜻을 명확하게 공지 또는 통지하였음에도 회원이 명시적으로 거부의 의사표시를 하지 아니한 경우 회원이 개정약관에 동의한 것으로 봅니다.
+				⑥회원이 개정약관의 적용에 동의하지 않는 경우 회사는 개정 약관의 내용을 적용할 수 없으며, 이 경우 회원은 이용계약을 해지할 수 있습니다. 다만, 기존 약관을 적용할 수 없는 특별한 사정이 있는 경우에는 회사는 이용계약을 해지할 수 있습니다.
+				⑦회원은 전항에 따른 이용계약의 해지로 손해가 발생한 경우 회사에 이에 대한 배상을 청구할 수 있습니다.
+				제3조 (약관의 해석)
+				이 약관에서 정하지 아니한 사항과 이 약관의 해석에 관하여는 ‘콘텐츠진흥법’, ‘전자상거래등에서의소비자보호에관한법률’, ‘약관의규제에관한법률’, 문화체육관광부장관이 정하는 ‘콘텐츠이용자보호지침’, 기타 관계법령, ‘네이버 이용약관’ 또는 상관례에 따릅니다.
+				제4조 (회원에 대한 통지)
+				①회사가 회원에 대한 통지를 하는 경우 이 약관에 별도 규정이 없는 한 서비스 내 전자우편주소, 전자쪽지 등으로 할 수 있습니다.
+				②회사는 회원 전체에 대한 통지의 경우 7일 이상 회사의 게시판에 게시함으로써 제1항의 통지에 갈음할 수 있습니다. 다만, 회원 본인의 거래와 관련하여 중대한 영향을 미치는 사항에 대하여는 제1항의 통지를 합니다.
+				제5조 (유료서비스의 내용 등의 게시)
+				①회사는 다음 사항을 해당 네이버 유료서비스의 이용 초기화면이나 FAQ 등에 회원이 알기 쉽게 표시합니다.
+				1.네이버 유료서비스의 명칭 또는 제호
+				2.네이버 유료서비스 제공자의 성명(법인인 경우에는 법인의 명칭), 주소, 전화번호
+				3.네이버 유료서비스의 내용, 이용방법, 이용료, 기타 이용조건
+				②회사의 유료서비스의 이용 가능 기기 및 이용에 필요한 최소한의 기술사양은 권장사양정보에 따릅니다.
+				③회사는 유료서비스를 제공함에 있어 유료 서비스의 교환·반품·보증과 그 대금 환불의 조건 및 절차에 관한 사항을 제공합니다.
+				제6조 (이용계약의 성립 등)
+				①회원은 회사가 제공하는 다음 또는 이와 유사한 절차에 의하여 이용신청을 합니다. 회사는 계약 체결 전에 각 호의 사항에 관하여 회원이 정확하게 이해하고 실수 또는 착오 없이 거래할 수 있도록 정보를 제공합니다.
+				1.유료서비스의 확인 및 선택
+				2.결제방법의 선택 및 결제정보의 입력
+				3.유료서비스의 이용신청에 관한 확인 또는 회사의 확인에 대한 동의
+				②회사는 회원의 이용신청이 다음 각 호에 해당하는 경우에는 승낙하지 않거나 승낙을 유보할 수 있습니다.
+				1.실명이 아니거나 타인의 명의를 이용한 경우
+				2.허위의 정보를 기재하거나, 회사가 제시하는 내용을 기재하지 않은 경우
+				3.미성년자가 ‘청소년보호법’ 등 관련 법령에 의해서 이용이 금지되는 유료서비스를 이용하고자 하는 경우
+				4.서비스 관련 설비의 여유가 없거나, 기술상 또는 업무상 문제가 있는 경우
+				③이용계약의 성립시기는 ‘가입완료’ 또는 ‘구매완료’를 신청절차 상에서 표시한 시점으로 합니다.
+				④회원이 유료서비스를 이용하기 위해서는 이 약관에 동의 후 각 서비스에 따른 이용조건에 따라 이용요금을 지급하여야 합니다.
+				제7조 (유료서비스의 중단 및 변경)
+				①회사는 사업 종목의 전환, 사업의 포기, 업체 간의 통합 등의 이유로 네이버 유료서비스를 제공할 수 없게 되는 경우에는 회사는 이 약관에서 정한 방법으로 회원에게 통지하고 당초 회사에서 제시한 조건 또는 ‘콘텐츠이용자보호지침’ 및 관련 법령 규정에서 정한 바에 따라 회원에게 보상합니다.
+				②회사는 상당한 이유가 있는 경우에 운영상, 기술상의 필요에 따라 제공하고 있는 전부 또는 일부의 네이버 유료서비스를 변경할 수 있고, 변경 전 해당 서비스 초기 화면에 관련 사항을 게시합니다. 다만, 변경된 내용이 중대하거나 회원에게 불리한 경우에는 이 약관에서 정한 방법으로 통지하고, 중대하거나 회원에게 불리한 변경 내용에 동의하지 않는 회원은 제8조에서 정한 바에 따라 네이버 유료서비스 이용계약을 해지할 수 있습니다.
+				제8조 (회원의 청약철회 및 계약해지)
+				①회사와 네이버 유료서비스 이용계약을 체결한 회원은 관련 법령에서 정한 바에 따라 일정 기간 내에 청약을 철회할 수 있습니다. 단, 네이버 유료서비스에는 ‘콘텐츠산업진흥법’, ‘전자상거래등에서의소비자보호에관한법률’ 등에서 규정하는 청약철회가 불가능한 서비스가 포함되어 있습니다. 이 경우 회사는 청약철회권 제한을 위해 관련 법령상 필요한 조치를 취합니다.
+				②회원은 다음 각 호의 사유가 있을 때 네이버 유료서비스 이용계약을 해지 또는 해제할 수 있습니다.
+				1.네이버 유료서비스의 하자를 회사가 보완, 수정할 수 없는 경우 네이버 유료서비스를 공급받은 날로부터 1개월 이내
+				2.네이버 유료서비스 회원이 이 약관의 개정 또는 제7조 제2항 단서에 따른 서비스 변경에 동의하지 않아 회원탈퇴 또는 네이버 유료 서비스 이용계약을 해지하는 경우
+				③회원이 전항에 따라 네이버 유료서비스 이용계약을 해지 또는 해제하는 경우 회사는 회원으로부터 지급받은 대금을 당초 회사에서 정한 조건 또는 ‘콘텐츠이용자보호지침’ 및 관련 법령 규정, 이 약관에서 정한 바에 따라 회원에게 환불합니다.
+				④회사, 네이버 유료서비스의 대금을 지급 받은 자 또는 회원과 네이버 유료서비스 이용계약을 체결한 자가 동일인이 아닌 경우에 각자는 청약철회 등과 관련한 의무의 이행에 있어서 연대하여 책임을 집니다.
+				제9조 (회사의 계약해제, 해지 및 이용제한)
+				①회사는 회원이 네이버 이용약관에서 정한 금지행위를 하였을 경우 해당 조항에 따라 사전통지 없이 계약을 해제, 해지하거나 또는 기간을 정하여 서비스이용을 제한할 수 있습니다.
+				②제1항의 사유로 환불이 필요할 경우 회사는 회원이 유료서비스 이용으로부터 얻은 이익 및 환불수수료(10% 또는 1,000원 중 큰 금액)에 해당하는 금액을 공제하고 다음 각호에 따라 환불합니다.
+				1.회사는 회원에게 계약해제, 해지의 의사표시에 대하여 회신한 날로부터 3영업일 이내에 대금의 결제와 동일한 방법으로 이를 환불하여야 하고 동일한 방법으로 환불이 불가능할 때에는 이를 사전에 고지하여야 합니다. 다만, 수납확인이 필요한 결제수단의 경우에는 수납확인일로부터 3영업일 이내에 이를 환불하도록 합니다.
+				2.회사는 위 대금을 환불함에 있어서 회원이 신용카드 또는 전자화폐 등의 결제수단으로 재화 등의 대금을 지급한 때에는 지체 없이 당해 결제수단을 제공한 사업자로 하여금 재화 등의 대금의 청구를 정지 또는 취소하도록 요청합니다. 다만, 제2항 각 호외의 본문 및 제2항 제1호 단서의 경우에는 그러하지 아니할 수 있습니다.
+				③제1항의 해제, 해지는 회사가 정한 통지방법에 따라 회원에게 그 의사를 표시한 때에 효력이 발생합니다.
+				④회사의 해제, 해지 및 이용제한에 대하여 회원은 회사가 정한 절차에 따라 이의신청을 할 수 있습니다. 이 때 이의가 정당하다고 회사가 인정하는 경우, 회사는 즉시 서비스의 이용을 재개합니다.
+				제10조 (사용기간 등)
+				네이버 유료서비스의 사용기간은 사전에 별도로 표시되지 않는 한 구매일로부터 1년입니다. 해당 기간이 경과한 네이버 유료서비스는 이용권이 소멸되며 보유목록에서 삭제됩니다.
+				제11조 (유료서비스 하자 등에 의한 회원피해보상)
+				회사는 유료서비스의 하자 등에 의한 회원의 피해보상 기준, 범위, 방법 및 절차에 관한 사항을 ‘콘텐츠이용자보호지침’에 따라 처리합니다.
+				제12조 (책임 제한)
+				①회사는 관계법령의 변경, 천재지변 또는 이에 준하는 불가항력으로 인하여 유료서비스를 제공할 수 없는 경우에는 유료서비스 제공에 관한 책임이 면제됩니다.
+				②회사는 회원의 귀책사유로 인한 유료서비스 이용의 장애에 대하여는 회사의 귀책사유가 없는 한 책임을 지지 않습니다.
+				③회사는 회원 상호간 또는 회원과 제3자간에 유료서비스를 매개로 하여 발생한 분쟁 등에 대하여 회사의 귀책사유가 없는 한 책임을 지지 않습니다.
+				[부칙]
+				1.이 약관은 2019년 11월 1일부터 적용됩니다.
+				2.2019년 7월 31일부터 시행되던 종전의 ‘네이버페이 이용약관’은 네이버페이(Naver Pay) 서비스 사업부문의 물적분할에 따라 본 약관으로 대체합니다.
+				3.종전의 ‘네이버페이 이용약관’에 동의한 회원의 경우, 해당 약관 제1장(네이버페이 서비스) 및 제3장(네이버페이 안전결제)에 따른 효력은 그대로 유지되며, 11월 1일자로 개정되는 ‘네이버 유료서비스 이용약관’, ‘네이버페이 이용약관’(11월 1일자로 분사되는 네이버파이낸셜㈜가 제공)에 대한 별도의 동의는 필요하지 않습니다.
+				
+				이전 이용약관 보기 (2019년 7월 31일 ~ 2019년 10월 31일 적용)
+        	</textarea><br>
+              <input type="checkbox" name="" id="" >위의 서비스 이용 및 환불규정에 관한 약관을 읽고 이해했습니다.
+        	 </div>
         </div><br>
-            <hr>
-        <div id="bottom-div">
-                    <div id="payment-check">
-                        <div id="payment-title">
-                            <h4>결제 내역</h4>
-                        </div>
-                        <div id="payment">
-                            <label for="">구매장기</label><input type="text" name="" id="" value=${requestScope.organ.organNo }><br>
-                            <label for="">계약금</label><input type="text" name="" id="" value=${requestScope.organ.organPrice }>
-                        </div>
-                    </div>
-                    <div id="pay-check">
-                        <label for="">총 금액</label><input type="text" name="" id="" value="1,000,000">
-                    </div>
-                                <hr>	
-                    <div id="rule-div">
-                        <div id="rule-title">
-                            <h4>규정</h4>
-                        </div>
-                        <div id="rule-img">
-                            <img src="/img/rule.jpg" alt="">
-                        </div>
-                        <div id="rule-check">
-                            <input type="checkbox" name="" id="">&nbsp;규정에 동의합니다
-                        </div><br><br>
-                    </div>
-                </div>
-                    <hr>
-            </div><br>
+         <hr><br>
             <div id="btn-reserve">
             <a href="/reserve/reservationCheck"><input type="submit" id="nextButton" value="결제 및 예약완료"></a>
             </div>

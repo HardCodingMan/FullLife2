@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import common.JDBCTemplate;
 import hospital.model.dao.HospitalDAO;
 import hospital.model.vo.Hospital;
+import mypage.model.vo.History;
 import patient.model.vo.Patient;
 import reserve.model.dao.ReserveDAO;
 
@@ -49,6 +50,23 @@ public class ReserveService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
+			JDBCTemplate.close(conn);
+		}
+		
+		return result;
+	}
+
+	public int payComplete(History history) {
+		int result = 0;
+		Connection conn = null;
+		
+		try {
+			conn = jdbcTemplate.createConnection();
+			result = new ReserveDAO().payCom(conn, history);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
 			JDBCTemplate.close(conn);
 		}
 		
