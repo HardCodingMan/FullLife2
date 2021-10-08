@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.model.service.MemberService;
+import member.model.vo.Member;
+import mypage.model.vo.History;
 import patient.model.vo.Patient;
 import reserve.model.service.ReserveService;
 
@@ -34,9 +37,10 @@ public class ReservationServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
+		String userId = request.getParameter("userId");
+		Member member = new MemberService().printOneById(userId);
 		String metroCity = request.getParameter("metro-city");
+		request.setAttribute("member", member);
 		request.setAttribute("metroCity", metroCity);
 		request.getRequestDispatcher("/WEB-INF/views/reserve/reservation.jsp").forward(request, response);
 	}
@@ -44,8 +48,13 @@ public class ReservationServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		
+		int organQuantity = Integer.parseInt(request.getParameter("quantity"));
+		int usedPoint = Integer.parseInt(request.getParameter("usedPoint"));
+		int payment = Integer.parseInt(request.getParameter("payment"));
 		String patientName = request.getParameter("patient-name");
 		String patientZumin = request.getParameter("patient-zumin");
 		String patientPhone = request.getParameter("patient-phone");
@@ -53,13 +62,21 @@ public class ReservationServlet extends HttpServlet {
 		String relation = request.getParameter("relation");
 		int organNo = Integer.parseInt(request.getParameter("organNo"));
 		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		try {
+//			Date hosTime = dateFormat.parse(request.getParameter("hospitalTime"));
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date hosTime = null;
 		try {
-			Date hosTime = dateFormat.parse(request.getParameter("hopitalTime"));
+			hosTime = formatter.parse(request.getParameter("hospitalTime"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}    
+		}
+
 		
 		int hosNo = Integer.parseInt(request.getParameter("hospitalNo"));
 		HttpSession session = request.getSession();
@@ -71,10 +88,20 @@ public class ReservationServlet extends HttpServlet {
 		patient.setPatientAddr(patientAddr);
 		patient.setRelation(relation);
 		patient.setOrganNo(organNo);
+		patient.setHospitalTime(hosTime);
 		patient.setHospitalNo(hosNo);
 		patient.setUserId(userId);
+		
+		History history = new History();
+		history.setOrganNo(organNo);
+		history.setOrganQuantity(organQuantity);
+		history.setPayment(payment);
+		history.setUsedPoint(usedPoint);
+		history.setUserId(userId);
+		history.setHospitalNo(hosNo);
 		int result = new ReserveService().orderComplete(patient);
-		if(result>0) {
+		int result2 = new ReserveService().payComplete(history);
+		if(result > 0) {
 			response.sendRedirect("/ask/list");
 		} else {
 			request.getRequestDispatcher("/WEB-INF/views/members/error.html");
