@@ -63,7 +63,9 @@
                             </li>
                     </ul>
                 </li>
+                <br><br><br>
             </ul>
+            
             <ul id="second-question" class="section-ul">
             <!-- 예약 관련 질문 -->
                 <li class="menu">
@@ -126,7 +128,9 @@
                         <li>A. 신청게시판에 신청사연을 올려주시면 심사를 통하여 후보자를 뽑아서 후원게시판으로 게시글을 옮겨드리고있습니다.</li>
                     </ul>
                 </li>
+                <br><br><br>
             </ul>
+            
         </section>
         </div>
     </div>
