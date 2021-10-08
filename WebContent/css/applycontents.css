@@ -118,10 +118,15 @@ main{
             width: 500px;
             height: 50px;
         }
-        
+        .hide{
+                    display:none;
+                }
     #bottom-butn{
         height: 50px;
     }
+    	#like-butn{
+    		margin-top: 20px;
+    	}
         #list{
             margin-top: 20px;
             margin-left: 20px;
