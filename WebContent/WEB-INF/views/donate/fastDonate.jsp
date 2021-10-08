@@ -95,9 +95,9 @@
             <div class="slide-wrapper">
             	<a href="/Notice/Support/SupportContents?noticeNo=${requestScope.firstRank.noticeNo }" style="text-decoration:none; color:black;">
                 <div class="support-info1">
-                    <h1 style="text-align:center; font-family:'Do Hyeon', sans-serif;"">인기사연글 ${requestScope.firstRank.noticeTitle }</h1>
+                    <h1 style="text-align:center; font-family:'Do Hyeon', sans-serif;">인기사연글 ${requestScope.firstRank.noticeTitle }</h1>
                     <div class="pic-box">
-                        <img src="/fileupload/${requestScope.firstRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
+                        <img src="/fileupload/${requestScope.firstRank.picName }" alt="${requestScope.firstRank.picName }" width="100%" height="97%">
                     </div>
                     <div class="support-percentage">
                         <div class="view-support-div">
@@ -119,7 +119,7 @@
                 <div class="support-info2">
                     <h1 style="text-align:center; font-family:'Do Hyeon', sans-serif;">인기사연글 ${requestScope.secondRank.noticeTitle }</h1>
                     <div class="pic-box">
-                        <img src="/fileupload/${requestScope.secondRank.picName }" alt="${requestScope.firstRank.picName }" width="90%" height="70%">
+                        <img src="/fileupload/${requestScope.secondRank.picName }" alt="${requestScope.firstRank.picName }" width="100%" height="97%">
                     </div>
                     <div class="support-percentage">
                         <div class="view-support-div">
