@@ -36,10 +36,8 @@
 		        $("#tab-1").change(function(){
 		            if($("#tab-1").is(":checked")){
 		                liverNo.value = 1 ;
-		                liverName.innerHTML = '간';
 		            }else{
-		                liverNo.value= "";
-		                liverName.innerHTML = "";
+		                liverNo.value= "0";
 		            }
 		        });
 		    });
@@ -49,10 +47,8 @@
 		        $("#tab-2").change(function(){
 		            if($("#tab-2").is(":checked")){
 		            	heartNo.value = 2 ;
-		            	heartName.innerHTML = "심장";
 		            }else{
-		            	heartNo.value= "";
-		            	heartName.innerHTML = "";
+		            	heartNo.value= "0";
 		            }
 		        });
 		    });
@@ -63,10 +59,8 @@
 		    	$("#tab-3").change(function(){
 		            if($("#tab-3").is(":checked")){
 		            	toothNo.value = 3 ;
-		            	toothName.innerHTML = "치아";
 		            }else{
-		            	toothNo.value= "";
-		            	toothName.innerHTML = "";
+		            	toothNo.value= "0";
 		            }
 		        });
 		    });
@@ -77,10 +71,8 @@
 		        $("#tab-4").change(function(){
 		            if($("#tab-4").is(":checked")){
 		            	boneNo.value = 4 ;
-		            	boneName.innerHTML = "뼈";
 		            }else{
-		            	boneNo.value= "";
-		            	boneName.innerHTML = "";
+		            	boneNo.value= "0";
 		            }
 		        });
 		    });
@@ -90,76 +82,67 @@
 		        $("#tab-5").change(function(){
 		            if($("#tab-5").is(":checked")){
 		            	lungNo.value = 5 ;
-		            	lungName.innerHTML = "폐";
 		            }else{
-		            	lungNo.value= "";
-		            	lungName.innerHTML = "";
+		            	lungNo.value= "0";
 		            }
 		        });
 		    });
 			
-            function liverValue(val){
-                var organName = val.split("-")[0];
-                var organPrice = val.split("-")[1];
-                
-                
-                document.getElementById('liverPrice').innerHTML
-                = organPrice;
-                $('#liverPrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-            }
-
-            function heartValue(val){
-                var organName = val.split("-")[0];
-                var organPrice = val.split("-")[1];
-                               
-                document.getElementById('heartPrice').innerHTML
-                = organPrice;
-                $('#heartPrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-            }
-            function toothValue(val){
-                var organName = val.split("-")[0];
-                var organPrice = val.split("-")[1];
-                
-                document.getElementById('toothPrice').innerHTML
-                = organPrice;
-                $('#toothPrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-            }
-            function boneValue(val){
-                var organName = val.split("-")[0];
-                var organPrice = val.split("-")[1];
-                
-                document.getElementById('bonePrice').innerHTML
-                = organPrice;
-                $('#bonePrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-            }
-            function lungValue(val){
-                var organName = val.split("-")[0];
-                var organPrice = val.split("-")[1];
-                 
-                document.getElementById('lungPrice').innerHTML
-                = organPrice;
-                $('#lungPrice').text(organPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-            }
-            
+			
             function checkPrice(){
-				var liver = document.getElementById('liver').value;
+            	$('#agree').show();
+            	$('#bottom-div').show();
+            	
+            	var liverChkBox = document.getElementById('tab-1');
+            	
+            	if(liverChkBox.checked == false){
+            		document.getElementById('liver').value = "0";
+            	} else{
+            		var liver = document.getElementById('liver').value;
+            		document.getElementById('liverQuan').innerHTML = liver;
+            		document.getElementById('liverQuantity').value = liver;
+            	}
+            	
+				var heartChkBox = document.getElementById('tab-2');
+            	
+            	if(heartChkBox.checked == false){
+            		document.getElementById('heart').value = "0";
+            	} else{
 				var heart = document.getElementById('heart').value;
-            
-            	var teeth = document.getElementById('teeth').value;
-            	var bones = document.getElementById('bones').value;
-            	var lungs = document.getElementById('lungs').value;
-            	
-            	document.getElementById('liverQuan').innerHTML = liver;
             	document.getElementById('heartQuan').innerHTML = heart;
-            	document.getElementById('toothQuan').innerHTML = teeth;
-            	document.getElementById('boneQuan').innerHTML = bones;
-            	document.getElementById('lungQuan').innerHTML = lungs;
-            	
-            	document.getElementById('liverQuantity').value = liver;
             	document.getElementById('heartQuantity').value = heart;
-            	document.getElementById('toothQuantity').value = teeth;
-            	document.getElementById('boneQuantity').value = bones;
-            	document.getElementById('lungQuantity').value = lungs;
+            	}
+            	
+				var teethChkBox = document.getElementById('tab-3');
+            	
+            	if(teethChkBox.checked == false){
+            		document.getElementById('teeth').value = "0";
+            	} else{
+	            	var teeth = document.getElementById('teeth').value;
+	            	document.getElementById('toothQuan').innerHTML = teeth;
+	            	document.getElementById('toothQuantity').value = teeth;
+            	}
+            
+				var boneChkBox = document.getElementById('tab-4');
+            	
+            	if(boneChkBox.checked == false){
+            		document.getElementById('bones').value = "0";
+            	} else{
+            		var bones = document.getElementById('bones').value;
+	            	document.getElementById('boneQuan').innerHTML = bones;
+	            	document.getElementById('boneQuantity').value = bones;
+            	}            
+            	
+				var lungChkBox = document.getElementById('tab-5');
+            	
+            	if(lungChkBox.checked == false){
+            		document.getElementById('lungs').value = "0";
+            	} else{
+	            	var lungs = document.getElementById('lungs').value;
+	            	document.getElementById('lungQuan').innerHTML = lungs;
+	            	document.getElementById('lungQuantity').value = lungs;
+            	}
+            	
             	
             	var liverPrice = document.getElementById('liverPrice').innerHTML;
             	var liverQuan = document.getElementById('liverQuan').innerHTML;
@@ -189,7 +172,7 @@
             	var lungQuan = document.getElementById('lungQuan').innerHTML;
             	var lungTotal = parseInt(lungPrice) * parseInt(lungQuan) * 1000000;
 				document.getElementById('lungTotal').innerHTML = lungTotal;
-				$(lungTotal).text(lungPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				$(lungTotal).text(lungTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 				
 				console.log(liverTotal);
 				console.log(heartTotal);
@@ -199,8 +182,12 @@
 				var sum = parseInt(liverTotal) + parseInt(heartTotal) +parseInt(toothTotal) + parseInt(boneTotal) + parseInt(lungTotal);
 				console.log(sum);
 				document.getElementById('finalOrganPrice').value = sum;
+				
 				document.getElementById('finalBill').value =sum;
+// 				$(finalOrganPrice).value(finalOrganPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+// 				$(finalBill).value(finalBill.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
             }
+			
                function pointUse(){
             	   var currPoint = document.getElementById('currentPoint').value;
             	   var usedPoint = document.getElementById('usedPoint').value;
@@ -227,23 +214,23 @@
             <table id="organTable">
                     <tr>
                         <td>
-                            <input type="checkbox" name="rd-liver" value="간-20000000" id="tab-1" class="organSe" onclick="liverValue(this.value)">
+                            <input type="checkbox" name="rd-liver" value="간-10000000" id="tab-1" class="organSe" >
                             <label for="tab-1"><img src="/img/liver.png" name="liver"  class="btn-organ"></label>
                         </td>
                         <td> 
-                            <input type="checkbox" name="rd-heart" id="tab-2" value="심장-10000000" class="organSe" onclick="heartValue(this.value)">
+                            <input type="checkbox" name="rd-heart" id="tab-2" value="심장-30000000" class="organSe" >
                             <label for="tab-2"><img src="/img/heart.png" name="heart"  class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-tooth" id="tab-3" value="치아-2000000" class="organSe" onclick="toothValue(this.value)" >
+                            <input type="checkbox" name="rd-tooth" id="tab-3" value="치아-2000000" class="organSe"  >
                             <label for="tab-3"><img src="/img/tooth.png" name="tooth"  class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-bone" id="tab-4" value="뼈-2000000" class="organSe" onclick="boneValue(this.value)">
+                            <input type="checkbox" name="rd-bone" id="tab-4" value="뼈-2000000" class="organSe" >
                             <label for="tab-4"><img src="/img/bone.png" name="bone"  class="btn-organ"></label>
                         </td>
                         <td>
-                            <input type="checkbox" name="rd-lung" id="tab-5" value="폐-30000000" class="organSe" onclick="lungValue(this.value)">
+                            <input type="checkbox" name="rd-lung" id="tab-5" value="폐-20000000" class="organSe" >
                             <label for="tab-5"><img src="/img/lung.png" name="lung" class="btn-organ"></label>
                         </td>
                     </tr>
@@ -320,35 +307,42 @@
             <div id="hosDetail">
                 <div id="viewHos">
                     <h4>병원명</h4>
-                <div id="result">
-                <c:forEach items="${requestScope.hospitals}" var="hospital" varStatus="index" >
-                <label><h3>${hospital.hospitalName }</h3><br>
-<%--                 <input type="text" id="hospital-name" name="chosen-hospital" value="${hospital.hospitalName }"> --%>
-<%--                  <span id="addr">${hospital.hospitalAddr }</span> --%>
-<%--       			<input type="text" id="addr" value="${hospital.hospitalAddr }"> --%>
-                 ${hospital.hospitalAddr }
-                 </span></label>
-                 <button value="${hospital.hospitalAddr }-${hospital.hospitalName }" onclick="selectHospital(this.value)">위치보기</button>
-                </c:forEach>
-                     </div>
+	                <div id="result">
+		                <c:forEach items="${requestScope.hospitals}" var="hospital" varStatus="index" >
+	               
+		                	<label><h3>${hospital.hospitalName }</h3><br>
+<%-- 		                	<input type="hidden" id="hospital-name" name="chosen-hospital" value="${hospital.hospitalName }"> --%>
+<%-- 		      					<input type="hidden" id="addr" value="${hospital.hospitalAddr }"> --%>
+		                 	<div id="addr"> ${hospital.hospitalAddr }</div><br>
+		                 	</label>
+		                 	<input type="button" value="위치보기" onclick="selectHospital(this)">
+		                 	<input type="hidden" value="${hospital.hospitalAddr }-${hospital.hospitalName }">
+		                 	
+		                </c:forEach>
+	                 </div>
                 </div>
+                
+                
                 <div id="dateTime">
                    <h4>지도</h4>
                    <div id="map" style="width:500px; height:400px;">
                <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=977b62db984a36094fb13c99f6a75050&libraries=services"></script>
                <script>
                
-               function selectHospital(val){
-//             	   var e = document.getElementById('addr').value;
+               function selectHospital(obj){
+            	   var e = obj	.nextElementSibling.value;
+            	   console.log(e);
 //             	   var f= "${hospital.hospitalAddr }";
-            	   var name = val.split("-")[1];
-            	   var address = val.split("-")[0];
-            	   console.log(val.split("-")[0]);
-            	   console.log(val.split("-")[1]);
+            	   var name = e.split("-")[1];
+            	   var address = e.split("-")[0];
+            	   console.log(e.split("-")[0]);
+            	   console.log(e.split("-")[1]);
+					console.log(name);
+					console.log(address);
                         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
                         mapOption = {
                             center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                            level: 3 
+                            level: 4 
                         };  
                         
                         var map = new kakao.maps.Map(mapContainer, mapOption); 
@@ -463,7 +457,7 @@
                     <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="relation" id="parent" value="parent" onclick="NoMultiChk(this)"></label> <label>자녀<input type="checkbox" name="relation" id="child" value="child" onclick="NoMultiChk(this)"></label><br>
                 </div><br><br><br>
                 <div id="btn-bill">
-                <input type="button" value="결제하기" onclick="checkPrice()">
+                <input type="button" value="결제하기" id="checkPrice1	" onclick="checkPrice()">
                 </div>
             </div>
         </div>
@@ -483,57 +477,57 @@
                 		<th>총가격</th>
                 	</tr>
 			        <tr>
-			            <td id="purchaseLiver"></td>
-			            <td id="liverQuan"></td>
-			            <td id="liverPrice"></td>
+			            <td id="purchaseLiver">간</td>
+			            <td id="liverQuan">0</td>
+			            <td id="liverPrice">10,000,000</td>
 			            <td id="liverTotal"></td>
-			            <td><input type="hidden" name="organNo" id="liverNo" value=""></td>
-			            <td><input type="hidden" name="organQuantity" id="liverQuantity" value=""></td>
+			            <td><input type="hidden" name="organNo" id="liverNo" value="0"></td>
+			            <td><input type="hidden" name="organQuantity" id="liverQuantity" value="0"></td>
 			        </tr>
 			        <tr>
-			            <td id="purchaseHeart"></td>
-			            <td id="heartQuan"></td>
-			            <td id="heartPrice"></td>
+			            <td id="purchaseHeart">심장</td>
+			            <td id="heartQuan">0</td>
+			            <td id="heartPrice">30,000,000</td>
 			            <td id="heartTotal"></td>
-			            <td><input type="hidden" name="organNo" id="heartNo" value=""></td>
-			            <td><input type="hidden" name="organQuantity" id="heartQuantity" value=""></td>
+			            <td><input type="hidden" name="organNo" id="heartNo" value="0"></td>
+			            <td><input type="hidden" name="organQuantity" id="heartQuantity" value="0"></td>
 			        </tr>
 			        <tr>
-			            <td id="purchaseTooth"></td>
-			            <td id="toothQuan"></td>
-			            <td id="toothPrice"></td>
+			            <td id="purchaseTooth">치아</td>
+			            <td id="toothQuan">0</td>
+			            <td id="toothPrice">2,000,000</td>
 			            <td id="toothTotal"></td>
-			            <td><input type="hidden" name="organNo" id="toothNo" value=""></td>
-			            <td><input type="hidden" name="organQuantity" id="toothQuantity" value=""></td>
+			            <td><input type="hidden" name="organNo" id="toothNo" value="0"></td>
+			            <td><input type="hidden" name="organQuantity" id="toothQuantity" value="0"></td>
 			        </tr>
 			        <tr>
-			            <td id="purchaseBone"></td>
-			            <td id="boneQuan"></td>
-			            <td id="bonePrice"></td>
+			            <td id="purchaseBone">뼈</td>
+			            <td id="boneQuan">0</td>
+			            <td id="bonePrice">2,000,000</td>
 			            <td id="boneTotal"></td>
-			            <td><input type="hidden" name="organNo" id="boneNo" value=""></td>
-			            <td><input type="hidden" name="organQuantity" id="boneQuantity" value=""></td>
+			            <td><input type="hidden" name="organNo" id="boneNo" value="0"></td>
+			            <td><input type="hidden" name="organQuantity" id="boneQuantity" value="0"></td>
 			        </tr>
 			        <tr>
-			            <td id="purchaseLung"></td>
-			            <td id="lungQuan"></td>
-			            <td id="lungPrice"></td>
+			            <td id="purchaseLung">폐</td>
+			            <td id="lungQuan">0</td>
+			            <td id="lungPrice">20,000,000</td>
 			            <td id="lungTotal"></td>
-			            <td><input type="hidden" name="organNo" id="lungNo" value=""></td>
-			            <td><input type="hidden" name="organQuantity" id="lungQuantity" value=""></td>
+			            <td><input type="hidden" name="organNo" id="lungNo" value="0"></td>
+			            <td><input type="hidden" name="organQuantity" id="lungQuantity" value="0"></td>
 			        </tr>
 				</table>
                             
 						<div id="point">
                             <h4>사용가능한 포인트 : <input type="text" name="" id="currentPoint" value=${requestScope.member.totalPoint }>points</h4>
-                            <input type="text" name="" id="usedPoint" placeholder="사용할 포인트를 입력하세요" value="">
+                            <input type="text" name="usedPoint" id="usedPoint" value="0">
                             <input type="button" value="포인트 사용" onclick="pointUse()">
                         </div>
                     </div><br><br>
                     <div id="pay-check">
-                        <label for="">상품 금액</label><input type="text" name="" id="finalOrganPrice" value="" readonly>
-                        - <label for="">포인트 할인</label><input type="text" name="" id="pointDiscount" value="" readonly>
-                        <label for="">총 결제금액</label><input type="text" name="" id="finalBill" value="" readonly>
+                        <label for="">상품 금액</label><input type="text" name="" id="finalOrganPrice" value="0" readonly>
+                        - <label for="">포인트 할인</label><input type="text" name="" id="pointDiscount" value="0" readonly>
+                        <label for="">총 결제금액</label><input type="text" name="payment" id="finalBill" value="0" readonly>
                     </div>
                     <hr>	
                     </div>

@@ -32,7 +32,9 @@ h2{
     margin-top:5px; */
     box-shadow:none;
 }
-
+#agree, #bottom-div{
+	display:none;
+}
 /* 병원찾기 */
 #hosDetail{
     width:80%;
