@@ -10,24 +10,21 @@
 <link rel="stylesheet" type="text/css" href="../css/ask.css">
 </head>
 <body>
-	<div class="wrapper">
+	
     <header>
         <jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
     </header>
     <main>
     <div id="main-navi">
             <span class="subMenu">
-                <ul>
+                <ul class="subMenu">
                     <li><a href="/faq/FAQ">FAQ</a></li>
-                    <li>문의</li>
+                    <li><u><strong>문의</strong></u></li>
+                    <hr>
                 </ul>
             </span>
         </div>
-        <section>
-            <div id="ask-header">
-                <h2>문의</h2>
-            </div>
-        </section>
+        
         <br>
         <section id="ask">
         <!-- 상담 제목 및 날짜 -->

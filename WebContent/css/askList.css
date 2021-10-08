@@ -26,7 +26,12 @@
     height:600px;
     width:100%;
     padding-left: 50px;
+    
     /* background-color: thistle; */
+}
+#main-pic{
+	text-align:center;
+	width:100%;
 }
 #top{
     height:30px;
@@ -34,18 +39,28 @@
     /* background-color: cadetblue; */
 }
     .search{
-        width:90%;
+        width:92%;
         display:inline-block;
-        /* background-color: cornsilk; */
+/*         background-color: cornsilk; */
     }
     .inquiry{
-        width:10%;
-        /* background-color: burlywood; */
+        width:8%;
+        float:right;
+/*         background-color: burlywood; */
     }
+
 table{
     border-collapse:collapse;
     width:1000px;
     text-align:center;
+}
+table a:visted{
+	text-decoration:none;
+	color: black;
+}
+table a:link{
+	text-decoration: none;
+	color: black;
 }
 .inquiryNo{
     width:8%;
