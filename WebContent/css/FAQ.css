@@ -53,9 +53,9 @@ main{
         width: 1076px;
         margin:0px;
     }
-    #frist-question{
-        display:none;
-    }
+/*     #frist-question{ */
+/*         display:none; */
+/*     } */
     #second-question{
         display:none;
     }
