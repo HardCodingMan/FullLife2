@@ -20,13 +20,14 @@
             <li class="subMenu"><a href="#afterPurchase">구매 후 절차</a></li>
         </ul>
         <div id="buy">
+        <br><br>
 	        <c:if test="${sessionScope.userId eq null}">
 	         <form action="/member/login" method="get">
-	             <button id="buy-btn">예약하러가기</button>
+	             <button id="buy-btn" class="bts">예약하러가기</button>
 	        </form>
 	        </c:if>
 	        <c:if test="${sessionScope.userId ne null }">
-	        <button id="buy-btn"><a href="/reserve/reservation?userId=${sessionScope.userId }">예약하러가기</a></button>
+	        <button id="buy-btn1" class="bts"><a href="/reserve/reservation?userId=${sessionScope.userId }">예약하러가기</a></button>
 	        </c:if>
         </div>
     </navi>
@@ -125,7 +126,7 @@
                                     <h4>50,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
-                            <input type="button" value="예약하러가기">
+                            <input type="button" value="예약하러가기" class="detailbt">
                         </div>
                     </div>
                     <div id="detail-explantion">
@@ -146,7 +147,7 @@
                             <h4>100,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
-                            <input type="button" value="예약하러가기">
+                            <input type="button" value="예약하러가기" class="detailbt">
                         </div>
                     </div>
                     <div id="detail-explantion">
@@ -161,7 +162,7 @@
                             <h4>2,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
-                            <input type="button" value="예약하러가기">
+                            <input type="button" value="예약하러가기" class="detailbt">
                         </div>
                     </div>
                     <div id="detail-explantion">
@@ -182,7 +183,7 @@
                             <h4>2,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
-                            <input type="button" value="예약하러가기">
+                            <input type="button" value="예약하러가기" class="detailbt">
                         </div>
                     </div>
                     <div id="detail-explantion">
@@ -198,7 +199,7 @@
                             <h4>20,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
-                            <input type="button" value="예약하러가기">
+                            <input type="button" value="예약하러가기" class="detailbt">
                         </div>
                     </div>
                     <div id="detail-explantion">
@@ -288,14 +289,14 @@
         <div id="bottom-btn">
         <c:if test="${sessionScope.userId eq null}">
          <form action="/member/login" method="get">
-             <button id="purchase">예약하러가기</button>
+             <button id="purchase" class="bts">예약하러가기</button>
         </form>
         </c:if>
         </div>
         
         <div id="bottom-btn">
         <c:if test="${sessionScope.userId ne null }">
-             <button id="purchase"><a href="/reserve/reservation?userId=${sessionScope.userId }">예약하러가기</a></button>
+             <button id="purchase1" class="bts"><a href="/reserve/reservation?userId=${sessionScope.userId }">예약하러가기</a></button>
 
         </c:if>
         </div>
