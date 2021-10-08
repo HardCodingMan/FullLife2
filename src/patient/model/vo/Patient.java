@@ -1,6 +1,6 @@
 package patient.model.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Patient {
 	private int resultNo;

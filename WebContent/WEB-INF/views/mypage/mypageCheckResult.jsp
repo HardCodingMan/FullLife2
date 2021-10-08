@@ -44,10 +44,7 @@
                         <td>${checkResult.hospitalName}</td>
                         <td>${checkResult.checkDate}</td>
                         <td>
-                        	<form action="/mypage/file_down" method="post">
-                        		<input type="hidden" name="file-path" value="${checkResult.filePath }">
-                        		<input type="submit" value="다운">
-                        	</form>
+							<a href="/upload/${checkResult.fileName }" download>다운</a>
                         </td>
                     </tr>
                     </c:forEach>

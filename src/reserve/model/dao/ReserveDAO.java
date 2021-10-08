@@ -1,6 +1,7 @@
 0package reserve.model.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 
 import common.JDBCTemplate;
 import hospital.model.vo.Hospital;
+import mypage.model.vo.History;
 import patient.model.vo.Patient;
 
 public class ReserveDAO {
@@ -56,9 +58,33 @@ public class ReserveDAO {
 			pstmt.setString(4, patient.getRelation());
 			pstmt.setString(5, patient.getPatientZumin());
 			pstmt.setInt(6, patient.getOrganNo());
-			pstmt.setDate(7, patient.getHospitalTime());
+			pstmt.setDate(7, Date.valueOf(patient.getHospitalTime().toString()));
 			pstmt.setInt(8, patient.getHospitalNo());
 			pstmt.setString(9, patient.getUserId());
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			JDBCTemplate.close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public int payCom(Connection conn, History history) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		String query="INSERT INTO HISTORY VALUES(SEQ_HISTORY.NEXTVAL,?,?,SYSDATE,?,SYSDATE,?,?,?)";
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, history.getOrganNo());
+			pstmt.setInt(2, history.getOrganQuantity());
+			pstmt.setInt(3, history.getPayment());
+			pstmt.setInt(4, history.getUsedPoint());
+			pstmt.setString(5, history.getUserId());
+			pstmt.setInt(6, history.getHospitalNo());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
