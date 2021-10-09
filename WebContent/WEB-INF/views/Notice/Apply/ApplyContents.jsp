@@ -39,7 +39,7 @@
                         	<c:if test="${sessionScope.userId eq null}">
 	                        	<form action="/member/login" method="post">
 	                        		로그인을 하셔야합니다<BR>
-	                        		<input type="submit" value="로그인">
+	                        		<button id="login">로그인</button>
 	                        	</form>
                         	</c:if>
                         	<c:choose>
@@ -97,7 +97,7 @@
 													로그인 후 <br>이용가능
                                         </c:if>
                                         <c:if test="${sessionScope.userId ne null  }">
-                                        	<input type="submit" value="작성"></td>
+                                        	<input type="submit" value="작성" id="reply-write"></td>
                                        	</c:if>
                                 </form>    
                             </tr>
@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div id="bottom-butn">
-                    <a href="/Notice/Apply/ApplyNotice"><button id="list">목록</button></a>
+                	<a href="/Notice/Apply/ApplyNotice"><button class="button">목록</button></a>
                     <c:if test="${sessionScope.userId eq aOne.userId }">
                     <a href="/Notice/Apply/ApplyNoticeDelete?noticeNo=${aOne.noticeNo }&userId=${aOne.userId }"><button id="delete">삭제</button></a>
                     </c:if>
