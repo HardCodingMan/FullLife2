@@ -194,7 +194,7 @@ header{
 .support-info1, .support-info2 {
     height: 100%;
     width: 70%;
-    border: 1px solid orange;
+/*     border: 2px solid black; */
     margin: auto;
     cursor: pointer;
 }
