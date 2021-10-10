@@ -168,6 +168,9 @@ a{
     #reply-table{
         text-align: center;
     }
+    	.tr{
+            border-bottom: 1px solid gray;
+        }
         #th-id{
             width: 150px;
         }
