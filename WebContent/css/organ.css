@@ -1,20 +1,34 @@
-#navi{
-    height: 40px;
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#main-navi{
+    width: 100%;
+    height: 60px;
     background-color: rgb(250, 250, 223);
-    width:100%;
-    display:block;
-    margin:0;
+}
+#navi{
+    height: 90%;
+    width:50%;
+    background-color: rgb(250, 250, 223);
     list-style-type: none;
-    padding: 15px;
-  }
-  .subMenu{
+    margin: 0;
+    padding: 0;
+    padding-left: 30px;
+    float: left;
+    line-height: 30px;
+}
+.subMenu{
     display: inline-block;
-    padding: 10px;
+    /* padding: 10px; */
+    margin: 10px;
     text-align: center;
     
-  }
-  
-  #navi a{
+}
+
+#navi a{
+      display:block;
     border-left: 1px solid #1d1c1c;
     padding-left:10px;
   }
@@ -26,8 +40,30 @@
   #navi a:link{
     color:black;
     text-decoration: none;
-    /* list-style-type: none; */
   }
+  #buy{
+      width: 20%;
+      height: 90%;
+      float: right;
+      text-align: right;
+    }
+        .buy-btn{
+            width: 200px;
+            height: 40px;
+            margin-top: 2%;
+            margin-right:10%;
+            border-radius: 5px;
+            border: 1px solid gray;
+            background-color: rgb(193, 219, 152);
+            font-size: 15px;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+        .buy-btn a{
+            display: block;
+            text-decoration: none;
+            color: black;
+        }
   /* .division-lightsand{
     background-color: #f6f3f2;
     margin-top: 50px;
@@ -38,7 +74,7 @@
   .division-light{
     background-color: #f6f3f2;
     margin-top: 50px;
-    height: 70%;
+    height: 500px;
     width: 100%;
   }
   #bioprinting, #findHos-main, #organDetail, #afterPurchase{
@@ -46,6 +82,22 @@
     width:80%;
     margin-left: 10%;
   }
+    #introVideo{
+        margin-top: 10%;
+    }
+        #introVideo h1,.division-light h1,#findHos-main h1{
+            margin-bottom: 5%;
+            letter-spacing: 5px;
+        }
+        #bioprint-description h2{
+            margin-top: 5%;
+            margin-bottom: 5%;
+        }
+            #bioprint-description span{
+                width: 70%;
+                text-align: center;
+            }
+    
   /* #organNavi{
       background-color: white;
   } */
@@ -240,17 +292,20 @@
   }
   /* 마지막 구매 예약 파트 */
   .bts{
-    width:600px;
+    width:500px;
     height:50px;
+    font-size: 15px;
     
   }
-  #bottom-btn,#bottom-btn1,#buy{
+  .bottom-btn{
     text-align: center;
+    margin-top: 3%;
   }
-  #bottom-btn a:link,#bottom-btn1 a:link,#buy a:link{
+  .bottom-btn a:link,.bottom-btn a:link{
       text-decoration: none;
+      display: block;
       color: black;
   }
   h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
   
-  .bts{background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;font-weight: bold;}
+  .bts{background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;font-weight: bold;letter-spacing: 2px;}
