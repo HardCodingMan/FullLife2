@@ -147,14 +147,16 @@ a{
                 }
     #bottom-butn{
         height: 80px;
+        width: 100%;
+        text-align: center;
     }
     	#like-butn{
     		margin-top: 20px;
     	}
     	
-        #list{
-            margin-top: 20px;
-            margin-left: 20px;
+        #listOne{
+            margin-top: 5%;
+            margin-left: 45%;
             float: left;
         }
         #reply-write{
@@ -238,10 +240,7 @@ a{
                             color: #fff;
                             transform: translateY(-7px);
                           }
-                          #listOne{
-                          	margin-top: 20px;
-                          	margin-left: 20px;
-                          }
+
                           
                           	
 
