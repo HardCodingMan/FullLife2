@@ -45,7 +45,10 @@ public class ReserveDAO {
 		}
 
 	public int orderCom(Connection conn, Patient patient) {
-	
+		java.util.Date date = new java.util.Date();
+
+        long hosTime = date.getTime();
+        java.sql.Date date1 = new java.sql.Date(hosTime);
 		PreparedStatement pstmt = null;
 		int result = 0;
 		String query = "INSERT INTO PATIENT VALUES(SEQ_PATIENT.NEXTVAL, ?,?,?,?,?,?,?,?,?)";
@@ -58,7 +61,8 @@ public class ReserveDAO {
 			pstmt.setString(4, patient.getRelation());
 			pstmt.setString(5, patient.getPatientZumin());
 			pstmt.setInt(6, patient.getOrganNo());
-			pstmt.setDate(7, Date.valueOf(patient.getHospitalTime().toString()));
+//			pstmt.setDate(7, Date.valueOf(patient.getHospitalTime().toString()));
+			pstmt.setDate(7, date1);
 			pstmt.setInt(8, patient.getHospitalNo());
 			pstmt.setString(9, patient.getUserId());
 			result = pstmt.executeUpdate();
