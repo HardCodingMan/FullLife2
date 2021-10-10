@@ -127,12 +127,15 @@ form{
 #btn-bill{
 	text-align:center;
 }
-#checkPrice1{
+#btn-bill>input{
+	width: 200px;
+	margin-right:95%;
 	background-color: rgb(193, 219, 152);
 	border:1px solid rgb(153, 153, 153);
 	border-radius: 3px;
 	cursor:pointer;
 }
+
 #bottom-div{
     width: 80%;
 /*     height: 55%; */
