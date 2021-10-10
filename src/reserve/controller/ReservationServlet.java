@@ -104,7 +104,7 @@ public class ReservationServlet extends HttpServlet {
 		int result = new ReserveService().orderComplete(patient);
 		int result2 = new ReserveService().payComplete(history);
 		if(result > 0) {
-			request.getRequestDispatcher("/WEB-INF/vies/reserve/orderSuccess.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/reserve/orderSuccess.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/WEB-INF/views/members/error.html");
 		}
