@@ -47,7 +47,7 @@
                         <td>${checkResult.hospitalName}</td>
                         <td>${checkResult.checkDate}</td>
                         <td>
-                        	<a href="/upload/${checkResult.fileName }" download><img id="down" src="/img/download.png"></a>
+                        	<a href="/upload/${checkResult.fileName }" download><img id="down" src="/img/download.png" ></a>
                         </td>
                     </tr>
                     </c:forEach>
