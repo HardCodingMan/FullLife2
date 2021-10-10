@@ -63,27 +63,38 @@ public class ReservationServlet extends HttpServlet {
 		String relation = request.getParameter("relation");
 		int organNo = Integer.parseInt(request.getParameter("organNo"));
 
-		String date = request.getParameter("hospitalTime");
-		String[] dateArr = date.split("-");
-		String year = dateArr[0];
-		String month = dateArr[1];
-		String day = dateArr[2];
+//		String hosTime = request.getParameter("hospitalTime");
+//		String[] dateArr = date.split("-");
+//		String year = dateArr[0];
+//		String month = dateArr[1];
+//		String day = dateArr[2];
 		
-//		String from = "2013-04-08 10:10:10";
+//		String from = "2013-04-08 10:10:10"; 이건 된거에요?
+		
 //
 //		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //
 //		Date to = transFormat.parse(from);
-
-		String finalDate = year+"/"+month+"/"+day;
-		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+//
+//		String finalDate = year+"/"+month+"/"+day;
+//		System.out.print(finalDate);
+//		Date hosDate = new Date();
+//		try {
+//			hosDate = format.parse(request.getParameter("hostpitalTime"));
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		Date hosTime=null;
+		String hospitalTime = request.getParameter("hospitalTime");
 		try {
-			Date hosDate = format.parse(finalDate);
+			hosTime = format.parse(hospitalTime);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("과연???? "+ finalDate);
+
 		
 		int hosNo = Integer.parseInt(request.getParameter("hospitalNo"));
 		HttpSession session = request.getSession();
@@ -95,7 +106,7 @@ public class ReservationServlet extends HttpServlet {
 		patient.setPatientAddr(patientAddr);
 		patient.setRelation(relation);
 		patient.setOrganNo(organNo);
-//		patient.setHospitalTime(hosTime);
+		patient.setHospitalTime(hosTime);
 		patient.setHospitalNo(hosNo);
 		patient.setUserId(userId);
 		
@@ -115,5 +126,7 @@ public class ReservationServlet extends HttpServlet {
 		}
 		
 	}
+	}
 
-}
+
+
