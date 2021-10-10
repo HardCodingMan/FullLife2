@@ -23,13 +23,16 @@
 	
 	    regionTag.addEventListener("change",function(){
 	        result = regionTag.value;
-	        location.href="/reserve/select?location1="+result;
+	        var checkRe = confirm("정보가 초기화 됩니다. 계속하시겠습니까?");
+	        if(checkRe) {
+		        location.href="/reserve/select?location1="+result;
+	        }
 			console.log(result);
 	    });
 		
 	}
 	
-			$(document).ready(function(){
+			$(document).ready(function(){ // 얘는 한번만 쓰는거에요.. window.onload랑도 같은거에요
 				var liverName = document.getElementById('purchaseLiver');
 		    	var liverNo = document.getElementById('liverNo');
 		    	
@@ -186,8 +189,8 @@
 				
 				document.getElementById('finalOrganPrice').value = finalOrganPrice;
 				document.getElementById('finalBill').value = parseInt(finalOrganPrice);
-				document.getElementById('finalOrganPrice').toLocaleString('ko-KR');
-				finalBill.toLocaleString('ko-KR');
+// 				document.getElementById('finalOrganPrice').toLocaleString('ko-KR');
+// 				finalBill.toLocaleString('ko-KR');
 				
 				console.log(finalOrganPrice);
 				console.log(finalBill);
@@ -297,14 +300,18 @@
             <div id="findArea">
                 <tr>
                     <td>
+                    <c:if test="${sessionScope.userId ne null }">
+                    
                         <select id="region">
                         	<option value=""selected> 지역 선택</option>
-                            <option value="seoul"<c:if test="${metroCity eq  'seoul'}">selected</c:if>>서울
-                            <option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option>
+                         <option value="seoul"<c:if test="${metroCity eq  'seoul'}">selected</c:if>><a href="/reserve/reservation?userId=${sessionScope.userId }">서울</a></option>
+                            <a href="/reserve/reservation?userId=${sessionScope.userId }"><option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option> </a>
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
                             <option value="busan" <c:if test="${metroCity eq 'busan' }">selected</c:if>>부산</option>
                             <option value="gwangju"<c:if test="${metroCity eq 'gwangju' }">selected</c:if>>광주</option>
+                           
                         </select>
+                    </c:if>
                     </td>           
                 </tr>
             </div>
@@ -336,9 +343,8 @@
                <script>
                
                function selectHospital(obj){
-            	   var e = obj	.nextElementSibling.value;
+            	   var e = obj.nextElementSibling.value;
             	   console.log(e);
-//             	   var f= "${hospital.hospitalAddr }";
             	   var name = e.split("-")[1];
             	   var address = e.split("-")[0];
             	   console.log(e.split("-")[0]);
@@ -379,16 +385,16 @@
 <!--                       	<input type="time" min="09:00" max="17:00" step="3600"> -->
                       	</div> 
                         <div id="timeBtns">
-                            <input type="button" value="09:00" class="btn-time">
-                            <input type="button" value="10:00" class="btn-time">
-                            <input type="button" value="11:00" class="btn-time">
-                            <input type="button" value="12:00" class="btn-time">
-                            <input type="button" value="13:00" class="btn-time"><br>
-                            <input type="button" value="14:00" class="btn-time">
-                            <input type="button" value="15:00" class="btn-time">
-                            <input type="button" value="16:00" class="btn-time">
-                            <input type="button" value="17:00" class="btn-time">
-                            <input type="button" value="18:00" class="btn-time">
+<!--                             <input type="button" value="09:00" class="btn-time"> -->
+<!--                             <input type="button" value="10:00" class="btn-time"> -->
+<!--                             <input type="button" value="11:00" class="btn-time"> -->
+<!--                             <input type="button" value="12:00" class="btn-time"> -->
+<!--                             <input type="button" value="13:00" class="btn-time"><br> -->
+<!--                             <input type="button" value="14:00" class="btn-time"> -->
+<!--                             <input type="button" value="15:00" class="btn-time"> -->
+<!--                             <input type="button" value="16:00" class="btn-time"> -->
+<!--                             <input type="button" value="17:00" class="btn-time"> -->
+<!--                             <input type="button" value="18:00" class="btn-time"> -->
                         </div> 
                        
                     </div>
@@ -440,7 +446,7 @@
                         <span>주소</span><input type="text" name="user-addr" id="user-addr" class="input1" value="${requestScope.member.userAddr }">
                     </label><br>
                     <label>
-                    <input type="checkbox" name="relation" id="check" value="본인" onclick="NoMultiChk(this); Check();" checked> 구매자와 이식 받는자가 같습니다.
+                    <input type="checkbox" name="relation" id="check" value="본인" onclick="NoMultiChk(this); Check();"> 구매자와 이식 받는자가 같습니다.
                     </label>
              </div>
             <br>
@@ -460,7 +466,7 @@
                     <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input2" value="${requestScope.member.userAddr }">
                 </label><br>
                 <div id="relation"> 
-                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="relation" id="부모" value="parent" onclick="NoMultiChk(this)"></label> <label>자녀<input type="checkbox" name="relation" id="child" value="자녀s" onclick="NoMultiChk(this)"></label><br>
+                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="relation" id="부모" value="parent" onclick="NoMultiChk(this)"></label> <label>자녀<input type="checkbox" name="relation" id="child" value="자녀" onclick="NoMultiChk(this)"></label><br>
                 </div><br><br><br>
                 <div id="btn-bill">
                 <input type="button" value="결제하기" id="checkPrice1	" onclick="checkPrice()">
@@ -777,11 +783,11 @@
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
     </footer>
     <script>
-    	let timeTag = document.querySelector("#hospital-time");
-    	timeTag.addEventListener("change", function(){
-    		console.log(this.value);
-    	});
-    	$("#hospital-time").on
+//     	let timeTag = document.querySelector("#hospital-time");
+//     	timeTag.addEventListener("change", function(){
+//     		console.log(this.value);
+//     	});
+//     	$("#hospital-time").on
     </script>
 </body>
 </html>
