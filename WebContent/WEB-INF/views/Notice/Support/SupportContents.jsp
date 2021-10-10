@@ -67,8 +67,8 @@
                                 <td>${sOne.replyContents }</td>
                                 <td>${sOne.replyDate }
                                 	<c:if test="${sessionScope.userId eq sOne.replyUserId }">
-                                	<a href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
-									<a href="/Notice/Support/SupportReplyDelete?noticeNo=${sOne.noticeNo }&replyNo=${sOne.replyNo}&userId=${sOne.replyUserId}">삭제</a>
+                                	<a class="hide" href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
+									<a class="hide" href="/Notice/Support/SupportReplyDelete?noticeNo=${sOne.noticeNo }&replyNo=${sOne.replyNo}&userId=${sOne.replyUserId}">삭제</a>
 									</c:if>
                                 </td>
                             </tr>
@@ -91,7 +91,7 @@
 													로그인 후 <br>이용가능
                                         </c:if>
                                      <c:if test="${sessionScope.userId ne null  }">
-                                      	<input type="submit" value="작성"></td>
+                                      	<input type="submit" value="작성" id="reply-write"></td>
                                    	 </c:if>
                             </form>     
                         </tr>
@@ -104,7 +104,7 @@
                 </div>
             </div>
                 <div id="bottom-butn">
-                    <a href="/Notice/Support/SupportNotice"><button id="list">목록</button></a>
+                    <a href="/Notice/Support/SupportNotice"><button class="button" id="list">목록</button></a>
             </div>
         </section>
         </div>
@@ -113,14 +113,6 @@
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
     </footer>
     <script>
-        function hide() {
-            if($(".hide").css('display') == 'none'){
-                $('.hide').show();
-            }else{
-                $('.hide').hide();
-            }
-        }
-        
         function modifyReply(obj, replyNo, noticeNo){
             var contents = $(obj).parent().prev().find("input").val();
             //var contents = $("#modifyReply").val(); 이렇게하면 다바뀜 아이디값이 다 같아서 
@@ -137,6 +129,14 @@
             $(obj).parents("tr").prev().show();
             $(obj).parents("tr").hide();
         }
+        
+        $(".tr").click(function(){
+            if($(".hide").css("display") == 'none'){
+                $(".hide").show();
+            }else{
+                $(".hide").hide();
+            }
+        });
     </script>
 </body>
 </html>
