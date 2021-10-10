@@ -375,7 +375,7 @@
                         <h4>날짜 및 시간</h4>
                         
                       	<div id="Date">
-                      	<input type="date" name="hospitalTime" value="" min="" max="">	
+                      	<input type="date" name="hospitalTime" value="" min="" max="" id="hospital-time">
 <!--                       	<input type="time" min="09:00" max="17:00" step="3600"> -->
                       	</div> 
                         <div id="timeBtns">
@@ -776,5 +776,12 @@
     <footer>
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
     </footer>
+    <script>
+    	let timeTag = document.querySelector("#hospital-time");
+    	timeTag.addEventListener("change", function(){
+    		console.log(this.value);
+    	});
+    	$("#hospital-time").on
+    </script>
 </body>
 </html>

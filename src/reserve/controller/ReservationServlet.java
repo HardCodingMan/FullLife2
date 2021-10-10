@@ -1,6 +1,7 @@
 package reserve.controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -61,24 +62,28 @@ public class ReservationServlet extends HttpServlet {
 		String patientAddr = request.getParameter("patient-addr");
 		String relation = request.getParameter("relation");
 		int organNo = Integer.parseInt(request.getParameter("organNo"));
-//		
-//		
-		String year ="";
-		String month = "";
-		String date = "";
-		Date hospitalTime = Date.valueOf(request.getParameter("hospitalTime").toString());
-		System.out.print(hospitalTime);
-		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+		String date = request.getParameter("hospitalTime");
+		String[] dateArr = date.split("-");
+		String year = dateArr[0];
+		String month = dateArr[1];
+		String day = dateArr[2];
 		
-		Date hosTime= null;
+//		String from = "2013-04-08 10:10:10";
+//
+//		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//
+//		Date to = transFormat.parse(from);
+
+		String finalDate = year+"/"+month+"/"+day;
+		SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		try {
-			hosTime = transFormat.parse(request.getParameter("hospitalTime"));
+			Date hosDate = format.parse(finalDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.print(hosTime);
-//		java.sql.Date hosTime = java.sql.Date.valueOf(request.getParameter("hospitalTime"));
+		System.out.println("과연???? "+ finalDate);
 		
 		int hosNo = Integer.parseInt(request.getParameter("hospitalNo"));
 		HttpSession session = request.getSession();
@@ -90,7 +95,7 @@ public class ReservationServlet extends HttpServlet {
 		patient.setPatientAddr(patientAddr);
 		patient.setRelation(relation);
 		patient.setOrganNo(organNo);
-		patient.setHospitalTime(hosTime);
+//		patient.setHospitalTime(hosTime);
 		patient.setHospitalNo(hosNo);
 		patient.setUserId(userId);
 		
