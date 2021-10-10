@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>마이페이지</title>
 <link rel="stylesheet" href="/css/mypage.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
 	<header>
@@ -37,7 +40,7 @@
             <p style="text-align: center;">
             <img src="/img/mypageMain.png" alt="" id="mymain" style="width: 600px;">
             </p>
-            <br>
+            
     </article>
 </div>
 <footer>
