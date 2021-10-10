@@ -9,48 +9,45 @@
 <title>문의게시판</title>
 <link rel="stylesheet" type="text/css" href="/css/askList.css">
 </head>
-<body>
+<body style="overflow-x: hidden">
 <header>
 <jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
 </header>
 	
 	<main>
         <div id="main-navi">
-            <span>
-                <ul class="subMenu">
-                    <li><a href="/faq/FAQ">FAQ</a></li>
-                    <li><u><strong>문의</strong></u></li>
-                    <hr>
-                </ul>
-            </span>
+                <div class="subMenu">
+                    <h2>문의</h2>          
+                </div>
         </div>
         <div id="main-contents">
         	<div id="main-pic">
         		<img src="/img/ask.png">
         	</div>
+        	<br><br>
             
             <div id="top">
 	           <div class="search">
-		           <form action="/ask/search" method="get">
+		           <form action="/ask/search" method="get" class="asksearch">
                        <input type="text" name="searchKeyword" id="searchWord" placeholder="검색할 단어를 입력하세요">&nbsp;&nbsp;
-                       <input type="submit" value="검색">
+                       <input type="submit" value="검색" class="searchbt1">
 		           </form>
 	           </div>
                 <div class="inquiry">
 		            <c:if test="${sessionScope.userId eq null }">
 		            <form action="/member/login" method="get">
-		                <button>문의하기</button>
+		                <button class="askbt">문의하기</button>
 		            </form>
 		            </c:if>
                 </div>
         		<div class="inquiry">
 		            <c:if test="${sessionScope.userId ne null}">
-		         		<button><a href ="/ask/post">문의하기</a></button>
+		         		<button class="askbt"><a href ="/ask/post">문의하기</a></button>
 		        	</c:if>
                 </div>
             </div>
             <div id="table">
-                <table border="1px">
+                <table>
                     <tr>
                         <th class="inquiryNo">글 번호</th>
                         <th class="title">제목</th>
