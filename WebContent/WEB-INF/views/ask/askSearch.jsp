@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문의게시판</title>
+<title>문의게시판 검색</title>
 <link rel="stylesheet" type="text/css" href="/css/askList.css">
 </head>
 <body>
