@@ -15,15 +15,12 @@
         <jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
     </header>
     <main>
-    <div id="main-navi">
-            <span class="subMenu">
-                <ul class="subMenu">
-                    <li><a href="/faq/FAQ">FAQ</a></li>
-                    <li><u><strong>문의</strong></u></li>
-                    <hr>
-                </ul>
-            </span>
-        </div>
+              <div id="main-navi">
+                 <div class="subMenu">
+                    <h2>문의</h2>          
+                </div>
+            </div>
+    
         
         <br>
         <section id="ask">
