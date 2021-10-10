@@ -43,7 +43,8 @@
 		                liverNo.value= "0";
 		            }
 		        });
-		    
+		    });
+			$(document).ready(function(){
 		    	var heartNo = document.getElementById('heartNo');
 		    	var heartName = document.getElementById('purchaseHeart');
 		        $("#tab-2").change(function(){
@@ -53,7 +54,8 @@
 		            	heartNo.value= "0";
 		            }
 		        });
-		    
+		    });
+			$(document).ready(function(){
 		        var toothNo = document.getElementById('toothNo');
 		        var toothName = document.getElementById('purchaseTooth');
 		    	
@@ -64,7 +66,8 @@
 		            	toothNo.value= "0";
 		            }
 		        });
-		 
+		    });
+			$(document).ready(function(){
 		    	var boneNo = document.getElementById('boneNo');
 		    	var boneName = document.getElementById('purchaseBone');
 		    	
@@ -75,7 +78,8 @@
 		            	boneNo.value= "0";
 		            }
 		        });
-		    
+		    });
+			$(document).ready(function(){
 		        var lungNo = document.getElementById('lungNo');
 		        var lungName = document.getElementById('purchaseLung');
 		        $("#tab-5").change(function(){
@@ -87,7 +91,7 @@
 		        });
 		    });
 			
-		});
+			
             function checkPrice(){
             	$('#agree').show();
             	$('#bottom-div').show();
@@ -298,13 +302,14 @@
                     <td>
                     
                         <select id="region">
+                        
                         	<option value=""selected> 지역 선택</option>
                          	<option value="seoul"<c:if test="${metroCity eq 'seoul'}">selected</c:if>>서울 </option></a>
                             <option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option> 
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
                             <option value="busan" <c:if test="${metroCity eq 'busan' }">selected</c:if>>부산</option>
                             <option value="gwangju"<c:if test="${metroCity eq 'gwangju' }">selected</c:if>>광주</option>
-                           
+                          
                         </select>
                     </td>           
                 </tr>
