@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet"  href="/css/FAQ.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
 	 <header>
@@ -155,7 +158,7 @@
                 $("#three-question").hide();
             }
         }
-        
+       
         // menu 클래스 바로 하위에 있는 span 태그를 클릭했을때
         $(".menu>span").click(function(){
             var submenu = $(this).next("ul");
