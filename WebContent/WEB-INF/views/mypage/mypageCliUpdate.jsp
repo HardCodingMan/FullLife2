@@ -37,9 +37,9 @@
                     <table class="cliupdateTable">
                         <tr>
                             <td>아이디</td>
-                            <td><input type="text" class="userid1" id="user-id" value=${sessionScope.userId } readonly onfocus="this.blur()"></td>
+                            <td><input type="text" class="userid1" id="user-id" value="${sessionScope.userId }" readonly onfocus="this.blur()"></td>
                         </tr>
-                        </table>
+                    </table>
                         <table class="cliupdateTable1" style="background-color: rgba(173, 196, 136, 0.445);">
                             <tr>
                                 <td>현재 비밀번호</td>
@@ -65,7 +65,7 @@
                         </tr>
                         <tr>
                             <td>연락처</td>
-                            <td><input type="text" name="tel1" id="tel1" size="5">&nbsp;-&nbsp;<input type="text" name="tel2" id="tel2" size="5">&nbsp;-&nbsp;<input type="text" name="tel3" id="tel3" size="5"></td>
+                            <td><input type="text" name="tel1" id="tel1" size="5" maxlength="3">&nbsp;-&nbsp;<input type="text" name="tel2" id="tel2" size="5" maxlength="4">&nbsp;-&nbsp;<input type="text" name="tel3" id="tel3" size="5" maxlength="4"></td>
                         </tr>
                         <tr>
                             <td>이메일</td>
