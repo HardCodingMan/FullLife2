@@ -2,6 +2,7 @@ html,body{
     margin: 0px;
     padding:0px;
     height:100%;
+    font-family: 'Gowun Dodum', sans-serif;
 }
 main{
     height: 100%;
@@ -43,14 +44,14 @@ h2:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
     }
         #ask-title{
             height: 50px;
+            background-color:rgb(193, 219, 152);
             
         }
             .title-one{
                 float:left;
                 margin-left: 20px;
                 margin-right: 20px;
-                line-height: 50px;
-                background-color:rgb(193, 219, 152);
+                line-height: 50px;	
             }
             .title-two{
                 float: right;
@@ -69,6 +70,13 @@ h2:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
         #ask-answer{
             margin-left: 123px;
             margin-right: 123px;
+        }
+        .bottom-btns{
+        width:50px;
+        background-color: rgb(193, 219, 152);
+        border:1px solid rgb(153, 153, 153);
+        border-radius: 3px;
+        cursor:pointer;
         }
             #ask-enroll{
                 margin-top:20px;

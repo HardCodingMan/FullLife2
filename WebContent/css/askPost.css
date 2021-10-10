@@ -1,6 +1,9 @@
 html,body{
     margin: 0px;
     padding:0px;
+    font-family: 'Gowun Dodum', sans-serif;
+    width:100%;
+    overflow-x: hidden;
 }
 
 #main-navi{

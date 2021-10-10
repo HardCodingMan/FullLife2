@@ -1,19 +1,23 @@
 body{
     margin: 0px;
     padding:0px;
+    font-family: 'Gowun Dodum', sans-serif;
 }
 #main-navi{
-   width: 1535px;
+   width: 70%;
     margin: 0 ;
     
 }
-main{height:1000px}
+	#main-navi h2{
+		margin-left: 20%;
+	}
+main{width:100%;height:1000px;}
 .subMenu{
       
         height: 90px;
         margin-top: 20px;
         margin-left: 80px;
-        width: 1076px;
+        width: 100%;
         line-height: 30px;
         
 }
@@ -34,25 +38,26 @@ main{height:1000px}
 }
 #top{
     height:30px;
-    width:1000px;
+    width:90%;
+    margin-bottom: 2%;
     /* background-color: cadetblue; */
 }
     .search{
-        width:92%;
-        display:inline-block;
-        
+        width:50%;
+        text-align: left;
+        float: left;
 /*         background-color: cornsilk; */
     }
-    .asksearch{width:600px; margin-left:350px;}
+    /* .asksearch{width:600px;} */
     .searchbt1{width:50px; background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
     .searchbt1:hover{background-color: rgb(222, 241, 190);}
     .inquiry{
-        width:8%;
+        width:100px;
         float:right;
         
 /*         background-color: burlywood; */
     }
-    .askbt{margin: 0 0 0 100px; width: 80px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
+    .askbt{ width: 80px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
 	.askbt:hover{background-color: rgb(222, 241, 190);}
 table{
     border-collapse:collapse;
