@@ -1,5 +1,6 @@
 body{
     margin: 0px;
+    font-family: 'Gowun Dodum', sans-serif;
 }
 header{
     height: 150px;
@@ -15,8 +16,8 @@ a{
     margin: 0 auto;
 }
     #supportnotice-header{
-    	margin-top: 20px;
-        margin-left: 76px;
+        margin-left:3%;
+        margin-top: 3%;
          width: 130px;
         border-bottom: 1px solid black;
     }
@@ -26,6 +27,8 @@ a{
     #notice-section{
         margin-left: 20%;
         margin-right: 20%;
+        margin-top: 5%;
+        margin-bottom:10%;
         height: 100%;
     }
         #notice-date{
@@ -190,10 +193,12 @@ a{
         
     #bottom-butn{
         height: 80px;
+        width: 100%;
+        text-align: center;
     }
         #list{
-            margin-top: 20px;
-            margin-left: 20px;
+            margin-top: 5%;
+            margin-left: 45%;
             float: left;
         }
         #reply-write{
