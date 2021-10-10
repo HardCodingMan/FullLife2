@@ -228,7 +228,7 @@ public class MemberDAO {
 
 	public int modifyMember(String userId, Member member, Connection conn) {
 		int result = 0;
-		String query = "UPDATE MEMBER SET USER_PWD = ?, PHONE = ?, EMAIL = ? WHERE USER_ID = ?";
+		String query = "UPDATE MEMBER SET USER_PWD = ?, PHONE = ?, EMAIL = ?, ADDRESS = ? WHERE USER_ID = ?";
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -236,7 +236,8 @@ public class MemberDAO {
 			pstmt.setString(1, member.getUserPwd());
 			pstmt.setString(2, member.getUserPhone());
 			pstmt.setString(3, member.getUserEmail());
-			pstmt.setString(4, userId);
+			pstmt.setString(4, member.getUserAddr());
+			pstmt.setString(5, userId);
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
