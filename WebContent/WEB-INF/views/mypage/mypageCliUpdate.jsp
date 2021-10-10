@@ -65,7 +65,7 @@
                         </tr>
                         <tr>
                             <td>연락처</td>
-                            <td><input type="text" name="tel1" id="tel1" size="3">&nbsp;-&nbsp;<input type="text" name="tel2" id="tel2" size="3">&nbsp;-&nbsp;<input type="text" name="tel3" id="tel3" size="3"></td>
+                            <td><input type="text" name="tel1" id="tel1" size="5">&nbsp;-&nbsp;<input type="text" name="tel2" id="tel2" size="5">&nbsp;-&nbsp;<input type="text" name="tel3" id="tel3" size="5"></td>
                         </tr>
                         <tr>
                             <td>이메일</td>
