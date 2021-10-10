@@ -42,14 +42,14 @@
 							로그인 후 <br>이용가능
                         </c:if>
                         <c:if test="${sessionScope.userId ne null }">
-                    	<button onclick="hide();">포인트 후원</button>
+                    	<button class="like" id="butn"	>포인트 후원</button>
                     	</c:if>
                     </div>
                     <div id="point-view" class="hide"><p>보유한 포인트 : ${point.totalPoint }</p></div>
                     <form action="/Notice/Support/PointSupport" method="post">
                     	<input type="hidden" name="noticeNo" value="${sOne.noticeNo }">
-                    	<div id="point-sub" class="hide"><input type="submit" value="후원하기"><input type="reset" value="취소"></div>
-                    	<div id="point-input" class="hide"><input type="text" name="support-point" id="" size="35" placeholder="기부할 포인트를 입력해주세요"></div>
+                    	<div id="point-sub" class="hide"><button class="like" id="butn"	>후원하기</button></div>
+                    	<div id="point-input" class="hide"><input type="text" name="support-point" id="support-point" size="35" placeholder="기부할 포인트를 입력해주세요"></div>
                     </form>
                 </div>
             </div>
@@ -62,13 +62,13 @@
                             <th id="th-id">아이디</th><th id="th-contents">내용</th><th id="th-enroll">작성일</th>
                         </tr>
                         <c:forEach items="${sOne.replist }" var="sOne">
-                            <tr>
+                            <tr class="tr">
                                 <td>${sOne.replyUserId }</td>
                                 <td>${sOne.replyContents }</td>
                                 <td>${sOne.replyDate }
                                 	<c:if test="${sessionScope.userId eq sOne.replyUserId }">
-                                	<a class="hide" href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
-									<a class="hide" href="/Notice/Support/SupportReplyDelete?noticeNo=${sOne.noticeNo }&replyNo=${sOne.replyNo}&userId=${sOne.replyUserId}">삭제</a>
+	                                	<a class="hideTwo" href="javascript:void(0)" onclick="showModifyReply(this)">수정</a>&nbsp;&nbsp;
+										<a class="hideTwo" href="/Notice/Support/SupportReplyDelete?noticeNo=${sOne.noticeNo }&replyNo=${sOne.replyNo}&userId=${sOne.replyUserId}">삭제</a>
 									</c:if>
                                 </td>
                             </tr>
@@ -113,6 +113,18 @@
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
     </footer>
     <script>
+	    $("#like").on("click", function(){
+			submit();
+		});
+	    
+	    $("#butn").click(function(){
+	        if($(".hide").css("display") == 'none'){
+	            $(".hide").show();
+	        }else{
+	            $(".hide").hide();
+	        }
+	    });
+    
         function modifyReply(obj, replyNo, noticeNo){
             var contents = $(obj).parent().prev().find("input").val();
             //var contents = $("#modifyReply").val(); 이렇게하면 다바뀜 아이디값이 다 같아서 
@@ -131,10 +143,10 @@
         }
         
         $(".tr").click(function(){
-            if($(".hide").css("display") == 'none'){
-                $(".hide").show();
+            if($(".hideTwo").css("display") == 'none'){
+                $(".hideTwo").show();
             }else{
-                $(".hide").hide();
+                $(".hideTwo").hide();
             }
         });
     </script>
