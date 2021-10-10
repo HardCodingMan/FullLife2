@@ -13,8 +13,8 @@ a {text-decoration: none;}
 
 h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
 .cliupdateTable{ margin-left: 250px;margin-top: 3px;padding:10px;width:500px;}
-.cliupdateTable td{text-align: left;font-size: 15px;}
-.cliupdateTable td>input{width:140px;}
+.cliupdateTable td{text-align: center;font-size: 17px;}
+.cliupdateTable td>input{width:140px; font-size: 20px;}
 #clientupdate .userid1{border: none;}
 #user-name{border: none;}
 #tel1, #tel2, #tel3{width: 50px; height: 23px;}
