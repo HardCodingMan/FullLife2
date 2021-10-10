@@ -30,7 +30,7 @@ public class M_logoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		if(session != null) {
 			session.invalidate();
-			response.sendRedirect("/manager/m_main");
+			response.sendRedirect("/manager");
 		}
 	}
 
