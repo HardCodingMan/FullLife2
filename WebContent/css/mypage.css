@@ -1,4 +1,4 @@
-body{overflow-x:hidden; overflow-y:auto;}
+body{overflow-x:hidden; overflow-y:auto;font-family: 'Gowun Dodum', sans-serif;}
 .mypage{height: 40px; width: 100%;line-height: 10px; text-align: center;background-color: ivory;color: black;padding: 20px;}
 #mymain{padding-top: 100px;}
 #menucontainer .menu li{list-style: none;}
@@ -11,17 +11,17 @@ body{overflow-x:hidden; overflow-y:auto;}
 #clientupdate,#checkresult,#order,#point1,#reghospital{ margin-left: 400px;margin-top: 80px;}
 
 h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
-.cliupdateTable{ margin-left: 250px;margin-top: 3px;width:500px;}
+.cliupdateTable{ margin-left: 250px;margin-top: 3px;padding:10px;width:500px;}
 .cliupdateTable td{text-align: left;font-size: 15px;}
 .cliupdateTable td>input{width:140px;}
 #clientupdate .userid1{border: none;}
 #user-name{border: none;}
 #tel1, #tel2, #tel3{width: 50px;}
 #addr{width: 300px;}
-.cliupdateTable1{margin-left: 250px;width: 500px;}
+.cliupdateTable1{margin-left: 250px;width: 500px;padding:20px }
 .cliupdateTable1 td{text-align: center;font-size: 15px;}
 .cliupdateTable1 td>input{width:300px;}
-.cliupdateTable3{ margin-left: 250px;margin-top: 3px;width:500px;}
+.cliupdateTable3{ margin-left: 250px;margin-top: 3px;width:500px;padding:10px}
 .cliupdateTable3 td{text-align: left;width: 100px;font-size: 15px;}
 .cliupdateTable3 td>input{width:300px;}
 #email-id{width: 100px;}
@@ -66,7 +66,7 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .bookbt{margin: 20px 0 0 400px; width: 100px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
 #mypagejumun{height: 300px; margin: 200px 0 0 300px;}
 
-
+#down{width:30px;}
 #pageNavi{text-decoration:none;}
 #pageNavi:link{color:black;}
 #pageNavi:visited{color:gray;}
