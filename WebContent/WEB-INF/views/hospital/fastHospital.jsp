@@ -83,10 +83,10 @@
                 <div id="hospital-result">
                 	<c:forEach items="${requestScope.hospitals }" var="hospital" varStatus="index">
                 		<label>
-                		<b style="font-size:25px">> ${hospital.hospitalName }</b>
+                		<b style="font-size:20px"><p style="font-size: 10px;">></p> ${hospital.hospitalName }</b>
                 		</label>
-                		<h4 style="margin:10px">병원 주소: ${hospital.hospitalAddr }</h4>
-                		<h4 style="margin-left:10px">병원 문의 번호:<a href="#"><strong style="margin: 0 0 5px 10px"> ${hospital.hospitalPhone }</strong></a></h4>
+                		<h4 style="margin:10px">-병원 주소: ${hospital.hospitalAddr }</h4>
+                		<h4 style="margin-left:10px">-병원 문의 번호:<a href="#" style="text-decoration: none; color:grey"><strong style="margin: 0 0 5px 10px"> ${hospital.hospitalPhone }</strong></a></h4>
                 	</c:forEach>
                 </div>
             </div>
