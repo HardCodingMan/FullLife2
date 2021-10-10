@@ -1,32 +1,28 @@
-#header{
-    height:150px;
+body{
+    margin: 0px;
+    padding:0px;
 }
 #main-navi{
-    margin-bottom: 30px;
-    height:20px;
-    /* background-color: tomato; */
+   width: 1535px;
+    margin: 0 ;
     
 }
-.subMenu>li{
-    margin: 0 auto;
-    height:100%;
-    width:40px;
-    text-decoration: none;
-    list-style-type:none;
-    display:inline-block;
+main{height:100%}
+.subMenu{
+      
+        height: 90px;
+        margin-top: 20px;
+        margin-left: 80px;
+        width: 1076px;
+        line-height: 30px;
+        
 }
-.subMenu a{
-    text-decoration: none;
-    color: black;
-}
-.subMenu:visited{
-    color:black;
-}
+
+.subMenu h2{margin:0 10px;}
 #main-contents{
     height:600px;
     width:100%;
     padding-left: 50px;
-    
     /* background-color: thistle; */
 }
 #main-pic{
@@ -41,17 +37,23 @@
     .search{
         width:92%;
         display:inline-block;
+        
 /*         background-color: cornsilk; */
     }
+    .asksearch{width:600px; margin-left:350px;}
+    .searchbt1{width:50px; background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
+    .searchbt1:hover{background-color: rgb(222, 241, 190);}
     .inquiry{
         width:8%;
         float:right;
+        
 /*         background-color: burlywood; */
     }
-
+    .askbt{margin: 0 0 0 100px; width: 80px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
+	.askbt:hover{background-color: rgb(222, 241, 190);}
 table{
     border-collapse:collapse;
-    width:1000px;
+
     text-align:center;
 }
 table a:visted{
@@ -64,6 +66,7 @@ table a:link{
 }
 .inquiryNo{
     width:8%;
+    
 }
 .title{
     width:40%;
@@ -82,3 +85,9 @@ tr td{
     color:black;
 
 }
+
+h2:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
+#search{}
+#table{width: 900px; border: 1px solid; border-collapse: collapse; text-align: center;margin:0 auto; border: none;}
+#table th{ color: black;border-top: 2px solid rgb(173, 196, 136);border-bottom: 2px solid rgb(173, 196, 136); padding: 10px 5px;}
+#table td{border-top: 1px solid lightgray; padding: 10px 5px;}
