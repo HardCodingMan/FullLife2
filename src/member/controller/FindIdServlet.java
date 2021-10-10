@@ -38,11 +38,10 @@ public class FindIdServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String userName = request.getParameter("user-name");
-		String zumin = request.getParameter("zumin");
-		String userId = new MemberService().getOneMemberByZumin(userName, zumin);
-		if(!userId.equals("")) {
-			request.setAttribute("userId", userId);
-		}
+		String email = request.getParameter("email");
+		String userId = "";
+		userId = new MemberService().getOneMemberByZumin(userName, email);
+		request.setAttribute("userId", userId);	
 		request.getRequestDispatcher("/WEB-INF/views/member/idFoundResult.jsp").forward(request, response);
 	}
 

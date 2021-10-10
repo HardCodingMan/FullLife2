@@ -16,12 +16,12 @@
             <h1>아이디 찾기 결과</h1>
         </div>
         <div class="output-field">
-        <c:if test="${requestScope.userId ne null }">
+        <c:if test="${requestScope.userId ne '' }">
             <h4>회원님의 아이디입니다.</h4>
             <input type="text" value="${userId }" readonly>
         </c:if>
-        <c:if test="${requestScope.userId eq null }">
-            <h4>회원가입해주세요.</h4>
+        <c:if test="${requestScope.userId eq '' }">
+            <h4>회원가입하세요.</h4>
             <input type="text" value="없는 회원정보입니다." readonly>
         </c:if>
         </div>
@@ -31,7 +31,7 @@
             </div>
             <div>
             	<form action="/member/login" method="get">
-                	<input type="button" value="로그인">
+                	<input type="submit" value="로그인">
                 </form>
             </div>
         </div>
