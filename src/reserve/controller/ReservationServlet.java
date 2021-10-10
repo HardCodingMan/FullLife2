@@ -62,22 +62,14 @@ public class ReservationServlet extends HttpServlet {
 		String relation = request.getParameter("relation");
 		int organNo = Integer.parseInt(request.getParameter("organNo"));
 //		
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//		try {
-//			Date hosTime = dateFormat.parse(request.getParameter("hospitalTime"));
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-//		Date hosTime = null;
-//		try {
-//			hosTime = formatter.parse(request.getParameter("hospitalTime"));
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+//		
+		String year ="";
+		String month = "";
+		String date = "";
+		Date hospitalTime = Date.valueOf(request.getParameter("hospitalTime").toString());
+		System.out.print(hospitalTime);
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy/MM/dd");
-
+		
 		Date hosTime= null;
 		try {
 			hosTime = transFormat.parse(request.getParameter("hospitalTime"));
@@ -112,7 +104,7 @@ public class ReservationServlet extends HttpServlet {
 		int result = new ReserveService().orderComplete(patient);
 		int result2 = new ReserveService().payComplete(history);
 		if(result > 0) {
-			response.sendRedirect("/reserve/reservation");
+			request.getRequestDispatcher("/WEB-INF/vies/reserve/orderSuccess.jsp").forward(request, response);
 		} else {
 			request.getRequestDispatcher("/WEB-INF/views/members/error.html");
 		}
