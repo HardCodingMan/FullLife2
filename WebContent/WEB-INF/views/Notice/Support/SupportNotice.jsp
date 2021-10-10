@@ -23,7 +23,7 @@
             <div id="search">
             	<form action="/Notice/Support/SupportNoticeSearch" method="get">
                 	<input type="text" name="searchKeyword" placeholder="검색 할 제목을 적어주세요">
-                	<input type="submit" value="검색">
+                	<button class="button" id="list">검색</button>
                 </form>
             </div>
         </section>
