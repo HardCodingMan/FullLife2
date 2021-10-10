@@ -13,16 +13,13 @@
 	<jsp:include page="/HeaderNFooterJSP/Header.jsp"></jsp:include>
 	</header>
     <main>
-        <form action="/ask/post" method="post">
+       
             <div id="main-navi">
-                <span>
-                    <ul class="subMenu">
-	                    <li><a href="/faq/FAQ">FAQ</a></li>
-	                    <li><u><strong>문의</strong></u></li>
-	                    <hr>
-	                </ul>
-                </span>
+                 <div class="subMenu">
+                    <h2>문의</h2>          
+                </div>
             </div>
+             <form action="/ask/post" method="post">
             <div id="main-contents">
                 <br>
                 <div id="contents">
@@ -54,6 +51,7 @@
                 </div>
             </div>
         </form>
+        <br>
     </main>
     <footer>
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
