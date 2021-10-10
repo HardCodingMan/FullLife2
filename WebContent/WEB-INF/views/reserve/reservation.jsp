@@ -24,14 +24,15 @@
 	    regionTag.addEventListener("change",function(){
 	        result = regionTag.value;
 	        var checkRe = confirm("정보가 초기화 됩니다. 계속하시겠습니까?");
+	        
 	        if(checkRe) {
-		        location.href="/reserve/select?location1="+result;
+		      location.href="/reserve/select?location1="+result;
 	        }
 			console.log(result);
 	    });
 		
 	}
-	
+		
 			$(document).ready(function(){ 
 				var liverName = document.getElementById('purchaseLiver');
 		    	var liverNo = document.getElementById('liverNo');
@@ -300,16 +301,14 @@
             <div id="findArea">
                 <tr>
                     <td>
-                    
                         <select id="region">
-                        
                         	<option value=""selected> 지역 선택</option>
-                         	<option value="seoul"<c:if test="${metroCity eq 'seoul'}">selected</c:if>>서울 </option></a>
+                         	<option value="seoul"<c:if test="${metroCity eq 'seoul'}">selected</c:if> >서울 </option></a>
                             <option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option> 
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
                             <option value="busan" <c:if test="${metroCity eq 'busan' }">selected</c:if>>부산</option>
                             <option value="gwangju"<c:if test="${metroCity eq 'gwangju' }">selected</c:if>>광주</option>
-                          
+                      
                         </select>
                     </td>           
                 </tr>
