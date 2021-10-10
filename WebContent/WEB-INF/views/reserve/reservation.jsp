@@ -768,7 +768,7 @@
         </div><br>
          <hr><br>
             <div id="btn-reserve">
-            <input type="submit" id="nextButton" value="결제 및 예약완료">
+            <a href="/WEB-INF/views/orderSuccess.jsp"><input type="submit" id="nextButton" value="결제 및 예약완료"></a>
             </div>
         </form>
         <br><br><br>
