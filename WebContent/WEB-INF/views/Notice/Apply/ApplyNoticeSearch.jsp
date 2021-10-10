@@ -19,7 +19,7 @@
         <div class="wrapper">
         <section id="main-header">
             <div id="supportnotice-header">
-                <h2>후원 게시판</h2>
+                <h2>신청 게시판</h2>
             </div>
             <div id="search">
             	<form action="/Notice/Apply/ApplyNoticeSearch" method="get">
@@ -52,7 +52,10 @@
                 </ul>
             </div>
             <c:if test="${sessionScope.userId ne null }">
-            <a href="/Notice/Apply/ApplyNoticeWriter"><button id="write">글쓰기</button></a>
+             <div class="wrap">
+                <a href="/Notice/Apply/ApplyNoticeWriter"><button class="button">글쓰기</button></a>
+              </div>
+              <br><br>
             </c:if>
             <br><div id="page">${pageNavi }</div>
         </section>

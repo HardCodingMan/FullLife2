@@ -22,8 +22,8 @@ main{
     margin: 0 auto;
 }
     #FAQ-header{
-        margin-left: 76px;
-        margin-right: 76px;
+        margin-left: 25px;
+		margin-top: 1%;
         width: 165px;
     }
         #FAQ-header h2{

@@ -16,7 +16,8 @@ a{
     margin: 0 auto;
 }
     #supportnotice-header{
-        margin-left: 76px;
+        margin-left:3%;
+        margin-top: 3%;
          width: 130px;
         border-bottom: 1px solid black;
     }
@@ -26,6 +27,8 @@ a{
     #notice-section{
         margin-left: 300px;
         margin-right: 300px;
+        margin-top: 5%;
+        margin-bottom:15%;
         height: 100%;
     }
         #notice-date{
@@ -78,6 +81,7 @@ a{
             height: 100px;
         }
             #like-butn{
+
                text-align: center;
             }
                 #like-butn input{
