@@ -300,18 +300,16 @@
             <div id="findArea">
                 <tr>
                     <td>
-                    <c:if test="${sessionScope.userId ne null }">
                     
                         <select id="region">
                         	<option value=""selected> 지역 선택</option>
-                         <option value="seoul"<c:if test="${metroCity eq  'seoul'}">selected</c:if>><a href="/reserve/reservation?userId=${sessionScope.userId }">서울</a></option>
-                            <a href="/reserve/reservation?userId=${sessionScope.userId }"><option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option> </a>
+                         	<option value="seoul"<c:if test="${metroCity eq 'seoul'}">selected</c:if>>서울 </option></a>
+                            <option value="daejeon"<c:if test="${metroCity eq 'daejeon' }">selected</c:if>>대전</option> 
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
                             <option value="busan" <c:if test="${metroCity eq 'busan' }">selected</c:if>>부산</option>
                             <option value="gwangju"<c:if test="${metroCity eq 'gwangju' }">selected</c:if>>광주</option>
                            
                         </select>
-                    </c:if>
                     </td>           
                 </tr>
             </div>
