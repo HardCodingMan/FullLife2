@@ -49,7 +49,10 @@
                 </ul>
             </div>
             <c:if test="${sessionScope.userId ne null }">
-            <a href="/Notice/Apply/ApplyNoticeWriter"><button id="write">글쓰기</button></a>
+              <div class="wrap">
+                <a href="/Notice/Apply/ApplyNoticeWriter"><button class="button">글쓰기</button></a>
+              </div>
+              <br><br>
             </c:if>
             <br><div id="page">${pageNavi }</div>
         </section>

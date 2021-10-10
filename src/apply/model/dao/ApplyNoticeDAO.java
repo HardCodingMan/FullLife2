@@ -104,17 +104,17 @@ public class ApplyNoticeDAO {
 		}
 		StringBuilder sb = new StringBuilder();
 		if(needPrev) {
-			sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + (startNavi-1) + "'> [이전] </a>");
+			sb.append("<a class='pageing' href='/Notice/Apply/ApplyNotice?currentPage=" + (startNavi-1) + "'> [이전] </a>");
 		}
 		for(int i = startNavi; i <= endNavi; i++) {
 			if(i == currentPage) {
 				sb.append(i);
 			}else {
-				sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + i + "'>" + i + " </a>");
+				sb.append("<a class='pageing' href='/Notice/Apply/ApplyNotice?currentPage=" + i + "'> " + i + " </a>");
 			}
 		}
 		if(needNext) {
-			sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + (endNavi+1) + "'> [다음] </a>");
+			sb.append("<a class='pageing' href='/Notice/Apply/ApplyNotice?currentPage=" + (endNavi+1) + "'> [다음] </a>");
 		}
 		return sb.toString();
 	}
@@ -394,7 +394,7 @@ public class ApplyNoticeDAO {
 			if(i == currentPage) {
 				sb.append(i);
 			}else {
-				sb.append("<a href='/Notice/Support/SupportNotice?currentPage=" + i + "'>" + i + " </a>");
+				sb.append("<a href='/Notice/Support/SupportNotice?currentPage=" + i + "'> " + i + " </a>");
 			}
 		}
 		if(needNext) {
@@ -676,7 +676,7 @@ public class ApplyNoticeDAO {
 			if(i == currentPage) {
 				sb.append(i);
 			}else {
-				sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + i + "'>" + i + " </a>");
+				sb.append("<a href='/Notice/Apply/ApplyNotice?currentPage=" + i + "'> " + i + " </a>");
 			}
 		}
 		if(needNext) {
