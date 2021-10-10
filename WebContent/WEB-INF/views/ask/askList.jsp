@@ -85,6 +85,7 @@
 					</tr>
                 </table>
             </div>
+        </div>    
     </main>
     <footer>
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>

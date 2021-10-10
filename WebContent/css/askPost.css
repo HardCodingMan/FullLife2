@@ -1,7 +1,6 @@
 html,body{
     margin: 0px;
     padding:0px;
-    height:100%;
 }
 
 #main-navi{
@@ -13,7 +12,7 @@ html,body{
       
         height: 90px;
         margin-top: 20px;
-        margin-left: 100px;
+        margin-left: 80px;
         width: 1076px;
         line-height: 30px;
         
@@ -21,10 +20,9 @@ html,body{
 
 .subMenu h2{margin:0 10px;}
 h2:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
-.subMenu:visited{
-    color:black;
-}
+
 #main-contents{
+	width:100%;
      margin-left: 50px;
      display: flex; 
   	 min-height: 100vh; 
