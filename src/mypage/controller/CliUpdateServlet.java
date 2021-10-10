@@ -33,8 +33,6 @@ public class CliUpdateServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute("userId");
 		Member member = new MemberService().updateMemberInfo(userId);
-		System.out.println(member.getUserZumin());
-		System.out.println(member.getUserName());
 		request.setCharacterEncoding("utf-8");
 		request.setAttribute("member", member);
 		request.getRequestDispatcher("/WEB-INF/views/mypage/mypageCliUpdate.jsp").forward(request, response);			

@@ -1,4 +1,5 @@
 body{overflow-x:hidden; overflow-y:auto;font-family: 'Gowun Dodum', sans-serif;}
+a {text-decoration: none;}
 .mypage{height: 40px; width: 100%;line-height: 10px; text-align: center;background-color: ivory;color: black;padding: 20px;}
 #mymain{padding-top: 100px;}
 #menucontainer .menu li{list-style: none;}
@@ -16,16 +17,16 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .cliupdateTable td>input{width:140px;}
 #clientupdate .userid1{border: none;}
 #user-name{border: none;}
-#tel1, #tel2, #tel3{width: 50px;}
-#addr{width: 300px;}
+#tel1, #tel2, #tel3{width: 50px; height: 23px;}
+#addr{width: 300px;  height: 23px;}
 .cliupdateTable1{margin-left: 250px;width: 500px;padding:20px }
 .cliupdateTable1 td{text-align: center;font-size: 15px;}
-.cliupdateTable1 td>input{width:300px;}
+.cliupdateTable1 td>input{width:300px; height: 30px;}
 .cliupdateTable3{ margin-left: 250px;margin-top: 3px;width:500px;padding:10px}
 .cliupdateTable3 td{text-align: left;width: 100px;font-size: 15px;}
 .cliupdateTable3 td>input{width:300px;}
-#email-id{width: 100px;}
-
+#email-id{width: 100px;  height: 23px;}
+#email-addr {width: 130px; height: 30px;}
 .cliupdateBtn{margin-left: 430px;margin-top: 30px;}
 .clibt{width: 100px;margin-top: 5px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
 .clibt:last-child {position:relative; bottom:30px;}
@@ -59,7 +60,7 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 
 
 #user-id{border: none;}
-#user-newPw::-webkit-input-placeholder{font-size: 2px;}
+#user-newPw::-webkit-input-placeholder{font-size: 2px; height: 30px;}
 #user-reNewPw::-webkit-input-placeholder{font-size: 2px;}
 #book1{ margin-left: 300px;margin-top: 100px;width:500px;}
 .bookbox{border:0px none;width: 300px;}
