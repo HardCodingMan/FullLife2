@@ -45,13 +45,14 @@
                         	<c:choose>
                         		<c:when test="${nLike.userId eq sessionScope.userId and sessionScope.userId ne null}">
 			                        		추천수 : ${aOne.noticeLike }<BR>
-			                        		<button id="like-butn">이미 추천을 하셨습니다</button>
+			                        		<button class="like" id="like-butn">이미 추천을 하셨습니다</button>
                         		</c:when>
                         		<c:when test="${sessionScope.userId ne nLike.userId}">
                         			<form action="/Notice/Apply/ApplyLike" method="post">
 		                        		추천수 : ${aOne.noticeLike }<BR>
 		                        		<input type="hidden" name="noticeNo" value="${aOne.noticeNo }">
-		                        		<input type="submit" value="추천하기">
+<!-- 		                        		<input type="submit" value="추천하기"> -->
+		                        		<button class="like" onclick="like-butn()">추천하기</button>
 	                        		</form>
                         		</c:when>
                         	</c:choose>
@@ -112,7 +113,7 @@
                 <div id="bottom-butn">
                 	<a href="/Notice/Apply/ApplyNotice"><button class="button">목록</button></a>
                     <c:if test="${sessionScope.userId eq aOne.userId }">
-                    <a href="/Notice/Apply/ApplyNoticeDelete?noticeNo=${aOne.noticeNo }&userId=${aOne.userId }"><button id="delete">삭제</button></a>
+                    <a href="/Notice/Apply/ApplyNoticeDelete?noticeNo=${aOne.noticeNo }&userId=${aOne.userId }"><button class="button" id="delete">삭제</button></a>
                     </c:if>
                 </div>
             </section>
@@ -122,6 +123,9 @@
     	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
     </footer>
     <script>
+    		$("#like").on("click", function(){
+    			submit();
+    		});
             function modifyReply(obj, replyNo, noticeNo){
                 var contents = $(obj).parent().prev().find("input").val();
                 //var contents = $("#modifyReply").val(); 이렇게하면 다바뀜 아이디값이 다 같아서 
