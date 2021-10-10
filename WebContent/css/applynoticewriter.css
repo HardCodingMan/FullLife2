@@ -17,8 +17,8 @@ ul{
     margin: 0 auto;
 }
     #applynotice-header{
-        margin-left:5%;
-        margin-right:5%;
+        margin-left:3%;
+        margin-top: 3%;
         width: 130px;
         border-bottom: 1px solid black;
     }
@@ -28,6 +28,7 @@ ul{
     #writer-section{
         margin-left: 10%;
         margin-right: 10%;
+        margin-top: 5%;
     }
         #writer-top{
             margin-top: 55px;
