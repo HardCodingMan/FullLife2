@@ -7,6 +7,9 @@
 <meta charset="UTF-8">
 <title>회원정보 수정</title>
 <link rel="stylesheet" href="/css/mypage.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
 <header>
