@@ -83,7 +83,7 @@
                 아이디
             </h4>
                 <input type="text" class="wrong-input" id="userId" name="userId" placeholder="아이디 입력(5~11자)">
-                <input type="button" onclick="openIdChk();" value="본인인증"><br>
+                <input type="button" id="id-check1" onclick="openIdChk();" value="중복확인"><br>
                 <input type="hidden" id="checkId-result" value="0">
                 <span id="id-out"></span>
         </div>
