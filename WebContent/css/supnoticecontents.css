@@ -7,6 +7,9 @@ header{
 main{
     height: 100%;
 }
+a{
+	text-decoration: none;
+}
 .wrapper{
     width: 1535px;
     margin: 0 auto;
@@ -141,12 +144,17 @@ main{
         }
         
     #bottom-butn{
-        height: 50px;
+        height: 80px;
     }
         #list{
             margin-top: 20px;
             margin-left: 20px;
             float: left;
+        }
+        #reply-write{
+        	width: 100px;
+        	height: 50px;
+        	border: none;
         }
         #delete{
             float: right;
@@ -156,3 +164,28 @@ main{
 #footer{
     height: 150px;
 }
+/* 				                         목록버튼 */
+					  .button {
+	                       width: 100px;
+	                       height: 45px;
+	                       font-family: 'Roboto', sans-serif;
+	                       font-size: 11px;
+	                       text-transform: uppercase;
+	                       letter-spacing: 2.5px;
+	                       font-weight: 500;
+	                       color: #000;
+	                       background-color: rgb(224, 224, 224);
+	                       border: none;
+	                       border-radius: 45px;
+	                       box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+	                       transition: all 0.3s ease 0s;
+	                       cursor: pointer;
+	                       outline: none;
+                       }
+                     
+                     .button:hover {
+                       background-color: #2EE59D;
+                       box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+                       color: #fff;
+                       transform: translateY(-7px);
+                     }
