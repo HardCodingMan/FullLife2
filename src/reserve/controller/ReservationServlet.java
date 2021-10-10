@@ -61,22 +61,32 @@ public class ReservationServlet extends HttpServlet {
 		String patientAddr = request.getParameter("patient-addr");
 		String relation = request.getParameter("relation");
 		int organNo = Integer.parseInt(request.getParameter("organNo"));
-		
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 //		try {
 //			Date hosTime = dateFormat.parse(request.getParameter("hospitalTime"));
 //		} catch (ParseException e) {
 //			e.printStackTrace();
 //		}
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		Date hosTime = null;
+//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+//		Date hosTime = null;
+//		try {
+//			hosTime = formatter.parse(request.getParameter("hospitalTime"));
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy/MM/dd");
+
+		Date hosTime= null;
 		try {
-			hosTime = formatter.parse(request.getParameter("hospitalTime"));
+			hosTime = transFormat.parse(request.getParameter("hospitalTime"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		System.out.print(hosTime);
+//		java.sql.Date hosTime = java.sql.Date.valueOf(request.getParameter("hospitalTime"));
 		
 		int hosNo = Integer.parseInt(request.getParameter("hospitalNo"));
 		HttpSession session = request.getSession();
@@ -102,7 +112,7 @@ public class ReservationServlet extends HttpServlet {
 		int result = new ReserveService().orderComplete(patient);
 		int result2 = new ReserveService().payComplete(history);
 		if(result > 0) {
-			response.sendRedirect("/ask/list");
+			response.sendRedirect("/reserve/reservation");
 		} else {
 			request.getRequestDispatcher("/WEB-INF/views/members/error.html");
 		}
