@@ -128,7 +128,7 @@
         
         function checkValue(){
            
-            if(!idRegex.test(userId.value)){
+            if(userId.value == ""){
                 alert("아이디를 입력하세요.");
                 return false;
             } else if(userPw.value != originPwd.value || userPw.value == "" || !pwRegex.test(userNewPw.value)){
