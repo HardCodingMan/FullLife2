@@ -1,35 +1,40 @@
 body{overflow-x:hidden; overflow-y:auto;font-family: 'Gowun Dodum', sans-serif;}
-.mypage{height: 40px; width: 100%;line-height: 10px; text-align: center;background-color: rgb(250, 250, 223);padding: 20px;}
+.mypage{height: 40px; width: 100%;line-height: 10px; text-align: center;background-color: ivory;color: black;padding: 20px;}
 #mymain{padding-top: 100px;}
 #menucontainer .menu li{list-style: none;}
 #menucontainer{width: 300px;height: 745px; background-color:white;border-right: 1px solid gray;float: left;position: relative;}
 .menu{padding: 0;text-align: center;position: relative;}
-.menu li a{height: 50px;line-height: 50px;display: block;padding: 0 40px;font-size: 16px;color: #555;text-decoration: none;}
-.choice{background-color: rgb(173, 196, 136);}
+.menu li a{height: 50px;line-height: 50px;display: block;padding: 0 40px;font-size: 16px;color: #555;text-decoration: none;} 
+
+.choice{background-color: rgb(193, 219, 152);}
 .choice >a:visited{color: white;}
 #clientupdate,#checkresult,#order,#point1,#reghospital{ margin-left: 400px;margin-top: 80px;}
 
 h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
-.cliupdateTable{ margin-left: 300px;margin-top: 3px;width:360px;}
-.cliupdateTable td{text-align: left;width: 50px;font-size: 15px;}
-.cliupdateTable td>input{width:120px;}
+.cliupdateTable{ margin-left: 250px;margin-top: 3px;padding:10px;width:500px;}
+.cliupdateTable td{text-align: left;font-size: 15px;}
+.cliupdateTable td>input{width:140px;}
 #clientupdate .userid1{border: none;}
 #user-name{border: none;}
 #tel1, #tel2, #tel3{width: 50px;}
-#addr{width: 250px;}
-.cliupdateTable1{margin-left: 280px;width: 400px;text-align: center;}
-.cliupdateTable3{ margin-left: 300px;margin-top: 3px;width:360px;}
+#addr{width: 300px;}
+.cliupdateTable1{margin-left: 250px;width: 500px;padding:20px }
+.cliupdateTable1 td{text-align: center;font-size: 15px;}
+.cliupdateTable1 td>input{width:300px;}
+.cliupdateTable3{ margin-left: 250px;margin-top: 3px;width:500px;padding:10px}
 .cliupdateTable3 td{text-align: left;width: 100px;font-size: 15px;}
+.cliupdateTable3 td>input{width:300px;}
 #email-id{width: 100px;}
 
-.cliupdateBtn{margin-left: 430px;margin-top: 40px;}
+.cliupdateBtn{margin-left: 430px;margin-top: 30px;}
 .clibt{width: 100px;margin-top: 5px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
 .clibt:last-child {position:relative; bottom:30px;}
 .jumun,.gumsa{width: 900px; border: 1px solid; border-collapse: collapse; text-align: center;margin-left: 50px;margin-top: 150px;border: none;}
 .jumun th,.gumsa th{ color: black;border-top: 2px solid rgb(173, 196, 136);border-bottom: 2px solid rgb(173, 196, 136); padding: 10px 5px;}
 .jumun td,.gumsa td{border-top: 1px solid lightgray; padding: 10px 5px;}
 
-.save{width: 300px;height: 80px; margin-top: 150px;margin-left: 300px; border: 0px solid;padding: 20px;background-color: rgba(173, 196, 136, 0.445);text-align: center;line-height: 80px;border-radius: 5px;  box-shadow: 5px 5px 15px grey;}
+
+.save{width: 300px;height: 80px; margin-top: 150px;margin-left: 300px; border: 0px solid;padding: 20px;background-color: rgba(173, 196, 136, 0.445);text-align: center;line-height: 80px;border-radius: 5px;}
 .save input{border:none;width: 90px; font-size: 20px;background-color:transparent;}
 .bt{width: 150px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153); border-radius: 5px;margin-left: 400px;margin-top: 20px;cursor:pointer;}
 .bt1{background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
@@ -43,7 +48,7 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .po1{width: 150px;}
 .box{margin-left: 160px; width: 630px;font-size: 12px;background-color: rgba(173, 196, 136, 0.445);padding: 20px;}
 
-#mypagemain{width: 100%; margin-top: 5%;}
+#mypagemain{width: 100%;}
 #mypagepic{ text-align: center;margin-right: 150px; position: relative;}
 #userid{margin: 30px 0 30px 100px;font-size: 30px;position: absolute;border:none;}
 #icon{width: 800px; margin: auto; text-align: center;display: block;}
@@ -61,8 +66,7 @@ h3:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc
 .bookbt{margin: 20px 0 0 400px; width: 100px;background-color: rgb(193, 219, 152);border:1px solid rgb(153, 153, 153);border-radius: 3px;cursor:pointer;}
 #mypagejumun{height: 300px; margin: 200px 0 0 300px;}
 
-#pageNavi a{text-decoration:none;}
-#pageNavi a:link{color:black;}
-#pageNavi a:visited{color:gray;}
-#mymain{margin-bottom: 10%;}
 #down{width:30px;}
+#pageNavi{text-decoration:none;}
+#pageNavi:link{color:black;}
+#pageNavi:visited{color:gray;}
