@@ -97,7 +97,7 @@
                     </form>
                 </div>
             </div>
-            <br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br>
         </article>
     </div>   
 	<footer>
