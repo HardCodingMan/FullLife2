@@ -191,7 +191,7 @@
             }
         });
         userNewPw.addEventListener("blur", function(){
-                if(userPw.value == userNewPw.value) {
+                if(userPw.value == userNewPw.value && userPw.value.length > 1) {
                     alert("이전 비밀번호와 일치하면 안됩니다.");
 //                     userPw.value = "";
                     userNewPw.value = "";
@@ -199,8 +199,10 @@
                 }
         });
         checkNewPw.addEventListener("blur", function(){
-            if(checkNewPw.value == userNewPw.value){
-                resultDiv.innerHTML = "<h5 style='color:blue'>비밀번호가 일치합니다.</h5>"
+            if(checkNewPw.value == userNewPw.value && checkNewPw.value.length > 1){
+                resultDiv.innerHTML = "<h5 style='color:blue'>비밀번호가 일치합니다.</h5>";
+            } else if(checkNewPw.value == ""){
+            	alert("비밀번호를 입력해주세요.");
             } else {
                 alert("비밀번호가 일치하지 않습니다.");
                 checkNewPw.value = "";
