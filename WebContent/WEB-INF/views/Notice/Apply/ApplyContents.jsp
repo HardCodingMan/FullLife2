@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div id="bottom-butn">
-                	<a href="/Notice/Apply/ApplyNotice"><button class="button">목록</button></a>
+                	<a href="/Notice/Apply/ApplyNotice"><button class="button" id="listOne">목록</button></a>
                     <c:if test="${sessionScope.userId eq aOne.userId }">
                     <a href="/Notice/Apply/ApplyNoticeDelete?noticeNo=${aOne.noticeNo }&userId=${aOne.userId }"><button class="button" id="delete">삭제</button></a>
                     </c:if>
