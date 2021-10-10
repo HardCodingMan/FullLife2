@@ -37,7 +37,7 @@ input{
     margin-left: 20px;
     float:left;
 }
-#join_box{
+#join_box, #id-check1 {
     height:35px;
     width:360px; 
     cursor:pointer;   
