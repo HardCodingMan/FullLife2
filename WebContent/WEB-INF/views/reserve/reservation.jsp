@@ -179,13 +179,17 @@
 				console.log(toothTotal);
 				console.log(boneTotal);
 				console.log(lungTotal);
-				var sum = parseInt(liverTotal) + parseInt(heartTotal) +parseInt(toothTotal) + parseInt(boneTotal) + parseInt(lungTotal);
-				console.log(sum);
-				document.getElementById('finalOrganPrice').value = sum;
+				var finalOrganPrice = parseInt(liverTotal) + parseInt(heartTotal) +parseInt(toothTotal) + parseInt(boneTotal) + parseInt(lungTotal);
+// 				console.log(sum);
+// 				document.getElementById('finalOrganPrice').innertext= sum;
+				var finalBill = document.getElementById('finalBill');
 				
-				document.getElementById('finalBill').value =sum;
-// 				$(finalOrganPrice).value(finalOrganPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-// 				$(finalBill).value(finalBill.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+				document.getElementById('finalOrganPrice').value = finalOrganPrice;
+				document.getElementById('finalBill').value = parseInt(finalOrganPrice);
+				finalOrganPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				finalBill.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				console.log(finalOrganPrice);
+				console.log(finalBill);
             }
 			
                function pointUse(){
@@ -199,8 +203,9 @@
             	   console.log(remaining);
             	   
             	   document.getElementById('currentPoint').value = remaining;
-            	   var finalBill= parseInt(document.getElementById('finalOrganPrice').value) - parseInt(pointDiscount);
-            	   console.log(finalBill)
+            	   console.log(finalOrganPrice);
+            	   var finalBill= parseInt(document.getElementById('finalOrganPrice').value) - parseInt(pointDiscount.value);
+            	   console.log(finalBill);
             	   document.getElementById('finalBill').value = finalBill;
                }
             </script>
@@ -298,7 +303,6 @@
                             <option value="daegu" <c:if test="${metroCity eq 'daegu' }">selected</c:if>>대구</option>
                             <option value="busan" <c:if test="${metroCity eq 'busan' }">selected</c:if>>부산</option>
                             <option value="gwangju"<c:if test="${metroCity eq 'gwangju' }">selected</c:if>>광주</option>
-
                         </select>
                     </td>           
                 </tr>
@@ -310,7 +314,9 @@
 	                <div id="result">
 		                <c:forEach items="${requestScope.hospitals}" var="hospital" varStatus="index" >
 	               
-		                	<label><h3>${hospital.hospitalName }</h3><br>
+		                	<label>
+		                	<input type="checkbox" name="hospitalNo" value=${hospital.hospitalNo }>
+		                	<h3>${hospital.hospitalName }</h3><br>
 <%-- 		                	<input type="hidden" id="hospital-name" name="chosen-hospital" value="${hospital.hospitalName }"> --%>
 <%-- 		      					<input type="hidden" id="addr" value="${hospital.hospitalAddr }"> --%>
 		                 	<div id="addr"> ${hospital.hospitalAddr }</div><br>
@@ -318,11 +324,10 @@
 		                 	<input type="button" value="위치보기" onclick="selectHospital(this)">
 		                 	<input type="hidden" value="${hospital.hospitalAddr }-${hospital.hospitalName }">
 		                 	
+		                 	
 		                </c:forEach>
 	                 </div>
                 </div>
-                
-                
                 <div id="dateTime">
                    <h4>지도</h4>
                    <div id="map" style="width:500px; height:400px;">
@@ -369,8 +374,8 @@
                         <h4>날짜 및 시간</h4>
                         
                       	<div id="Date">
-                      	<input type="date" value="xxx" min="yyy" max="zzz">	
-                      	<input type="time" min="09:00" max="17:00" step="3600">
+                      	<input type="date" name="hospitalTime" value="" min="" max="">	
+<!--                       	<input type="time" min="09:00" max="17:00" step="3600"> -->
                       	</div> 
                         <div id="timeBtns">
                             <input type="button" value="09:00" class="btn-time">
@@ -434,7 +439,7 @@
                         <span>주소</span><input type="text" name="user-addr" id="user-addr" class="input1" value="${requestScope.member.userAddr }">
                     </label><br>
                     <label>
-                    <input type="checkbox" name="relation" id="check" value="self" onclick="NoMultiChk(this); Check();" checked> 구매자와 이식 받는자가 같습니다.
+                    <input type="checkbox" name="relation" id="check" value="본인" onclick="NoMultiChk(this); Check();" checked> 구매자와 이식 받는자가 같습니다.
                     </label>
              </div>
             <br>
@@ -454,7 +459,7 @@
                     <span>주소</span> <input type="text" name="patient-addr" id="patient-addr" class="input2" value="${requestScope.member.userAddr }">
                 </label><br>
                 <div id="relation"> 
-                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="relation" id="parent" value="parent" onclick="NoMultiChk(this)"></label> <label>자녀<input type="checkbox" name="relation" id="child" value="child" onclick="NoMultiChk(this)"></label><br>
+                    <span>구매자와의 관계</span>&nbsp;&nbsp;&nbsp; <label>부모<input type="checkbox" name="relation" id="부모" value="parent" onclick="NoMultiChk(this)"></label> <label>자녀<input type="checkbox" name="relation" id="child" value="자녀s" onclick="NoMultiChk(this)"></label><br>
                 </div><br><br><br>
                 <div id="btn-bill">
                 <input type="button" value="결제하기" id="checkPrice1	" onclick="checkPrice()">
@@ -496,7 +501,7 @@
 			            <td id="purchaseTooth">치아</td>
 			            <td id="toothQuan">0</td>
 			            <td id="toothPrice">2,000,000</td>
-			            <td id="toothTotal"></td>
+			            <td id="toothTotal"><fmt:formatNumber value="${money}" pattern="#,###"/></td>
 			            <td><input type="hidden" name="organNo" id="toothNo" value="0"></td>
 			            <td><input type="hidden" name="organQuantity" id="toothQuantity" value="0"></td>
 			        </tr>
