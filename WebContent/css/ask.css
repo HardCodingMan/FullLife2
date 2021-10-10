@@ -1,32 +1,28 @@
-body{
+html,body{
     margin: 0px;
+    padding:0px;
+    height:100%;
 }
-/* #header-div{ */
-/*     height: 150px; */
-/*     width: 100%; */
-/* } */
 main{
     height: 100%;
 }   
 #main-navi{
-    margin-bottom: 30px;
-    height:20px;
+   width: 1535px;
+    margin: 0 ;
+    
 }
-.subMenu>ul>li{
-    margin: 0 auto;
-    height:100%;
-    width:40px;
-    text-decoration: none;
-    list-style-type:none;
-    display:inline-block;
+.subMenu{
+      
+        height: 90px;
+        margin-top: 20px;
+        margin-left: 100px;
+        width: 1076px;
+        line-height: 30px;
+        
 }
-.subMenu a{
-    text-decoration: none;
-    color: black;
-}
-.subMenu:visited{
-    color:black;
-}
+
+.subMenu h2{margin:0 10px;}
+h2:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
 .wrapper{
     width: 1535px;
     margin: 0 auto;
@@ -47,13 +43,14 @@ main{
     }
         #ask-title{
             height: 50px;
-            background-color: rgb(226, 226, 226);
+            
         }
             .title-one{
                 float:left;
                 margin-left: 20px;
                 margin-right: 20px;
                 line-height: 50px;
+                background-color:rgb(193, 219, 152);
             }
             .title-two{
                 float: right;
