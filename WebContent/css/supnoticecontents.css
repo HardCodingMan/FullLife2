@@ -70,6 +70,9 @@ a{
                 height: 390px;
                 width: 560px;
             }
+            .hide{
+            	display:none;
+            }
         #contents-text{
             margin-left: 10px;
             margin-right: 10px;
@@ -102,9 +105,48 @@ a{
             #point-sub{
                 float: right;
             }
-            .hide{
+            #support-point{
+            	margin-right: 10px;
+            }
+            .hideTwo{
                 display: none;
             }
+            .like {
+				    left:40%;
+				    width: 200px;
+				    height:40px;
+				    background: linear-gradient(125deg,#dbfcd8,#90ff96,#13ff0b);
+				    background-position: left;
+				    background-size: 200%;
+				    color:black;
+				    font-weight: bold;
+				    border:none;
+				    cursor:pointer;
+				    transition: 1s;
+				    display:inline;
+				}
+
+				.like:hover {
+				    background-position: right;
+				}
+				#butn {
+				    left:40%;
+				    width: 100px;
+				    height:25px;
+				    background: linear-gradient(125deg,#dbfcd8,#90ff96,#13ff0b);
+				    background-position: left;
+				    background-size: 200%;
+				    color:black;
+				    font-weight: bold;
+				    border:none;
+				    cursor:pointer;
+				    transition: 1s;
+				    display:inline;
+				}
+
+				#butn:hover {
+				    background-position: right;
+				}
     #space{
         height: 20px;
     }

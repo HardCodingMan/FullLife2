@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,13 +43,10 @@
                                 <p>조회수 : ${sOne.views }</p>
                             </div>
                             <div class="list-percent">                      
-                               	 달성률 : ${sOne.nowSupport }
+                                <div class="list-percent">                      
                                 <div class="prog">
-                                    <div class="progs" id="progressing">80%</div>
-                                </div>
+                                <div class="progs" id="progressing" style="width: ${(sOne.nowSupport/sOne.needSupport)*100 }%;"><fmt:formatNumber value="${(sOne.nowSupport/sOne.needSupport)*100 }" pattern="0"/>%</div>
                             </div>
-                            <div class="list-btn">
-                                <button>자세히보기</button>
                             </div>
                         </div>
                         </a>
