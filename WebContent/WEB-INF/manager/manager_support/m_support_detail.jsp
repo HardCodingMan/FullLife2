@@ -55,7 +55,7 @@
                                 <img src="/fileupload/${hList.picName }" alt="후원사진">
                             </div>
                             <div id="post-text">
-                            	<textarea rows="20" cols="85">${hList.notiCon }</textarea>
+                            	<textarea rows="20" cols="75">${hList.notiCon }</textarea>
                             </div>
                             <div id="post-footer">
                                     <div id="footer1">
