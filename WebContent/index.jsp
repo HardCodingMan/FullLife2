@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="./FONT/fontawesome-free-5.15.4-web/css/all.css">
     <title>FullLife</title>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body>
     <script>

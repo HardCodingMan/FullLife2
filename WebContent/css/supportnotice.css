@@ -1,5 +1,6 @@
 body{
     margin: 0px;
+    font-family: 'Gowun Dodum', sans-serif;
 }
 #header-div{
     height: 150px;
@@ -21,7 +22,8 @@ ul{
         height: 40px;
     }
     #supportnotice-header{
-        margin-left:5%;
+        margin-left:3%;
+        margin-top: 3%;
         float: left;
     }
         #supportnotice-header h2{
@@ -38,11 +40,14 @@ ul{
     #search{
         width: 300px;
         float: right;
+        margin-top:10%;
+        margin-right:10%;
     }
      #notice-section{
             margin-left: 10%;
             margin-right: 10%;
-            margin-top: 40px;
+            margin-top: 10%;
+			margin-bottom: 15%;
         }
             .notice{
                 display: flex;
