@@ -50,10 +50,21 @@ public class ReserveDAO {
         long hosTime = date.getTime();
         java.sql.Date date1 = new java.sql.Date(hosTime);
 		PreparedStatement pstmt = null;
+		ResultSet rset=null;
+		
 		int result = 0;
-		String query = "INSERT INTO PATIENT VALUES(SEQ_PATIENT.NEXTVAL, ?,?,?,?,?,?,?,?,?,SEQ_HISTORY.CURRVAL)";
+		String query1 = "SELECT SEQ_HISTORY.NEXTVAL AS HISTORY_NO FROM DUAL";
+		String query = "INSERT INTO PATIENT VALUES(SEQ_PATIENT.NEXTVAL, ?,?,?,?,?,?,?,?,?,?)";
 		
 		try {
+			pstmt = conn.prepareStatement(query1);
+			rset= pstmt.executeQuery();
+			int historyNo = Integer.MIN_VALUE;
+			while(rset.next()) {
+				historyNo = rset.getInt("HISTORY_NO");
+			}
+			result = historyNo;
+			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, patient.getPatientName());
 			pstmt.setString(2, patient.getPatientAddr());
@@ -65,7 +76,8 @@ public class ReserveDAO {
 			pstmt.setDate(7, date1);
 			pstmt.setInt(8, patient.getHospitalNo());
 			pstmt.setString(9, patient.getUserId());
-			result = pstmt.executeUpdate();
+			pstmt.setInt(10, historyNo);
+			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
