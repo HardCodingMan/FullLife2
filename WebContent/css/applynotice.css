@@ -23,12 +23,18 @@ ul{
     }
     #supportnotice-header{
         margin-left:5%;
-        border-bottom: 1px solid black;
         float: left;
     }
         #supportnotice-header h2{
             margin: 0;
         }
+        #supportnotice-header:after{
+		    content: "";
+		    display: block;
+		    width: 120px;
+		    border-bottom: 1px solid #bcbcbc;
+		    margin: 20px 0;
+		}
     #search{
         width: 300px;
         float: right;
@@ -58,6 +64,7 @@ ul{
 			  transform: translateY(-7px);
 			}
     #notice-section{
+    	margin-top: 40px;
         margin-left: 10%;
         margin-right: 10%;
     }
