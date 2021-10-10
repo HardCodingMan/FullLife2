@@ -62,6 +62,7 @@ public class M_askDAO {
 		
 		int startNavi = ((currentPage -1)/pageCountPerView)* pageCountPerView +1;
 		int endNavi = startNavi + pageCountPerView -1;
+		
 		boolean needPrev = true;
 		boolean needNext = true;
 		if(startNavi ==1) {
@@ -82,7 +83,7 @@ public class M_askDAO {
 			if(i==currentPage) {
 				sb.append(i);
 			}else {
-				sb.append("<a href='/manager/m_ask_list?currentPage="+i+"'>"+i+"</a>");
+				sb.append("<a href='/manager/m_ask_list?currentPage="+i+"'> "+i+" </a>");
 			}
 		}
 		if(needNext) {
@@ -97,7 +98,7 @@ public class M_askDAO {
 		int totalValue = 0;
 		Statement stmt = null;
 		ResultSet rset = null;
-		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER";
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM ASK_BOARD";
 		
 		try {
 			stmt = conn.createStatement();
@@ -252,7 +253,7 @@ public class M_askDAO {
 		int result = 0;
 		Statement stmt = null;
 		ResultSet rset = null;
-		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM MEMBER WHERE USER_ID LIKE '%"+searchId+"%'";
+		String query = "SELECT COUNT(*) AS TOTALCOUNT FROM ASK_BOARD WHERE USER_ID LIKE '%"+searchId+"%'";
 		
 		try {
 			stmt = conn.createStatement();
