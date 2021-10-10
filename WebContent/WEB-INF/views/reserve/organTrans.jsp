@@ -123,7 +123,7 @@
                         <div class="content-dis">
                             <div id="liver-pic">
                                 <div id="money">
-                                    <h3>간, 간 때문이야~ </h3>
+                                    <h3>간 </h3>
                                     <h4>10,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
@@ -145,7 +145,7 @@
                   <div class="content-dis">
                     <div id="heart-pic">
                         <div id="money">
-                            <h3>아 ~ 심장박동 </h3>
+                            <h3>심장 </h3>
                             <h4>20,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
@@ -163,7 +163,7 @@
                   <div class="content-dis">
                     <div id="tooth-pic">
                         <div id="money">
-                            <h3>이가탄탄 치아! </h3>
+                            <h3>치아</h3>
                             <h4>2,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
@@ -185,7 +185,7 @@
                   <div class="content-dis">
                     <div id="bone-pic">
                         <div id="money">
-                            <h3>뼈 개뼈다귀 </h3>
+                            <h3>뼈</h3>
                             <h4>2,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">
@@ -205,7 +205,7 @@
                   <div class="content-dis">
                     <div id="lung-pic">
                         <div id="money">
-                            <h3>폐야 아프지마 </h3>
+                            <h3>폐 </h3>
                             <h4>30,000,000원부터</h4>
                         </div>
                         <div id="detail-purchase">

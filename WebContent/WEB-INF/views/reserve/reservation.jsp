@@ -32,7 +32,7 @@
 		
 	}
 	
-			$(document).ready(function(){ // 얘는 한번만 쓰는거에요.. window.onload랑도 같은거에요
+			$(document).ready(function(){ 
 				var liverName = document.getElementById('purchaseLiver');
 		    	var liverNo = document.getElementById('liverNo');
 		    	
@@ -43,8 +43,7 @@
 		                liverNo.value= "0";
 		            }
 		        });
-		    });
-			$(document).ready(function(){
+		    
 		    	var heartNo = document.getElementById('heartNo');
 		    	var heartName = document.getElementById('purchaseHeart');
 		        $("#tab-2").change(function(){
@@ -54,8 +53,7 @@
 		            	heartNo.value= "0";
 		            }
 		        });
-		    });
-			$(document).ready(function(){
+		    
 		        var toothNo = document.getElementById('toothNo');
 		        var toothName = document.getElementById('purchaseTooth');
 		    	
@@ -66,8 +64,7 @@
 		            	toothNo.value= "0";
 		            }
 		        });
-		    });
-			$(document).ready(function(){
+		 
 		    	var boneNo = document.getElementById('boneNo');
 		    	var boneName = document.getElementById('purchaseBone');
 		    	
@@ -78,8 +75,7 @@
 		            	boneNo.value= "0";
 		            }
 		        });
-		    });
-			$(document).ready(function(){
+		    
 		        var lungNo = document.getElementById('lungNo');
 		        var lungName = document.getElementById('purchaseLung');
 		        $("#tab-5").change(function(){
@@ -91,7 +87,7 @@
 		        });
 		    });
 			
-			
+		});
             function checkPrice(){
             	$('#agree').show();
             	$('#bottom-div').show();
