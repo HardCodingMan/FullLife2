@@ -9,10 +9,12 @@
     <title>아이디 찾기</title>
     <link rel="stylesheet" href="/css/findId.css">
     <script src="../js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
 </head>
 <body>
     <script>
         window.onload = function() {
+        	
             let radioBtn = document.querySelector("input[name=choice]:checked");
             const radio1 = document.querySelector("#email-radio");
             const radio2 = document.querySelector("#phone-radio");
