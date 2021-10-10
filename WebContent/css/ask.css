@@ -8,21 +8,17 @@ main{
     height: 100%;
 }   
 #main-navi{
-   width: 1535px;
-    margin: 0 ;
+   width: 100%;
     
 }
 .subMenu{
-      
         height: 90px;
-        margin-top: 20px;
-        margin-left: 100px;
-        width: 1076px;
+        width: 50%;
         line-height: 30px;
         
 }
 
-.subMenu h2{margin:0 10px;}
+.subMenu h2{margin-left:22%; margin-top: 5%;}
 h2:after{content: "";display: block;width: 60px;border-bottom: 1px solid #bcbcbc;margin: 20px 0;}
 .wrapper{
     width: 1535px;

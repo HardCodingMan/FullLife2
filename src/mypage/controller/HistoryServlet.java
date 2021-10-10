@@ -39,12 +39,13 @@ public class HistoryServlet extends HttpServlet {
 		String userId = (String)session.getAttribute("userId");
 		String getHistoryPage = request.getParameter("historyPage");
 		if(getHistoryPage == null) {
-			historyPage = 1; 
+			historyPage = 1;
 		}else {
 			historyPage = Integer.parseInt(getHistoryPage);
 		}
 		HistoryPage hisPage = new MypageService().printAllList(historyPage, userId);
 		List<History> hList = hisPage.gethList();
+		
 		if(!hList.isEmpty()) {
 			request.setAttribute("hList", hList);
 			request.setAttribute("pageNavi", hisPage.getPageNavi());
@@ -52,7 +53,6 @@ public class HistoryServlet extends HttpServlet {
 		}else {
 			RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/mypage/mypageHistory.jsp");
 			view.forward(request, response);
-	
 		}
 	}
 
