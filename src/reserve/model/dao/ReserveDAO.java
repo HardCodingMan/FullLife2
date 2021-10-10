@@ -51,7 +51,7 @@ public class ReserveDAO {
         java.sql.Date date1 = new java.sql.Date(hosTime);
 		PreparedStatement pstmt = null;
 		int result = 0;
-		String query = "INSERT INTO PATIENT VALUES(SEQ_PATIENT.NEXTVAL, ?,?,?,?,?,?,?,?,?)";
+		String query = "INSERT INTO PATIENT VALUES(SEQ_PATIENT.NEXTVAL, ?,?,?,?,?,?,?,?,?,SEQ_HISTORY.CURRVAL)";
 		
 		try {
 			pstmt = conn.prepareStatement(query);

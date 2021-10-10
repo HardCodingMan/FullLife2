@@ -186,8 +186,9 @@
 				
 				document.getElementById('finalOrganPrice').value = finalOrganPrice;
 				document.getElementById('finalBill').value = parseInt(finalOrganPrice);
-				finalOrganPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-				finalBill.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+				document.getElementById('finalOrganPrice').toLocaleString('ko-KR');
+				finalBill.toLocaleString('ko-KR');
+				
 				console.log(finalOrganPrice);
 				console.log(finalBill);
             }
@@ -501,7 +502,7 @@
 			            <td id="purchaseTooth">치아</td>
 			            <td id="toothQuan">0</td>
 			            <td id="toothPrice">2,000,000</td>
-			            <td id="toothTotal"><fmt:formatNumber value="${money}" pattern="#,###"/></td>
+			            <td id="toothTotal"></td>
 			            <td><input type="hidden" name="organNo" id="toothNo" value="0"></td>
 			            <td><input type="hidden" name="organQuantity" id="toothQuantity" value="0"></td>
 			        </tr>
@@ -767,7 +768,7 @@
         </div><br>
          <hr><br>
             <div id="btn-reserve">
-            <a href="/reserve/reservationCheck"><input type="submit" id="nextButton" value="결제 및 예약완료"></a>
+            <input type="submit" id="nextButton" value="결제 및 예약완료">
             </div>
         </form>
         <br><br><br>
