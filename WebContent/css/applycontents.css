@@ -7,6 +7,9 @@ header{
 main{
     height: 100%;
 }
+a{
+	text-decoration: none;
+}
 .wrapper{
     width: 1535px;
     margin: 0 auto;
@@ -79,6 +82,25 @@ main{
                 #like-butn input{
                     margin-top: 30px
                 }
+                
+                .like {
+				    left:40%;
+				    width: 200px;
+				    height:40px;
+				    background: linear-gradient(125deg,#dbfcd8,#90ff96,#13ff0b);
+				    background-position: left;
+				    background-size: 200%;
+				    color:black;
+				    font-weight: bold;
+				    border:none;
+				    cursor:pointer;
+				    transition: 1s;
+				    display:inline;
+				}
+
+				.like:hover {
+				    background-position: right;
+				}
     
     #notice-reply{
         height: 100%;
@@ -122,7 +144,7 @@ main{
                     display:none;
                 }
     #bottom-butn{
-        height: 50px;
+        height: 80px;
     }
     	#like-butn{
     		margin-top: 20px;
@@ -136,7 +158,6 @@ main{
         #reply-write{
         	width: 100px;
         	height: 50px;
-        	background-color : rgb(22, 226, 14);
         	border: none;
         }
         #delete{
@@ -215,3 +236,8 @@ main{
                             color: #fff;
                             transform: translateY(-7px);
                           }
+                          
+                          
+/*                           추천버튼 */
+                          	
+
