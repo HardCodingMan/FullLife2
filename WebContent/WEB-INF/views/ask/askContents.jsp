@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>문의게시판 게시글</title>
 <link rel="stylesheet" type="text/css" href="/css/ask.css">
 </head>
 <body>
@@ -47,9 +47,9 @@
             <hr>
             <div id="ask-butn">
             <!-- 목록, 삭제 버튼 -->
-                <a href="/ask/list"><button>목록</button></a>
+                <a href="/ask/list"><button class="bottom-btns">목록</button></a>
                 <c:if test="${sessionScope.userId eq askOne.userId && sessionScope.userId ne null}">
-                <a href="/ask/remove?askNo=${askOne.askNo }"><button>삭제</button></a>
+                <a href="/ask/remove?askNo=${askOne.askNo }"><button class="bottom-btns">삭제</button></a>
                 </c:if>
             </div>
         </section>
