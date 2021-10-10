@@ -85,7 +85,7 @@
                        
                     </table>
                     <div class="cliupdateBtn">
-                        <input type="submit" value="정보수정" class="clibt" onclick="return check();"><br>
+                        <input type="submit" value="정보수정" class="clibt" onclick="return checkValue();"><br>
                     </div>
                 </form>
                 <div class="cliupdateBtn">
@@ -96,8 +96,11 @@
             </div>
             <br><br><br><br><br><br><br><br><br><br><br>
         </article>
-    </div>
-       <script>
+    </div>   
+	<footer>
+    	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
+    </footer>
+    <script>
         let userId = document.querySelector("#user-id");
         let userPw = document.querySelector("#user-currPw");
         let userNewPw = document.querySelector("#user-newPw");
@@ -107,36 +110,29 @@
         let phone1 = document.querySelector("#tel1");
         let phone2 = document.querySelector("#tel2");
         let phone3 = document.querySelector("#tel3");
-        let emailId = document.querySelector("#email-id");
+        let emailTag = document.querySelector("#email-id");
         let address = document.querySelector("#addr");
         let resultDiv = document.querySelector("#result-div");
-        let select = document.querySelector("select[name=email-addr]");
-        let zumin = document.querySelector("#zumin1");
+        let select = document.querySelector("select[name='email-addr']");
         let userZumin = document.querySelector("#user-zumin");
+        
         let idRegex = /[a-zA-Z0-9]{5,11}$/;
         let pwRegex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
         let newPwRegex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
         let checkPwRegex = /^(?=.*[a-zA-z])(?=.*[0-9])(?=.*[$!@#%&\\(\\)\-_=+]).{8,16}$/;
         let phRegex1 = /[010]$/;
-        let phRegex2 = /[0-9]{4}$/;
-        let phRegex3 = /[0-9]{4}$/;
-
-       console.log(userName.value);
-      
-
-        function check(){
+        let phRegex2 = /^[0-9]{4}$/;
+        
+        function checkValue(){
            
             if(!idRegex.test(userId.value)){
                 alert("아이디를 입력하세요.");
                 return false;
-            } else if(userPw.value != originPwd.value || userPw.value == ""){
-                alert("현재 비밀번호를 입력해주세요.");
+            } else if(userPw.value != originPwd.value || userPw.value == "" || !pwRegex.test(userNewPw.value)){
+                alert("비밀번호를 확인해주세요.");
                 return false;
             } else if(!newPwRegex.test(userNewPw.value) || userNewPw.value == ""){
                 alert("신규 비밀번호를 입력해주세요.");
-                return false;
-            } else if(zumin.value == ""){
-                alert("주민번호를 입력해주세요.");
                 return false;
             } else if(!phRegex1.test(phone1.value) || phone1.value == ""){
                 alert("전화번호를 확인해주세요.");
@@ -144,22 +140,22 @@
             } else if(!phRegex2.test(phone2.value) || phone2.value == ""){
                 alert("전화번호를 확인해주세요.");
                 return false;
-            } else if(!phRegex3.test(phone3.value) || phone3.value == ""){
+            } else if(!phRegex2.test(phone3.value) || phone3.value == ""){
                 alert("전화번호를 확인해주세요.");
                 return false;   
-            } else if(emailId.value == ""){
+            } else if(emailTag.value == ""){
                 alert("이메일을 입력해주세요.");
                 return false;
             } else if(address.value == ""){
                 alert("주소를 입력해주세요.");
                 return false;
-            } else if(select.value == ""){
+            } else if(select.value == ""|| select.value == null){
             	alert("이메일주소를 선택해주세요.");
             	return false;
             }
             return true;
         }
-
+        
         userId.addEventListener("keyup", function(){
             if(this.value.length > 1){
                 if(!idRegex.test(userId.value)){
@@ -175,39 +171,30 @@
         userPw.addEventListener("keyup", function(){
             if(this.value.length > 1){
                 if(originPwd.value !=  userPw.value){
-                	resultDiv.innerHTML = "<h5 style='color:red'>유효한 비밀번호가 아닙니다.</h5>";
+                	resultDiv.innerHTML = "<h5 style='color:red'>사용자 비밀번호가 아닙니다.</h5>";
                 } else {
                     resultDiv.innerHTML = "<h5 style='color:blue'>현재 비밀번호와 일치합니다.</h5>";
                 }
             }
             
         });
-      
         userNewPw.addEventListener("keyup", function(){
             if(this.value.length > 1){
                 if(!newPwRegex.test(userNewPw.value)){
-                    resultDiv.innerHTML = "<h5 style='color:red'>유효한 새비밀번호가 아닙니다.</h5>";
+                    resultDiv.innerHTML = "<h5 style='color:red'>사용불가한 비밀번호입니다.</h5>";
                 } else {
-                    resultDiv.innerHTML = "<h5 style='color:blue'>유효한 새비밀번호입니다.</h5>";
+                    resultDiv.innerHTML = "<h5 style='color:blue'>유효한 비밀번호입니다.</h5>";
                 }
             }
         });
         userNewPw.addEventListener("blur", function(){
                 if(userPw.value == userNewPw.value) {
                     alert("이전 비밀번호와 일치하면 안됩니다.");
-                    userPw.value = "";
+//                     userPw.value = "";
                     userNewPw.value = "";
-                    userPw.focus();
+                    userNewPw.focus();
                 }
         });
-        zumin.addEventListener("blur", function(){
-            if(userZumin.value != zumin.value){
-                resultDiv.innerHTML = "<h5 style='color:red'>본인 주민번호가 아닙니다.</h5>";
-            } else {
-                resultDiv.innerHTML = "<h5 style='color:blue'>본인 주민번호입니다.</h5>";
-            }
-        });
-
         checkNewPw.addEventListener("blur", function(){
             if(checkNewPw.value == userNewPw.value){
                 resultDiv.innerHTML = "<h5 style='color:blue'>비밀번호가 일치합니다.</h5>"
@@ -222,22 +209,21 @@
                 this.value = "";
             }
         });
+     	
         phone2.addEventListener("keyup", function(){
             if(/[ㄱ-힣a-zA-Z]/.test(this.value)){
                 alert("숫자만 입력할 수 있습니다.");
                 this.value = "";
             }
         });
+      
         phone3.addEventListener("keyup", function(){
             if(/[ㄱ-힣a-zA-Z]/.test(this.value)){
                 alert("숫자만 입력할 수 있습니다.");
                 this.value = "";
             }
         });
+
     </script>
-<footer>
-    	<jsp:include page="/HeaderNFooterJSP/Footer.jsp"></jsp:include>
-    </footer>
-    
 </body>
 </html>
