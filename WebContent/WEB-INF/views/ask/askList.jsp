@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>문의게시판</title>
 <link rel="stylesheet" type="text/css" href="/css/askList.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
 </head>
 <body style="overflow-x: hidden">
 <header>
@@ -26,6 +29,7 @@
         	</div>
         	<br><br>
             
+            <div id="table">
             <div id="top">
 	           <div class="search">
 		           <form action="/ask/search" method="get" class="asksearch">
@@ -46,7 +50,6 @@
 		        	</c:if>
                 </div>
             </div>
-            <div id="table">
                 <table>
                     <tr>
                         <th class="inquiryNo">글 번호</th>
