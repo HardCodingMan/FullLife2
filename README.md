@@ -57,15 +57,21 @@ https://www.erdcloud.com/d/syhLHbxrHkPm7caBu
  ## 주요 기능
  
 ### 1.회원가입/로그인/아이디.비밀번호 찾기
-
+![회원가입](https://user-images.githubusercontent.com/82746841/145141363-63587fe7-b6c6-4a8a-9f5a-97adeab99f56.png)
+![로그인](https://user-images.githubusercontent.com/82746841/145141358-fb66f160-ed3a-42a2-b057-8d6aed91dfba.png)
 
 ### 2.원스톱
-![메인2](https://user-images.githubusercontent.com/82746841/145136606-50eb0cc6-2584-44dd-a12d-63173d6aca42.jpg)
+![원스톱1](https://user-images.githubusercontent.com/82746841/145141499-afaa66c6-0293-4c99-b380-ec96664d1aa3.png)
+![원스톱2](https://user-images.githubusercontent.com/82746841/145141501-e9603fe7-e405-4644-abe5-8c8aa7693b00.png)
 
 ### 3.장기 기능
 ![기술1](https://user-images.githubusercontent.com/82746841/145136826-9ae24539-60bc-42be-b904-978564b18425.png)
 ![기술2](https://user-images.githubusercontent.com/82746841/145136828-824e3a58-a7f2-4567-b266-f8d75e537d29.png)
 ![기술3](https://user-images.githubusercontent.com/82746841/145136831-27a20e28-8939-4e22-96d9-9a897d26b0d9.png)
+
+##### -- 예약하기(지도)
+
+![예약](https://user-images.githubusercontent.com/82746841/145141693-689a9401-0151-42eb-9c6e-64be6bda4d64.png)
 
 ### 4.후원하기
 ![후원1](https://user-images.githubusercontent.com/82746841/145138654-9dbe4f21-7172-4f77-95cd-e4a2350949a9.png)
@@ -88,6 +94,7 @@ https://www.erdcloud.com/d/syhLHbxrHkPm7caBu
 ![마이페이지3](https://user-images.githubusercontent.com/82746841/145139265-d14570a1-68e9-4282-873e-534903b81ee9.png)
 ![마이페이지6](https://user-images.githubusercontent.com/82746841/145139268-86e03aea-b88b-4ae4-9190-b1a082c07de7.png)
 ![마이페이지2](https://user-images.githubusercontent.com/82746841/145139263-c343bc21-2582-403d-80b0-75f25be23313.png)
+![마이페이지-ㅍ](https://user-images.githubusercontent.com/82746841/145141573-ce79a203-e2b9-4d69-8e4c-ba3a52d99ef3.png)
 ![마이페이지4](https://user-images.githubusercontent.com/82746841/145139266-a31311f6-8aa4-4b75-a2a2-2fb8c9201dcc.png)
 ![마이페이지5](https://user-images.githubusercontent.com/82746841/145139267-73876822-78d2-4f23-9b55-b7cc4b804803.png)
 
@@ -99,5 +106,3 @@ https://www.erdcloud.com/d/syhLHbxrHkPm7caBu
 ![관리자4](https://user-images.githubusercontent.com/82746841/145141012-783e2993-46b8-48d2-ab70-a92ed2bf77d2.png)
 ![관리자5](https://user-images.githubusercontent.com/82746841/145141015-5972317d-5f84-4639-adf4-b6e2f9811ad1.png)
 ![관리자6](https://user-images.githubusercontent.com/82746841/145141016-9141683e-595e-4748-a72f-218f39014384.png)
-
-
